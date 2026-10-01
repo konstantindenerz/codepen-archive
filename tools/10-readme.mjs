@@ -51,7 +51,7 @@ A standalone, **offline-capable** archive of every public Pen by
 [@konstantindenerz](https://codepen.io/konstantindenerz) — so the work survives
 whether or not CodePen does.
 
-> 🖼️ **Browse the gallery:** https://konstantindenerz.github.io/codepen-archive/
+> 🖼️ **Browse the gallery:** https://konstantin-denerz.com/codepen-archive/
 
 Each Pen keeps its authored source, its uploaded assets, and a compiled copy
 that opens straight from disk. No build step, no network, no CodePen.
@@ -94,6 +94,9 @@ The repository *is* the site — there is nothing to build, so GitHub Pages
 serves it straight from the branch:
 
 **Settings → Pages → Source: Deploy from a branch → \`main\` / \`(root)\`**
+
+The account has a Pages custom domain, so project sites live under
+\`konstantin-denerz.com\`, not \`github.io\`.
 
 Serving from the root matters: the gallery's viewer loads each demo from
 \`pens/<dir>/\`, the same path it has in the repository. \`.nojekyll\` keeps Pages
