@@ -1,0 +1,59 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>CodePen asset collector</title>
+<style>
+  body { font: 14px/1.6 system-ui, sans-serif; margin: 2rem; max-width: 46rem; }
+  #log { white-space: pre-wrap; font-family: ui-monospace, monospace; font-size: 12px; }
+  .bar { height: 6px; background: #eee; border-radius: 3px; overflow: hidden; margin: 1rem 0; }
+  .bar > i { display: block; height: 100%; background: #e86756; width: 0; transition: width .2s; }
+</style>
+<h1>Collecting CodePen assets</h1>
+<p id="status">starting…</p>
+<div class="bar"><i id="progress"></i></div>
+<div id="log"></div>
+<script type="module">
+const status = document.getElementById('status');
+const progress = document.getElementById('progress');
+const log = document.getElementById('log');
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+const toBase64 = (buffer) => {
+  const bytes = new Uint8Array(buffer);
+  let binary = '';
+  for (let i = 0; i < bytes.length; i += 0x8000) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+  }
+  return btoa(binary);
+};
+
+const urls = await (await fetch('/urls.json')).json();
+const assets = [];
+const failures = [];
+
+for (const [index, url] of urls.entries()) {
+  status.textContent = `${index + 1} / ${urls.length} — ${url.split('/').pop().slice(0, 60)}`;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const buffer = await response.arrayBuffer();
+    assets.push({
+      url,
+      contentType: response.headers.get('content-type') ?? '',
+      bytes: buffer.byteLength,
+      base64: toBase64(buffer),
+    });
+    log.textContent += `ok   ${buffer.byteLength.toString().padStart(9)}  ${url}\n`;
+  } catch (error) {
+    failures.push({ url, reason: String(error) });
+    log.textContent += `FAIL            ${url} — ${error}\n`;
+  }
+  progress.style.width = `${((index + 1) / urls.length) * 100}%`;
+  await sleep(1200); // keep well clear of anything that looks like scraping
+}
+
+status.textContent = `uploading ${assets.length} assets…`;
+await fetch('/result', { method: 'POST', body: JSON.stringify({ assets, failures }) });
+status.textContent = `done — ${assets.length} collected, ${failures.length} failed`;
+document.title = 'COLLECTOR DONE';
+</script>
