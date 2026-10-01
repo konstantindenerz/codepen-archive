@@ -1,0 +1,53 @@
+{
+  "slug": "NWLbagY",
+  "dir": "3d-reflective-card-css-animation-mirrored-NWLbagY",
+  "newEditor": false,
+  "title": "3D Reflective Card (CSS, Animation, Mirrored)",
+  "url": "https://codepen.io/konstantindenerz/pen/NWLbagY",
+  "description": "Used CSS features:\n✅ mask + gradient (🪞 effect)\n✅ at-property rule (Houdini 🔮🧙)\n✅ 3D transform \n✅ CSS variables\n✅ mix-blend-mode\n✅ backdrop-filter\n✅ blur filter",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "animation",
+    "reflective",
+    "card",
+    "mirror"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-02-27 06:38:19 UTC",
+  "updatedAt": "2023-03-19 10:08:41 UTC",
+  "counts": {
+    "loves": 66,
+    "views": 2742,
+    "comments": 4
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "typescript"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.ts"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "css",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.css",
+      "order": 1
+    },
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 1
+    }
+  ],
+  "hasSource": true
+}

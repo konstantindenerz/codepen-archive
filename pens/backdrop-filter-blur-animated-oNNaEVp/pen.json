@@ -1,0 +1,42 @@
+{
+  "slug": "oNNaEVp",
+  "dir": "backdrop-filter-blur-animated-oNNaEVp",
+  "newEditor": false,
+  "title": "backdrop-filter: blur() (animated)",
+  "url": "https://codepen.io/konstantindenerz/pen/oNNaEVp",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "backdrop",
+    "filter",
+    "blur",
+    "css",
+    "web"
+  ],
+  "license": "MIT",
+  "createdAt": "2019-11-14 12:30:48 UTC",
+  "updatedAt": "2024-02-07 12:43:19 UTC",
+  "counts": {
+    "loves": 18,
+    "views": 7073,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "less",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.less",
+    "js": "src/script.js"
+  },
+  "cssStarter": "neither",
+  "cssPrefix": "neither",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

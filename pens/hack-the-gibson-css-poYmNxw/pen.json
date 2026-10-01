@@ -1,0 +1,53 @@
+{
+  "slug": "poYmNxw",
+  "dir": "hack-the-gibson-css-poYmNxw",
+  "newEditor": false,
+  "title": "\"Hack The Gibson\" (CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/poYmNxw",
+  "description": "I created this scene with pure CSS. Inspired by the movie Hackers (1995).\n\n✅  Works well with lower resolution in Chrome.",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "3d",
+    "hackers",
+    "animation",
+    "movie"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-02-21 21:27:58 UTC",
+  "updatedAt": "2024-12-04 11:04:02 UTC",
+  "counts": {
+    "loves": 303,
+    "views": 13819,
+    "comments": 8
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    },
+    {
+      "resourceType": "js",
+      "url": "https://cdn.jsdelivr.net/npm/tweakpane@4.0.5/dist/tweakpane.min.js",
+      "order": 1
+    }
+  ],
+  "hasSource": true
+}

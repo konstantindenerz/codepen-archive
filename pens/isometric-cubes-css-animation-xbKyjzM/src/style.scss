@@ -1,0 +1,290 @@
+@property --deg {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+@property --deg2 {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+
+@property --deg-a {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+@property --deg-b {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+
+@property --deg-c {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+
+@property --end {
+  synax: "<color>";
+  initial-value: #fff;
+  inherits: true;
+}
+@property --index-delay {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: true;
+}
+@property --index-delay-a {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: true;
+}
+
+:root {
+  --start: black;
+  --end: white; //#fbf7f4;
+  --color-offset: 12%;
+
+  // demo a
+  --deg-a: 135deg;
+  --deg-b: 135deg;
+  --deg-c: 45deg;
+
+  // demo b
+  --deg-a: 320deg;
+  --deg-b: 280deg;
+  --deg-c: 220deg;
+
+  // demo c
+  --deg-a: 0deg;
+  --deg-b: 0deg;
+  --deg-c: 0deg;
+
+  //   demo d
+  --deg-a: 20deg;
+  --deg-b: 40deg;
+  --deg-c: 110deg;
+}
+
+@keyframes rotate {
+  from {
+    --deg2: 0deg;
+  }
+
+  10% {
+    --deg2: 90deg;
+  }
+
+  40% {
+    --deg2: 90deg;
+  }
+  50% {
+    --deg2: 180deg;
+  }
+
+  70% {
+    --deg2: 180deg;
+  }
+
+  to {
+    --deg2: 360deg;
+  }
+}
+
+@keyframes demo {
+  from {
+    // // demo a
+    --deg-a: 135deg;
+    --deg-b: 135deg;
+    --deg-c: 45deg;
+  }
+
+  20% {
+    // demo a
+    --deg-a: 135deg;
+    --deg-b: 135deg;
+    --deg-c: 45deg;
+  }
+
+  30% {
+    // demo c
+    --deg-a: 0deg;
+    --deg-b: 0deg;
+    --deg-c: 0deg;
+  }
+
+  50% {
+    // demo c
+    --deg-a: 0deg;
+    --deg-b: 0deg;
+    --deg-c: 0deg;
+  }
+
+  60% {
+    //   demo d
+    --deg-a: 20deg;
+    --deg-b: 40deg;
+    --deg-c: 110deg;
+  }
+
+  90% {
+    //   demo d
+    --deg-a: 20deg;
+    --deg-b: 40deg;
+    --deg-c: 110deg;
+  }
+
+  to {
+    // // demo a
+    --deg-a: 135deg;
+    --deg-b: 135deg;
+    --deg-c: 45deg;
+  }
+}
+
+.cube {
+  --deg: var(--deg-a);
+  background: linear-gradient(
+    calc(var(--deg) - var(--deg2)),
+    var(--start) var(--color-offset),
+    var(--end)
+  );
+  width: var(--s);
+  aspect-ratio: 1;
+  transform-style: preserve-3d;
+  position: relative;
+  transform: rotateX(45deg) rotate(45deg) rotateZ(0deg);
+
+  --row-temp: calc(
+    var(--row) - var(--row-center)
+  ); // current row distance to center
+  --col-temp: calc(
+    var(--col) - var(--col-center)
+  ); // current column distance to center
+  --row-temp-abs: max(var(--row-temp), -1 * var(--row-temp));
+  --col-temp-abs: max(var(--col-temp), -1 * var(--col-temp));
+
+  --index-delay-a: max(
+    var(--col-temp-abs),
+    var(--row-temp-abs)
+  ); // distance to center, use for center animation
+
+  --index-delay-b: max(
+    calc(var(--col-temp-abs) - var(--row-temp-abs)),
+    -1 * calc(var(--col-temp-abs) - var(--row-temp-abs))
+  ); // X animation from center
+  --index-delay-c: calc(
+    var(--col-temp-abs) - var(--row-temp-abs)
+  ); // X animation to center
+
+  --index-delay: var(--index-delay-a);
+  --index-delay: var(--index-delay-b);
+  --index-delay: var(
+    --index-delay-c
+  ); // 🍿 change the animation type from a to c
+
+  --delay: calc(var(--index-delay) * 0.2s);
+
+  animation: rotate var(--duration, 5s) var(--delay, 0s) ease infinite,
+    foo 10s linear infinite;
+  .top {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    display: grid;
+    place-items: center;
+
+    &::before,
+    &::after {
+      --deg: var(--deg-b);
+      content: "";
+      position: absolute;
+      inset: 0;
+      transform-style: preserve-3d;
+      background: linear-gradient(
+        calc(var(--deg) + var(--deg2)),
+        var(--start) var(--color-offset),
+        var(--end)
+      );
+      transform: translate3d(0, var(--s-h), var(--s-h-n))
+        rotate3d(1, 0, 0, 90deg);
+    }
+
+    &::after {
+      --deg: var(--deg-c);
+      background: linear-gradient(
+        calc(var(--deg) - var(--deg2)),
+        var(--start) var(--color-offset),
+        var(--end)
+      );
+      transform: translate3d(var(--s-h), 0, var(--s-h-n))
+        rotate3d(0, 1, 0, 90deg);
+    }
+  }
+}
+
+.container {
+  display: flex;
+  gap: calc(var(--s) * 0.42);
+  &:nth-child(even) {
+    translate: calc(var(--s) * 0.71);
+  }
+}
+
+.scene {
+  display: flex;
+  flex-direction: column;
+  perspective: 100rem;
+  gap: calc(var(--s) * 0.2);
+  position: absolute;
+}
+
+.wrapper {
+  --s-base: calc(100vmax / var(--c));
+  --s: calc(var(--s-base) - var(--s-base) * 0.25);
+  --s-n: calc(var(--s) * -1);
+  --s-h: calc(var(--s) / 2);
+  --s-h-n: calc(var(--s) / -2);
+  --half-width: calc(100dvw / 2);
+  --half-height: calc(100dvh / 2);
+  --half-scene-width: calc(var(--s-base) * var(--c) / 2);
+  --half-scene-height: calc(var(--s-base) * 0.92 * var(--c) / 2);
+  animation: demo 20s linear infinite;
+
+  transform: translate(
+    calc(var(--half-width) - var(--half-scene-width)),
+    calc(var(--half-height) - var(--half-scene-height))
+  );
+  position: absolute;
+
+  --row-center: calc(round(var(--c) / 2));
+  --col-center: calc(round(var(--c) / 2));
+
+  inset: 0;
+  scale: 1.2;
+  rotate: 90deg 0;
+}
+body {
+  color: transparent; // change color to debug
+  height: 100dvh;
+  width: 100dvw;
+  display: grid;
+  font-size: 2rem;
+  place-items: center;
+  background: #333;
+  overflow: hidden;
+
+  // noise
+  &:after {
+    content: "";
+    position: absolute;
+    background: url(https://assets.codepen.io/907471/noise.svg);
+    mix-blend-mode: overlay;
+    inset: 0;
+    pointer-events: none;
+    filter: invert(1) brightness(1.5);
+    z-index: var(--labs-sys-z-noise);
+  }
+}

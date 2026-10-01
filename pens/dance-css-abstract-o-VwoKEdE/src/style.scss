@@ -1,0 +1,115 @@
+:root {
+  --distance: 100vh;
+  --rotation-duration: 3s;
+  --fade-in-duration: 0.2s;
+  --delay-base: 0.018s;
+}
+@property --r {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+@property --l {
+  syntax: "<length>";
+  initial-value: 0;
+  inherits: true;
+}
+@property --distance {
+  syntax: "<length>";
+  initial-value: 0;
+  inherits: true;
+}
+
+.items {
+  width: 100dvw;
+  height: 100dvh;
+  mask: linear-gradient(to bottom, transparent 10%, black 40%, black 0%, transparent 90%);
+  font-size: 6rem;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.item {
+  line-height: 80%;
+  position: absolute;
+  --x: calc(var(--distance) / var(--count));
+  transform: translate3d(0, calc(var(--i) * -1 * var(--x) + var(--distance) / 1.1), 0)
+    rotate(var(--r)) scale(calc((var(--i)) * 0.005 + .09));
+  --delay: calc((var(--count) - var(--i)) * var(--delay-base));
+  animation: rotation var(--rotation-duration) var(--delay) linear infinite,
+    fade-in var(--fade-in-duration) var(--delay) linear forwards;
+  opacity: 0;
+  
+  &:not(:last-of-type) {
+    filter: blur(0.1rem);
+    color: black !important;
+  }
+
+  > div {
+    text-align: center;
+    &:first-of-type {
+      letter-spacing: -0.5rem;
+      background: conic-gradient(
+            from 290deg at 50% 100%,
+            #ececec,
+            #c9c9c9,
+            #9e9e9e,
+            #636363,
+            #d8d8d8,
+            #ffffff,
+            #9a9a9a,
+            #e8e8e8
+    );
+    }
+
+    &:last-of-type {
+      background: conic-gradient(
+            from 290deg at 50% 0%,
+            #ececec,
+            #c9c9c9,
+            #9e9e9e,
+            #636363,
+            #d8d8d8,
+            #ffffff,
+            #9a9a9a,
+            #e8e8e8
+    )
+    }
+
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+}
+
+@keyframes rotation {
+  from {
+    --r: 0deg;
+  }
+
+  to {
+    --r: -360deg;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+body {
+  display: grid;
+  color: #ffbaf6;
+  place-items: center;
+  height: 100dvh;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  background: #f2f2f2;
+  position: relative;
+}

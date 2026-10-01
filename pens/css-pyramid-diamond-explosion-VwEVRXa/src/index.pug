@@ -1,0 +1,41 @@
+- var size = 4;
+.scene
+  #object.object
+    .top-triangle
+      - var level = 0;
+      - var index = 0;
+      while level < size
+        - level++;
+        - var item = 0;
+        - var itemsPerLevel = level * level;
+        while item < itemsPerLevel
+          - index++;
+          - item++;
+          .pyramid
+            .front(index=index)
+            .back
+            .left
+            .right
+            .bottom
+    .cube
+      .front
+      .back
+      .left
+      .right
+      .bottom
+    .bottom-triangle
+      - var level = 0;
+      - var index = 0;
+      while level < size
+        - level++;
+        - var item = 0;
+        - var itemsPerLevel = level * level;
+        while item < itemsPerLevel
+          - index++;
+          - item++;
+          .pyramid
+            .front(index=index)
+            .back
+            .left
+            .right
+            .bottom

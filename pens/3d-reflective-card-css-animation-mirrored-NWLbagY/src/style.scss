@@ -1,0 +1,261 @@
+// Future CSS tip! 🔮 https://caniuse.com/mdn-css_at-rules_property
+@property --ratio-x {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --ratio-y {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --ratio-reflection {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --deg {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+@property --start {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #75e4ee;
+}
+
+@property --end {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f85fbe;
+}
+
+:root {
+  --labs-sys-color-surface: #444;
+  --labs-sys-color-on-surface: hsl(0, 100%, 0%);
+  --labs-sys-color-background: #333;
+  --labs-sys-radius-surface: 0.5vmin;
+  --labs-url-avatar: url(https://gravatar.com/avatar/bdf3dd08b9c2a5f3792dd103a192a765?size=300);
+}
+
+.avatar {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: inherit;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+    height: 100%;
+  }
+}
+
+.description {
+  margin-top: 1vmin;
+  text-align: center;
+  mix-blend-mode: overlay;
+  letter-spacing: 0.04vmin;
+  font-size: 2vmin;
+}
+
+.card {
+  --start: #75e4ee;
+  --end: #f85fbe;
+  --deg: 45deg;
+  --ratio-x: 0.8;
+  --ratio-y: 0.4;
+  padding: 2vmin;
+  width: 32vmin;
+
+  background: url(https://assets.codepen.io/907471/noise.svg),
+  linear-gradient(var(--deg), var(--start), var(--end));
+  animation: surface 10s linear infinite;
+  color: var(--labs-sys-color-on-surface);
+  border-radius: 2vmin;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    border-radius: inherit;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    --ratio-reflection: var(--ratio-x);
+    background: linear-gradient(
+                    145deg,
+                    transparent 0%,
+                    hsla(0, 100%, 100%, 0.85) calc(var(--ratio-reflection) * 25%),
+                    transparent calc(var(--ratio-reflection) * 90%),
+                    transparent
+    ),
+    radial-gradient(
+                    ellipse at calc(var(--ratio-x) * 100%) calc(var(--ratio-y) * 100%),
+                    white 20%,
+                    transparent
+    );
+    transition: all 0.2s linear;
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+    z-index: 111;
+  }
+
+  &:after {
+    --ratio-reflection: var(--ratio-y);
+    content: "";
+    border-radius: 3.4vmin;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background: linear-gradient(
+                    -145deg,
+                    transparent 0%,
+                    hsla(0, 100%, 100%, 0.9) calc(var(--ratio-reflection) * 35%),
+                    hsla(300, 100%, 50%, 0.1) calc(var(--ratio-reflection) * 65%),
+                    transparent 80%
+    );
+    transition: all 0.2s linear;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    opacity: 0.4;
+    z-index: 111;
+    transform: scale(1.1);
+  }
+
+  transform-style: preserve-3d;
+  transition: transform 0.2s linear;
+  transform: rotateY(calc(-20deg * var(--ratio-x)))
+  rotateX(calc(20deg * var(--ratio-y)));
+
+  &.rotate {
+    animation: surface 10s linear infinite, rotate 6s linear infinite;
+  }
+
+  box-shadow: 0 0 0 0.250vmin hsla(0, 0%, 100%, 0.1),
+  0 0 0 2vmin hsla(0, 0%, 100%, 0.1);
+}
+
+// 🪞
+.reflection {
+  --ratio-x: 0.8;
+  --ratio-y: 0.4;
+  --abs: max(var(--ratio-y), -1 * var(--ratio-y));
+  position: absolute;
+  perspective-origin: bottom;
+  perspective: 20vmin;
+  transform: scaleY(-1) translate3d(0, -52vmin, 0);
+  // ✨
+  -webkit-mask: radial-gradient(
+                  50% 50% at 50% calc(100% + (10% * var(--ratio-y))),
+                  black calc(30% + (10% * var(--ratio-y))),
+                  transparent
+  );
+  mask: radial-gradient(
+                  50% 50% at 50% calc(100% + (10% * var(--ratio-y))),
+                  black calc(30% + (10% * var(--ratio-y))),
+                  transparent
+  );
+  padding: 10vmin;
+  margin: -10vmin;
+  user-select: none;
+  filter: blur(calc(var(--abs) * 0.150vmin));
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
+  perspective: 40vmin;
+  position: relative;
+  background: url(https://assets.codepen.io/907471/background.jpg) center center
+  no-repeat,
+  var(--labs-sys-color-background);
+  background-size: cover;
+  color: white;
+  overflow: hidden;
+
+  // ground
+  &:before {
+    content: "";
+    border-radius: 4vmin;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 55vh;
+    background: red;
+    transform: rotate3d(1, 0, 0, 45deg);
+    background: linear-gradient(to bottom, hsla(0 0 0% / 10%), hsla(0 0 0% / 1%));
+    backdrop-filter: blur(1vmin);
+  }
+}
+
+html {
+  min-height: 40vmin;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@keyframes rotate {
+  from {
+    --ratio-x: 1.2;
+    --ratio-y: 1.2;
+  }
+
+  50% {
+    --ratio-x: -0.6;
+    --ratio-y: -1;
+  }
+
+  to {
+    --ratio-x: 1.2;
+    --ratio-y: 1.2;
+  }
+}
+
+@keyframes surface {
+  from {
+    --deg: 45deg;
+    --start: #75e4ee;
+    --end: #f85fbe;
+  }
+
+  30% {
+    --deg: 285deg;
+    --start: #75e4ee;
+    --end: #75e4ee;
+  }
+
+  50% {
+    --deg: 145deg;
+    --start: #eeda75;
+    --end: #805ff8;
+  }
+
+  70% {
+    --deg: 345deg;
+    --start: #ee75d2;
+    --end: #5ff8e6;
+  }
+
+  from {
+    --deg: 45deg;
+    --start: #75e4ee;
+    --end: #f85fbe;
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "slug": "abaXabq",
+  "dir": "css-view-transition-enterprise-ncc-1701-abaXabq",
+  "newEditor": false,
+  "title": "CSS View Transition - Enterprise (NCC 1701)",
+  "url": "https://codepen.io/konstantindenerz/pen/abaXabq",
+  "description": "A demonstration of a CSS view transition effect to visualize a transition between two pages. With warp 9 between views.\nImages were created with Midjourney v4.\nUsed in this blog post: https://konstantin-denerz.com/view-transitions-with-angular-spa/",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "viewtransition",
+    "animation",
+    "pagetransition",
+    "startrek"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-03-26 20:52:00 UTC",
+  "updatedAt": "2023-07-27 08:26:23 UTC",
+  "counts": {
+    "loves": 683,
+    "views": 26545,
+    "comments": 2
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "<meta name=\"viewport\" content=\"initial-scale = 1.0,maximum-scale = 1.0,width=device-width\" />\n",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

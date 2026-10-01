@@ -1,0 +1,320 @@
+:root {
+  --surface: #271c22;
+  --primary: #ffd600;
+  --secondary: #99cfd4;
+  --secondary-variant: #4a46ba;
+  --tertiary: #d52b5d;
+  --tertiary-variant: #4a2832;
+
+  --dot: #d0abb8;
+  --ghost-1: #d0abb8;
+  --ghost-2: #dda445;
+  --ghost-3: #99cfd4;
+  --ghost-4: #e0161a;
+  --ghost-variant: #4a46ba;
+}
+
+@property --ghost-eye-size {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@mixin dizzied {
+  --ghost-color-variant: var(--ghost-variant);
+  --ghost-eye-size: 0.5;
+  --ghost-eye-color: transparent;
+  --ghost-chomp-color: white;
+}
+
+ghost {
+  --ghost-eye-size: 1;
+  --ghost-chomp-color: transparent;
+  display: grid;
+  background: radial-gradient(
+      calc(0.45rem * var(--ghost-eye-size))
+        calc(0.45rem * var(--ghost-eye-size)) at 0.85rem 1rem,
+      var(--eye-color, var(--ghost-variant)) 50%,
+      transparent 50%,
+      transparent
+    ),
+    radial-gradient(
+      calc(0.45rem * var(--ghost-eye-size))
+        calc(0.45rem * var(--ghost-eye-size)) at 1.75rem 1rem,
+      var(--eye-color, var(--ghost-variant)) 50%,
+      transparent 50%,
+      transparent
+    ),
+    radial-gradient(
+      calc(0.6rem * var(--ghost-eye-size)) calc(0.75rem * var(--ghost-eye-size))
+        at 0.75rem 1rem,
+      white 50%,
+      transparent 50%,
+      transparent
+    ),
+    radial-gradient(
+      calc(0.6rem * var(--ghost-eye-size)) calc(0.75rem * var(--ghost-eye-size))
+        at 1.6rem 1rem,
+      white 50%,
+      transparent 50%,
+      transparent
+    ),
+    var(--ghost-color);
+
+  clip-path: polygon(
+    0% 100%,
+    0% 0%,
+    100% 0%,
+    99% 100%,
+    77% 86%,
+    58% 100%,
+    42% 84%,
+    27% 100%,
+    15% 84%
+  );
+  animation: ghost-body 0.3s ease infinite, ghost-move 5s linear infinite;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  width: 2rem;
+  height: 2.4rem;
+  margin-top: 0.35rem;
+  left: 1rem;
+  z-index: 8;
+  place-items: center;
+
+  &:after {
+    content: "";
+    background: var(--ghost-chomp-color, white);
+    height: 0.4rem;
+    width: 1.25rem;
+    transform: translate(0.25rem, 0.5rem);
+    clip-path: polygon(
+      0% 77%,
+      24% 7%,
+      45% 47%,
+      63% 0%,
+      77% 45%,
+      94% 2%,
+      80% 76%,
+      63% 30%,
+      46% 90%,
+      25% 39%
+    );
+    animation: ghost-chomp 0.3s ease infinite;
+  }
+
+  &.pinky {
+    --ghost-color: var(--ghost-color-variant, var(--ghost-1));
+  }
+
+  &.clyde {
+    --ghost-color: var(--ghost-color-variant, var(--ghost-2));
+  }
+
+  &.inky {
+    --ghost-color: var(--ghost-color-variant, var(--ghost-3));
+  }
+
+  &.blinky {
+    --ghost-color: var(--ghost-color-variant, var(--ghost-4));
+  }
+
+  &.dizzied {
+    --ghost-color: var(--ghost-variant);
+    @include dizzied;
+  }
+}
+
+@keyframes ghost-body {
+  from {
+    clip-path: polygon(
+      0% 100%,
+      0% 0%,
+      100% 0%,
+      100% 100%,
+      90.56% 90.56%,
+      82.44% 73.62%,
+      75.44% 90.56%,
+      65.13% 100%,
+      56.49% 90.56%,
+      47.44% 73.62%,
+      42.25% 91.5%,
+      31.22% 100%,
+      21.24% 92.09%,
+      15% 73.62%,
+      8.5% 91.5%
+    );
+  }
+  50% {
+    clip-path: polygon(
+      0% 75.25%,
+      0% 0%,
+      100% 0%,
+      100% 75.25%,
+      90.56% 90.56%,
+      83.3% 100%,
+      75.44% 90.56%,
+      65.96% 73.58%,
+      56.49% 90.56%,
+      49.96% 100%,
+      42.25% 91.5%,
+      31.23% 73.58%,
+      21.24% 92.09%,
+      14.98% 100%,
+      8.5% 91.5%
+    );
+  }
+  to {
+    clip-path: polygon(
+      0% 100%,
+      0% 0%,
+      100% 0%,
+      100% 100%,
+      90.56% 90.56%,
+      82.44% 73.62%,
+      75.44% 90.56%,
+      65.13% 100%,
+      56.49% 90.56%,
+      47.44% 73.62%,
+      42.25% 91.5%,
+      31.22% 100%,
+      21.24% 92.09%,
+      15% 73.62%,
+      8.5% 91.5%
+    );
+  }
+}
+
+@keyframes ghost-chomp {
+  from {
+    clip-path: polygon(
+      0% 77%,
+      24% 7%,
+      45% 47%,
+      63% 0%,
+      77% 45%,
+      94% 2%,
+      80% 76%,
+      63% 30%,
+      46% 90%,
+      25% 39%
+    );
+  }
+  50% {
+    clip-path: polygon(
+      0 5%,
+      22% 64%,
+      44% 5%,
+      61% 70%,
+      77% 6%,
+      99% 76%,
+      79% 33%,
+      61% 91%,
+      44% 37%,
+      21% 95%
+    );
+  }
+  to {
+    clip-path: polygon(
+      0% 77%,
+      24% 7%,
+      45% 47%,
+      63% 0%,
+      77% 45%,
+      94% 2%,
+      80% 76%,
+      63% 30%,
+      46% 90%,
+      25% 39%
+    );
+  }
+}
+
+@keyframes ghost-move {
+  from {
+    transform: translateX(-15rem);
+    --ghost-eye-size: 1;
+    --ghost-chomp-color: transparent;
+  }
+
+  49.99% {
+    transform: translateX(5rem);
+    --ghost-eye-size: 1;
+    --ghost-chomp-color: transparent;
+    --ghost-color-variant: unset;
+    --ghost-eye-color: unset;
+  }
+  50% {
+    transform: translateX(7rem) scaleX(-1);
+    @include dizzied;
+  }
+  60% {
+    transform: translateX(2rem) scaleX(-1);
+  }
+  to {
+    transform: translateX(-15rem) scaleX(-1);
+  }
+}
+
+.ghosts-bar {
+  display: grid;
+  place-items: center;
+  transform: scale(1.5);
+}
+
+.ghosts {
+  box-shadow: -10rem -2rem 10rem color-mix(in srgb, var(--primary), transparent
+          50%),
+    10rem -2rem 10rem color-mix(in srgb, var(--secondary), transparent
+          50%),
+    -10rem 3rem 10rem color-mix(in srgb, var(--secondary-variant), transparent
+          50%),
+    10rem 3.5rem 10rem color-mix(in srgb, var(--tertiary-variant), transparent
+          50%),
+    0 0 10rem var(--tertiary);
+  background: var(--surface);
+  display: flex;
+  gap: 1rem;
+  border-radius: 2rem;
+  padding: 1rem;
+
+  ghost {
+    position: relative;
+    left: unset;
+    top: unset;
+    animation: ghost-body 0.3s ease infinite;
+  }
+}
+
+body {
+  display: grid;
+  height: 100vh;
+  height: 100dvh;
+  color: var(--ghost-1);
+  place-items: center;
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--surface), black 50%), black);
+  &:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(transparent 40%, var(--surface)) repeat;
+    z-index: 120;
+    --led-size: 0.3rem;
+    background-size: var(--led-size) var(--led-size);
+  }
+}
+
+a.labs-follow-me {
+  display: grid;
+  place-items: center;
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center
+}
+
+
+* {
+  box-sizing: border-box;
+}

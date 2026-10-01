@@ -1,0 +1,53 @@
+{
+  "slug": "yLxpjYz",
+  "dir": "flux-capacitor-animation-css-1-21-gigawatts-yLxpjYz",
+  "newEditor": false,
+  "title": "Flux Capacitor (Animation, CSS) | ⚡️ 1.21 GIGAWATTS! ⚡️",
+  "url": "https://codepen.io/konstantindenerz/pen/yLxpjYz",
+  "description": "This Flux Capacitor pen demonstrates some CSS features like animations, SVG path's d-prop animation, @property rule, conic-gradient, clip-path and inset: 0.\nBe careful you need 1.21 gigawatts!",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "animation",
+    "realistic",
+    "fluxcapacitor",
+    "bttf"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-03-11 07:56:47 UTC",
+  "updatedAt": "2023-07-17 19:46:29 UTC",
+  "counts": {
+    "loves": 174,
+    "views": 15281,
+    "comments": 4
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "css",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.css",
+      "order": 1
+    },
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 1
+    }
+  ],
+  "hasSource": true
+}

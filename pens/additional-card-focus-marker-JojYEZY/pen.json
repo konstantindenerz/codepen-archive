@@ -1,0 +1,36 @@
+{
+  "slug": "JojYEZY",
+  "dir": "additional-card-focus-marker-JojYEZY",
+  "newEditor": false,
+  "title": "Additional Card Focus Marker",
+  "url": "https://codepen.io/konstantindenerz/pen/JojYEZY",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2025-02-17 09:08:19 UTC",
+  "updatedAt": "2025-03-21 08:36:05 UTC",
+  "counts": {
+    "loves": 0,
+    "views": 77,
+    "comments": 0
+  },
+  "featured": false,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

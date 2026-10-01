@@ -1,0 +1,946 @@
+const BASE = 320; // change to 920 to remove pixel look
+let VIEWPORT_WIDTH = BASE;
+let VIEWPORT_HEIGHT = Math.floor(
+  (window.innerHeight / window.innerWidth) * BASE
+);
+let SCALE_FACTOR = window.innerWidth / BASE;
+
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d", { alpha: false });
+let center = { x: VIEWPORT_WIDTH / 2, y: VIEWPORT_HEIGHT / 2 };
+
+function resizeCanvas() {
+  VIEWPORT_HEIGHT = Math.floor((window.innerHeight / window.innerWidth) * BASE);
+  SCALE_FACTOR =
+    Math.max(BASE, window.innerWidth) / Math.min(BASE, window.innerWidth);
+  canvas.width = VIEWPORT_WIDTH;
+  canvas.height = VIEWPORT_HEIGHT;
+  canvas.style.transform = `scale(${SCALE_FACTOR})`;
+  center = { x: VIEWPORT_WIDTH / 2, y: VIEWPORT_HEIGHT / 2 };
+  container.style.width = `${VIEWPORT_WIDTH * SCALE_FACTOR}px`;
+  container.style.height = `${VIEWPORT_HEIGHT * SCALE_FACTOR}px`;
+}
+
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+const CONFIG = {
+  COLORS: {
+    running: [
+      {
+        areas: [
+          "#352879",
+          "#6C5EB5",
+          "#352879",
+          "#6C5EB5",
+          "#352879",
+          "#6C5EB5"
+        ],
+        hexagon: { fill: "#6C5EB5", stroke: "#B3995D" },
+        obstacle: { normal: "#B03FB6", collision: "#FF7C00" },
+        player: "#68B2B2"
+      },
+      {
+        areas: [
+          "#8B76E7",
+          "#4B3C83",
+          "#8B76E7",
+          "#4B3C83",
+          "#8B76E7",
+          "#4B3C83"
+        ],
+        hexagon: { fill: "#8B76E7", stroke: "#68B2B2" },
+        obstacle: { normal: "#E04B4B", collision: "#FF7C00" },
+        player: "#59FF59"
+      },
+      {
+        areas: [
+          "#2B335F",
+          "#5955D8",
+          "#2B335F",
+          "#5955D8",
+          "#2B335F",
+          "#5955D8"
+        ],
+        hexagon: { fill: "#5955D8", stroke: "#59FF59" },
+        obstacle: { normal: "#B55EE3", collision: "#FF7C00" },
+        player: "#68E2E2"
+      },
+      {
+        areas: [
+          "#9B51E0",
+          "#4B2B59",
+          "#9B51E0",
+          "#4B2B59",
+          "#9B51E0",
+          "#4B2B59"
+        ],
+        hexagon: { fill: "#9B51E0", stroke: "#68E2E2" },
+        obstacle: { normal: "#7C54E3", collision: "#FF7C00" },
+        player: "#59FF98"
+      }
+    ],
+    strobo: [
+      {
+        areas: [
+          "#2B335F",
+          "#5955D8",
+          "#2B335F",
+          "#5955D8",
+          "#2B335F",
+          "#5955D8"
+        ],
+        hexagon: { fill: "#5955D8", stroke: "#59FF59" },
+        obstacle: { normal: "#B55EE3", collision: "#FF7C00" },
+        player: "#68E2E2"
+      },
+      {
+        areas: [
+          "#352879",
+          "#6C5EB5",
+          "#352879",
+          "#6C5EB5",
+          "#352879",
+          "#6C5EB5"
+        ],
+        hexagon: { fill: "#6C5EB5", stroke: "#B3995D" },
+        obstacle: { normal: "#B03FB6", collision: "#FF7C00" },
+        player: "#68B2B2"
+      }
+    ],
+    gameover: {
+      areas: ["#1a1a1a", "#353535", "#1a1a1a", "#353535", "#1a1a1a", "#353535"],
+      hexagon: { fill: "#353535", stroke: "#4a4a4a" },
+      obstacle: { normal: "#2a2a2a", collision: "#4a4a4a" }
+    }
+  },
+  GAME: {
+    ROTATION: { BASE_SPEED: 0.015, INTERVAL: { MIN: 4000, MAX: 12000 } },
+    OBSTACLE: {
+      SPAWN_DELAY: { INITIAL: 220, NORMAL: 110 },
+      PATTERN_DURATION: 400,
+      SPEED: BASE * 0.0030,
+      SPEED_BOOST_TIME: 12,
+      SPEED_BOOST_MULTIPLIER: 1.1,
+      BASE_WIDTH: BASE * 0.12,
+      COLLISION_DISTANCE: BASE * 0.11
+    },
+    SHAPE: { RADIUS: BASE * 0.02, WIDTH: BASE * 0.006, SIDES: 6 },
+    PLAYER: { RADIUS: BASE * 0.06, SIZE: BASE * 0.012, SPEED: 5 },
+    LIFE: { SIZE: BASE * 0.01, COUNT: 3 },
+    THEME: {
+      DURATION: 4000,
+      FONT: "'Micro 5'",
+      STROBO: { INTERVAL: 13000, DURATION: 6000, FLASH_RATE: 100 }
+    }
+  },
+  AUDIO: {
+    FFT_SIZE: 256,
+    PULSE: {
+      DECAY: 0.85,
+      ATTACK: 0.3,
+      AREA_DELAY: 0.6,
+      MIN: { NORMAL: BASE * 0.005, AREA: 2 },
+      MAX: BASE * 0.04
+    }
+  }
+};
+
+class Player {
+  constructor() {
+    const { RADIUS, SIZE, SPEED } = CONFIG.GAME.PLAYER;
+    this.radius = RADIUS;
+    this.size = SIZE;
+    this.speed = SPEED;
+    this.angle = 0;
+    this.position = { x: 0, y: 0 };
+    this.isVisible = true;
+  }
+
+  update(left, right, deltaTime) {
+    const speedFactor = deltaTime / 16.67;
+    if (left) this.angle -= this.speed * speedFactor;
+    if (right) this.angle += this.speed * speedFactor;
+    this.updatePosition();
+  }
+
+  updatePosition() {
+    const totalAngle = this.angle * (Math.PI / 180);
+    const x = Math.cos(totalAngle) * this.radius;
+    const y = Math.sin(totalAngle) * this.radius;
+    this.position = { x, y };
+    this.x = center.x + x;
+    this.y = center.y + y;
+  }
+
+  getVertices() {
+    const { x, y } = this.position;
+    const totalAngle = this.angle * (Math.PI / 180);
+    const baseAngle = totalAngle + Math.PI / 2;
+    const cosBase = Math.cos(baseAngle) * this.size * 0.75;
+    const sinBase = Math.sin(baseAngle) * this.size * 0.75;
+
+    return [
+      {
+        x: x + Math.cos(totalAngle) * this.size * 2,
+        y: y + Math.sin(totalAngle) * this.size * 2
+      },
+      { x: x + cosBase, y: y + sinBase },
+      { x: x - cosBase, y: y - sinBase }
+    ];
+  }
+
+  reset() {
+    this.angle = 0;
+    this.position = { x: 0, y: 0 };
+  }
+}
+
+let player = new Player();
+
+class GameState {
+  static STATES = { START: "start", RUNNING: "running", GAMEOVER: "gameover" };
+  left = false;
+  right = false;
+  spawnTimer = 0;
+  constructor() {
+    this.state = GameState.STATES.START;
+    this.startTime = 0;
+    this.currentTime = 0;
+    this.bestScore =
+      parseInt(sessionStorage.getItem("nano_hexagon_best_score")) || 0;
+    this.rotation = 0;
+    this.rotationSpeed = CONFIG.GAME.ROTATION.BASE_SPEED;
+    this.rotationTimer = 0;
+    this.rotationInterval = this.getRandomInterval();
+    this.currentTheme = 0;
+    this.themeTimer = 0;
+    this.stroboActive = false;
+    this.stroboTimer = 0;
+    this.stroboFlashTimer = 0;
+    this.stroboThemeIndex = 0;
+    this.lives = CONFIG.GAME.LIFE.COUNT;
+    this.invulnerable = false;
+    this.invulnerabilityTimer = 0;
+  }
+
+  getRandomInterval() {
+    return (
+      Math.random() *
+        (CONFIG.GAME.ROTATION.INTERVAL.MAX -
+          CONFIG.GAME.ROTATION.INTERVAL.MIN) +
+      CONFIG.GAME.ROTATION.INTERVAL.MIN
+    );
+  }
+
+  update(deltaTime) {
+    this.updateRotation(deltaTime);
+    if (this.state === GameState.STATES.RUNNING) {
+      this.currentTime = Math.floor((Date.now() - this.startTime) / 1000);
+      this.stroboTimer += deltaTime;
+      if (this.stroboTimer >= CONFIG.GAME.THEME.STROBO.INTERVAL) {
+        this.stroboActive = true;
+        this.stroboFlashTimer = 0;
+        this.stroboThemeIndex = 0;
+        this.stroboTimer = 0;
+      }
+      if (this.stroboActive) {
+        this.stroboFlashTimer += deltaTime;
+        if (
+          this.stroboFlashTimer % CONFIG.GAME.THEME.STROBO.FLASH_RATE <
+          CONFIG.GAME.THEME.STROBO.FLASH_RATE / 2
+        ) {
+          this.stroboThemeIndex = 0;
+        } else {
+          this.stroboThemeIndex = 1;
+        }
+        if (this.stroboFlashTimer >= CONFIG.GAME.THEME.STROBO.DURATION) {
+          this.stroboActive = false;
+          this.themeTimer = 0;
+        }
+      } else {
+        this.themeTimer += deltaTime;
+        if (this.themeTimer >= CONFIG.GAME.THEME.DURATION) {
+          this.currentTheme =
+            (this.currentTheme + 1) % CONFIG.COLORS.running.length;
+          this.themeTimer = 0;
+        }
+      }
+    }
+  }
+
+  updateRotation(deltaTime) {
+    let speedMultiplier = 1;
+    if (
+      this.state === GameState.STATES.RUNNING &&
+      this.currentTime >= CONFIG.GAME.OBSTACLE.SPEED_BOOST_TIME
+    ) {
+      speedMultiplier = CONFIG.GAME.OBSTACLE.SPEED_BOOST_MULTIPLIER;
+    }
+    this.rotation +=
+      this.state === GameState.STATES.RUNNING
+        ? this.rotationSpeed * speedMultiplier
+        : 0.005;
+    this.rotationTimer += deltaTime;
+    if (this.rotationTimer >= this.rotationInterval) {
+      this.rotationSpeed =
+        (Math.random() * CONFIG.GAME.ROTATION.BASE_SPEED +
+          CONFIG.GAME.ROTATION.BASE_SPEED / 2) *
+        (Math.random() < 0.5 ? 1 : -1);
+      this.rotationInterval = this.getRandomInterval();
+      this.rotationTimer = 0;
+    }
+  }
+}
+
+let state = new GameState();
+
+class ObstacleManager {
+  static PATTERNS = {
+    SPIRAL: 3,
+    OPPOSITE_PAIR: 2,
+    ALTERNATING: 0,
+    TRIPLET: 1,
+    RANDOM_DUAL: 4
+  };
+
+  constructor() {
+    this.obstacles = [];
+    this.currentPattern = ObstacleManager.PATTERNS.RANDOM_DUAL;
+    this.patternTimer = 0;
+    this.spiralPosition = 0;
+  }
+
+  getSidesForPattern() {
+    const allSides = [0, 1, 2, 3, 4, 5];
+    const startSide = Math.floor(Math.random() * CONFIG.GAME.SHAPE.SIDES);
+    switch (this.currentPattern) {
+      case ObstacleManager.PATTERNS.ALTERNATING:
+        return [startSide, (startSide + 3) % CONFIG.GAME.SHAPE.SIDES];
+      case ObstacleManager.PATTERNS.TRIPLET:
+        return [
+          startSide,
+          (startSide + 2) % CONFIG.GAME.SHAPE.SIDES,
+          (startSide + 4) % CONFIG.GAME.SHAPE.SIDES
+        ];
+      case ObstacleManager.PATTERNS.OPPOSITE_PAIR:
+        const side1 = Math.floor(Math.random() * 3);
+        return [side1, side1 + 3];
+      case ObstacleManager.PATTERNS.SPIRAL:
+        this.spiralPosition =
+          (this.spiralPosition + 1) % CONFIG.GAME.SHAPE.SIDES;
+        return allSides.filter((side) => side !== this.spiralPosition);
+      default:
+        return shuffle([...allSides]).slice(0, 2);
+    }
+  }
+
+  getObstacleSpeed(currentTime) {
+    let speed = CONFIG.GAME.OBSTACLE.SPEED;
+    if (currentTime >= CONFIG.GAME.OBSTACLE.SPEED_BOOST_TIME)
+      speed *= CONFIG.GAME.OBSTACLE.SPEED_BOOST_MULTIPLIER;
+    return speed;
+  }
+
+  update(deltaTime) {
+    this.patternTimer += deltaTime;
+    if (this.patternTimer >= CONFIG.GAME.OBSTACLE.PATTERN_DURATION) {
+      const patterns = Object.values(ObstacleManager.PATTERNS);
+      let newPattern;
+      do {
+        newPattern = patterns[Math.floor(Math.random() * patterns.length)];
+      } while (newPattern === this.currentPattern);
+      this.currentPattern = newPattern;
+      this.patternTimer = 0;
+      if (this.currentPattern === ObstacleManager.PATTERNS.SPIRAL)
+        this.spiralPosition = Math.floor(
+          Math.random() * CONFIG.GAME.SHAPE.SIDES
+        );
+    }
+  }
+
+  createInitialObstacles(canvasSize) {
+    const baseDistances = [
+      canvasSize * 0.7,
+      canvasSize * 1.1,
+      canvasSize * 1.4
+    ];
+    const distances =
+      state.currentTime >= CONFIG.GAME.OBSTACLE.SPEED_BOOST_TIME
+        ? baseDistances.map((d) => d * 1.15)
+        : baseDistances;
+    distances.forEach((distance) => {
+      const sidesToBlock = this.getSidesForPattern();
+      const speed = this.getObstacleSpeed(state.currentTime);
+      sidesToBlock.forEach((side) =>
+        this.obstacles.push({ distance, side, speed })
+      );
+    });
+  }
+
+  reset() {
+    this.obstacles = [];
+    this.currentPattern = ObstacleManager.PATTERNS.RANDOM_DUAL;
+    this.patternTimer = 0;
+    this.spiralPosition = 0;
+    this.createInitialObstacles(Math.min(canvas.width, canvas.height));
+  }
+}
+
+const obstacleManager = new ObstacleManager();
+
+function shuffle(array) {
+  const newArray = [...array];
+  for (let i = newArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+  }
+  return newArray;
+}
+
+class AudioVisualizer {
+  constructor(audioContext, audioElement) {
+    this.analyzer = audioContext.createAnalyser();
+    this.analyzer.fftSize = CONFIG.AUDIO.FFT_SIZE;
+    const audioSource = audioContext.createMediaElementSource(audioElement);
+    audioSource.connect(this.analyzer);
+    this.analyzer.connect(audioContext.destination);
+    this.dataArray = new Uint8Array(this.analyzer.frequencyBinCount);
+    this.hexagonPulse = 0;
+    this.smoothedPulse = 0;
+    this.smoothedAreaPulse = 0;
+  }
+
+  update() {
+    if (audio.paused) return;
+    this.analyzer.getByteFrequencyData(this.dataArray);
+    const bassFrequencies = this.dataArray.slice(0, 8);
+    const average =
+      bassFrequencies.reduce((a, b) => a + b, 0) / bassFrequencies.length;
+    this.hexagonPulse =
+      (average / CONFIG.AUDIO.FFT_SIZE) * CONFIG.AUDIO.PULSE.MAX;
+    if (average > 180) this.hexagonPulse *= 1.2;
+    this.updatePulses();
+  }
+
+  updatePulses() {
+    this.smoothedPulse =
+      this.hexagonPulse > this.smoothedPulse
+        ? this.smoothedPulse * (1 - CONFIG.AUDIO.PULSE.ATTACK) +
+          this.hexagonPulse * CONFIG.AUDIO.PULSE.ATTACK
+        : this.smoothedPulse * CONFIG.AUDIO.PULSE.DECAY;
+    this.smoothedPulse = Math.max(
+      this.smoothedPulse,
+      CONFIG.AUDIO.PULSE.MIN.NORMAL
+    );
+  }
+}
+
+const audio = new Audio();
+audio.src = "https://assets.codepen.io/907471/nanohexagon.mp3";
+audio.crossOrigin = "anonymous";
+audio.controls = true;
+audio.loop = true;
+document.body.appendChild(audio);
+
+let audioContext = new (window.AudioContext || window.webkitAudioContext)();
+const audioVisualizer = new AudioVisualizer(audioContext, audio);
+
+function stopMusic() {
+  audio.pause();
+  audio.currentTime = 0;
+}
+
+class PerspectiveTransformer {
+  constructor() {
+    this.angleX = 0;
+    this.angleY = 0;
+    this.angleZ = 0;
+    this.perspective = BASE * 2;
+  }
+
+  transformPoint(point) {
+    let x = point.x;
+    let y = point.y;
+    let z = point.z || 0;
+
+    let tempY = y;
+    y = tempY * Math.cos(this.angleX) - z * Math.sin(this.angleX);
+    z = tempY * Math.sin(this.angleX) + z * Math.cos(this.angleX);
+
+    let tempX = x;
+    x = tempX * Math.cos(this.angleY) + z * Math.sin(this.angleY);
+    z = -tempX * Math.sin(this.angleY) + z * Math.cos(this.angleY);
+
+    tempX = x;
+    x = tempX * Math.cos(this.angleZ) - y * Math.sin(this.angleZ);
+    y = tempX * Math.sin(this.angleZ) + y * Math.cos(this.angleZ);
+
+    const scale = this.perspective / (this.perspective + z);
+    return { x: x * scale, y: y * scale };
+  }
+
+  update(deltaTime) {
+    this.angleX = Math.sin(Date.now() * 0.001) * 0.3;
+    this.angleY = Math.cos(Date.now() * 0.0015) * 0.2;
+    this.angleZ = state.rotation;
+  }
+}
+
+const transformer = new PerspectiveTransformer();
+
+function applyPerspective(points) {
+  return points.map((point) => transformer.transformPoint(point));
+}
+
+function drawHexagon() {
+  ctx.fillRect(0, 0, VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
+  audioVisualizer.update();
+
+  let currentColors =
+    state.state === GameState.STATES.RUNNING
+      ? state.stroboActive
+        ? CONFIG.COLORS.strobo[state.stroboThemeIndex]
+        : CONFIG.COLORS.running[state.currentTheme]
+      : CONFIG.COLORS.gameover;
+
+  const angleStep = (Math.PI * 2) / CONFIG.GAME.SHAPE.SIDES;
+  const hexRadius = CONFIG.GAME.SHAPE.RADIUS;
+  const outerRadius = Math.max(canvas.width, canvas.height);
+  const pulsedRadius = hexRadius + audioVisualizer.smoothedPulse;
+
+  ctx.save();
+  ctx.translate(center.x, center.y);
+
+  for (let i = 0; i < CONFIG.GAME.SHAPE.SIDES; i++) {
+    const startAngle = angleStep * i;
+    const endAngle = angleStep * (i + 1);
+
+    const areaPoints = [
+      {
+        x: Math.cos(startAngle) * hexRadius,
+        y: Math.sin(startAngle) * hexRadius,
+        z: 0
+      },
+      {
+        x: Math.cos(startAngle) * outerRadius,
+        y: Math.sin(startAngle) * outerRadius,
+        z: 0
+      },
+      {
+        x: Math.cos(endAngle) * outerRadius,
+        y: Math.sin(endAngle) * outerRadius,
+        z: 0
+      },
+      {
+        x: Math.cos(endAngle) * hexRadius,
+        y: Math.sin(endAngle) * hexRadius,
+        z: 0
+      }
+    ];
+
+    const transformedPoints = applyPerspective(areaPoints);
+
+    ctx.beginPath();
+    ctx.moveTo(transformedPoints[0].x, transformedPoints[0].y);
+    transformedPoints.slice(1).forEach((point) => ctx.lineTo(point.x, point.y));
+    ctx.closePath();
+
+    ctx.fillStyle = currentColors.areas[i];
+    ctx.fill();
+  }
+
+  const hexPoints = [];
+  for (let i = 0; i < CONFIG.GAME.SHAPE.SIDES; i++) {
+    const angle = angleStep * i;
+    hexPoints.push({
+      x: Math.cos(angle) * pulsedRadius,
+      y: Math.sin(angle) * pulsedRadius,
+      z: 0
+    });
+  }
+
+  const transformedHex = applyPerspective(hexPoints);
+
+  ctx.beginPath();
+  transformedHex.forEach((point, i) =>
+    i === 0 ? ctx.moveTo(point.x, point.y) : ctx.lineTo(point.x, point.y)
+  );
+  ctx.closePath();
+
+  ctx.fillStyle = currentColors.hexagon.fill;
+  ctx.fill();
+  ctx.strokeStyle = currentColors.hexagon.stroke;
+  ctx.lineWidth = CONFIG.GAME.SHAPE.WIDTH;
+  ctx.stroke();
+
+  ctx.restore();
+}
+
+function drawPlayer() {
+  if (!player.isVisible) return;
+
+  let currentColors = state.stroboActive
+    ? CONFIG.COLORS.strobo[state.stroboThemeIndex]
+    : CONFIG.COLORS.running[state.currentTheme];
+
+  player.updatePosition();
+  const vertices = player.getVertices();
+  const transformedVertices = applyPerspective(
+    vertices.map((v) => ({ x: v.x, y: v.y, z: 0 }))
+  );
+
+  ctx.save();
+  ctx.translate(center.x, center.y);
+
+  ctx.beginPath();
+  transformedVertices.forEach((point, i) =>
+    i === 0 ? ctx.moveTo(point.x, point.y) : ctx.lineTo(point.x, point.y)
+  );
+  ctx.closePath();
+
+  ctx.fillStyle = currentColors.player;
+  ctx.fill();
+
+  ctx.restore();
+}
+
+function drawObstacles(deltaTime) {
+  let currentColors =
+    state.state === GameState.STATES.RUNNING
+      ? state.stroboActive
+        ? CONFIG.COLORS.strobo[state.stroboThemeIndex]
+        : CONFIG.COLORS.running[state.currentTheme]
+      : CONFIG.COLORS.gameover;
+
+  if (state.invulnerable) {
+    state.invulnerabilityTimer -= deltaTime;
+    if (state.invulnerabilityTimer <= 0) state.invulnerable = false;
+  }
+
+  player.updatePosition();
+  const playerVertices = player.getVertices();
+
+  for (let i = obstacleManager.obstacles.length - 1; i >= 0; i--) {
+    const obs = obstacleManager.obstacles[i];
+
+    ctx.save();
+    ctx.translate(center.x, center.y);
+
+    const angleStep = (Math.PI * 2) / CONFIG.GAME.SHAPE.SIDES;
+    const startAngle = angleStep * obs.side;
+    const endAngle = angleStep * (obs.side + 1);
+    const pulseWidth =
+      CONFIG.GAME.OBSTACLE.BASE_WIDTH + audioVisualizer.smoothedPulse * 0.3;
+    const outerDistance = obs.distance + audioVisualizer.smoothedPulse * 0.5;
+    const innerDistance = obs.distance - pulseWidth * 0.5;
+
+    const obstaclePoints = [
+      {
+        x: Math.cos(startAngle) * outerDistance,
+        y: Math.sin(startAngle) * outerDistance,
+        z: 0
+      },
+      {
+        x: Math.cos(endAngle) * outerDistance,
+        y: Math.sin(endAngle) * outerDistance,
+        z: 0
+      },
+      {
+        x: Math.cos(endAngle) * innerDistance,
+        y: Math.sin(endAngle) * innerDistance,
+        z: 0
+      },
+      {
+        x: Math.cos(startAngle) * innerDistance,
+        y: Math.sin(startAngle) * innerDistance,
+        z: 0
+      }
+    ];
+
+    const transformedObstacle = applyPerspective(obstaclePoints);
+
+    ctx.beginPath();
+    transformedObstacle.forEach((point, i) =>
+      i === 0 ? ctx.moveTo(point.x, point.y) : ctx.lineTo(point.x, point.y)
+    );
+    ctx.closePath();
+
+    let isColliding = false;
+    const transformedPlayerVertices = applyPerspective(
+      playerVertices.map((v) => ({ x: v.x, y: v.y, z: 0 }))
+    );
+    for (let vertex of transformedPlayerVertices) {
+      if (pointInPolygon(vertex, transformedObstacle)) {
+        isColliding = true;
+        break;
+      }
+    }
+
+    ctx.fillStyle = isColliding
+      ? currentColors.obstacle.collision
+      : currentColors.obstacle.normal;
+    ctx.fill();
+
+    obs.distance -= obs.speed * (deltaTime / 16.67);
+
+    if (isColliding && !state.invulnerable) {
+      state.lives--;
+      if (state.lives <= 0) state.state = GameState.STATES.GAMEOVER;
+      else {
+        state.invulnerable = true;
+        state.invulnerabilityTimer = 1500;
+      }
+    }
+
+    if (obs.distance <= CONFIG.GAME.OBSTACLE.COLLISION_DISTANCE) {
+      obstacleManager.obstacles.splice(i, 1);
+    }
+
+    ctx.restore();
+  }
+}
+
+function pointInPolygon(point, polygon) {
+  if (!polygon || polygon.length < 3) return false;
+  let inside = false;
+  const { x, y } = point;
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const { x: xi, y: yi } = polygon[i];
+    const { x: xj, y: yj } = polygon[j];
+    const intersects =
+      yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi;
+    if (intersects) inside = !inside;
+  }
+  return inside;
+}
+
+let lastTimestamp = 0;
+
+function loop(timestamp) {
+  if (!lastTimestamp) lastTimestamp = timestamp;
+  const deltaTime = Math.min(timestamp - lastTimestamp, 100);
+  lastTimestamp = timestamp;
+
+  const isRunning = state.state === GameState.STATES.RUNNING;
+
+  state.update(deltaTime);
+  transformer.update(deltaTime);
+
+  if (isRunning) {
+    obstacleManager.update(deltaTime);
+    updateObstacleSpawning(deltaTime);
+    player.update(state.left, state.right, deltaTime);
+  }
+
+  ctx.save();
+  drawHexagon();
+  if (isRunning) {
+    drawObstacles(deltaTime);
+    drawPlayer();
+  }
+  ctx.restore();
+
+  drawUI();
+
+  requestAnimationFrame(loop);
+}
+
+function updateObstacleSpawning(deltaTime) {
+  state.spawnTimer += deltaTime / 16.67;
+  let currentSpawnDelay = CONFIG.GAME.OBSTACLE.SPAWN_DELAY.NORMAL;
+  if (obstacleManager.obstacles.length === 0)
+    currentSpawnDelay = CONFIG.GAME.OBSTACLE.SPAWN_DELAY.INITIAL;
+  const speedBoostActive =
+    state.currentTime >= CONFIG.GAME.OBSTACLE.SPEED_BOOST_TIME;
+  if (speedBoostActive)
+    currentSpawnDelay = Math.floor(
+      currentSpawnDelay / CONFIG.GAME.OBSTACLE.SPEED_BOOST_MULTIPLIER
+    );
+  if (state.spawnTimer >= currentSpawnDelay) {
+    const distance = canvas.width * 1.2;
+    const speed = speedBoostActive
+      ? CONFIG.GAME.OBSTACLE.SPEED * CONFIG.GAME.OBSTACLE.SPEED_BOOST_MULTIPLIER
+      : CONFIG.GAME.OBSTACLE.SPEED;
+    const sidesToBlock = obstacleManager.getSidesForPattern();
+    sidesToBlock.forEach((side) =>
+      obstacleManager.obstacles.push({ distance, side, speed })
+    );
+    state.spawnTimer = 0;
+  }
+}
+
+function drawLives() {
+  if (state.state !== GameState.STATES.RUNNING) return;
+  let currentColors = state.stroboActive
+    ? CONFIG.COLORS.strobo[state.stroboThemeIndex]
+    : CONFIG.COLORS.running[state.currentTheme];
+  const lifeSize = CONFIG.GAME.LIFE.SIZE;
+  const spacing = lifeSize * 2.5;
+  const totalWidth = spacing;
+  const startX = center.x - totalWidth / 2;
+  const startY = BASE * 0.03;
+
+  for (let i = 0; i < CONFIG.GAME.LIFE.COUNT; i++) {
+    const x = startX + i * spacing;
+    ctx.save();
+    ctx.translate(x, startY);
+    ctx.beginPath();
+    for (let j = 0; j < 6; j++) {
+      const angle = (Math.PI / 3) * j;
+      const xPos = Math.cos(angle) * lifeSize;
+      const yPos = Math.sin(angle) * lifeSize;
+      if (j === 0) ctx.moveTo(xPos, yPos);
+      else ctx.lineTo(xPos, yPos);
+    }
+    ctx.closePath();
+    if (i < state.lives) {
+      ctx.fillStyle = currentColors.obstacle.normal;
+      ctx.fill();
+    }
+    ctx.strokeStyle = currentColors.hexagon.stroke;
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    ctx.restore();
+  }
+  if (
+    state.invulnerable &&
+    Math.floor(state.invulnerabilityTimer / 150) % 2 === 0
+  )
+    player.isVisible = false;
+  else player.isVisible = true;
+}
+
+function drawUI() {
+  drawLives();
+  ctx.fillStyle = "white";
+  ctx.font = `${BASE * 0.07}px ${CONFIG.GAME.THEME.FONT}`;
+  ctx.textAlign = "left";
+  const bestMinutes = Math.floor(state.bestScore / 60)
+    .toString()
+    .padStart(2, "0");
+  const bestSeconds = (state.bestScore % 60).toString().padStart(2, "0");
+  ctx.fillText(`${bestMinutes} ${bestSeconds}`, 10, canvas.height - 10);
+
+  if (state.state === GameState.STATES.RUNNING) {
+    ctx.textAlign = "right";
+    const currentMinutes = Math.floor(state.currentTime / 60)
+      .toString()
+      .padStart(2, "0");
+    const currentSeconds = (state.currentTime % 60).toString().padStart(2, "0");
+    ctx.fillText(
+      `${currentMinutes} ${currentSeconds}`,
+      canvas.width - 10,
+      canvas.height - 10
+    );
+  } else if (state.state === GameState.STATES.GAMEOVER) {
+    stopMusic();
+    if (state.currentTime > state.bestScore) {
+      state.bestScore = state.currentTime;
+      sessionStorage.setItem("nano_hexagon_best_score", state.bestScore);
+    }
+    ctx.fillStyle = "#68372B";
+    ctx.font = `${BASE * 0.17}px ${CONFIG.GAME.THEME.FONT}`;
+    ctx.textAlign = "center";
+    ctx.fillText("Game Over", center.x, center.y);
+    ctx.fillStyle = "#959595";
+    ctx.font = `${BASE * 0.04}px ${CONFIG.GAME.THEME.FONT}`;
+    const scoreMinutes = Math.floor(state.currentTime / 60)
+      .toString()
+      .padStart(2, "0");
+    const scoreSeconds = (state.currentTime % 60).toString().padStart(2, "0");
+    ctx.fillText(
+      `Score ${scoreMinutes} ${scoreSeconds}`,
+      center.x,
+      center.y + 20
+    );
+  } else if (state.state === GameState.STATES.START) {
+    ctx.font = `${BASE * 0.16}px ${CONFIG.GAME.THEME.FONT}`;
+    ctx.textAlign = "center";
+    ctx.fillStyle = "#B3995D";
+    ctx.fillText("NANO", center.x, center.y - BASE * 0.1);
+    ctx.fillStyle = "#6C5EB5";
+    ctx.fillText("HEXAGON", center.x, center.y);
+    ctx.font = `${BASE * 0.05}px ${CONFIG.GAME.THEME.FONT}`;
+    ctx.fillStyle = "white";
+    ctx.fillText("PRESS SPACE", center.x, center.y + BASE * 0.14);
+    ctx.fillText("ARROW KEYS: <- ->", center.x, center.y + BASE * 0.2);
+  }
+}
+
+requestAnimationFrame(loop);
+
+const startGame = () => {
+  state.state = GameState.STATES.RUNNING;
+  state.rotation = 0;
+  state.rotationTimer = 0;
+  state.spawnTimer = 0;
+  state.startTime = Date.now();
+  state.stroboActive = false;
+  state.stroboTimer = 0;
+  state.stroboFlashTimer = 0;
+  state.stroboThemeIndex = 0;
+  state.themeTimer = 0;
+  state.currentTheme = 0;
+  state.lives = CONFIG.GAME.LIFE.COUNT;
+  state.invulnerable = false;
+  state.invulnerabilityTimer = 0;
+  if (audioContext.state === "suspended") audioContext.resume();
+  audio.play().catch((error) => console.log("Audio error:", error));
+  obstacleManager.reset();
+  player.angle = 0;
+};
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowLeft") state.left = true;
+  else if (e.key === "ArrowRight") state.right = true;
+  else if (
+    e.code === "Space" &&
+    (state.state === GameState.STATES.START ||
+      state.state === GameState.STATES.GAMEOVER)
+  )
+    startGame();
+});
+
+document.addEventListener("keyup", (e) => {
+  if (e.key === "ArrowLeft") state.left = false;
+  else if (e.key === "ArrowRight") state.right = false;
+});
+
+function isTouchDevice() {
+  return "ontouchstart" in window || navigator.maxTouchPoints > 0;
+}
+
+document.addEventListener("touchstart", (e) => {
+  if (
+    state.state === GameState.STATES.START ||
+    state.state === GameState.STATES.GAMEOVER
+  ) {
+    startGame();
+    return;
+  }
+  if (state.state === GameState.STATES.RUNNING) {
+    const touchX = e.touches[0].clientX;
+    const screenMiddle = window.innerWidth / 2;
+    if (touchX < screenMiddle) {
+      state.left = true;
+      state.right = false;
+    } else {
+      state.right = true;
+      state.left = false;
+    }
+  }
+});
+
+document.addEventListener("touchend", (e) => {
+  state.left = false;
+  state.right = false;
+});
+
+document.addEventListener(
+  "touchmove",
+  (e) => {
+    if (state.state === GameState.STATES.RUNNING) e.preventDefault();
+  },
+  { passive: false }
+);

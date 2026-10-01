@@ -1,0 +1,36 @@
+{
+  "slug": "vEEYjyK",
+  "dir": "signal-css-vEEYjyK",
+  "newEditor": false,
+  "title": "Signal (CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/vEEYjyK",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2025-04-16 21:10:27 UTC",
+  "updatedAt": "2025-06-07 09:31:35 UTC",
+  "counts": {
+    "loves": 10,
+    "views": 498,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

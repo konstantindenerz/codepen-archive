@@ -1,0 +1,48 @@
+{
+  "slug": "ExqYGKJ",
+  "dir": "gooey-approve-button-with-cancel-ExqYGKJ",
+  "newEditor": false,
+  "title": "Gooey Approve Button (With Cancel)",
+  "url": "https://codepen.io/konstantindenerz/pen/ExqYGKJ",
+  "description": "A button that can cancel the action within a defined time. A gooey effect (SVG filter) is used.\n\nWorks great in Chromium and Firefox.",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "ux",
+    "button",
+    "gooey",
+    "designsystem"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-09-22 09:55:25 UTC",
+  "updatedAt": "2025-06-10 09:17:14 UTC",
+  "counts": {
+    "loves": 11,
+    "views": 452,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap\" rel=\"stylesheet\">",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

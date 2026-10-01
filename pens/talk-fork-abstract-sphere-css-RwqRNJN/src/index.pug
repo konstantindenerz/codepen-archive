@@ -1,0 +1,14 @@
+- var slices = 20
+- var surfaces = 20
+.scene
+    .sphere
+        - var sliceIndex = 0
+        while sliceIndex < slices
+            - sliceIndex++
+            .slice
+                - var surfaceIndex = 0
+                while surfaceIndex < surfaces
+                    - surfaceIndex++
+                    .surface
+
+

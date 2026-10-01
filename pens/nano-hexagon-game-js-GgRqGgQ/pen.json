@@ -1,0 +1,42 @@
+{
+  "slug": "GgRqGgQ",
+  "dir": "nano-hexagon-game-js-GgRqGgQ",
+  "newEditor": false,
+  "title": "NANO HEXAGON 🕹️ (Game, JS)",
+  "url": "https://codepen.io/konstantindenerz/pen/GgRqGgQ",
+  "description": "🔥 I recommend to use https://codepen.io/konstantindenerz/full/GgRqGgQ instead of preview window.\n\n\nNano Hexagon is a minimalist mini-game inspired by the Micro Hexagon (C64, https://rgcddev.itch.io/micro-hexagon) where players dodge dynamically shifting obstacles in a fast-paced arcade setting. The background track is provided by nickpanek620 (https://pixabay.com/es/music/video-juegos-chiptune-medium-boss-218095/).\n\n⚠️ This video game features extensive use of stroboscopic effects and should not be played by individuals who are sensitive to intense flashing lights. If you experience dizziness, blurred vision, eye or muscle twitches, loss of consciousness, disorientation, any involuntary movement or convulsion whilst playing NANO HEXAGON, discontinue use IMMEDIATELY and consult your doctor.\n\n",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "game",
+    "js",
+    "hexagon",
+    "c64",
+    "retro"
+  ],
+  "license": "MIT",
+  "createdAt": "2025-02-24 00:31:27 UTC",
+  "updatedAt": "2025-03-21 05:44:10 UTC",
+  "counts": {
+    "loves": 18,
+    "views": 896,
+    "comments": 2
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Micro+5&display=swap\" rel=\"stylesheet\">",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

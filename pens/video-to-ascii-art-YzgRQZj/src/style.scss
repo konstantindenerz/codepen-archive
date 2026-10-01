@@ -1,0 +1,86 @@
+:root {
+  --color-primary: #ee75d2;
+  --color-secondary: #75d8ee;
+  --color-tertiary: #deee75;
+  --color-quaternary: #9375ee;
+  --color-surface: #271c22;
+  --brightness: 1;
+}
+#output {
+  position: relative;
+  text-align: center;
+  border-radius: 2rem;
+  font-family: "SF Mono", monospace;
+  overflow: hidden;
+  filter: drop-shadow(
+      0 0 10rem color-mix(in srgb, var(--color), transparent 20%)
+    )
+    brightness(var(--brightness));
+  transition: filter 0.3s linear;
+  white-space: nowrap;
+  background: black;
+
+  div,
+  span {
+    white-space: nowrap;
+  }
+}
+
+#input,
+#prerender {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+:root {
+  font-size: 60%;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: color-mix(in srgb, var(--color-surface), black 40%);
+  color: var(--color-primary);
+  overflow: hidden;
+}
+
+// center at bottom
+a.labs-follow-me {
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --tp-base-background-color: var(--color-surface);
+  --tp-base-shadow-color: hsla(0, 0%, 0%, 0.2);
+  --tp-button-background-color: var(--color-secondary);
+  --tp-button-background-color-active: hsla(230, 7%, 85%, 1);
+  --tp-button-background-color-focus: hsla(230, 7%, 80%, 1);
+  --tp-button-background-color-hover: hsla(230, 7%, 75%, 1);
+  --tp-button-foreground-color: hsla(230, 7%, 17%, 1);
+  --tp-container-background-color: hsla(230, 7%, 75%, 0.1);
+  --tp-container-background-color-active: hsla(230, 7%, 75%, 0.25);
+  --tp-container-background-color-focus: hsla(230, 7%, 75%, 0.2);
+  --tp-container-background-color-hover: hsla(230, 7%, 75%, 0.15);
+  --tp-container-foreground-color: hsla(230, 7%, 75%, 1);
+  --tp-groove-foreground-color: hsla(230, 7%, 75%, 0.1);
+  --tp-input-background-color: hsla(230, 7%, 75%, 0.1);
+  --tp-input-background-color-active: hsla(230, 7%, 75%, 0.25);
+  --tp-input-background-color-focus: hsla(230, 7%, 75%, 0.2);
+  --tp-input-background-color-hover: hsla(230, 7%, 75%, 0.15);
+  --tp-input-foreground-color: var(--color-primary);
+  --tp-label-foreground-color: hsla(230, 7%, 75%, 0.7);
+  --tp-monitor-background-color: hsla(230, 7%, 0%, 0.2);
+  --tp-monitor-foreground-color: hsla(230, 7%, 75%, 0.7);
+}

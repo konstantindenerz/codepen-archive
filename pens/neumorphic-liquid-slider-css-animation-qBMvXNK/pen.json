@@ -1,0 +1,48 @@
+{
+  "slug": "qBMvXNK",
+  "dir": "neumorphic-liquid-slider-css-animation-qBMvXNK",
+  "newEditor": false,
+  "title": "Neumorphic Liquid Slider (CSS, Animation)",
+  "url": "https://codepen.io/konstantindenerz/pen/qBMvXNK",
+  "description": "A demonstration of clip-path animation to create a liquid water effect .\n\nInspiration: https://twitter.com/realvjy/status/1640342553563217920",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "animation",
+    "liquid",
+    "svg",
+    "neumorphic"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-03-27 22:18:38 UTC",
+  "updatedAt": "2024-04-01 20:56:36 UTC",
+  "counts": {
+    "loves": 222,
+    "views": 8726,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

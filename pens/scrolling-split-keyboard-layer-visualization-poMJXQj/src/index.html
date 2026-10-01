@@ -1,0 +1,68 @@
+<div id="views" class="views">
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+  <div class="item">4</div>
+  <div class="item">5</div>
+  <div class="item">6</div>
+</div>
+<div id="layers" class="layers">
+  <div class="item active">
+    <div class="scene">
+      <labs-split-keyboard></labs-split-keyboard>
+    </div>
+  </div>
+  <div class="item">
+    <div class="scene">
+      <labs-split-keyboard></labs-split-keyboard>
+    </div>
+  </div>
+  <div class="item">
+    <div class="scene">
+      <labs-split-keyboard></labs-split-keyboard>
+    </div>
+  </div>
+  <div class="item">
+    <div class="scene">
+      <labs-split-keyboard></labs-split-keyboard>
+    </div>
+  </div>
+  <div class="item">
+    <div class="scene">
+      <labs-split-keyboard></labs-split-keyboard>
+    </div>
+  </div>
+  <div class="item">
+    <div class="scene">
+      <labs-split-keyboard></labs-split-keyboard>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes show {
+    entry 0% {
+      filter: blur(10rem);
+    }
+
+    entry 100% {
+      filter: blur(0rem);
+    }
+
+    exit 0% {
+      filter: blur(0rem);
+      /*--rotate-x: 0deg;*/
+    }
+
+    exit 100% {
+      filter: blur(10rem);
+      /*--rotate-x: -20deg;*/
+    }
+  }
+
+  @keyframes slide-up {
+    to {
+      translate: 0 var(--end-pos);
+    }
+  }
+</style>

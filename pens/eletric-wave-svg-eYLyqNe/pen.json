@@ -1,0 +1,53 @@
+{
+  "slug": "eYLyqNe",
+  "dir": "eletric-wave-svg-eYLyqNe",
+  "newEditor": false,
+  "title": "Eletric Wave (SVG)",
+  "url": "https://codepen.io/konstantindenerz/pen/eYLyqNe",
+  "description": "A demonstration of animated wave with SVG.",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "tesla",
+    "electric",
+    "wave",
+    "css",
+    "svg"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-03-11 21:57:42 UTC",
+  "updatedAt": "2023-03-12 13:57:26 UTC",
+  "counts": {
+    "loves": 27,
+    "views": 1661,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "none",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.css",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "css",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.css",
+      "order": 1
+    },
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

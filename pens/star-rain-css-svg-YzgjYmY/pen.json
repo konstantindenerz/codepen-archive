@@ -1,0 +1,47 @@
+{
+  "slug": "YzgjYmY",
+  "dir": "star-rain-css-svg-YzgjYmY",
+  "newEditor": false,
+  "title": "Star Rain ✨ (CSS / SVG)",
+  "url": "https://codepen.io/konstantindenerz/pen/YzgjYmY",
+  "description": "Star rain ✨ enhanced with an SVG filter.\n\n✅ Works perfect in browsers with Chromium codebase.",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "synthwave",
+    "digitalrain",
+    "svg"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-02-07 10:40:36 UTC",
+  "updatedAt": "2024-02-07 11:20:05 UTC",
+  "counts": {
+    "loves": 29,
+    "views": 1050,
+    "comments": 2
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

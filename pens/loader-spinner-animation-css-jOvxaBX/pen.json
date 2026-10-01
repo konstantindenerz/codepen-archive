@@ -1,0 +1,48 @@
+{
+  "slug": "jOvxaBX",
+  "dir": "loader-spinner-animation-css-jOvxaBX",
+  "newEditor": false,
+  "title": "Loader / Spinner (Animation , CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/jOvxaBX",
+  "description": "This spinner pen demonstrates some cool CSS features like and works in browsers with Houdini 🧙‍ support like Chromium-based browsers:\n- CSS variables\n- Houdini property-rule\n - CSS animation\n- mask\n- filter\n\nhttps://twitter.com/kdenerz/status/1636125007897059328\n",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "animation",
+    "spinner",
+    "loader",
+    "webdev",
+    "css"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-03-15 16:25:30 UTC",
+  "updatedAt": "2023-03-16 06:33:18 UTC",
+  "counts": {
+    "loves": 75,
+    "views": 2027,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 1
+    }
+  ],
+  "hasSource": true
+}

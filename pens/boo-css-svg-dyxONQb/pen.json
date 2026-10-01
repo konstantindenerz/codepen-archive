@@ -1,0 +1,42 @@
+{
+  "slug": "dyxONQb",
+  "dir": "boo-css-svg-dyxONQb",
+  "newEditor": false,
+  "title": "Boo! 👻 (CSS, SVG)",
+  "url": "https://codepen.io/konstantindenerz/pen/dyxONQb",
+  "description": "I found this awesome #Figma 👻 tutorial (https://x.com/kdenerz/status/1844404837850677304) and created my own version with #CSS.\n\n \nWith the help of #SVG, I also animated the clip-path. ✨\n\n✅ Works in Chrome & Safari",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "halloween",
+    "boo",
+    "ghost",
+    "svg"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-10-09 21:10:39 UTC",
+  "updatedAt": "2024-10-10 17:34:36 UTC",
+  "counts": {
+    "loves": 103,
+    "views": 6575,
+    "comments": 2
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap\" rel=\"stylesheet\">",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

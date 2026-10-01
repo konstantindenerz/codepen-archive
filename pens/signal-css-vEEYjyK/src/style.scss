@@ -1,0 +1,69 @@
+
+@property --a {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+
+$count: 42; // same as in the HTML (Pug) view
+
+:root {
+  --size: 100deg;
+}
+
+.container {
+  display: flex;
+  width: 100dvw;
+  height: 100dvh;
+  --count: #{$count};
+  --per-item: #{50% / $count};
+  --p-per-item: #{1 / $count};
+  animation: main 2s linear infinite;
+}
+
+@keyframes main {
+  to {
+    --a: 360deg;
+  }
+}
+
+.col {
+  flex: 1;
+  --a-per-item: calc(var(--size) / var(--count) * var(--i) - var(--a));
+  --pos1: calc(60% * sin(var(--a-per-item)));
+  background: radial-gradient(
+200% 25% at center,
+    orange,
+    magenta var(--pos1),
+    #03072c 50%,
+    magenta calc(120% - var(--pos1)),
+#03072c
+  );
+
+  @for $i from 0 through $count - 1 {
+    &:nth-child(#{$i + 1}) {
+      --i: #{$i};
+    }
+  }
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  
+  &:after {
+    content: "";
+    opacity: .5;
+    position: absolute;
+    background: url(https://assets.codepen.io/907471/noise.svg);
+    mix-blend-mode: hue;
+    inset: 0;
+    pointer-events: none;
+    filter: invert(1) brightness(5) saturate(.5);
+  }
+  
+}
+
+* {
+  box-sizing: border-box;
+}

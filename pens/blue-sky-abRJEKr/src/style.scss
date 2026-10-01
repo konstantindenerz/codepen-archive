@@ -1,0 +1,93 @@
+.scene {
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  width: 80vmin;
+  height: 60vmin;
+  transform: rotateX(-45deg) rotateY(35deg) skew(20deg, 10deg);
+}
+
+.cloud-wrapper {
+  position: absolute;
+
+  @for $i from 1 through 30 {
+    &:nth-of-type(#{$i}) {
+      --base-index: #{$i - 30};
+      --index: #{$i};
+
+      .cloud {
+        animation-duration: max(1s, calc(#{random()} * 25s));
+      }
+      transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - #{random()}));
+    }
+
+  }
+}
+@keyframes cloud {
+  from {
+    transform: translateX(200vw);
+  }
+
+  to {
+    transform: translateX(-200vw);
+  }
+}
+.cloud {
+  position: absolute;
+  inset: 0;
+  width: 80vmin;
+  height: 60vmin;
+  border-radius: 20vmin;
+  filter: brightness(109%) saturate(.8);
+  animation: cloud 1s linear infinite;
+
+  &:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:  conic-gradient(from 120deg at 22vmin 26vmin, #93c2e0, #ccdfe9) no-repeat, conic-gradient(from 120deg at 37vmin 18vmin, white, #ccdfe9) no-repeat, linear-gradient(145deg, #93c2e0, #ccdfe9) no-repeat;
+    -webkit-mask:
+            linear-gradient(black, black),
+            radial-gradient(20vmin 20vmin at 30% 60%, black 50%, transparent 50%),
+            radial-gradient(20vmin 20vmin at 50% 60%, black 50%, transparent 50%),
+            radial-gradient(20vmin 20vmin at 70% 60%, black 50%, transparent 50%),
+            radial-gradient(25vmin 25vmin at 60% 40%, black 50%, transparent 50%),
+            radial-gradient(20vmin 20vmin at 40% 45%, black 50%, transparent 50%),
+  ;
+    -webkit-mask-size: 32.8vmin 10vmin, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    -webkit-mask-position: 22.8vmin 36vmin, 0 0, 0 0, 0 0, 0 0, 0 0;
+    -webkit-mask-repeat: no-repeat;
+    transform: translate(-1.8vmin, -.5vmin);
+  }
+
+  &:after {
+    //opacity: .1;
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, #d9edf8, #c1dcec);
+    -webkit-mask: linear-gradient(black, black),
+    radial-gradient(20vmin 20vmin at 30% 60%, black 50%, transparent 50%),
+    radial-gradient(20vmin 20vmin at 50% 60%, black 50%, transparent 50%),
+    radial-gradient(20vmin 20vmin at 70% 60%, black 50%, transparent 50%),
+    radial-gradient(25vmin 25vmin at 60% 40%, black 50%, transparent 50%),
+    radial-gradient(20vmin 20vmin at 40% 45%, black 50%, transparent 50%),;
+    -webkit-mask-size: 32.8vmin 10vmin, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    -webkit-mask-position: 22.8vmin 36vmin, 0 0, 0 0, 0 0, 0 0, 0 0;
+    -webkit-mask-repeat: no-repeat;
+  }
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(to bottom, #9fddf6, white);
+  position: relative;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}

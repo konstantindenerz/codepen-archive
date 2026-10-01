@@ -1,0 +1,42 @@
+{
+  "slug": "gOEdazP",
+  "dir": "tabs-with-rounded-corners-gOEdazP",
+  "newEditor": false,
+  "title": "Tabs with Rounded Corners",
+  "url": "https://codepen.io/konstantindenerz/pen/gOEdazP",
+  "description": "Demonstration of how to use mask-image to get rounded edges on active tab.",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "tab",
+    "tabs",
+    "maskimage",
+    "uxui"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-02-08 10:12:45 UTC",
+  "updatedAt": "2024-02-08 14:20:47 UTC",
+  "counts": {
+    "loves": 8,
+    "views": 2125,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Audiowide&display=swap\" rel=\"stylesheet\">",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

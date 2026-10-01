@@ -1,0 +1,124 @@
+$size: 5;
+
+:root {
+  --size: 7vmin;
+  --c2: #f672ca;
+}
+
+@property --a {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+@keyframes rotation {
+  from {
+    --a: 0deg;
+  }
+  to {
+    --a: 360deg;
+  }
+}
+
+.scene {
+  perspective: 100vmin;
+}
+
+.object {
+  transform-style: preserve-3d;
+  transform: rotate3d(0, 1, 0, var(--a)) scaleY(-1);
+  animation: rotation 10s linear infinite;
+  height: calc(#{$size} * var(--size) / 4);
+}
+
+.pyramid {
+  position: absolute;
+  transform-style: preserve-3d;
+  width: var(--size);
+  height: var(--size);
+  $index: 1;
+  @for $level from 1 through $size {
+    $levelZ: $level / $index;
+    $itemsPerLevel: $level * $level;
+    $levelY: $level - round($size / 2);
+    $center: round($level / 2);
+    @for $x from 1 through $level {
+      $cX: $x - $center;
+
+      @if $level % 2 == 0 {
+        $cX: $cX - 0.5;
+      }
+
+      @for $y from 1 through $level {
+        $cY: $y - $center;
+
+        @if $level % 2 == 0 {
+          $cY: $cY - 0.5;
+        }
+
+        &:nth-child(#{$index}) {
+          --index: #{$index};
+          $offsetPerItem: calc(360deg / #{$level * $level});
+          transform: translate3d(
+            calc(var(--size) * #{$cX}),
+            calc(var(--size) * #{$levelY}),
+            calc(var(--size) * #{$cY})
+          );
+        }
+        $index: $index + 1;
+      }
+    }
+  }
+
+  > div {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    opacity: 0.2;
+    &:not(.bottom) {
+      -webkit-mask: url("https://assets.codepen.io/907471/triangle-mask.svg?v42") center center
+        no-repeat;
+      -webkit-mask-size: contain;
+      transform-origin: bottom;
+    }
+  }
+}
+
+.front {
+  background: #e472f6;
+  transform: translateZ(calc(var(--size) / 2)) rotateX(30deg);
+}
+
+.back {
+  background: #3b90b5;
+  transform: translateZ(calc(var(--size) / -2)) rotateX(-30deg);
+}
+
+.left {
+  background: #ffffff;
+  transform: translateX(-50%) rotateY(90deg) rotateX(-30deg);
+}
+
+.right {
+  background: #7597f9;
+  transform: translateX(50%) rotateY(90deg) rotateX(30deg);
+}
+
+.bottom {
+  background: #0f68ff;
+  transform: rotateX(-90deg) translateZ(calc(var(--size) / 2));
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(#1a2f47, #000000);
+  color: var(--c2);
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}

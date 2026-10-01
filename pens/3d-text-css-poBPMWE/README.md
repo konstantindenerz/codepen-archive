@@ -1,0 +1,22 @@
+# 3D Text (CSS)
+
+> 47 loves · 2 comments · 4,728 views
+
+| | |
+|---|---|
+| **Live on CodePen** | <https://codepen.io/konstantindenerz/pen/poBPMWE> |
+| **Archived demo** | [index.html](index.html) |
+| **Created** | 2024-03-24 |
+| **Updated** | 2025-03-04 |
+| **Preprocessors** | none / scss / none |
+| **Tags** | filter, css, svg, space, 3d |
+| **License** | MIT |
+
+## Source
+
+- `src/index.html` — HTML (none)
+- `src/style.scss` — CSS (scss)
+- `src/script.js` — JS (none)
+
+`index.html` is the compiled, self-contained result — open it directly,
+no build step and no network needed.

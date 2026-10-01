@@ -1,0 +1,63 @@
+@mixin animated-bg {
+  background: radial-gradient(
+    circle,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(252, 70, 107, 1) 100%
+  );
+  animation: bg 3s ease infinite;
+  text-fill-color: transparent;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+bubu {
+  @include animated-bg;
+  display: block;
+  position: relative;
+
+  &:before {
+    @include animated-bg;
+    content: "{{ ♡ CSS }}";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    
+    filter: blur(30px);
+    opacity: 0.6;
+    pointer-events:none;
+  }
+}
+
+@keyframes bg {
+  from {
+    background-position: 0px 0px;
+  }
+
+  50% {
+    background-position: 1000px -200px;
+  }
+
+  to {
+    background-position: 0px 200px;
+  }
+}
+
+body {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  font-family: "Inter", "Helvetica", sans-serif;
+  font-size: 5rem;
+  
+  background: hsl(0, 0, 8);
+  background: linear-gradient(
+      28deg,
+      rgba(14, 14, 14, 1) 0%,
+      rgba(26, 26, 26, 1) 100%
+    )
+    no-repeat;
+  background-size: cover;
+}

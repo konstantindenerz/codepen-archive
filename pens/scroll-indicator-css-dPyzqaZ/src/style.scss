@@ -1,0 +1,57 @@
+:root {
+  --primary: #ff007c;
+}
+.scroll-indicator {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 4rem;
+  height: 6rem;
+  display: grid;
+  place-items: center;
+
+  &:before {
+    background: white;
+    box-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.15);
+    content: "";
+    height: 100%;
+    aspect-ratio: 1/2;
+    border-radius: 2rem;
+  }
+
+  &:after {
+    position: absolute;
+    content: "";
+    border-radius: 0.5rem;
+    width: 1rem;
+    aspect-ratio: 1;
+    background: var(--primary);
+    translate: 0 -1.55rem;
+    animation: indicator 1.5s ease-out infinite;
+  }
+}
+
+@keyframes indicator {
+  from {
+    aspect-ratio: 1;
+    translate: 0 -1.55rem;
+  }
+  25% {
+    aspect-ratio: 1/4;
+    translate: 0 0rem;
+  }
+  50%,
+  60% {
+    aspect-ratio: 1;
+    translate: 0 1.8rem;
+  }
+
+  to {
+    translate: 0 -1.55rem;
+  }
+}
+body {
+  background: conic-gradient(at 50% calc(100% - 4rem), #efefef, #f6f6f6);
+  height: 100dvh;
+}

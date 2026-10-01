@@ -1,0 +1,47 @@
+{
+  "slug": "zYXONxz",
+  "dir": "scratched-folder-css-svg-zYXONxz",
+  "newEditor": false,
+  "title": "Scratched Folder (CSS, SVG)",
+  "url": "https://codepen.io/konstantindenerz/pen/zYXONxz",
+  "description": "Inspired by this post, I created a CSS version that uses a SVG filter to create scratches.\n\nhttps://twitter.com/sekachov/status/1762160697876828569 🔥\n\nUnfortunately, `mask` and `backdrop-filter` did not work together, so I needed a few more elements. 😅\n\nAnother optimization idea would be the implementation of a responsive filter that generates the pattern according to the size.",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "folder",
+    "scratches",
+    "skeuomorphic"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-02-27 16:51:55 UTC",
+  "updatedAt": "2024-02-28 08:37:36 UTC",
+  "counts": {
+    "loves": 193,
+    "views": 5461,
+    "comments": 2
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

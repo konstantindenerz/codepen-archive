@@ -1,0 +1,42 @@
+{
+  "slug": "dPPvqPB",
+  "dir": "night-flight-s-css-dPPvqPB",
+  "newEditor": false,
+  "title": "🖖 Night Flight ((S)CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/dPPvqPB",
+  "description": "A small demo where I use only one additional element besides the body, and lots of dynamically generated gradients using SCSS.\n\n💡 Try 0.5x scale factor in the details view.",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "voxel",
+    "art",
+    "startrek",
+    "ncc1701"
+  ],
+  "license": "MIT",
+  "createdAt": "2025-04-24 20:12:14 UTC",
+  "updatedAt": "2025-04-25 10:58:05 UTC",
+  "counts": {
+    "loves": 76,
+    "views": 5626,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

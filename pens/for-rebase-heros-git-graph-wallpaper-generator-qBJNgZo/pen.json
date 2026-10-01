@@ -1,0 +1,56 @@
+{
+  "slug": "qBJNgZo",
+  "dir": "for-rebase-heros-git-graph-wallpaper-generator-qBJNgZo",
+  "newEditor": false,
+  "title": "For Rebase Heros 😅 - Git Graph - Wallpaper Generator 🌈",
+  "url": "https://codepen.io/konstantindenerz/pen/qBJNgZo",
+  "description": "It's a fork of this pen: https://codepen.io/konstantindenerz/pen/MWqvmPm\n",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "git",
+    "js",
+    "fun",
+    "rainbow",
+    "graph"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-04-18 06:17:32 UTC",
+  "updatedAt": "2023-04-18 06:59:59 UTC",
+  "counts": {
+    "loves": 1,
+    "views": 230,
+    "comments": 1
+  },
+  "featured": false,
+  "forkedFrom": {
+    "url": "https://codepen.io/konstantindenerz/pen/MWqvmPm",
+    "title": "Git Graph - Wallpaper Generator 🌈"
+  },
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "css",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.css",
+      "order": 1
+    },
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 1
+    }
+  ],
+  "hasSource": true
+}

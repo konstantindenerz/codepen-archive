@@ -1,0 +1,46 @@
+key {
+  --base: #d4d4d4;
+
+  color: #313131;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  --h: rgba(255, 255, 255, 0.4); // highlight
+  background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1),
+      transparent 60%,
+      rgba(0, 0, 0, 0.1)
+    ),
+    conic-gradient(from 135deg, transparent, var(--h)),
+    conic-gradient(from 225deg, transparent, var(--h)),
+    conic-gradient(from 45deg, transparent, var(--h)),
+    conic-gradient(from -45deg, var(--h), transparent), var(--base);
+  border-radius: 1rem;
+  box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1), 0 0 1rem rgba(0, 0, 0, 0.1);
+
+  &:after {
+    content: var(--value);
+    font-size: 1.5rem;
+    background: radial-gradient(
+        50% 50% at center,
+        rgba(0, 0, 0, 0.08),
+        transparent
+      ),
+      #f7f7f7;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: -0.0625rem -0.0625rem 0 rgba(0, 0, 0, 0.04),
+      0.0625rem 0.0625rem 0 white;
+    text-shadow: 0.0625rem 0.0625rem white;
+  }
+}
+
+body {
+  background: conic-gradient(from 180deg, #e5e5e5, transparent),
+    conic-gradient(from 45deg, #e5e5e5, transparent),
+    conic-gradient(from -45deg, #e5e5e5, transparent), white;
+  display: grid;
+  place-items: center;
+  height: 100dvh;
+}

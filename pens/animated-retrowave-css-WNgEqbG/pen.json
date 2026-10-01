@@ -1,0 +1,73 @@
+{
+  "slug": "WNgEqbG",
+  "dir": "animated-retrowave-css-WNgEqbG",
+  "newEditor": false,
+  "title": "Animated Retrowave 👾  (CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/WNgEqbG",
+  "description": "I had created this retro wave scene with different CSS techniques (@property, filter, mask, gradient, mix-blend-mode, clip-path). Chromium-based browsers provide the best viewing results. The goal wasn't to get the best performance, more to have fun.\n\nMusic: https://assets.codepen.io/907471/synthesizer-synthwave-80s-110045-license.txt ",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "retro",
+    "synthwave",
+    "css",
+    "animation",
+    "delorean"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-03-07 11:37:36 UTC",
+  "updatedAt": "2023-06-11 16:00:41 UTC",
+  "counts": {
+    "loves": 318,
+    "views": 8648,
+    "comments": 3
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    },
+    {
+      "resourceType": "css",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.css",
+      "order": 2
+    },
+    {
+      "resourceType": "css",
+      "url": "https://codepen.io/konstantindenerz/pen/xxaXjZv.css",
+      "order": 1
+    },
+    {
+      "resourceType": "css",
+      "url": "https://codepen.io/konstantindenerz/pen/YzOrWjz.css",
+      "order": 0
+    },
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/mdGpxKg.js",
+      "order": 1
+    },
+    {
+      "resourceType": "css",
+      "url": "https://codepen.io/konstantindenerz/pen/mdGpxKg.css",
+      "order": 3
+    }
+  ],
+  "hasSource": true
+}

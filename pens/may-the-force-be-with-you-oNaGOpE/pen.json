@@ -1,0 +1,48 @@
+{
+  "slug": "oNaGOpE",
+  "dir": "may-the-force-be-with-you-oNaGOpE",
+  "newEditor": false,
+  "title": "May the Force be with YOU",
+  "url": "https://codepen.io/konstantindenerz/pen/oNaGOpE",
+  "description": "This is the switch you are looking for! The synthwave themed switch to celebrate the 4th may.\n\n✅ Works perfect in Chromium browser",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "starwars",
+    "cpc-toggles",
+    "codepenchallenge",
+    "r2d2"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-05-02 19:24:29 UTC",
+  "updatedAt": "2024-03-24 10:14:28 UTC",
+  "counts": {
+    "loves": 91,
+    "views": 1658,
+    "comments": 2
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

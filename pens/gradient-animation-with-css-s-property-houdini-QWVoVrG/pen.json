@@ -1,0 +1,48 @@
+{
+  "slug": "QWVoVrG",
+  "dir": "gradient-animation-with-css-s-property-houdini-QWVoVrG",
+  "newEditor": false,
+  "title": "Gradient Animation with CSS's @property (Houdini 🧙‍♂️)",
+  "url": "https://codepen.io/konstantindenerz/pen/QWVoVrG",
+  "description": "Demonstration of gradient animation with @property CSS feature.\nUsed in this tweet: https://twitter.com/kdenerz/status/1640661322915356674",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "animation",
+    "circle",
+    "gradient",
+    "property",
+    "houdini"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-03-28 09:34:10 UTC",
+  "updatedAt": "2023-03-29 08:30:57 UTC",
+  "counts": {
+    "loves": 33,
+    "views": 7590,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

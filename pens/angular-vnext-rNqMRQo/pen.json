@@ -1,0 +1,48 @@
+{
+  "slug": "rNqMRQo",
+  "dir": "angular-vnext-rNqMRQo",
+  "newEditor": false,
+  "title": "Angular vNext 🎉🥳",
+  "url": "https://codepen.io/konstantindenerz/pen/rNqMRQo",
+  "description": "A pen to celebrate the release of Angular v17, but works with all releases until 100 😄.\n\nCSS features  ✨ in this pen:\n✅ cos() and sin() function\n✅ @property\n✅ variables\n✅  animations",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "animation",
+    "angular",
+    "cpc-fireworks",
+    "codepenchallenge"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-04-19 17:23:53 UTC",
+  "updatedAt": "2025-02-26 22:21:22 UTC",
+  "counts": {
+    "loves": 16,
+    "views": 2049,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

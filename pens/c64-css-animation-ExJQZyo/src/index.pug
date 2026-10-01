@@ -1,0 +1,42 @@
+- rings = 5;
+- flagRows = 8;
+- itemsPerRing = 20;
+- itemsPerRow = 6;
+- increaseItemsPerRing = 6;
+- i = 0;
+.scene
+    .logo
+        .c
+            while i < rings
+                - a = 0;
+                - items = i * increaseItemsPerRing + itemsPerRing;
+                while a < items
+                    div(style="--ring-index:" + i + ";--item-index: " + (a) + ";--count: " + items).cube
+                        .top
+                        .bottom
+                        .left
+                        .right
+                        .front
+                        .back
+                    - a++;
+                - i++
+        .flag
+            -i = 0;
+            while i < flagRows
+                .row
+                    - a = 0;
+                    if i < (flagRows / 2)
+                        - items = itemsPerRow - 1 * i;
+                    else if (i > flagRows / 2)
+                        - items = (itemsPerRow - 1 * (flagRows - 1)) + 1 * i;
+                    else if (i === flagRows / 2)
+                    while a < items
+                        div(style="--ring-index:0" + ";--item-index: " + (a) + ";--count: " + items).cube
+                            .top
+                            .bottom
+                            .left
+                            .right
+                            .front
+                            .back
+                        - a++;
+                - i++

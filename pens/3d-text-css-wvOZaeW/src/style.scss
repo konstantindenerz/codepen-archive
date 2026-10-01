@@ -1,0 +1,150 @@
+$count: 400;
+
+:root {
+  --color-primary: #8d8357;
+  --color-secondary: #293641;
+  --color-surface: var(--color-secondary);
+}
+
+:root {
+  --content: "♛";
+  --perspective: 1000px;
+}
+
+.layers {
+  position: relative;
+  font-size: 50vmin;
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 700;
+  perspective: var(--perspective);
+  translate: -3vmin 0;
+
+  // calc host's size
+  &:before {
+    pointer-events: none;
+    color: transparent;
+    content: var(--content);
+  }
+
+  // shadow
+  &:after {
+    color: black;
+    text-shadow: -10px -10px 5px rgba(0, 0, 0, 0.2),
+      -10px 10px 5px rgba(0, 0, 0, 0.2), 10px 10px 15px rgba(0, 0, 0, 0.5),
+      -20px -20px 30px rgba(0, 0, 0, 0.3), -20px 40px 30px rgba(0, 0, 0, 0.3);
+    content: var(--content);
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transform: rotateY(322deg) rotateZ(347deg) rotateX(305deg);
+  }
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  --highlight-level: calc(var(--i) * 100% / 400);
+  color: color-mix(in srgb, var(--color-primary), white var(--highlight-level));
+  --x: calc(0.03vmin * var(--i));
+  --y: calc(var(--x) * -1);
+  transform: rotateY(322deg) rotateZ(347deg) rotateX(305deg)
+    translate3d(var(--x), var(--y), 0);
+  // 3d effect
+  text-shadow: -1px -1px 0 color-mix(in srgb, var(--color-primary) 50%, black
+          60%),
+    1px 1px 0 rgba(0, 0, 0, 0.04);
+
+  &:before {
+    content: var(--content);
+    transform: rotate(45deg);
+  }
+
+  @for $i from 1 through $count {
+    &:nth-child(#{$i}) {
+      --i: #{$i - 1};
+    }
+  }
+
+  // highlight
+  &:nth-last-child(-n + 2) {
+    color: rgb(255, 255, 255);
+  }
+
+  // glow
+  &:last-child {
+    color: rgba(255, 255, 255, 0.01);
+    filter: blur(4vmin);
+    opacity: 0.5;
+    text-shadow: -1px -1px 0 white, 1px 1px 0 rgba(0, 0, 0, 0.04);
+  }
+}
+
+body {
+  perspective: 800px;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+
+  overflow: hidden;
+  margin: 0;
+
+  &:after {
+    content: "";
+    position: absolute;
+    background: url(https://assets.codepen.io/907471/noise.svg);
+    mix-blend-mode: overlay;
+    inset: 0;
+    pointer-events: none;
+    filter: invert(1) brightness(0.5);
+    z-index: var(--labs-sys-z-noise);
+  }
+}
+
+// center at bottom
+a.labs-follow-me {
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center;
+  color: color-mix(in srgb, var(--color-primary), white 60%) !important;
+}
+
+* {
+  box-sizing: border-box;
+  transition: all .3s ease;
+}
+
+:root {
+  --tp-base-background-color: var(--color-surface);
+  --tp-base-shadow-color: hsla(0, 0%, 0%, 0.2);
+  --tp-button-background-color: color-mix(
+    in srgb,
+    var(--color-secondary),
+    white 30%
+  );
+  --tp-button-background-color-active: hsla(230, 7%, 85%, 1);
+  --tp-button-background-color-focus: hsla(230, 7%, 80%, 1);
+  --tp-button-background-color-hover: hsla(230, 7%, 75%, 1);
+  --tp-button-foreground-color: hsla(230, 7%, 17%, 1);
+  --tp-container-background-color: hsla(230, 7%, 75%, 0.1);
+  --tp-container-background-color-active: hsla(230, 7%, 75%, 0.25);
+  --tp-container-background-color-focus: hsla(230, 7%, 75%, 0.2);
+  --tp-container-background-color-hover: hsla(230, 7%, 75%, 0.15);
+  --tp-container-foreground-color: hsla(230, 7%, 75%, 1);
+  --tp-groove-foreground-color: hsla(230, 7%, 75%, 0.1);
+  --tp-input-background-color: hsla(230, 7%, 75%, 0.1);
+  --tp-input-background-color-active: hsla(230, 7%, 75%, 0.25);
+  --tp-input-background-color-focus: hsla(230, 7%, 75%, 0.2);
+  --tp-input-background-color-hover: hsla(230, 7%, 75%, 0.15);
+  --tp-input-foreground-color: var(--color-primary);
+  --tp-label-foreground-color: hsla(230, 7%, 75%, 0.7);
+  --tp-monitor-background-color: hsla(230, 7%, 0%, 0.2);
+  --tp-monitor-foreground-color: hsla(230, 7%, 75%, 0.7);
+}

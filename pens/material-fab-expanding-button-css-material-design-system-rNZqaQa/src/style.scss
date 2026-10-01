@@ -1,0 +1,468 @@
+@use 'sass:list';
+@use 'sass:map';
+
+// Floating Action Button (FAB) from Google's Material (Design System)
+// Design Tokens Spec: https://m3.material.io/foundations/design-tokens/overview
+// FAB Spec: https://m3.material.io/components/extended-fab/overview
+:root {
+  --md-ref-primary40: #3a6a1e;
+  --md-ref-primary90: #b9f295;
+  --md-ref-secondary80: #bdcbaf;
+  --md-ref-secondary90: #d9e7ca;
+  --md-ref-neutral99: #fdfdf5;
+  --md-ref-neutral0: #000;
+  --md-ref-neutral10: #1a1c18;
+
+  --md-sys-color-primary: var(--md-ref-primary40);
+  --md-sys-color-primary-container: var(--md-ref-primary90);
+  --md-sys-scolor-secondary: #55624b;
+  --md-sys-color-secondary-container: var(--md-ref-secondary90);
+  --md-sys-color-on-secondary-container: var(--md-ref-neutral10);
+
+  --md-sys-color-background: var(--md-ref-neutral99);
+  --md-sys-color-on-background: var(--md-ref-neutral10);
+  --md-sys-color-surface: var(--md-ref-neutral99);
+
+  --md-sys-font-family: Roboto, sans-serif;
+  --md-sys-state-hover-alpha: 0.08;
+  --md-sys-state-focused-alpha: 0.12;
+  --md-sys-state-pressed-alpha: 0.16;
+  --md-sys-shadow-key-alpha: 0.3;
+  --md-sys-shadow-ambient-alpha: 0.15;
+
+  --md-frame-shape-radius: 2rem;
+  --md-fab-shape-radius: 1rem;
+  --md-card-shape-radius: 1rem;
+}
+
+// elevation
+// spec: https://material.io/design/environment/elevation.html#default-elevations
+// spec: https://material.io/design/environment/light-shadows.html
+
+// map structure:
+// z-index: highlighting, (key shadow: x, blur radius, spread-radius), (ambient shadow)
+$elevations: (
+  0: 0
+    (
+      1 3 0
+    )
+    (
+      4 8 3
+    ),
+  3: 0.15
+    (
+      1 3 0
+    )
+    (
+      4 8 3
+    )
+);
+
+@function shadow($shadow, $alpha) {
+  @return 0px #{list.nth($shadow, 1)}px #{list.nth($shadow, 2)}px #{list.nth(
+      $shadow,
+      3
+    )}px rgba(0, 0, 0, $alpha);
+}
+
+@mixin elevation-get($index: 0) {
+  $elevation: map.get($elevations, $index);
+  $highlight: list.nth($elevation, 1);
+  box-shadow: shadow(list.nth($elevation, 2), var(--md-sys-shadow-key-alpha)),
+    shadow(list.nth($elevation, 3), var(--md-sys-shadow-ambient-alpha));
+}
+
+// typography
+@mixin headline-l {
+  font: 400 2rem / 2.5rem var(--md-sys-font-family);
+  letter-spacing: 0;
+}
+
+@mixin title-l {
+  font: 400 1.375rem / 1.75rem var(--md-sys-font-family);
+  letter-spacing: 0;
+}
+
+@mixin label-l {
+  font: 500 0.875rem / 1.25rem var(--md-sys-font-family);
+  letter-spacing: 0.00625rem;
+}
+
+@mixin body-l {
+  font: 1rem / 1.5rem var(--md-sys-font-family);
+  letter-spacing: 0.009375rem;
+}
+
+// states
+@mixin overlay-create($alpha: 0, $scale: 1) {
+  &:after {
+    pointer-events: none;
+    content: "";
+    opacity: $alpha;
+    position: absolute;
+    background-color: currentColor;
+    transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease;
+    transform: scale($scale);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: inherit;
+  }
+}
+
+@mixin enabled($scale: 1) {
+  @include overlay-create(0, $scale);
+}
+
+@mixin hover($scale: 1) {
+  @include overlay-create(var(--md-sys-state-hover-alpha), $scale);
+}
+
+@mixin focused($scale: 1) {
+  @include overlay-create(var(--md-sys-state-focused-alpha), $scale);
+}
+
+@mixin pressed($scale: 1) {
+  @include overlay-create(var(--md-sys-state-pressed-alpha), $scale);
+}
+
+@mixin interactive {
+  @include enabled;
+  user-select: none;
+  cursor: pointer;
+
+  @media (hover) {
+    &:hover {
+      @include hover;
+    }
+  }
+
+  &:focus,
+  &.has-focus {
+    @include focused;
+  }
+
+  &:active {
+    @include pressed;
+  }
+}
+
+.form {
+  position: absolute;
+  inset: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-width: calc(100% - 4rem);
+  width: calc(100% - 4rem);
+  min-height: calc(100% - 4rem);
+  height: calc(100% - 4rem);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+
+  .close {
+    @include interactive;
+    background-color: transparent;
+    border: none;
+    position: relative;
+    width: 2.5rem;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    opacity: 0;
+    
+    svg {
+      width: 1.5rem;
+    }
+  }
+
+  .placeholder {
+    height: 1rem;
+    width: 100%;
+    border-radius: var(--md-frame-shape-radius);
+    background: var(--md-sys-color-secondary-container);
+  }
+}
+
+.fab-container {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--md-frame-shape-radius);
+
+  &:before {
+    content: "";
+    position: absolute;
+     border-radius: var(--md-frame-shape-radius);
+    inset: 0;
+    background: linear-gradient(#3a6a1e14, #3a6a1e14),
+      var(--md-sys-color-surface);
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+  }
+
+  .fab {
+    @include label-l;
+    @include interactive;
+    @include elevation-get(3);
+
+    display: flex;
+    align-items: center;
+    background: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+    border: none;
+    height: 3.5rem;
+    padding: 1rem 1.25rem 1rem 1rem;
+    gap: 0.75rem;
+    border-radius: var(--md-fab-shape-radius);
+    min-width: 5rem;
+    transition: opacity 0.1s ease;
+    transition-delay: 0.3s;
+
+    svg {
+      width: 1.5rem;
+    }
+  }
+
+  .fab-overlay {
+    z-index: 2;
+    position: absolute;
+    left: var(--left, unset);
+    top: var(--top, unset);
+    right: 0.5rem;
+    bottom: 5.5rem;
+    background: var(--md-sys-color-secondary-container);
+    border-radius: var(--md-fab-shape-radius);
+  }
+
+  &.expanded {
+    .close {
+      transition: 0.3s ease;
+      opacity: 1;
+    }
+
+    &:before {
+      opacity: 1;
+    }
+
+    .fab {
+      opacity: 0;
+      pointer-events: none;
+      transition-delay: 0.01s;
+    }
+
+    .form {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .fab-overlay {
+      animation: expand 0.3s linear forwards;
+    }
+
+    @keyframes expand {
+      90% {
+        top: 2rem;
+        right: 1.5rem;
+        bottom: 2.5rem;
+      }
+
+      to {
+        top: 1rem;
+        left: 1rem;
+        bottom: 1rem;
+        right: 1rem;
+        background: var(--md-sys-color-surface);
+      }
+    }
+
+    @keyframes collapse {
+      from {
+        top: 1rem;
+        left: 1rem;
+        bottom: 1rem;
+        right: 1rem;
+        background: var(--md-sys-color-surface);
+      }
+      to {
+        top: var(--top, unset);
+        left: var(--left, unset);
+        right: 0.5rem;
+        bottom: 5.5rem;
+        background: var(--md-sys-color-secondary-container);
+      }
+    }
+  }
+
+  &.collapse {
+    .close {
+      transition: 0.3s ease;
+      opacity: 0;
+    }
+
+    .fab-overlay {
+      animation: collapse 0.3s linear alternate forwards;
+    }
+  }
+}
+
+.device {
+  width: 30rem;
+  aspect-ratio: 3/ 3.5;
+  border-radius: var(--md-frame-shape-radius);
+  border: 0.5rem solid var(--md-ref-secondary80);
+  background: var(--md-sys-color-background);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+
+  &:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url(https://assets.codepen.io/907471/noise.svg);
+    mix-blend-mode: overlay;
+    filter: invert(1);
+    pointer-events: none;
+  }
+}
+
+.bottom-app-bar {
+  background: var(--md-sys-color-surface);
+  position: absolute;
+  bottom: 0;
+  height: 5rem;
+  width: 100%;
+
+  &:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--md-sys-color-primary);
+    opacity: 0.08;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 12rem;
+    right: 12rem;
+    bottom: 0.5rem;
+    height: 0.25rem;
+    border-radius: 1rem;
+    background-color: var(--md-ref-neutral0);
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  inset: 0;
+  padding: 1rem;
+  gap: 2rem;
+}
+
+.card {
+  background: var(--md-sys-color-secondary-container);
+  width: 100%;
+  flex: 0 0 11rem;
+  border-radius: var(--md-card-shape-radius);
+  position: relative;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    border-radius: inherit;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 80%;
+    background: conic-gradient(
+        from 180deg at 70% 30%,
+        transparent,
+        hsla(0, 0, 100%, 0.3)
+      ),
+      conic-gradient(
+        from 180deg at 30% 30%,
+        transparent,
+        var(--md-sys-scolor-secondary)
+      ),
+      conic-gradient(
+        from -45deg at 50% 60%,
+        transparent,
+        var(--md-sys-scolor-secondary)
+      ),
+      conic-gradient(
+        from 45deg at 50% 60%,
+        transparent,
+        var(--md-sys-scolor-secondary)
+      ),
+      white;
+    background-size: cover;
+    opacity: 0.8;
+  }
+}
+
+a {
+  color: inherit;
+}
+
+h1 {
+  @include headline-l;
+  margin-bottom: 0;
+}
+
+h2 {
+  @include title-l;
+}
+
+.info {
+  max-width: 30rem;
+}
+
+.demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+body {
+  @include body-l();
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: #dde7d1;
+  color: var(--md-sys-color-on-background);
+  overflow: hidden;
+}
+
+svg {
+  path {
+    fill: var(--md-sys-color-on-background);
+  }
+}
+
+:root {
+    @media screen and (max-height: 600px) {
+    font-size: 8px;  
+  }
+  
+  @media screen and (min-height: 601px) 
+    and (max-height: 800px) {
+    font-size: 10px;  
+  }
+}
+
+* {
+  box-sizing: border-box;
+}

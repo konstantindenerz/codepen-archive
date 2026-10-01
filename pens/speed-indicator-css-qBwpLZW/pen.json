@@ -1,0 +1,47 @@
+{
+  "slug": "qBwpLZW",
+  "dir": "speed-indicator-css-qBwpLZW",
+  "newEditor": false,
+  "title": "Speed Indicator (CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/qBwpLZW",
+  "description": "This post inspired me to implement it with CSS: \nhttps://twitter.com/drawsgood/status/1775561602013487421 😍\n\n✅ Works great in Chrome",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "indicator",
+    "speed",
+    "webdev"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-04-04 00:37:55 UTC",
+  "updatedAt": "2024-12-13 09:11:48 UTC",
+  "counts": {
+    "loves": 136,
+    "views": 6529,
+    "comments": 3
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap\" rel=\"stylesheet\">",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

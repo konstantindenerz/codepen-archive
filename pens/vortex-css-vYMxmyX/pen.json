@@ -1,0 +1,48 @@
+{
+  "slug": "vYMxmyX",
+  "dir": "vortex-css-vYMxmyX",
+  "newEditor": false,
+  "title": "Vortex 🌀 (CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/vYMxmyX",
+  "description": "I'm not sure if it's the pleasant anticipation for the Revision Event, but I felt the need to express it through code. #CSS \n\n✅ Works great in Chrome\n💡 Try different scales (1x, .5x, .25x)",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "art",
+    "vortex",
+    "gm",
+    "revision"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-03-20 17:54:14 UTC",
+  "updatedAt": "2024-12-21 20:10:40 UTC",
+  "counts": {
+    "loves": 22,
+    "views": 1378,
+    "comments": 2
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap\" rel=\"stylesheet\">",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

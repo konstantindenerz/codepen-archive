@@ -1,0 +1,68 @@
+c64-logo {
+  --x: 62%;
+  --r1: 45%;
+  --r2: 25%;
+
+  display: block;
+  width: var(--logo-size);
+  aspect-ratio: 1;
+  /* ✨ */
+  clip-path: shape(
+    from var(--x) 8%,
+    arc to var(--x) 92% of var(--r1) large ccw,
+    line to var(--x) 72%,
+    arc to var(--x) 28% of var(--r2) large cw,
+    close,
+    
+    move to 63% 30%,
+    hline to 100%,
+    line to 86% 48%,
+    hline to 63%,
+    close,
+    
+    move to 63% 52%,
+    hline to 86%,
+    line to 100% 70%,
+    hline to 63%,
+    close
+  );
+  background: conic-gradient(
+    from 90deg at 57% 52%,
+    var(--logo-color-2) 20%,
+    var(--logo-color-1) 21%
+  );
+  
+  transition: all .3s ease;
+}
+
+:root {
+  --logo-size: 66vmin;
+  --logo-color-1: var(--c64-light-blue);
+  --logo-color-2: var(--c64-purple);
+
+  --c64-black: #000000;
+  --c64-white: #ffffff;
+  --c64-red: #68372b;
+  --c64-cyan: #70a4b2;
+  --c64-purple: #6f3d86;
+  --c64-green: #588d43;
+  --c64-blue: #352879;
+  --c64-yellow: #b8c76f;
+
+  --c64-orange: #6f4f25;
+  --c64-brown: #433900;
+  --c64-light-red: #9a6759;
+  --c64-dark-gray: #444444;
+  --c64-gray: #6c6c6c;
+  --c64-light-green: #9ad284;
+  --c64-light-blue: #6c5eb5;
+  --c64-light-gray: #959595;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--c64-blue);
+  margin: 0;
+}

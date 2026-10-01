@@ -1,0 +1,48 @@
+{
+  "slug": "KKxeWKj",
+  "dir": "3d-glass-switch-pure-css-neumorphic-animation-KKxeWKj",
+  "newEditor": false,
+  "title": "3D Glass Switch (Pure CSS, Neumorphic, Animation)",
+  "url": "https://codepen.io/konstantindenerz/pen/KKxeWKj",
+  "description": "Best result in Chromium-based browsers (Houdini 🧙‍♂️ support) ✅ \n\n✅ CSS Variables\n✅ @property-rule 🧙‍♂️\n✅ gradients\n✅ backdrop-filter\n❌ no JS\n\nAmazing Inspiration: https://dribbble.com/shots/19453000-3D-Glass-Switch",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "switch",
+    "animation",
+    "neumorphic",
+    "glass"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-03-16 18:21:05 UTC",
+  "updatedAt": "2023-03-17 14:06:46 UTC",
+  "counts": {
+    "loves": 315,
+    "views": 15891,
+    "comments": 6
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 1
+    }
+  ],
+  "hasSource": true
+}

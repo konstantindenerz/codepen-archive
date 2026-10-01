@@ -1,0 +1,525 @@
+@use 'sass:math';
+
+:root {
+  --color-primary: #58C6A2;
+  --color-secondary: #ee75d2;
+  --color-tertiary: #deee75;
+  --color-quaternary: #9375ee;
+  --color-surface: black;
+
+  --color-floor: #210c39;
+
+  --color-axes-x: #deee75;
+  --color-axes-y: #9375ee;
+  --font-size: .1625rem; // todo move to settings
+}
+
+
+:root {
+  --tp-base-background-color: var(--color-surface);
+  --tp-base-shadow-color: hsla(0, 0%, 0%, 0.2);
+  --tp-button-background-color: var(--color-secondary);
+  --tp-button-background-color-active: hsla(230, 7%, 85%, 1.00);
+  --tp-button-background-color-focus: hsla(230, 7%, 80%, 1.00);
+  --tp-button-background-color-hover: hsla(230, 7%, 75%, 1.00);
+  --tp-button-foreground-color: hsla(230, 7%, 17%, 1.00);
+  --tp-container-background-color: hsla(230, 7%, 75%, 0.10);
+  --tp-container-background-color-active: hsla(230, 7%, 75%, 0.25);
+  --tp-container-background-color-focus: hsla(230, 7%, 75%, 0.20);
+  --tp-container-background-color-hover: hsla(230, 7%, 75%, 0.15);
+  --tp-container-foreground-color: hsla(230, 7%, 75%, 1.00);
+  --tp-groove-foreground-color: hsla(230, 7%, 75%, 0.10);
+  --tp-input-background-color: hsla(230, 7%, 75%, 0.10);
+  --tp-input-background-color-active: hsla(230, 7%, 75%, 0.25);
+  --tp-input-background-color-focus: hsla(230, 7%, 75%, 0.20);
+  --tp-input-background-color-hover: hsla(230, 7%, 75%, 0.15);
+  --tp-input-foreground-color: var(--color-primary);
+  --tp-label-foreground-color: hsla(230, 7%, 75%, 0.70);
+  --tp-monitor-background-color: hsla(230, 7%, 0%, 0.20);
+  --tp-monitor-foreground-color: hsla(230, 7%, 75%, 0.70);
+}
+
+@property --scene-rotate-x {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+@property --scene-rotate-y {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+@property --scene-rotate-z {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+@property --scene-translate-x {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --scene-translate-y {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --scene-translate-z {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0;
+}
+
+.scene {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  inset: 0;
+  transform: rotateX(var(--scene-rotate-x, 0deg)) rotateY(var(--scene-rotate-y, 360deg)) rotateZ(var(--scene-rotate-z, 0deg)) translateX(var(--scene-translate-x, 0))  translateY(var(--scene-translate-y, 0)) translateZ(var(--scene-translate-z, 0));
+  transform-style: preserve-3d;
+  animation: fly var(--scene-animation-duration) infinite linear;
+  pointer-events: none;
+}
+
+
+@keyframes fly {
+  from {
+    --scene-translate-x: 0;
+    --scene-translate-y: 0;
+    --scene-translate-z: 0;
+  }
+
+  1% {
+
+    --scene-translate-y: -6.5000rem;
+    --scene-translate-z: 4.000rem;
+  }
+
+
+  2% {
+    --scene-rotate-x: -13deg;
+    --scene-rotate-z: -6deg;
+    --scene-translate-y: -5.5000rem;
+    --scene-translate-z: 24.000rem;
+  }
+
+  3% {
+    --scene-rotate-x: -13deg;
+    --scene-rotate-z: -12deg;
+    --scene-rotate-y: 0deg;
+    --scene-translate-x: 0rem;
+    --scene-translate-y: -5.5000rem;
+    --scene-translate-z: 40.000rem;
+  }
+
+  4% {
+    --scene-rotate-x: -15deg;
+    --scene-rotate-y: -23deg;
+    --scene-rotate-z: 15deg;
+    --scene-translate-x: 15.5000rem;
+    --scene-translate-y: -10.5000rem;
+    --scene-translate-z: 43.500rem;
+  }
+
+  5% {
+    --scene-rotate-x: -15.65deg;
+    --scene-rotate-y: -93.91deg;
+    --scene-rotate-z: -7.83deg;
+    --scene-translate-x: 64.375rem;
+    --scene-translate-y: 2.1875rem;
+    --scene-translate-z: -2.1875rem;
+  }
+
+  5.1% {
+    --scene-rotate-x: -15.65deg;
+    --scene-rotate-y: -93.91deg;
+    --scene-rotate-z: -7.83deg;
+    --scene-translate-x: 69.375rem;
+    --scene-translate-y: -2.1875rem;
+    --scene-translate-z: -2.1875rem;
+  }
+
+  7%{
+    --scene-rotate-x: 0deg;
+    --scene-rotate-y: -281.91deg;
+    --scene-rotate-z: -46.83deg;
+    --scene-translate-x: 17.375rem;
+    --scene-translate-y: -23.1875rem;
+    --scene-translate-z: 10.1875rem;
+  }
+
+  8% {
+    --scene-rotate-x: -15.65deg;
+    --scene-rotate-y: -273.26deg;
+    --scene-rotate-z: 0deg;
+    --scene-translate-x: -32.375rem;
+    --scene-translate-y: -6.75rem;
+    --scene-translate-z: 2.12rem;
+  }
+
+
+  to {
+    --scene-translate-x: 0;
+    --scene-translate-y: 0;
+    --scene-translate-z: 0;
+  }
+}
+
+$count: 16;
+@property --mask-size {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 0%;
+}
+
+
+.face {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  inset: 0;
+  width: var(--tower-width);
+  height: var(--tower-height);
+  background: radial-gradient(at center, color-mix(in srgb, var(--color-primary), transparent 40%), rgba(0, 0, 0, .2));
+  --border-color: color-mix(in srgb, var(--color-primary), transparent 60%);
+  box-shadow: -1px -1px 1px var(--border-color);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, .5);
+  overflow: clip;
+  padding: .2rem;
+
+
+  .content {
+    line-height: calc(var(--font-size) * 2);
+    text-shadow: none;
+    position: absolute;
+    inset: .2rem;
+
+    .c1, .c2 {
+      white-space: pre;
+      position: absolute;
+      inset: .25rem;
+      animation: scroll-text calc(var(--delay) * 1s) linear infinite;
+      clip-path: polygon(0% 0%, 100% 0%, 100% var(--mask-size), 0% var(--mask-size));
+    }
+
+    .c2 {
+      animation-delay: calc(var(--delay) * .5s);
+    }
+
+    .c3 {
+      position: absolute;
+      left: 1.25rem;
+      display: grid;
+      place-items: center;
+      color: color-mix(in srgb, var(--color-primary), white 50%);
+      font-size: 0.2rem;
+      top: 2.8rem;
+      filter: saturate(0);
+      transform: scaleX(-1);
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: -1rem;
+      right: -1rem;
+      top: 0;
+      height: .125rem;
+      opacity: 0;
+      background: var(--color-primary);
+      box-shadow: 0 0 .625rem rgba(255, 255, 255, .5);
+      animation: move-bottom-top 3s ease infinite;
+      animation-delay: calc(var(--face-delay) * .5s);
+    }
+  }
+
+  @keyframes move-bottom-top {
+    from {
+      transform: translateY(1rem);
+      opacity: 0;
+    }
+    50% {
+      transform: translateY(var(--tower-height));
+      opacity: 1;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 0;
+    }
+  }
+
+  @keyframes scroll-text {
+    from {
+      --mask-size: 50%;
+    }
+    50% {
+      --mask-size: 100%;
+    }
+    51% {
+      --mask-size: 0%;
+    }
+
+    to {
+      --mask-size: 0%;
+    }
+  }
+
+  &.front {
+    transform: translateZ(var(--width-half));
+  }
+
+  &.back {
+    transform: translateZ(var(--width-half-negative)) rotateY(180deg);
+  }
+
+  &.top {
+    height: var(--tower-width);
+    transform: translateY(var(--width-half-negative)) rotateX(90deg);
+    white-space: pre;
+    font-family: monospace;
+  }
+
+  &.bottom {
+    height: var(--tower-width);
+    transform: translateY(var(--tower-height)) translateZ(var(--width-half)) rotateX(-90deg);
+    box-shadow: 0 0 10rem color-mix(in srgb, var(--color-primary), rgba(255, 255, 255, .5) 20%),
+    0 0 1rem color-mix(in srgb, var(--color-primary), rgba(255, 255, 255, .5) 20%),
+    0 0 4rem color-mix(in srgb, var(--color-primary), transparent 80%);
+    background: transparent;
+    transform-origin: top;
+  }
+
+  &.right {
+    transform: translateX(var(--width-half)) rotateY(90deg);
+  }
+
+  &.left {
+    transform: translateX(var(--width-half-negative)) rotateY(-90deg);
+  }
+}
+
+.face {
+  font-size: var(--font-size);
+}
+
+@keyframes fade-in-out {
+  from {
+    opacity: 1;
+  }
+  50% {
+    opacity: .8;
+  }
+  51% {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in-out-2 {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  55% {
+    opacity: .8;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+.tower {
+  --width-half: calc(var(--tower-width) / 2);
+  --height-half: calc(var(--tower-height) / 2);
+  --width-half-negative: calc(var(--width-half) * -1);
+  --height-half-negative: calc(var(--height-half) * -1);
+  transform-style: preserve-3d;
+  transform: translateX(var(--x)) translateY(calc(var(--tower-height) * -1)) translateZ(calc(var(--y) + var(--width-half)));
+  pointer-events: all;
+  position: absolute;
+  $i: 0;
+  $half: $count / 4;
+  $quarter: $half / 2;
+  @for $x from 0 through $half - 1 {
+    @for $y from 0 through $half - 1 {
+      &:nth-child(#{$i + 1}) {
+        --i: #{$i};
+        --x: calc((#{$x - ($half / 2)}) * var(--tower-width) - (var(--tower-gap) * #{$quarter}) + (var(--tower-gap) / 2) + (var(--tower-gap) * #{$x}));
+        --y: calc((#{$y - ($half / 2)}) * var(--tower-width) - (var(--tower-gap) * #{$quarter}) + (var(--tower-gap) / 2) + (var(--tower-gap) * #{$y}));
+      }
+      $i: $i + 1;
+    }
+  }
+}
+
+
+@function floor-grid($color, $thickness) {
+  @return repeating-linear-gradient(0deg, $color 0, $color $thickness, transparent $thickness, transparent var(--floor-tile-size, 1rem)),
+  repeating-linear-gradient(90deg, $color 0, $color $thickness, transparent $thickness, transparent var(--floor-tile-size, 1rem)),
+}
+
+@function floor-spotlight($color: black) {
+  @return radial-gradient(at center, transparent, $color var(--floor-spotlight, 60%));
+}
+
+
+@function axe-x($color: white) {
+  @return linear-gradient(to right, $color, $color) no-repeat center calc(50% - var(--axes-width) / 2) / auto var(--axes-width);
+}
+
+@function axe-z($color: white) {
+  @return linear-gradient(to bottom, $color, $color) no-repeat center calc(50% - var(--axes-width) / 2) / var(--axes-width) auto;
+}
+
+@function axe-y($color: white) {
+  @return axe-x($color);
+}
+
+@property --light {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0;
+}
+
+
+@mixin light_base {
+  position: absolute;
+  --glow: color-mix(in srgb, var(--color-primary), rgba(255,255,255,.2) 70%);
+  background: var(--color-primary);
+  box-shadow: -2px -2px 5px var(--glow),0 0 15px var(--glow), 2px 2px 5px var(--glow);
+  border-radius: 100%;
+  transform-style: preserve-3d;
+  opacity: 0;
+  animation: light 4s ease infinite;
+}
+
+.light1 {
+  @include light_base;
+  height: 6rem;
+  width: .25rem;
+  transform: translateX(1rem) translateY(calc(var(--floor-translate-y, 0rem) - .1rem)) translateZ(calc(-20rem + var(--light))) rotateX(90deg);
+}
+
+.light2 {
+  @include light_base;
+  height: .15rem;
+  width: 3rem;
+  transform: translateX(calc(-20rem + var(--light))) translateY(calc(var(--floor-translate-y, 0rem) - .1rem)) translateZ(12rem) rotateX(90deg);
+  animation-delay: 1s;
+  animation-duration: 5s;
+  --max: 55rem;
+}
+
+.light3 {
+  @include light_base;
+  height: .15rem;
+  width: 4rem;
+  transform: translateX(calc(-20rem + var(--light))) translateY(calc(var(--floor-translate-y, 0rem) - .1rem)) translateZ(-1rem) rotateX(90deg);
+  animation-delay: .2s;
+  animation-duration: 6s;
+  --max: 65rem;
+}
+
+
+@keyframes light {
+  from {
+    --light: 0;
+    opacity: 0;
+  }
+  2% {
+    opacity: 1;
+  }
+
+  10% {
+    --light: var(--max, 40rem);
+    opacity: 0;
+  }
+  11% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0;
+    --light: var(--max, 40rem);
+  }
+}
+
+
+
+.floor {
+  position: absolute;
+  inset: var(--floor-size, -50rem);
+  background: axe-x(var(--color-axes-x)), axe-z(var(--color-axes-z)), floor-spotlight(), floor-grid(var(--color-floor), .2rem);
+  transform-style: preserve-3d;
+  transform: rotateX(var(--floor-rotate-x, 90deg)) translateZ(var(--floor-translate-y, 0rem));
+  pointer-events: all;
+
+  &:after {
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: axe-y(var(--color-axes-y, 1px));
+    backface-visibility: visible;
+    transform: rotateZ(90deg) rotateY(90deg);
+    transform-style: preserve-3d;
+    animation: rotate-axe-y var(--scene-animation-duration) infinite linear;
+    @keyframes rotate-axe-y {
+      to {
+        transform: rotateZ(360deg) rotateY(90deg);
+      }
+    }
+  }
+}
+
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--color-surface);
+  margin: 0;
+  color: var(--color-primary);
+  perspective: var(--perspective, 800px);
+  font-family: Silkscreen, 'SF Mono', 'Courier New', 'monospace';
+  overflow: clip;
+  pointer-events: all;
+  user-select: none;
+  &:after {
+    content: "";
+    position: absolute;
+    background: url(https://assets.codepen.io/907471/noise.svg);
+    mix-blend-mode: lighten;
+    inset: 0;
+    pointer-events: none;
+    opacity: .5;
+    filter: invert(1) brightness(0.1);
+    z-index: var(--labs-sys-z-noise);
+  }
+}
+
+a.labs-follow-me-twitter {
+  position: absolute;
+  left: auto;
+  right: auto;
+  display: grid;
+  place-items: center;
+  top: unset;
+  bottom: 4rem;
+  backdrop-filter: blur(1rem);
+}
+
+* {
+  box-sizing: border-box;
+}

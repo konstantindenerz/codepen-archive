@@ -1,0 +1,36 @@
+{
+  "slug": "KKOYdpp",
+  "dir": "random-walk-js-KKOYdpp",
+  "newEditor": false,
+  "title": "Random Walk ⚡️ (JS)",
+  "url": "https://codepen.io/konstantindenerz/pen/KKOYdpp",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2024-11-15 19:42:26 UTC",
+  "updatedAt": "2024-11-15 19:57:36 UTC",
+  "counts": {
+    "loves": 39,
+    "views": 1765,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

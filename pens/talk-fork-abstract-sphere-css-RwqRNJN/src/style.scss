@@ -1,0 +1,125 @@
+@use 'sass:math';
+
+$count: 400;
+$length: math.sqrt($count);
+
+// https://caniuse.com/mdn-css_at-rules_property
+
+@layer props {
+  @property --a {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 0deg;
+  }
+
+  @property --ratio {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+}
+
+@keyframes rotate {
+  from {
+    --a: 0deg;
+  }
+  to {
+    --a: 360deg;
+  }
+}
+
+@keyframes move {
+  from {
+    --ratio: 1;
+  }
+  
+  30% {
+    --ratio: 1;
+  }
+
+  50% {
+    --ratio: 3;
+  }
+  
+  70% {
+    --ratio: 1;
+  }
+
+
+  to {
+    --ratio: 1;
+  }
+}
+
+:root {
+  --d: 50vmin;
+  --r: calc(var(--d) / 2);
+  --pi: #{math.$pi};
+  --surface-size: calc(var(--d) / #{$length});
+}
+
+.scene {
+  perspective: 100vmin;
+}
+
+.sphere {
+  position: relative;
+  width: var(--d);
+  aspect-ratio: 1;
+  transform-style: preserve-3d;
+  transform: rotate3d(1, 1, 1, var(--a));
+  --ratio: 1;
+  animation: rotate 10s linear infinite, move 16s 2s linear infinite;
+
+  .slice {
+    transform-style: preserve-3d;
+    border-radius: 50%;
+    position: absolute;
+    border: 2px solid red;
+    inset: 0;
+    --angle-offset: #{360deg / $length};
+    border-color: #A8C8FFa2;
+    transform: rotateY(var(--slice-offset));
+    @for $sliceIndex from 0 through $length - 1 {
+      &:nth-child(#{$sliceIndex + 1}) {
+        --slice-index: #{$sliceIndex};
+        --slice-offset: calc(var(--angle-offset) * var(--slice-index));
+        .surface {
+          height: var(--surface-size);
+          --w: calc(var(--d) * var(--pi) / #{$length});
+          width: var(--w);
+
+          background: #DBBCE12a;
+          border: 1px
+            solid
+            #9fa8b82a;
+          transform: rotateY(90deg)
+            rotateX(calc(var(--surface-offset) * var(--ratio)))
+            translateZ(calc(cos(var(--surface-offset)) * var(--r)));
+          @for $surfaceIndex from 0 through $length - 1 {
+            &:nth-child(#{$surfaceIndex + 1}) {
+              --surface-index: #{$surfaceIndex};
+              --surface-offset: calc(
+                var(--angle-offset) * var(--surface-index)
+              );
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(#1f1422, black, #1f0f0a, black, #110b1e, black, #1f1422);
+  position: relative;
+  color: #A8C8FF;
+}
+
+* {
+  box-sizing: border-box;
+}

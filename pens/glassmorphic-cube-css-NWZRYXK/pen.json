@@ -1,0 +1,36 @@
+{
+  "slug": "NWZRYXK",
+  "dir": "glassmorphic-cube-css-NWZRYXK",
+  "newEditor": false,
+  "title": "Glassmorphic Cube (CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/NWZRYXK",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2024-07-25 10:22:45 UTC",
+  "updatedAt": "2025-04-18 17:12:55 UTC",
+  "counts": {
+    "loves": 162,
+    "views": 9185,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

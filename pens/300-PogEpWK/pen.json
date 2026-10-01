@@ -1,0 +1,48 @@
+{
+  "slug": "PogEpWK",
+  "dir": "300-PogEpWK",
+  "newEditor": false,
+  "title": "300 🎉",
+  "url": "https://codepen.io/konstantindenerz/pen/PogEpWK",
+  "description": "Wow! Reached 300 followers on X and CodePen. 🎉 Huge thanks to each and every one of you and to CodePen for the support! 😍 \n\nMy new CodePen celebrates this milestone with an animated text using just a pseudo-element (Multiple Backgrounds ✨ ). \n",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "300",
+    "css",
+    "gm",
+    "awesome",
+    "party"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-04-03 06:08:48 UTC",
+  "updatedAt": "2025-03-25 21:25:21 UTC",
+  "counts": {
+    "loves": 33,
+    "views": 1674,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": " <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap\" rel=\"stylesheet\">\n",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

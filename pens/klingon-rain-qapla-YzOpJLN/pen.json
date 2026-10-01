@@ -1,0 +1,53 @@
+{
+  "slug": "YzOpJLN",
+  "dir": "klingon-rain-qapla-YzOpJLN",
+  "newEditor": false,
+  "title": "Klingon Rain | Qapla'",
+  "url": "https://codepen.io/konstantindenerz/pen/YzOpJLN",
+  "description": "nuqneH",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "klingon",
+    "qapla",
+    "rain",
+    "matrix",
+    "nuqneh"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-02-27 15:02:31 UTC",
+  "updatedAt": "2024-01-30 07:59:52 UTC",
+  "counts": {
+    "loves": 25,
+    "views": 1042,
+    "comments": 2
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "typescript"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.ts"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "css",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.css",
+      "order": 1
+    },
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 1
+    }
+  ],
+  "hasSource": true
+}

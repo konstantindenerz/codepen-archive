@@ -1,0 +1,48 @@
+{
+  "slug": "XWGVoWg",
+  "dir": "blinky-clyde-inky-pinky-XWGVoWg",
+  "newEditor": false,
+  "title": "Blinky, Clyde, Inky & Pinky",
+  "url": "https://codepen.io/konstantindenerz/pen/XWGVoWg",
+  "description": "Supporting actors from the scene: https://codepen.io/konstantindenerz/pen/dyrzjPq",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "arcade",
+    "pacman",
+    "game",
+    "fun"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-01-29 18:47:00 UTC",
+  "updatedAt": "2024-01-29 21:39:43 UTC",
+  "counts": {
+    "loves": 45,
+    "views": 1706,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

@@ -1,0 +1,271 @@
+@property --ratio-x {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --correction {
+  syntax: "<percent>";
+  inherits: true;
+  initial-value: 0%;
+}
+
+@property --ratio-y {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+
+:root {
+  --labs-sys-color-surface: #444;
+  --labs-sys-color-on-surface: hsl(0, 100%, 0%);
+  --labs-sys-color-background: black;
+  --labs-sys-radius-surface: 2rem;
+  --c1: #ddb4eb;
+}
+
+.logo {
+  color: white;
+  font-weight: bold;
+  font-size: 7cqw;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  &:before {
+    position: absolute;
+    content: "CSS";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    color: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+  }
+
+  &:after {
+    position: absolute;
+    content: "CSS";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    color: white;
+    transform-style: preserve-3d;
+    transition: all .2s linear;
+    transform: perspective(100px)
+      translateZ(calc(0.01rem + 0.5rem * var(--ratio-x)))
+      translate(
+        calc(0rem + var(--ratio-x) * -1rem),
+        calc(0rem + var(--ratio-y) * -1rem)
+      )
+      rotateY(calc(-10deg * var(--ratio-x)))
+      rotateX(calc(10deg * var(--ratio-y)));
+  }
+}
+
+.holo-bg {
+  position: absolute;
+  border-radius: inherit;
+  --size: 0;
+  top: var(--size);
+  right: var(--size);
+  bottom: var(--size);
+  left: var(--size);
+  background: radial-gradient(
+      ellipse at calc(90% - var(--ratio-x) * 20%)
+        calc(0% - var(--ratio-y) * 20%),
+      rgba(255, 255, 255, 0.7),
+      var(--c1) 1%,
+      hsl(306deg 100% 63% / 76%) 20%,
+      transparent
+    ),
+    linear-gradient(
+      110deg,
+      #0093ff calc(10% - var(--ratio-x) * 20%),
+      #51d6fd calc(20% - var(--ratio-x) * 20%),
+      #0093ff calc(30% - var(--ratio-x) * 20%),
+      hsl(306deg 100% 63% / 76%) calc(60% - var(--ratio-x) * 20%),
+      transparent calc(100% - var(--ratio-x) * 20%),
+      transparent
+    );
+  transition: all 0.2s linear, opacity 0.8s ease;
+  mix-blend-mode: hard-light;
+  opacity: 0.3;
+}
+
+.holo-lines {
+  mask-image: url(https://assets.codepen.io/907471/holo-card-lines.png?v5);
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  --size: 0.001rem;
+  top: var(--size);
+  right: var(--size);
+  bottom: var(--size);
+  left: var(--size);
+  pointer-events: none;
+  background: linear-gradient(
+    110deg,
+    #0093ff calc(10% - var(--ratio-x) * 20% - var(--correction)),
+    #51d6fd calc(20% - var(--ratio-x) * 20% - var(--correction)),
+    #0093ff calc(30% - var(--ratio-x) * 20% - var(--correction)),
+    hsla(192, 83%, calc(77% - 20% * var(--ratio-x)), 1)
+      calc(40% - var(--ratio-x) * 20% - var(--correction)),
+    transparent calc(60% - var(--ratio-x) * 20% - var(--correction)),
+    magenta calc(70% - var(--ratio-x) * 20% - var(--correction)),
+    black calc(80% - var(--ratio-x) * 20% - var(--correction))
+  );
+  transition: all 0.2s linear;
+  pointer-events: none;
+}
+
+.circles {
+  position: absolute;
+  border-radius: inherit;
+  --size: 0;
+  overflow: hidden;
+  top: var(--size);
+  left: var(--size);
+  right: var(--size);
+  bottom: var(--size);
+  &:before {
+    content: "";
+    position: absolute;
+    aspect-ratio: 1/1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        ellipse at 50% 50%,
+        hsl(194deg 98% 65% / 41%) 0.25rem,
+        transparent 0.25rem,
+        transparent
+      )
+      repeat;
+    background-size: 1rem 1rem;
+    background-position: left top;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    aspect-ratio: 1/1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        ellipse at 50% 50%,
+        hsl(194deg 98% 65% / 41%) 0.25rem,
+        transparent 0.25rem,
+        transparent
+      )
+      repeat;
+    background-size: 1rem 1rem;
+    background-position: left top;
+    transform: translate(50%, 100%) rotate(45deg);
+  }
+  opacity: 0.1;
+  transition: all 0.8s ease;
+}
+
+.card {
+  containter-type: inline-size;
+  overflow: hidden;
+  width: 50vmin;
+  aspect-ratio: 3.126 / 4;
+  color: var(--labs-sys-color-on-surface);
+  border-radius: 4cqw;
+  position: relative;
+
+  --ratio-x: 1;
+  --ratio-y: 1;
+
+  transform-style: preserve-3d;
+  transition: transform 0.2s linear;
+  transform: rotateY(calc(-20deg * var(--ratio-x)))
+    rotateX(calc(20deg * var(--ratio-y)));
+  --correction: 100%;
+  &:hover {
+    transform: rotateY(calc(-20deg * var(--ratio-x)))
+      rotateX(calc(20deg * var(--ratio-y)));
+    --correction: 0%;
+    .holo-bg {
+      opacity: 0.8;
+    }
+
+    .circles {
+      opacity: 1;
+    }
+  }
+
+  &.rotate {
+    animation: rotate 10s ease-in-out infinite;
+    --correction: 30%;
+    .holo-bg {
+      opacity: 0.8;
+    }
+
+    .circles {
+      opacity: 1;
+    }
+  }
+}
+
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  font-family: Inter, "Helvetica Neue", Helvetica, sans-serif;
+  perspective: 30rem;
+  position: relative;
+  background: radial-gradient(ellipse at 50% 50%, #151578, black);
+  color: var(--c1);
+  overflow: hidden;
+}
+
+html {
+  min-height: 40rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@keyframes rotate {
+  from {
+    --ratio-x: 1.2;
+    --ratio-y: 1.2;
+  }
+
+  30% {
+    --ratio-x: -1.5;
+    --ratio-y: 0.2;
+  }
+  
+  50% {
+    --ratio-x: .5;
+    --ratio-y: .2;
+  }
+  
+  70% {
+    --ratio-x: -1.5;
+    --ratio-y: -1.2;
+  }
+
+  to {
+    --ratio-x: 1.2;
+    --ratio-y: 1.2;
+  }
+}

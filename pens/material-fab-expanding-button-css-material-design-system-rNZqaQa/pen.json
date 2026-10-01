@@ -1,0 +1,48 @@
+{
+  "slug": "rNZqaQa",
+  "dir": "material-fab-expanding-button-css-material-design-system-rNZqaQa",
+  "newEditor": false,
+  "title": "Material - FAB  (Expanding Button, CSS, Material Design System)",
+  "url": "https://codepen.io/konstantindenerz/pen/rNZqaQa",
+  "description": "Demonstration of the floating action button's expand / collapse behavior.\n\nMaterial design system: https://material.io/",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "cpc-expanding-buttons",
+    "codepenchallenge",
+    "css",
+    "material",
+    "designsystem"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-03-21 08:21:47 UTC",
+  "updatedAt": "2023-03-22 06:30:39 UTC",
+  "counts": {
+    "loves": 69,
+    "views": 3469,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

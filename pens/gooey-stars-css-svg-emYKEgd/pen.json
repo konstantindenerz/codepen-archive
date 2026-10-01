@@ -1,0 +1,36 @@
+{
+  "slug": "emYKEgd",
+  "dir": "gooey-stars-css-svg-emYKEgd",
+  "newEditor": false,
+  "title": "Gooey Stars (CSS & SVG)",
+  "url": "https://codepen.io/konstantindenerz/pen/emYKEgd",
+  "description": "🖖 0,5 Scale Factor",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2025-03-23 19:42:31 UTC",
+  "updatedAt": "2025-03-26 06:24:03 UTC",
+  "counts": {
+    "loves": 211,
+    "views": 5792,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

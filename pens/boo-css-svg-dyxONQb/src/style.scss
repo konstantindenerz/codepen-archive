@@ -1,0 +1,390 @@
+svg {
+  --c: magenta;
+  --size: 10px;
+  --w: 1px;
+  border: 1px solid var(--c);
+  background: repeating-linear-gradient(
+      to right,
+      transparent,
+      transparent var(--size),
+      var(--c) var(--size),
+      var(--c) calc(var(--size) + var(--w))
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent var(--size),
+      var(--c) var(--size),
+      var(--c) calc(var(--size) + var(--w))
+    );
+}
+@property --step {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: true;
+}
+.ghost {
+  width: 200px;
+  aspect-ratio: 1 / 1.2;
+  --r: 6rem;
+  border-radius: var(--r) var(--r) 1rem 1rem;
+  position: absolute;
+  --func: ease-in-out;
+  animation: hover 3s var(--func) infinite;
+
+  .front {
+    border-radius: inherit;
+    background: radial-gradient(rgba(255, 255, 255, 0.5), transparent);
+    backdrop-filter: blur(0.1rem);
+    box-shadow: inset -1rem -1rem 5rem rgba(255, 255, 255, 0.8),
+      inset 1rem -1rem 2rem rgba(255, 255, 255, 0.6),
+      inset -1rem -1rem 2rem rgba(255, 255, 255, 0.6),
+      inset 0rem 1rem 2rem rgba(255, 255, 255, 0.6),
+      inset 0rem -4rem 2rem rgba(255, 255, 255, 0.6);
+    position: absolute;
+    inset: 0;
+    clip-path: url(#ghost);
+    overflow: clip;
+    display: grid;
+    place-items: center;
+  }
+
+  .eyes {
+    position: absolute;
+    display: flex;
+    gap: 2.5rem;
+    translate: 0 -2.5rem;
+  }
+
+  .eye {
+    border-radius: 50%;
+    width: 1.5rem;
+    aspect-ratio: 1;
+    background: black;
+    position: relative;
+    display: grid;
+    place-items: center;
+
+    &:before {
+      content: "";
+      width: 0.5rem;
+      translate: 0 -0.4rem;
+      aspect-ratio: 1;
+      border-radius: inherit;
+      background: white;
+      position: absolute;
+    }
+    &:after {
+      content: "";
+      width: 0.25rem;
+      translate: 0.35rem -0.035rem;
+      aspect-ratio: 1;
+      border-radius: inherit;
+      background: white;
+
+      position: absolute;
+    }
+  }
+  .mouth {
+    width: 2rem;
+    height: 1rem;
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: inset 0 0 0.5rem black;
+    border-radius: 4rem 4rem 20rem 20rem;
+    translate: 0 0.6rem;
+  }
+  .lights {
+    position: absolute;
+    inset: 0;
+
+    display: grid;
+    place-items: center;
+    filter: blur(1rem);
+    @keyframes light-move-up-down {
+      from {
+        background-position-y: 0%;
+      }
+
+      50% {
+        background-position-y: 10%;
+      }
+      from {
+        background-position-y: 00%;
+      }
+    }
+    @keyframes light-move {
+      from {
+        background-position-x: 0%;
+      }
+
+      to {
+        background-position-x: -1000%;
+      }
+    }
+    .l00 {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+          4rem 5rem at 50% 100%,
+          white 0.2rem,
+          white 2rem,
+          transparent 3rem
+        )
+        repeat-x 0 0% / 6rem 6rem;
+      animation: light-move 6s linear infinite,
+        light-move-up-down 1s linear infinite;
+      translate: 0 50%;
+    }
+    .l0 {
+      position: absolute;
+      width: 10.5rem;
+      height: 7rem;
+      background: radial-gradient(#ea61eb, transparent);
+      border-radius: 50%;
+      animation: rotate-light 2.3s linear infinite;
+      margin-top: 10rem;
+    }
+    .l1 {
+      position: absolute;
+      width: 4.5rem;
+      height: 3rem;
+      background: white;
+
+      border-radius: 50%;
+      transform: translate3d(0, 5rem, 0);
+    }
+    .l2 {
+      position: absolute;
+      width: 2.5rem;
+      height: 3rem;
+      background: white;
+
+      border-radius: 50%;
+      transform: translate3d(3rem, 4rem, 0);
+    }
+
+    .l3 {
+      position: absolute;
+      width: 2.5rem;
+      height: 3rem;
+      background: white;
+
+      border-radius: 50%;
+      transform: translate3d(-3rem, 4rem, 0);
+    }
+    .l4 {
+      position: absolute;
+      width: 3.5rem;
+      height: 3.5rem;
+      background: white;
+
+      border-radius: 50%;
+      transform: translate3d(3rem, -4rem, 0);
+    }
+
+    .l5 {
+      position: absolute;
+      width: 3.5rem;
+      height: 1.5rem;
+      background: radial-gradient(
+          2rem 2rem at center,
+          white 1rem,
+          transparent 1rem
+        ),
+        radial-gradient(#1fe7ffa8, transparent);
+
+      border-radius: 50%;
+      transform: translate3d(3rem, -4rem, 0);
+    }
+  }
+  .back {
+    border-radius: inherit;
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(0.5rem);
+    background: rgba(0, 0, 0, 0.2);
+    clip-path: url(#ghost-reverse);
+    opacity: 0;
+    animation: fade-in 0.35s 0.35s linear forwards;
+    box-shadow: inset -1rem -1rem 5rem rgba(255, 255, 255, 0.4),
+      inset 1rem -1rem 20rem rgba(255, 255, 255, 0.4);
+
+    &:before {
+      content: "💙";
+      filter: blur(1rem);
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      z-index: -10;
+      font-size: 5rem;
+      color: magenta;
+    }
+    &:after {
+      content: "";
+      background: magenta;
+      filter: blur(0.5rem);
+      position: absolute;
+      inset: 3rem;
+      border-radius: 50%;
+      display: grid;
+      rotate: 42deg;
+      translate: -10% 0;
+      place-items: center;
+      opacity: 0.2;
+    }
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    inset: -3rem;
+    background: radial-gradient(
+      50% 50% at center,
+      #a76ba88f,
+      #8e2d784f,
+      transparent
+    );
+    transform-style: preserve-3d;
+    transform: translate3d(0, 80%, 0) scale(var(--step)) perspective(600px) rotateX(60deg);
+  }
+}
+
+@keyframes rotate-light {
+  from {
+    transform: rotate(0deg) translate3d(0, 0rem, 0);
+  }
+
+  50% {
+    transform: rotate(-90deg) translate3d(-0.5rem, 0.5rem, 0);
+  }
+
+  to {
+    transform: rotate(-360deg) translate3d(0, 0rem, 0);
+  }
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 0.9;
+  }
+}
+
+@keyframes hover {
+  from {
+    --step: .8;
+    translate: -10% 40%;
+  }
+  50% {
+    --step: 1;
+    translate: -14% 50%;
+  }
+  to {
+    --step: .8;
+    translate: -10% 40%;
+  }
+}
+
+.boo {
+  position: absolute;
+
+  color: #fdfd63;
+  width: 20rem;
+  height: 20rem;
+  transform: translate3d(50%, 0%, 1rem) perspective(600px);
+
+  &:before {
+    clip-path: polygon(
+      6% 22%,
+      29% 94%,
+      29% 94%,
+      11% 27%,
+      94% 3%,
+      29% 94%,
+      7% 22%,
+      4% 19%,
+      29% 94%,
+      100% 0%
+    );
+    background: #00f2ff;
+    content: "";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    font-size: 2rem;
+    place-items: center;
+    animation: triangle 10s linear infinite;
+  }
+  &:after {
+    content: "Boo!";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    font-size: 8rem;
+    place-items: center;
+    animation: glitch 4s linear infinite;
+  }
+}
+
+@keyframes triangle {
+  from {
+    transform: translate(4rem, 0.8vmin) rotate(1deg);
+  }
+
+  50% {
+    transform: translate(3.5rem, 0vmin) rotateX(-15deg) rotateY(-20deg);
+  }
+
+  to {
+    transform: translate(4rem, 0.8vmin) rotate(1deg);
+  }
+}
+
+// glitch effect
+@keyframes glitch {
+  from {
+    --angle: 45deg;
+    transform: translateY(-0vh);
+  }
+
+  49.5% {
+    --angle: 360deg;
+    transform: translateY(-1vh);
+    filter: brightness(100%);
+  }
+  50% {
+    --angle: 360deg;
+    transform: translateY(-1vh) scaleY(0.1) skewX(253deg);
+    filter: brightness(190%);
+  }
+
+  51% {
+    --angle: 360deg;
+    transform: translateY(-1vh) scaleY(0.5) skewY(37deg);
+    filter: brightness(190%);
+  }
+
+  52% {
+    --angle: 360deg;
+    filter: brightness(190%);
+    transform: translateY(-0vh);
+  }
+
+  to {
+    --angle: 45deg;
+    transform: translateY(-0vh);
+  }
+}
+
+body {
+  display: grid;
+  place-items: center;
+  height: 100dvh;
+  background: linear-gradient(to bottom, black, #222) center center no-repeat;
+  font-family: "Press Start 2P", Helvetica, monospace;
+  overflow:hidden;
+}
+.container {
+  display: flex;
+  gap: 2rem;
+}

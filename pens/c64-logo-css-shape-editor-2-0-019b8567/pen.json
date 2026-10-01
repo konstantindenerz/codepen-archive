@@ -1,0 +1,36 @@
+{
+  "slug": "019b8567-3da5-712c-bf47-00c1bbbca05d",
+  "dir": "c64-logo-css-shape-editor-2-0-019b8567",
+  "newEditor": true,
+  "title": "C64 Logo (CSS Shape() ) {Editor 2.0}",
+  "url": "https://codepen.io/editor/konstantindenerz/pen/019b8567-3da5-712c-bf47-00c1bbbca05d",
+  "description": "Commodore logo built with CSS shapes function and conic gradient.",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2026-01-03 19:48:17 UTC",
+  "updatedAt": "2026-01-05 08:06:19 UTC",
+  "counts": {
+    "loves": 1,
+    "views": 111,
+    "comments": 0
+  },
+  "featured": false,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "",
+    "css": "",
+    "js": ""
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.css",
+    "js": "src/script.js"
+  },
+  "cssStarter": "",
+  "cssPrefix": "",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": false
+}

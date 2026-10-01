@@ -1,0 +1,664 @@
+@property --fade-out {
+  syntax: "<percentage>";
+  initial-value: 100%;
+  inherits: true;
+}
+
+@property --pulse {
+  syntax: "<percentage>";
+  initial-value: 0%;
+  inherits: true;
+}
+
+@property --pulse2 {
+  syntax: "<percentage>";
+  initial-value: 0%;
+  inherits: true;
+}
+
+@property --copacity {
+  syntax: "<percentage>";
+  initial-value: 0%;
+  inherits: true;
+}
+
+.container {
+  --w: 25vmin;
+  --h: 40vmin;
+  --gi: 1vmin;
+  --gih: calc(var(--gi) / 2);
+  --gihn: calc(var(--gi) / -2);
+}
+
+.bookmark-inside {
+  width: calc(var(--w) - var(--gi));
+  height: calc(var(--h) - var(--gi));
+  background: #b5bbc8;
+  position: absolute;
+  right: calc(20vmin + var(--gih));
+  top: calc(20vmin + var(--gih));
+  border-radius: 3vmin 3vmin 0 0;
+  box-shadow:
+    inset -1vmin 1vmin 3vmin var(--inner-shadow, transparent),
+    inset 0.5vmin 0 0.1vmin rgba(255, 255, 255, 0.3),
+    inset -0.5vmin 0.1vmin 0vmin rgba(255, 255, 255, 0.3),
+    inset 0.4vmin 0 0.05vmin rgba(0, 0, 0, 0.3),
+    inset -0.4vmin 0 0.05vmin rgba(0, 0, 0, 0.3),
+    inset 0vmin 0 1vmin rgba(0, 0, 0, 0.1);
+  mask: url("https://assets.codepen.io/907471/bookmark.svg?v4") center var(--gihn) no-repeat;
+  mask-size: cover;
+  transition: all 0.3s ease;
+
+  &:after {
+    border-radius: 0.5rem;
+    content: "";
+    width: 100%;
+    aspect-ratio: 1;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.7);
+    opacity: 0.5;
+    translate: 0 73%;
+    box-shadow:
+      -0.5vmin 0.1vmin 0.1vmin rgba(0, 0, 0, 0.4),
+      0.1vmin -0.1vmin 0.7vmin rgba(0, 0, 0, 0.5);
+    bottom: 0;
+    right: 0;
+    left: 0;
+    rotate: 45deg;
+  }
+}
+.bookmark {
+  width: var(--w);
+  height: var(--h);
+  opacity: 0.9;
+  background:
+    conic-gradient(
+      rgba(0, 0, 0, var(--c-bg-alpha, 0.2)),
+      rgba(0, 0, 0, var(--c-bg-alpha, 0)),
+      rgba(0, 0, 0, var(--c-bg-alpha, 0.2))
+    ),
+    #b4bac7;
+  position: absolute;
+  right: 20vmin;
+  top: 20vmin;
+  border-radius: 3vmin 3vmin 0 0;
+  box-shadow:
+    inset 0.2vmin -0.1vmin 0.09vmin rgba(255, 255, 255, 0.6),
+    inset 0.9vmin 0 0.9vmin rgba(0, 0, 0, 0.3),
+    inset -0.2vmin 0 0.3vmin rgba(0, 0, 0, 0.3);
+  mask: url("https://assets.codepen.io/907471/bookmark.svg?v5") center bottom no-repeat;
+  mask-size: cover;
+
+  &:after {
+    border-radius: 0.5rem;
+    content: "";
+    width: 100%;
+    aspect-ratio: 1;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.7);
+    opacity: 0.5;
+    translate: 0 73%;
+    box-shadow:
+      0 0 0.6vmin black,
+      -0.1vmin 0.1vmin 0.7vmin rgba(0, 0, 0, 0.5),
+      0.1vmin -0.1vmin 0.7vmin rgba(0, 0, 0, 0.5);
+    bottom: 0;
+    right: 0;
+    left: 0;
+    rotate: 45deg;
+    transform: scale5(1.4);
+  }
+}
+
+.bookmark-top {
+  width: calc(var(--w));
+  height: calc(var(--h));
+  padding: 0.1vmin;
+  border-top: 0.4vmin solid rgba(255, 255, 255, 0.5);
+  background:
+    radial-gradient(
+      120% 16% at 50% calc(90% + var(--pulse2)),
+      rgba(255 255 255 / var(--copacity, 0%)),
+      transparent
+    ),
+    radial-gradient(
+      120% 10% at 50% calc(22% + var(--fade-out) + var(--pulse)),
+      rgba(255 255 255 / 80%),
+      transparent
+    ),
+    linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.1),
+        transparent 10%,
+        rgba(0, 0, 0, 0.1)
+      )
+      padding-box,
+    linear-gradient(
+        #15adf3 calc(0% + var(--fade-out) + var(--pulse)),
+        #36c6ff calc(20% + var(--fade-out) + var(--pulse)),
+        #171da2 calc(40% + var(--fade-out) + var(--pulse)),
+        #0077ff
+      )
+      content-box,
+    #0032ff;
+  position: absolute;
+  right: 20vmin;
+  top: 20vmin;
+  border-radius: 3vmin 3vmin 0 0;
+  mask:
+    linear-gradient(
+      to bottom,
+      transparent var(--fade-out),
+      black calc(var(--fade-out) + 10%)
+    ),
+    url("https://assets.codepen.io/907471/bookmark.svg?v4") center var(--gihn) no-repeat;
+  mask-size: cover;
+  mask-composite: intersect;
+  transition: all 0.3s ease;
+  box-shadow:
+    inset 0.5vmin 0 0.1vmin rgba(0, 0, 0, 0.3),
+    inset -0.3vmin 0 0.1vmin rgba(255, 255, 255, 0.8);
+  &:before {
+    content: "";
+    position: absolute;
+    background: rgba(5, 5, 5, 1.7);
+    opacity: 0.19;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    mix-blend-mode: overlay;
+    transform: scaleY(62) scaleX(4);
+    filter: url(#noise);
+  }
+  &:after {
+    border-radius: 0.5rem;
+    content: "r";
+    width: 100%;
+    aspect-ratio: 1;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.7);
+    opacity: 0.5;
+    translate: 0 73%;
+    box-shadow:
+      -0.5vmin -0.4vmin 0vmin rgba(255, 255, 255, 0.5),
+      0.5vmin -0.8vmin 0.4vmin rgba(0, 0, 0, 0.9);
+    bottom: 0;
+    right: 0;
+    left: 0;
+    rotate: 45deg;
+  }
+}
+
+.bookmark-top-inner {
+  --inner-p: 4vmin;
+  width: calc(var(--w) - var(--inner-p));
+  height: calc(var(--h) - var(--inner-p));
+  background:
+    repeating-linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.1) 0.02vmin,
+      rgba(255, 255, 255, 0.03) 0.02vmin,
+      transparent 0.05vmin
+    ),
+    rgba(0, 0, 0, 0.01);
+  backdrop-filter: blur(1.5rem) brightness(1.1) contrast(1.1);
+  position: absolute;
+  right: calc(20vmin + var(--inner-p) / 2);
+  top: calc(20vmin);
+  border-radius: 1vmin;
+  mask:
+    linear-gradient(
+      to bottom,
+      transparent 1vmin,
+      black 12%,
+      transparent,
+      black
+    ),
+    url("https://assets.codepen.io/907471/bookmark.svg?v4") center var(--gihn) no-repeat;
+  mask-composite: intersect;
+  mask-size: cover;
+  transition: all 0.3s ease;
+  box-shadow: inset 0.1vmin -2vmin 2vmin rgba(255, 255, 255, 0.2);
+  border: 0.4vmin dashed rgba(255, 255, 255, 0.25);
+  &:after {
+    border-radius: 0.5rem;
+    content: "";
+    width: 100%;
+    aspect-ratio: 1;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.7);
+    opacity: 0.5;
+    translate: 0 73%;
+    box-shadow:
+      -0.5vmin -1vmin 0.2vmin rgba(255, 255, 255, 0.6),
+      -1vmin -1vmin 0.1vmin rgba(255, 255, 255, 0.25);
+    bottom: 0;
+    right: 0;
+    left: 0;
+    rotate: 45deg;
+  }
+}
+
+.bookmark-outline {
+  --inner-p: 3vmin;
+  width: calc(var(--w) + var(--inner-p) * 2);
+  height: calc(var(--h) + var(--inner-p) / 1.5);
+  padding: 1.2vmin;
+  background:
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 0.4vmin, transparent 0.1vmin)
+      content-box,
+    linear-gradient(
+        to bottom,
+        transparent calc(10% + var(--fade-out)),
+        #8ba3e8,
+        #8ba3e8,
+        transparent calc(50% + var(--fade-out))
+      )
+      content-box,
+    linear-gradient(to bottom, #f3f5fb, #ebebeb, #f3f5fb) content-box,
+    white padding-box;
+  position: absolute;
+  right: calc(20vmin - var(--inner-p));
+  top: calc(20vmin + var(--inner-p));
+  border-radius: 3vmin 3vmin 0 0;
+  mask: url("https://assets.codepen.io/907471/bookmark2.svg?v5") center bottom no-repeat;
+  mask-size: cover;
+  transform-origin: top;
+  transition: all 0.3s ease;
+  box-shadow: inset 0vmin 0 4.1vmin rgba(250, 250, 250, 0.4);
+}
+.bookmark-top-shadow,
+.bookmark-top,
+.bookmark-top-inner {
+  opacity: 0;
+}
+
+input:checked ~ .container {
+  --inner-shadow: rgba(0, 0, 0, 0.15);
+  --c-bg-alpha: 0.2;
+  .bookmark-inside {
+    scale: 0.975;
+    translate: 0 -0.1vmin;
+  }
+
+  .bookmark-top,
+  .bookmark-top-inner {
+    animation:
+      bookmark-top 0.6s linear forwards,
+      bookmark-top2 3s 0.95s ease-in-out infinite,
+      pulse 2s ease-out 42,
+      pulse2 2s ease-out 42;
+  }
+
+  .bookmark-outline,
+  .bookmark-top-shadow {
+    scale: 0.6;
+    opacity: 0;
+    animation:
+      bookmark-outline 0.8s 0.15s ease-out forwards,
+      bookmark-outline2 3s 0.95s ease-in-out infinite;
+  }
+
+  .shadows,
+  .shadows2,
+  .shadows3,
+  .shadows4 {
+    animation:
+      shadows 0.3s 0.3s ease-in-out forwards,
+      shadows2 3s 0.95s ease-in-out infinite;
+  }
+}
+
+input:not(:checked) ~ .container {
+  --inner-shadow: rgba(0, 0, 0, 0);
+  --c-bg-alpha: 0;
+  .bookmark-inside {
+    scale: 1;
+    translate: 0;
+  }
+
+  .bookmark-top,
+  .bookmark-top-inner {
+    animation: bookmark-top-reverse 1s linear forwards;
+  }
+
+  .bookmark-outline,
+  .bookmark-top-shadow {
+    animation: bookmark-outline-reverse 0.5s ease-in forwards;
+  }
+  .shadows,
+  .shadows2,
+  .shadows3,
+  .shadows4 {
+    animation: shadows-reverse 0.6s ease-in-out forwards;
+  }
+}
+.shadows,
+.shadows2,
+.shadows3,
+.shadows4 {
+  opacity: 0;
+}
+
+@keyframes shadows {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shadows2 {
+  from,
+  to {
+    scale: 1 1;
+  }
+  50% {
+    scale: 1 1.04;
+  }
+}
+@keyframes shadows-reverse {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes bookmark-top {
+  from {
+    scale: 0.975;
+  }
+  40% {
+    opacity: 1;
+    --fade-out: 0%;
+    scale: 1;
+  }
+  to {
+    --fade-out: -10%;
+    opacity: 1;
+    scale: 1.05;
+  }
+}
+
+@keyframes bookmark-top-reverse {
+  to {
+    scale: 0.975;
+  }
+  40% {
+    opacity: 1;
+    --fade-out: 0%;
+    scale: 1;
+  }
+  from {
+    --fade-out: -10%;
+    opacity: 1;
+    scale: 1.05;
+  }
+}
+
+@keyframes bookmark-top2 {
+  from,
+  to {
+    scale: 1.05;
+  }
+  50% {
+    scale: 1.07;
+  }
+}
+
+@keyframes bookmark-outline {
+  28% {
+    opacity: 1;
+  }
+
+  40%,
+  50% {
+    scale: 1.06;
+  }
+
+  42% {
+    --fade-out: 0%;
+  }
+  to {
+    --fade-out: 0%;
+    opacity: 1;
+    scale: 1.04;
+  }
+}
+
+@keyframes bookmark-outline-reverse {
+  68% {
+    opacity: 1;
+  }
+
+  40%,
+  50% {
+    scale: 1.06;
+  }
+
+  42% {
+    --fade-out: 0%;
+  }
+  from {
+    --fade-out: 0%;
+    opacity: 1;
+    scale: 1.04;
+  }
+
+  to {
+    opacity: 0;
+    --fade-out: 100%;
+    scale: 0.6;
+  }
+}
+
+@keyframes bookmark-outline2 {
+  from,
+  to {
+    scale: 1.04 1.04;
+  }
+
+  50% {
+    scale: 1.04 1.02;
+  }
+}
+
+.bookmark-top-shadow {
+  opacity: 0;
+  border-radius: 50%;
+  position: absolute;
+  right: 24vmin;
+  top: 44vmin;
+  background: rgb(0 49 188 / 58%);
+  width: 22vmin;
+  height: 9vmin;
+  rotate: -33deg;
+  filter: blur(1.2rem);
+}
+
+.shadows2 {
+  position: absolute;
+  right: 29vmin;
+  top: 24vmin;
+  border-radius: 60vmin 60vmin 26vmin 0;
+  rotate: 45deg;
+  background: linear-gradient(181deg, rgba(0, 0, 0, 0.25), transparent 90%);
+  width: calc(var(--w) * 1.7);
+  height: calc(var(--h) * 1.7);
+  filter: blur(2.1vmin);
+}
+
+.shadows {
+  position: absolute;
+  right: 17vmin;
+  top: 54vmin;
+  border-radius: 60vmin 60vmin 26vmin 0;
+  rotate: 352deg;
+  background: linear-gradient(-135deg, rgba(0, 0, 0, 0.3), transparent 50%);
+  width: calc(var(--w) * 1.8);
+  filter: blur(1vmin);
+  height: calc(var(--h) * 0.35);
+}
+
+.shadows3 {
+  position: absolute;
+  right: 20vmin;
+  top: 53vmin;
+  border-radius: 60vmin 60vmin 26vmin 0;
+  rotate: 367deg;
+  background: linear-gradient(-135deg, rgba(0, 0, 0, 0.3), transparent 50%);
+  width: calc(var(--w) * 1.1);
+  height: calc(var(--h) * 0.4);
+  transform: scaleX(-1);
+  filter: blur(1vmin);
+}
+
+.shadows4 {
+  position: absolute;
+  right: 20vmin;
+  top: 48vmin;
+  border-radius: 60vmin 60vmin 42vmin 0;
+  background: radial-gradient(circle at 50% 100%, transparent 30%, #00000075);
+  width: calc(var(--w) * 1.05);
+  height: calc(var(--h) * 0.7);
+  transform: scaleX(-1);
+  filter: blur(1.5vmin);
+}
+
+input:not(:checked) ~ .container {
+  @media (hover) {
+    &:hover {
+      --inner-shadow: rgba(0, 0, 0, 0.15);
+      --c-bg-alpha: 0.2;
+      .bookmark-inside {
+        scale: 0.985;
+        translate: 0 -1px;
+      }
+    }
+  }
+}
+
+@keyframes pulse {
+  from,
+  to {
+    --pulse: 0%;
+  }
+  50% {
+    --pulse: 4%;
+  }
+}
+
+@keyframes pulse2 {
+  from {
+    --pulse2: -30%;
+    --copacity: 0%;
+  }
+  50% {
+    --copacity: 20%;
+  }
+  to {
+    --pulse2: -20%;
+    --copacity: 0%;
+  }
+}
+
+
+:root {
+  --color-primary: #ee75d2;
+  --color-secondary: #75d8ee;
+  --color-tertiary: #deee75;
+  --color-quaternary: #9375ee;
+  --color-surface: #7c838f;
+  --color-on-surface: #7b7b7b;
+}
+
+.container {
+  width: 80dvw;
+  height: 90dvh;
+  position: relative;
+  background:
+    radial-gradient(circle at 100% 0, rgba(255 255 255 / 70%), transparent),
+    linear-gradient(45deg, #828b97, #d8dce3);
+  border-top-right-radius: 30vmin;
+  border-right: 0.3vmax solid rgba(250, 250, 250, 1);
+  border-top: 0.3vmax solid rgba(250, 250, 250, 0.5);
+  box-shadow:
+    0 0 1vmin rgba(0, 0, 0, 0.09),
+    0 0 20vmin rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+input:checked ~ .container {
+  animation: enable-container 0.5s ease-out forwards;
+}
+input:not(:checked) ~ .container {
+  animation: enable-container-reverse 0.4s ease-out forwards;
+}
+
+@keyframes enable-container {
+  30% {
+    translate: -0.3vmin 0.3vmin;
+  }
+  50% {
+    translate: -0.4vmin -0.2vmin;
+  }
+}
+
+
+@keyframes enable-container-reverse {
+  30% {
+    translate: -0.3vmin 0.3vmin;
+  }
+  50% {
+    translate: -0.4vmin -0.2vmin;
+  }
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  margin: 0;
+  align-items: flex-end;
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  overflow: clip;
+
+  &:after {
+    content: "";
+    opacity: 0.5;
+    position: absolute;
+    background: url(https://assets.codepen.io/907471/noise.svg);
+    mix-blend-mode: overlay;
+    inset: 0;
+    pointer-events: none;
+    filter: invert(1) brightness(2);
+    z-index: var(--labs-sys-z-noise);
+  }
+}
+input {
+  display: none;
+  z-index: 111;
+}
+// center at bottom
+a.labs-follow-me {
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center;
+}
+
+.filter {
+  display: block;
+  width: 0;
+  height: 0;
+  overflow: visible !important;
+  position: absolute;
+}
+* {
+  box-sizing: border-box;
+}

@@ -1,0 +1,48 @@
+{
+  "slug": "jOeKXmB",
+  "dir": "animated-organic-rings-art-pure-css-jOeKXmB",
+  "newEditor": false,
+  "title": "Animated Organic Rings Art 🦋 - PURE CSS ✨",
+  "url": "https://codepen.io/konstantindenerz/pen/jOeKXmB",
+  "description": "Generative art to demonstrate the  usage of SCSS @function and CSS trig functions.\n\n🍿 I recommend viewing on large screens.\n\n✅ No extra HTML, no JS required. ",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "art",
+    "gm",
+    "generativeart",
+    "animation",
+    "css"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-05-13 07:57:22 UTC",
+  "updatedAt": "2023-06-18 08:29:10 UTC",
+  "counts": {
+    "loves": 13,
+    "views": 1660,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

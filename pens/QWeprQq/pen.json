@@ -1,0 +1,38 @@
+{
+  "slug": "QWeprQq",
+  "dir": "QWeprQq",
+  "newEditor": false,
+  "title": "☠️ ✨",
+  "url": "https://codepen.io/konstantindenerz/pen/QWeprQq",
+  "description": "Based on my pen: https://codepen.io/konstantindenerz/pen/rNXjraj\nTry ☺︎, ☯︎, ⚓︎ or 404 as content",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-10-15 05:08:21 UTC",
+  "updatedAt": "2024-10-15 17:00:22 UTC",
+  "counts": {
+    "loves": 7,
+    "views": 204,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

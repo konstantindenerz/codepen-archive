@@ -1,0 +1,24 @@
+# Klingon Rain | Qapla'
+
+> 25 loves · 2 comments · 1,042 views
+
+nuqneH
+
+| | |
+|---|---|
+| **Live on CodePen** | <https://codepen.io/konstantindenerz/pen/YzOpJLN> |
+| **Archived demo** | [index.html](index.html) |
+| **Created** | 2023-02-27 |
+| **Updated** | 2024-01-30 |
+| **Preprocessors** | pug / scss / typescript |
+| **Tags** | klingon, qapla, rain, matrix, nuqneh |
+| **License** | MIT |
+
+## Source
+
+- `src/index.pug` — HTML (pug)
+- `src/style.scss` — CSS (scss)
+- `src/script.ts` — JS (typescript)
+
+`index.html` is the compiled, self-contained result — open it directly,
+no build step and no network needed.

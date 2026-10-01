@@ -1,0 +1,179 @@
+$count: 200;
+@property --rotation {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+@keyframes container-scale {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(10.5) rotate(360deg);
+  }
+}
+
+.container {
+  width: var(--width);
+  height: var(--height);
+  position: absolute;
+  display: grid;
+  place-items: center;
+  perspective: var(--perspective, 37rem);
+  --count: #{$count};
+  --offset-per-item: calc(360deg / var(--count));
+  --delay-per-item: calc(
+    var(--duration) / var(--count) + var(--rotation-delay-offset)
+  );
+  transform: scale(5.5);
+  animation: container-scale 20s ease-in-out forwards;
+  transform-style: preserve-3d;
+
+  &::before {
+    content: "";
+    display: grid;
+    place-items: center;
+    font-size: 0.5rem;
+    position: absolute;
+    border-radius: 25%;
+    inset: 2vmin;
+    box-shadow: 0 0 0.5rem
+      color-mix(in oklch, var(--color-primary), transparent 40%);
+    background: var(--color-primary);
+  }
+
+  &::after {
+    content: "CSS";
+    color: var(--color-surface);
+    display: grid;
+    place-items: center;
+    font-size: 2vmin;
+    position: absolute;
+    font-weight: bold;
+    inset: 2vmin;
+    opacity: 0;
+    text-shadow: 0 0 0.5rem
+      color-mix(in oklch, var(--color-primary), transparent 40%);
+    animation: label-fade-in 0.35s 20s linear forwards;
+    z-index: 42000;
+  }
+}
+
+.rect {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  --percent: calc((100% / var(--count) * var(--i)) / var(--color));
+  border: var(--line-width) solid
+    color-mix(
+      in oklch,
+      var(--color-primary),
+      var(--color-secondary) var(--percent)
+    );
+  transform-style: preserve-3d;
+  --rotate: calc(var(--offset-per-item) * var(--i) + var(--rotation));
+  --animation-delay: calc(var(--delay-per-item) * var(--i));
+  --default-animation: fade-in var(--animation-delay) linear forwards,
+    rotation var(--duration) var(--animation-delay) linear infinite;
+  animation: var(--animation, var(--default-animation));
+   --z: calc(var(--i) * var(--z-offset));
+  transform: rotate(var(--rotate)) translateZ(var(--z));
+  --item-blur: calc(var(--blur) * var(--percent) / 100);
+  filter: blur(var(--blur));
+  transition: opacity 0.3s linear;
+  border-radius: var(--border-radius);
+
+  @for $i from 0 through $count {
+    &:nth-child(#{$i + 1}) {
+      --i: #{$i};
+    }
+  }
+}
+
+@keyframes label-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.1;
+  }
+}
+
+@keyframes rotation {
+  from {
+    --rotation: 0deg;
+  }
+
+  to {
+    --rotation: 360deg;
+  }
+}
+
+body {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: "Rajdhani", "sans-serif";
+  --c: rgba(10, 10, 10, 1);
+  background: conic-gradient(from 45deg, var(--c), transparent, var(--c)),
+    var(--color-surface);
+  color: var(--color-primary);
+  margin: 0;
+  overflow: hidden;
+}
+// center at bottom
+a.labs-follow-me {
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  @media (max-width:600px), (max-height: 600px) {
+    font-size: 90%;
+  }
+  --tp-base-background-color: var(--color-surface);
+  --tp-base-shadow-color: hsla(0, 0%, 0%, 0.2);
+  --tp-button-background-color: var(--color-secondary);
+  --tp-button-background-color-active: hsla(230, 7%, 85%, 1);
+  --tp-button-background-color-focus: hsla(230, 7%, 80%, 1);
+  --tp-button-background-color-hover: hsla(230, 7%, 75%, 1);
+  --tp-button-foreground-color: hsla(230, 7%, 17%, 1);
+  --tp-container-background-color: hsla(230, 7%, 75%, 0.1);
+  --tp-container-background-color-active: hsla(230, 7%, 75%, 0.25);
+  --tp-container-background-color-focus: hsla(230, 7%, 75%, 0.2);
+  --tp-container-background-color-hover: hsla(230, 7%, 75%, 0.15);
+  --tp-container-foreground-color: hsla(230, 7%, 75%, 1);
+  --tp-groove-foreground-color: hsla(230, 7%, 75%, 0.1);
+  --tp-input-background-color: hsla(230, 7%, 75%, 0.1);
+  --tp-input-background-color-active: hsla(230, 7%, 75%, 0.25);
+  --tp-input-background-color-focus: hsla(230, 7%, 75%, 0.2);
+  --tp-input-background-color-hover: hsla(230, 7%, 75%, 0.15);
+  --tp-input-foreground-color: var(--color-primary);
+  --tp-label-foreground-color: hsla(230, 7%, 75%, 0.7);
+  --tp-monitor-background-color: hsla(230, 7%, 0%, 0.2);
+  --tp-monitor-foreground-color: hsla(230, 7%, 75%, 0.7);
+}

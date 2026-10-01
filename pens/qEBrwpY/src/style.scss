@@ -1,0 +1,24 @@
+body {
+  &:before {
+    content: "🕊️";
+    font-size: 10vmin;
+    animation: 🪽 0.2s ease-in-out infinite;
+  }
+
+  background: radial-gradient(circle at center, #333, #111);
+  height: 100dvh;
+  width: 100dvw;
+  display: grid;
+  place-items: center;
+}
+
+@keyframes 🪽 {
+  from,
+  to {
+    scale: 1 1;
+  }
+
+  50% {
+    scale: 1 0.60;
+  }
+}

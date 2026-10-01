@@ -1,0 +1,1258 @@
+@layer tokens {
+  :root {
+    --color-primary: #9871be;
+    --color-secondary: #9db092;
+    --color-tertiary: #deee75;
+    --color-quaternary: #9375ee;
+    --color-surface: #eaf6f1;
+
+    @media (max-height: 800px) {
+      font-size: 80%;
+    }
+  }
+}
+
+@layer background {
+  @property --bg-x {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+
+  @property --bg-x2 {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+
+  @property --bg-y {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+
+  @keyframes bg {
+    from {
+      --bg-x: 0;
+      --bg-x2: 0;
+      --bg-y: 0;
+    }
+
+    30% {
+      --bg-x2: 1;
+    }
+    50% {
+      --bg-x: 1;
+      --bg-y: 1;
+    }
+
+    to {
+      --bg-x: 0;
+      --bg-x2: 0;
+      --bg-y: 0;
+    }
+  }
+
+  .background {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    animation: bg 3.6s ease-in-out infinite;
+    pointer-events: none;
+    @media (prefers-reduced-motion) {
+      animation: unset;
+    }
+
+    &::before {
+      z-index: 0;
+      content: "";
+      background: radial-gradient(30vmax at 1rem 100%, #e3edec 40%, transparent),
+        radial-gradient(40vmax at 1rem 1rem, #e3edec 40%, transparent);
+      -webkit-backdrop-filter: blur(5.5rem) brightness(1.05);
+      backdrop-filter: blur(5.5rem) brightness(1.05);
+      position: absolute;
+      inset: 0;
+    }
+
+    &::after {
+      z-index: 0;
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, #e3edec 0%, transparent 90%) repeat
+          0 0 / 0.9rem 0.9rem,
+        radial-gradient(#e3edec, transparent 70%) repeat 0 0 / 1rem 1rem;
+      opacity: 0.15;
+    }
+
+    > div {
+      z-index: -1;
+      position: absolute;
+      opacity: 0.9;
+    }
+  }
+
+  @function move($x, $y, $x2, $y2) {
+    @return calc(#{$x} + (#{$x2} * var(--bg-x)))
+      calc(#{$y} + (#{$y2} * var(--bg-y)));
+  }
+
+  @function move2($x, $y, $x2, $y2) {
+    @return calc(#{$x} + (#{$x2} * var(--bg-x2)))
+      calc(#{$y} + (#{$y2} * var(--bg-x2)));
+  }
+
+  .r1 {
+    background: #93c9cc;
+    width: 25vmax;
+    border-radius: 50%;
+    aspect-ratio: 4 / 2;
+    translate: move(-4vmax, -30vmax, -4vmax, -3rem);
+    rotate: calc(45deg * var(--bg-x2));
+  }
+
+  .r2 {
+    background: #aab896;
+    width: 35vmax;
+    border-radius: 50%;
+    aspect-ratio: 1.5 / 3;
+    translate: move(-35vmax, -25vmax, -2vmax, 2rem);
+
+    rotate: calc(15deg * var(--bg-x));
+  }
+
+  .r3 {
+    background: radial-gradient(#334c74, transparent);
+    width: 35vmax;
+    border-radius: 20%;
+    aspect-ratio: 2 / 3;
+    translate: move(-5vmax, 5vmax, -5vmax, -2vmax);
+    rotate: -35deg;
+    opacity: calc(var(--bg-x));
+  }
+
+  .r4 {
+    background: #d7cbc7;
+    width: 25vmax;
+    border-radius: 50%;
+    aspect-ratio: 2 / 3;
+    translate: move(10vmax, 7vmax, 7vmax, -5vmax);
+    rotate: 35deg;
+  }
+
+  .r5 {
+    background: rgba(105, 133, 87, 0.54);
+    width: calc(35vmax + 2vmax * var(--bg-x2));
+    border-radius: 50%;
+    aspect-ratio: 5 / 3;
+    translate: move2(22vmax, -9vmax, 2vmax, -2vmax);
+    rotate: calc(-35deg * var(--bg-x));
+  }
+
+  .r6 {
+    background: rgba(127, 190, 192, 0.64);
+    width: 65vmax;
+    border-radius: 50%;
+    aspect-ratio: 6 / 2;
+    translate: -35vmax 35vmax;
+    rotate: calc(-35deg * var(--bg-x2));
+  }
+
+  .r7 {
+    background: rgba(217, 193, 247, 0.72);
+    width: calc(30vmax - 5vmax * var(--bg-x));
+    border-radius: 50%;
+    aspect-ratio: 1;
+    translate: move(-15vmax, -30vmax, 3vmax, -1vmax);
+    rotate: 35deg;
+  }
+
+  .r8 {
+    background: rgba(217, 193, 247, 0.52);
+    width: 40vmax;
+    border-radius: 50%;
+    aspect-ratio: 2 / 1;
+    translate: move(24vmax, 30vmax, 5vmax, 5vmax);
+    rotate: calc(35deg * var(--bg-x));
+  }
+
+  .r9 {
+    background: rgba(105, 133, 87, 0.59);
+    width: 30vmax;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1.2;
+    translate: move(44vmax, -10vmax, -4vmax, 1vmax);
+    rotate: calc(35deg * var(--bg-x2));
+  }
+
+  .r10 {
+    background: rgba(255, 255, 255, 1);
+    width: 10vmax;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1.2;
+    translate: move(12vmax, 14vmax, -4vmax, 5vmax);
+    rotate: calc(42deg * var(--bg-x2));
+  }
+
+  .r11 {
+    background: rgba(255, 255, 255, 0.7);
+    width: 20vmax;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1.2;
+    translate: move(-12vmax, -14vmax, 4vmax, 5vmax);
+    rotate: calc(42deg * var(--bg-x2));
+  }
+}
+
+@layer card {
+  @keyframes card-enter {
+    from {
+      opacity: 0.01;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  .card {
+    -webkit-backdrop-filter: blur(2rem) brightness(1.054) saturate(1);
+    backdrop-filter: blur(2rem) brightness(1.054);
+    border-radius: 1rem;
+    animation: card-enter 0.45s ease-in forwards;
+    display: grid;
+    place-items: center;
+    color: white;
+    font-size: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: -1px -1px 1px rgba(0, 0, 0, 0.04),
+      1px 1px 0 1px rgba(0, 0, 0, 0.01);
+    z-index: 100;
+    --size: 2rem;
+    --s: 36%;
+    --d: 3deg;
+    --x: calc(100% - var(--size));
+    --y: 0;
+
+    --s2: 28%;
+    --d2: -148deg;
+    --x2: var(--size);
+    --y2: 100%;
+    --mask: exclude;
+
+    mask: conic-gradient(
+        from var(--d2) at var(--x2) var(--y2),
+        black var(--s2),
+        transparent var(--s2)
+      ),
+      conic-gradient(
+        from var(--d) at var(--x) var(--y),
+        transparent var(--s),
+        black var(--s)
+      );
+    -webkit-mask-composite: var(--mask);
+    mask-composite: var(--mask);
+
+    &::before {
+      content: ""; // top left corner lines
+      --c: rgba(0, 0, 0, 0.05);
+      background: radial-gradient(
+          0.09rem 2rem at 0 2.5rem,
+          var(--c),
+          transparent
+        ),
+        radial-gradient(2rem 0.09rem at 2.5rem 0, var(--c), transparent);
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    &.full-shape {
+      mask: unset;
+    }
+  }
+}
+
+@layer avatar {
+  .card.avatar {
+    --size: max(1.8vmin, 1rem);
+    width: max(9vmin, 5rem);
+    height: max(11vmin, 6rem);
+    justify-self: flex-end;
+    overflow: hidden;
+    backdrop-filter: unset;
+    position: absolute;
+    border-radius: 0;
+    top: 2rem;
+    right: 2rem;
+
+    .image {
+      margin-bottom: 1rem;
+      overflow: hidden;
+      height: 140%;
+
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .actions {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2.5vmin;
+      -webkit-backdrop-filter: blur(0.2rem) saturate(0.5) brightness(1);
+      backdrop-filter: blur(0.2rem) saturate(0.5) brightness(1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 1.6vmin;
+      gap: 1.5vmin;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+
+      .action {
+        padding: 0.5vmin;
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      --c: rgba(255, 255, 255, 0.6);
+      background: linear-gradient(-135deg, var(--c), transparent 70%),
+        radial-gradient(0.5rem at 95% 10%, var(--c), transparent),
+        radial-gradient(3rem at 90% 10%, var(--c), transparent);
+    }
+  }
+}
+
+@layer hexagon {
+  @property --index {
+    syntax: "<number>";
+    initial-value: 0;
+    inherits: true;
+  }
+
+  :root {
+    --hexagon-size: 8vmin;
+    --gap: 0.1vmin;
+  }
+
+  @mixin hexagon-shape {
+    clip-path: polygon(
+      98.66024% 45%,
+      99.39693% 46.5798%,
+      99.84808% 48.26352%,
+      100% 50%,
+      99.84808% 51.73648%,
+      99.39693% 53.4202%,
+      98.66025% 55%,
+      78.66025% 89.64102%,
+      77.66044% 91.06889%,
+      76.42788% 92.30146%,
+      75% 93.30127%,
+      73.4202% 94.03794%,
+      71.73648% 94.48909%,
+      70% 94.64102%,
+      30% 94.64102%,
+      28.26352% 94.48909%,
+      26.5798% 94.03794%,
+      25% 93.30127%,
+      23.57212% 92.30146%,
+      22.33956% 91.06889%,
+      21.33975% 89.64102%,
+      1.33975% 55%,
+      0.60307% 53.4202%,
+      0.15192% 51.73648%,
+      0% 50%,
+      0.15192% 48.26352%,
+      0.60307% 46.5798%,
+      1.33975% 45%,
+      21.33975% 10.35898%,
+      22.33956% 8.93111%,
+      23.57212% 7.69854%,
+      25% 6.69873%,
+      26.5798% 5.96206%,
+      28.26352% 5.51091%,
+      30% 5.35898%,
+      70% 5.35898%,
+      71.73648% 5.51091%,
+      73.4202% 5.96206%,
+      75% 6.69873%,
+      76.42788% 7.69854%,
+      77.66044% 8.93111%,
+      78.66025% 10.35898%
+    );
+  }
+
+  @mixin hexagon-base {
+    --mix-percentage: calc(var(--column) * var(--index) * 3%);
+    width: var(--hexagon-size);
+    aspect-ratio: 1;
+    position: relative;
+    -webkit-backdrop-filter: blur(1rem) brightness(1.054);
+    backdrop-filter: blur(1rem) brightness(1.054);
+    color: transparent;
+  }
+
+  @mixin hover {
+    @media (hover) {
+      &:hover {
+        -webkit-backdrop-filter: blur(1rem) brightness(0.54);
+        backdrop-filter: blur(1rem) brightness(0.54);
+      }
+    }
+  }
+
+  .hexagon {
+    @include hexagon-base;
+    @include hexagon-shape;
+    @include hover;
+    cursor: pointer;
+
+    &:after {
+      content: var(--icon);
+      display: grid;
+      place-items: center;
+      position: absolute;
+      filter: var(--icon-filter, invert(1) saturate(0.5) brightness(1.5));
+      font-size: 6vmin;
+      inset: 0;
+      transform: scale(0.25);
+      text-shadow: 2px 2px 1px black;
+    }
+  }
+
+  @keyframes grid-container-enter {
+    from {
+      transform: scale(0.01) rotate(-145deg);
+    }
+
+    to {
+      transform: scale(1) rotate(0);
+    }
+  }
+
+  .grid-container {
+    display: flex;
+    position: relative;
+    align-items: center;
+    animation: grid-container-enter 0.6s ease-in-out forwards;
+
+    .column {
+      margin: 0 -0.2vmin;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &:nth-of-type(4) {
+        .hexagon {
+          &:nth-of-type(n + 3):nth-of-type(-n + 6) {
+            opacity: 0;
+          }
+        }
+      }
+
+      &:nth-of-type(5) {
+        .hexagon {
+          &:nth-of-type(n + 4):nth-of-type(-n + 6) {
+            opacity: 0;
+          }
+        }
+      }
+      &:nth-of-type(6) {
+        .hexagon {
+          &:nth-of-type(n + 3):nth-of-type(-n + 6) {
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+
+  @property --reflection-size {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+
+  @keyframes sphere-enter {
+    from {
+      opacity: 0.01;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .sphere {
+    @include hexagon-shape;
+    display: grid;
+    place-items: center;
+    position: absolute;
+    width: 40vmin;
+    aspect-ratio: 1;
+    -webkit-backdrop-filter: blur(5rem) brightness(1.05);
+    backdrop-filter: blur(5rem) brightness(1.05);
+    z-index: 1;
+    border-radius: 50%;
+    animation: sphere-enter 0.5s ease-in;
+    --c: rgba(255, 255, 255, 0.5);
+    box-shadow: -0.0625rem -0.0625rem 0.0625rem var(--c),
+      0.0625rem 0.0625rem 0.0625rem var(--c);
+
+    &::before {
+      @include hexagon-shape;
+      content: ""; // inner circle
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: -0.0625rem -0.0625rem 0.0625rem var(--c),
+        0.0625rem 0.0625rem 0.0625rem var(--c);
+      position: absolute;
+      inset: 6vmin;
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    @keyframes glass {
+      from {
+        --reflection-size: 1;
+      }
+      50% {
+        --reflection-size: 1.5;
+      }
+      to {
+        --reflection-size: 1;
+      }
+    }
+
+    .glass {
+      animation: glass 4s ease-in-out infinite;
+      border-radius: inherit;
+      background: radial-gradient(
+          calc(0.9vmin * var(--reflection-size)) at 70% 20%,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        ),
+        radial-gradient(
+          calc(1.7vmin * var(--reflection-size)) at 70% 20%,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        ),
+        radial-gradient(
+          calc(2.1vmin * var(--reflection-size)) 2vmin at 75% 30%,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        ),
+        radial-gradient(
+          calc(10vmin * var(--reflection-size)) at 72% 24%,
+          rgba(255, 255, 255, 0.6),
+          transparent
+        ),
+        radial-gradient(
+          calc(4vmin * var(--reflection-size)) at 70% 20%,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        ),
+        radial-gradient(
+          calc(10vmin * var(--reflection-size)) at 20% 95%,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+      position: absolute;
+      inset: 0;
+      z-index: 11;
+    }
+  }
+
+  @property --line-thickness {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 0%;
+  }
+
+  @property --line-1-a {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+  }
+
+  @property --line-2-p {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 0%;
+  }
+
+  .sphere-highlighting {
+    @include hexagon-shape;
+    position: absolute;
+    width: 55vmin;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    filter: blur(0.5rem);
+    pointer-events: none;
+
+    &:after {
+      @include hexagon-shape;
+      content: ""; // outline - white highlighting
+      box-shadow: inset 0 0 8vmin rgba(255, 255, 255, 0.5);
+      position: absolute;
+      inset: 3rem;
+      filter: blur(0.5rem);
+    }
+  }
+
+  .sphere-blur {
+    position: absolute;
+    inset: 0;
+    -webkit-backdrop-filter: blur(4rem) saturate(1.1);
+    backdrop-filter: blur(4rem);
+    mask-image: radial-gradient(
+      100vmin 100vmin at center,
+      black 22%,
+      transparent 30%
+    );
+    pointer-events: none;
+    z-index: 1;
+    animation: sphere-blur-enter 0.7s ease-in forwards;
+  }
+
+  @keyframes sphere-blur-enter {
+    from {
+      transform: scale(0.5);
+    }
+
+    to {
+      transform: scale(1);
+    }
+  }
+
+  .sphere-lines {
+    --c: rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    position: absolute;
+    width: 75vmin;
+    aspect-ratio: 1;
+    --line-1-a: -45deg;
+    --line-thickness: 69.5%;
+    --line-2-p: 10%;
+    mask-image: radial-gradient(
+      transparent var(--line-thickness),
+      black var(--line-thickness)
+    );
+    background: conic-gradient(
+        from var(--line-1-a),
+        var(--c),
+        var(--c) 10%,
+        transparent 12%
+      ),
+      conic-gradient(
+        from 50deg,
+        var(--c),
+        var(--c) var(--line-2-p),
+        transparent calc(var(--line-2-p) + 5%)
+      ),
+      conic-gradient(from 200deg, var(--c), var(--c) 10%, transparent 15%);
+    animation: circle-lines-enter 0.3s 0.1s ease-in-out,
+      circle-lines 6s 0.6s ease-in-out infinite;
+    @media (prefers-reduced-motion) {
+      animation: unset;
+    }
+  }
+
+  @keyframes circle-lines-enter {
+    from {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    70% {
+      opacity: 1;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes circle-lines {
+    from {
+      --line-1-a: -50deg;
+      --line-thickness: 69.5%;
+      --line-2-p: 10%;
+      transform: scale(1);
+    }
+
+    20% {
+      --line-thickness: 69%;
+    }
+
+    50% {
+      --line-thickness: 68%;
+      --line-1-a: 300deg;
+      --line-2-p: 0%;
+      transform: scale(0.99) rotate(199deg);
+    }
+
+    60% {
+      --line-thickness: 69.6%;
+    }
+    70% {
+      transform: scale(0.99) rotate(-199deg);
+    }
+
+    to {
+      --line-thickness: 69.5%;
+      --line-1-a: -50deg;
+      --line-2-p: 10%;
+      transform: scale(1);
+    }
+  }
+}
+
+@layer bars {
+  @property --target {
+    syntax: "<percentage>";
+    inherits: true;
+    initial-value: 0;
+  }
+
+  .bars {
+    width: 19vmax;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+    color: white;
+    position: absolute;
+
+    .bar {
+      width: 100%;
+      height: 0.25rem;
+      animation: bars 2.5s ease-in-out infinite;
+      -webkit-backdrop-filter: blur(2rem) brightness(1.06) saturate(1);
+      backdrop-filter: blur(2rem) brightness(1.06) saturate(1);
+
+      &:after {
+        content: "42-2024-123-123-42";
+        font-size: 0.4rem;
+      }
+
+      &:first-of-type {
+        width: 46%;
+        animation-delay: 0.3s;
+        --target: 120%;
+      }
+
+      &:last-of-type {
+        width: 57%;
+        animation-delay: 0.6s;
+        animation-duration: 2.4s;
+      }
+    }
+
+    &.left {
+      left: 0;
+
+      .bar {
+        transform-origin: left;
+      }
+    }
+
+    &.right {
+      right: 0;
+      align-items: flex-end;
+
+      .bar {
+        transform-origin: right;
+      }
+    }
+  }
+
+  @keyframes bars {
+    from {
+      transform: scaleX(100%);
+    }
+
+    30% {
+      transform: scaleX(120%);
+    }
+
+    50% {
+      transform: scaleX(var(--target, 90%));
+    }
+
+    to {
+      transform: scaleX(100%);
+    }
+  }
+}
+
+@layer dna {
+  $count: 50;
+  @property --rotate-y {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 0deg;
+  }
+
+  @keyframes dna {
+    from {
+      --rotate-y: 0deg;
+    }
+    to {
+      --rotate-y: 360deg;
+    }
+  }
+
+  @property --rotate-container {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 0deg;
+  }
+
+  @keyframes rotate-container {
+    from {
+      --rotate-container: 42deg;
+    }
+    50% {
+      --rotate-container: 142deg;
+    }
+    to {
+      --rotate-container: 42deg;
+    }
+  }
+
+  .dna-container {
+    filter: url(#blurFilter) contrast(1.5) brightness(1.5) saturate(0.6);
+    position: absolute;
+    transform: scale(0.55);
+
+    @media (max-width: 1000px) {
+      transform: scale(0.25);
+    }
+    
+    @media (max-height: 1000px) {
+      transform: scale(0.25);
+    }
+  }
+
+  .dna {
+    --width: 14rem;
+    --count: #{$count};
+    display: flex;
+    flex-direction: column;
+    z-index: 1111;
+    perspective: 45rem;
+    animation: dna 4s linear infinite, rotate-container 30s ease-in-out infinite;
+    transform-style: preserve-3d;
+    rotate: var(--rotate-container);
+    transform: rotateY(var(--rotate-y, 0deg));
+    @media (prefers-reduced-motion) {
+      animation: unset;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      transform-style: preserve-3d;
+
+      > div {
+        width: var(--width);
+        height: 0.42rem;
+        background: rgba(255, 255, 255, 1);
+        background: conic-gradient(
+          color-mix(
+            in oklch,
+            color-mix(in oklch, var(--color-primary), white 6%),
+            transparent 10%
+          ),
+          color-mix(in oklch, var(--color-secondary), black 6%)
+        ); // remove to get 60fps
+        transform-style: preserve-3d;
+
+        &:first-of-type,
+        &:last-of-type {
+          --thickness: 0.9rem;
+          width: var(--thickness);
+          height: var(--thickness);
+          background: var(--color-secondary);
+          border-radius: 50%;
+
+          @keyframes dot-scale {
+            from {
+              transform: scale(1);
+            }
+            50% {
+              transform: scale(0.6);
+            }
+            to {
+              transform: scale(1);
+            }
+          }
+
+          &::before,
+          &::after {
+            content: "";
+            position: absolute;
+            width: calc(var(--thickness) * 0.5);
+            border-radius: 50%;
+            aspect-ratio: 1;
+            transform-style: preserve-3d;
+          }
+
+          &::before {
+            background: white;
+            width: calc(var(--thickness) * 0.9);
+            left: -0.4rem;
+            top: -0.4rem;
+            animation: dot-scale 2s ease-in-out infinite;
+          }
+
+          &::after {
+            background: rgba(0, 0, 0, 0.09);
+            right: 0.3rem;
+            bottom: 0.3rem;
+          }
+        }
+
+        &:last-of-type {
+          background: var(--color-primary);
+        }
+      }
+
+      --a: calc(360deg / var(--count) * (var(--i)));
+      transform: rotateY(var(--a));
+
+      > div {
+        &:first-of-type,
+        &:last-of-type {
+          transform: rotateY(
+            calc(360deg / var(--count) * -1 * var(--i) - var(--rotate-y))
+          );
+        }
+      }
+
+      @for $i from 0 through $count {
+        &:nth-child(#{$i + 1}) {
+          --i: #{$i};
+        }
+      }
+    }
+  }
+
+  .dna-shadow {
+    width: 12rem;
+    height: 100%;
+    filter: blur(3.5rem);
+    background: radial-gradient(
+        8rem 66% at 50% 40%,
+        var(--color-primary),
+        transparent 90%
+      )
+      center top / 14rem 33%;
+    animation: rotate-container 30s ease-in-out infinite;
+    rotate: var(--rotate-container);
+    opacity: 1;
+    @media (max-width: 1000px) {
+      transform: scale(0.5);
+    }
+    @media (max-height: 1000px) {
+      transform: scale(0.5);
+    }
+  }
+}
+
+@layer dashboard {
+  .dashboard {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  perspective: 100px;
+  transform: rotateY(0deg);
+  translate: 0 0;
+
+  &.show {
+    animation: dashboard-enter .5s ease-in-out forwards, dashboard-rotation 5s .5s ease-in-out infinite;
+  }
+
+  &.hide {
+    animation: dashboard-leave .5s ease-in-out forwards;
+  }
+}
+
+
+@keyframes dashboard-rotation {
+  from {
+    transform: rotateY(59deg) rotateX(0);
+  }
+  50% {
+    transform: rotateY(65deg) rotateX(-2deg);
+  }
+  to {
+    transform: rotateY(59deg) rotateX(0);
+  }
+}
+
+@keyframes dashboard-enter {
+  80% {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(59deg);
+    translate: -50% 0;
+  }
+}
+
+@keyframes dashboard-leave {
+  0% {
+    transform: rotateY(59deg);
+    translate: -50% 0;
+  }
+  20% {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(0deg);
+    translate: 0 0;
+  }
+}
+
+}
+
+@layer detail {
+  .detail {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  translate: 100% 0;
+
+  .grid {
+    position: absolute;
+    left: 22vw;
+    width: calc(68vw  - 2vmin);
+    @media (max-width: 1000px) {
+      translate: 0 -20rem;
+    }
+
+    display: grid;
+
+    translate: 0 -10rem;
+    height: 40vmin;
+    gap: 2vmin;
+    grid-template-columns: repeat(auto-fill, minmax(25vmin, 1fr));
+
+    .card {
+      --size: 1.5vmin;
+      border-radius: 0;
+      min-height: 20vmin;
+      translate: 100% 0;
+      opacity: 0;
+
+      @for $i from 0 through 20 {
+        &:nth-child(#{$i + 1}) {
+          --i: #{$i};
+        }
+      }
+    }
+  }
+
+  &.show {
+    animation: detail-enter .3s .2s linear forwards;
+    .grid {
+      .card {
+        animation: card-item-enter .3s calc(var(--i) * .10s) ease-in-out forwards;
+      }
+    }
+  }
+
+  &.hide {
+    animation: detail-leave .3s linear forwards;
+
+    .grid {
+      .card {
+        animation: card-item-leave .3s ease-in-out forwards;
+      }
+    }
+  }
+}
+
+
+  @keyframes detail-enter {
+    from {
+      translate: 50% 0;
+    }
+    to {
+      translate: 0 0;
+    }
+  }
+
+  @keyframes detail-leave {
+    from {
+      translate: 0 0;
+    }
+    to {
+      translate: 50% 0;
+    }
+  }
+
+  @keyframes card-item-enter {
+    from {
+      translate: 100% 0;
+      opacity: 0;
+    }
+
+    to {
+      translate: 0;
+      opacity: 1;
+    }
+  }
+
+  @keyframes card-item-leave {
+    from {
+      translate: 0;
+      opacity: 1;
+    }
+
+    to {
+      translate: 100% 0;
+      opacity: 0;
+    }
+  }
+
+  .detail-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5vmin;
+    gap: 1.5vmin;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+
+    .title {
+      font-size: 2vmin;
+    }
+
+    .description {
+      font-size: 1.1vmin;
+      overflow: hidden;
+      overflow-y: auto;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+    }
+
+    @media (hover) {
+      cursor: pointer;
+      &:hover {
+        -webkit-backdrop-filter: blur(2rem) brightness(0.9);
+        backdrop-filter: blur(2rem) brightness(0.9);
+      }
+    }
+  }
+}
+
+@layer global {
+  .filter {
+    position: absolute;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .card.page-title {
+    --size: 1rem;
+    position: absolute;
+    width: min-content;
+    padding: 0.4rem 4rem;
+    border-radius: 0;
+    top: 4rem;
+    color: rgba(0, 0, 0, 0.24);
+    white-space: nowrap;
+    font-size: 0.6rem;
+  }
+
+  body {
+    width: 100vw;
+    height: 100vh;
+    font-family: "Rajdhani";
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+
+    &:after {
+      content: "";
+      position: absolute;
+      background: url(https://assets.codepen.io/907471/noise.svg);
+      mix-blend-mode: overlay;
+      inset: 0;
+      pointer-events: none;
+      opacity: 1;
+      filter: invert(1) brightness(0.2);
+      z-index: 1000;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 1rem;
+      background: repeating-linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.6),
+          rgba(255, 255, 255, 0.6) 0.0625rem,
+          transparent 0.0625rem,
+          transparent 2rem
+        )
+        repeat-y;
+      z-index: 11;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    > label {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+
+      > input {
+        position: absolute;
+        visibility: hidden;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        backdrop-filter: blur(10rem);
+        mask: linear-gradient(to top, black 5%, transparent 15%);
+      }
+    }
+  }
+  * {
+    box-sizing: border-box;
+  }
+}
+
+
+
+  // center at bottom
+  a.labs-follow-me {
+    left: 2rem;
+    right: 2rem;
+    bottom: 1rem;
+    top: unset;
+    text-align: center;
+  }

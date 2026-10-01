@@ -1,0 +1,36 @@
+{
+  "slug": "qEBrwpY",
+  "dir": "qEBrwpY",
+  "newEditor": false,
+  "title": "🕊️",
+  "url": "https://codepen.io/konstantindenerz/pen/qEBrwpY",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2025-03-04 13:16:29 UTC",
+  "updatedAt": "2025-03-04 13:47:57 UTC",
+  "counts": {
+    "loves": 3,
+    "views": 112,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

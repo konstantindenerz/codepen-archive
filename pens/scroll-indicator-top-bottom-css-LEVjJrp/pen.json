@@ -1,0 +1,40 @@
+{
+  "slug": "LEVjJrp",
+  "dir": "scroll-indicator-top-bottom-css-LEVjJrp",
+  "newEditor": false,
+  "title": "Scroll Indicator (Top / Bottom) CSS",
+  "url": "https://codepen.io/konstantindenerz/pen/LEVjJrp",
+  "description": "The top and bottom are faded out using masking so that the user can see that scrolling in that direction is possible at all. This is implemented using animation-timeline, scroll() and mask.\n\nWorks in Chromium-based browsers.",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "csstimeline",
+    "animation",
+    "scroll"
+  ],
+  "license": "MIT",
+  "createdAt": "2025-06-07 10:28:27 UTC",
+  "updatedAt": "2025-06-09 12:42:38 UTC",
+  "counts": {
+    "loves": 2,
+    "views": 181,
+    "comments": 0
+  },
+  "featured": false,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap\" rel=\"stylesheet\">",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

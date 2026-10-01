@@ -1,0 +1,185 @@
+@use 'sass:math';
+@use 'sass:list';
+
+:root {
+  --color-primary: #ee75d2;
+  --color-secondary: #75d8ee;
+  --color-tertiary: #deee75;
+  --color-quaternary: #9375ee;
+  --color-bg: #0f021f;
+}
+
+@property --duration {
+  syntax: "<time>";
+  inherits: true;
+  initial-value: 0s;
+}
+
+@property --wall-random {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+.walls {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  perspective: 800px;
+  --duration: 18s;
+}
+
+.wall {
+  transform-style: preserve-3d;
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(1rem, auto);
+  grid-auto-flow: column;
+  gap: 1rem;
+  transform: translate3d(
+    calc(var(--wi) * var(--wall-random) * 10rem),
+    0,
+    calc(6rem * var(--wi))
+  );
+
+  &:first-child {
+    filter: blur(2rem);
+  }
+
+  &:nth-child(2) {
+    filter: blur(1rem);
+  }
+
+  &:last-child {
+    filter: blur(3rem);
+  }
+
+  @for $w from 1 through 14 {
+    &:nth-child(#{$w}) {
+      --wall-index: #{$w};
+      --wall-random: #{math.random()};
+    }
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column-reverse;
+  position: relative;
+  gap: 0.25rem;
+  height: 100vh;
+  transform: translateY(-120vh);
+  animation: fall var(--duration) ease-in-out infinite;
+  animation-duration: calc(
+    var(--duration) * max(var(--r0), var(--r1), var(--r2))
+  );
+  animation-delay: calc(var(--wall-random) * var(--r0) * 10s);
+  @for $i from 1 through 30 {
+    &:nth-child(#{$i}) {
+      --r0: #{math.random()};
+      --r1: #{math.random()};
+      --r2: #{math.random()};
+    }
+  }
+}
+
+.variant {
+  display: flex;
+  flex-direction: column-reverse;
+  mask: linear-gradient(to bottom, transparent 50%, black);
+  background: linear-gradient(
+    to bottom,
+    var(--color-secondary) 70%,
+    var(--color-primary) 90%,
+    var(--color-tertiary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  &:nth-child(2) {
+    transform-style: preserve-3d;
+    animation: variant 0.2s ease-in-out infinite;
+    position: absolute;
+    inset: 0;
+  }
+}
+
+@keyframes variant {
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.2;
+    transform: translate3d(0.5rem, -1rem, 1rem);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fall {
+  60% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(2vh);
+    opacity: 0;
+  }
+}
+
+.drop {
+  display: grid;
+  place-items: center;
+
+  &:first-child {
+    position: relative;
+
+    &:after {
+      display: grid;
+      place-items: center;
+      content: "✨";
+      -webkit-text-fill-color: var(--color-primary);
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+  }
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  font-family: "Road Rage", "Helvetica Neue", "serif";
+  font-weight: bold;
+  overflow: hidden;
+  background: linear-gradient(to bottom, var(--color-bg), black);
+  color: var(--color-primary);
+}
+
+a.labs-follow-me {
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media only screen and (max-width: 50rem) {
+  :root {
+    font-size: 90%;
+  }
+}

@@ -1,0 +1,153 @@
+labs-button {
+  transform: scale(1.5);
+  
+  @media (width > 1024px){
+      transform: scale(2);
+  }
+}
+
+:root {
+    --color-primary: #c5e4ff;
+    --color-secondary: #145fcb;
+    --color-surface: #010101;
+    --color-tertiary: #a0c2d4;
+    --color-quaternary: #534e83;
+   
+}
+
+// other theme
+// :root {
+//     --color-primary: #d3d3d3;
+//     --color-secondary: #161616;
+//     --color-tertiary: #ced3b0;
+//     --color-quaternary: #434345;
+//     --color-surface: #271C22;
+// }
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  color: var(--color-primary);
+  margin: 0;
+  position: relative;
+  font-family: var(--labs-ref-typeface-brand);
+  background: conic-gradient(from -90deg, #222, transparent), conic-gradient(from 90deg, #222, black);
+  
+  &:before {
+    content:'';
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    filter: blur(.2rem);
+    z-index: -1;
+  }
+}
+
+@property --labs-button-progress {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 0%;
+}
+
+@property --labs-button-disabled {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 0%;
+}
+
+// center at bottom
+a.labs-follow-me {
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center;
+  backdrop-filter: blur(.5rem) brightness(1.3);
+}
+
+
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --labs-ref-typeface-brand: 'Road Rage', 'Helvetica Neue', Roboto, sans-serif;
+  --labs-ref-typeface-weight-regular: 400;
+  --labs-ref-typeface-weight-medium: 500;
+  --labs-sys-color-primary-container: var(--color-secondary);
+  --labs-sys-color-on-primary-container: var(--color-primary);
+}
+
+:root {
+  --labs-sys-size-00000: -.30rem; /* -4px */
+  --labs-sys-size-0000: -.25rem; /* -4px */
+  --labs-sys-size-000: -.125rem; /* -2px */
+  --labs-sys-size-00: -.0625rem; /* -1px */
+  --labs-sys-size-0: 0rem; /* 0px */
+  --labs-sys-size-1: 0.0625rem; /* 1px */
+  --labs-sys-size-2: 0.125rem; /* 2px */
+  --labs-sys-size-3: 0.25rem; /* 4px */
+  --labs-sys-size-4: 0.5rem; /* 8px */
+  --labs-sys-size-5: 0.75rem; /* 12px */
+  --labs-sys-size-6: 1rem; /* 16px */
+  --labs-sys-size-7: 1.5rem; /* 24px */
+  --labs-sys-size-8: 2rem; /* 32px */
+  --labs-sys-size-9: 2.5rem; /* 40px */
+  --labs-sys-size-10: 3rem; /* 48px */
+  --labs-sys-size-11: 3.5rem; /* 56px */
+  --labs-sys-size-12: 4rem; /* 64px */
+  --labs-sys-size-13: 4.5rem; /* 72px */
+  --labs-sys-size-14: 5rem; /* 80px */
+  --labs-sys-size-15: 6rem; /* 96px */
+  --labs-sys-size-16: 7rem; /* 112px */
+  --labs-sys-size-17: 8rem; /* 128px */
+  --labs-sys-size-18: 9rem; /* 144px */
+  --labs-sys-size-19: 10rem; /* 160px */
+  --labs-sys-size-20: 15rem; /* 240px */
+}
+
+:root {
+  --labs-sys-shape-corner-full: 50%;
+  --labs-sys-shape-corner-extra-large-top: 1.75rem 1.75rem 0 0;
+  --labs-sys-shape-corner-extra-large: 1.75rem;
+  --labs-sys-shape-corner-large-top: 1rem 1rem 0 0;
+  --labs-sys-shape-corner-large-end: 0 1rem 1rem 0;
+  --labs-sys-shape-corner-large-start: 1rem 0 0 1rem;
+  --labs-sys-shape-corner-large: 1rem;
+  --labs-sys-shape-corner-medium: 0.75rem;
+  --labs-sys-shape-corner-small: 0.5rem;
+  --labs-sys-shape-corner-extra-small-top: 0.25rem 0.25rem 0 0;
+  --labs-sys-shape-corner-extra-small: 0.25rem;
+  --labs-sys-shape-corner-none: 0;
+}
+
+:root {
+
+  // label
+  --labs-sys-typescale-label-large-font: var(--labs-ref-typeface-brand);
+  --labs-sys-typescale-label-large-line-height: 1.25rem;
+  --labs-sys-typescale-label-large-size: 0.875rem;
+  --labs-sys-typescale-label-large-tracking: 0.00625rem;
+  --labs-sys-typescale-label-large-weight: var(--labs-ref-typeface-weight-medium);
+  --labs-sys-typescale-label-large: var(--labs-sys-typescale-label-large-weight) var(--labs-sys-typescale-label-large-size) / var(--labs-sys-typescale-label-large-line-height) var(--labs-sys-typescale-label-large-font);
+
+  --labs-sys-typescale-label-medium-font: var(--labs-ref-typeface-brand);
+  --labs-sys-typescale-label-medium-line-height: 1rem;
+  --labs-sys-typescale-label-medium-size: 0.75rem;
+  --labs-sys-typescale-label-medium-tracking: 0.03125rem;
+  --labs-sys-typescale-label-medium-weight: var(--labs-ref-typeface-weight-medium);
+  --labs-sys-typescale-label-medium: var(--labs-sys-typescale-label-medium-weight) var(--labs-sys-typescale-label-medium-size) / var(--labs-sys-typescale-label-medium-line-height) var(--labs-sys-typescale-label-medium-font);
+
+  --labs-sys-typescale-label-small-font: var(--labs-ref-typeface-brand);
+  --labs-sys-typescale-label-small-line-height: 1rem;
+  --labs-sys-typescale-label-small-size: 0.6875rem;
+  --labs-sys-typescale-label-small-tracking: 0.03125rem;
+  --labs-sys-typescale-label-small-weight: var(--labs-ref-typeface-weight-medium);
+  --labs-sys-typescale-label-small: var(--labs-sys-typescale-label-small-weight) var(--labs-sys-typescale-label-small-size) / var(--labs-sys-typescale-label-small-line-height) var(--labs-sys-typescale-label-small-font);
+}
+
+
+

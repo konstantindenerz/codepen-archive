@@ -1,0 +1,36 @@
+{
+  "slug": "ogvWMwV",
+  "dir": "random-xmas-walk-2-ogvWMwV",
+  "newEditor": false,
+  "title": "Random Xmas Walk 🎄 #2",
+  "url": "https://codepen.io/konstantindenerz/pen/ogvWMwV",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2024-12-21 20:00:04 UTC",
+  "updatedAt": "2024-12-21 20:31:15 UTC",
+  "counts": {
+    "loves": 11,
+    "views": 157,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

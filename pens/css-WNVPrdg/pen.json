@@ -1,0 +1,36 @@
+{
+  "slug": "WNVPrdg",
+  "dir": "css-WNVPrdg",
+  "newEditor": false,
+  "title": "🔥 (CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/WNVPrdg",
+  "description": "🔥 Looks better on macOS.",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2024-11-12 14:23:25 UTC",
+  "updatedAt": "2024-11-12 15:04:51 UTC",
+  "counts": {
+    "loves": 15,
+    "views": 863,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

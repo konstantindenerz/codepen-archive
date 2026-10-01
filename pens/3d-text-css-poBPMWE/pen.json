@@ -1,0 +1,48 @@
+{
+  "slug": "poBPMWE",
+  "dir": "3d-text-css-poBPMWE",
+  "newEditor": false,
+  "title": "3D Text (CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/poBPMWE",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "filter",
+    "css",
+    "svg",
+    "space",
+    "3d"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-03-24 11:41:59 UTC",
+  "updatedAt": "2025-03-04 12:00:11 UTC",
+  "counts": {
+    "loves": 47,
+    "views": 4728,
+    "comments": 2
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap\" rel=\"stylesheet\">\n",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

@@ -1,0 +1,48 @@
+{
+  "slug": "PoygNJB",
+  "dir": "abstract-sphere-css-PoygNJB",
+  "newEditor": false,
+  "title": "Abstract Sphere (CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/PoygNJB",
+  "description": "Just an experiment with cos & sin. ",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "animation",
+    "experiments",
+    "gm",
+    "generativeart"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-05-26 20:11:57 UTC",
+  "updatedAt": "2024-10-30 05:53:42 UTC",
+  "counts": {
+    "loves": 20,
+    "views": 969,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

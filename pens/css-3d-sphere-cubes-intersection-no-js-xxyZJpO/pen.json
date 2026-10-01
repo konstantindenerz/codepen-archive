@@ -1,0 +1,48 @@
+{
+  "slug": "xxyZJpO",
+  "dir": "css-3d-sphere-cubes-intersection-no-js-xxyZJpO",
+  "newEditor": false,
+  "title": "CSS - 3D - Sphere - Cubes - Intersection (No JS)",
+  "url": "https://codepen.io/konstantindenerz/pen/xxyZJpO",
+  "description": "Demonstration of some cool CSS features like mask 🎭 and cosine function ( trigonometric).\n \nNo JavaScript necessary! \n\nInspiration: https://twitter.com/GuillaumeMitch/status/1646463654781501440\n\nWorks perfect in Chromium-based browsers ✅.",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "animation",
+    "3d",
+    "mask",
+    "cos"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-04-13 22:24:19 UTC",
+  "updatedAt": "2023-05-09 10:18:17 UTC",
+  "counts": {
+    "loves": 193,
+    "views": 5095,
+    "comments": 4
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

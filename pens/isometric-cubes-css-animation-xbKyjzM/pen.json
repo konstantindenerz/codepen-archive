@@ -1,0 +1,38 @@
+{
+  "slug": "xbKyjzM",
+  "dir": "isometric-cubes-css-animation-xbKyjzM",
+  "newEditor": false,
+  "title": "Isometric Cubes 🧊 (CSS, Animation)",
+  "url": "https://codepen.io/konstantindenerz/pen/xbKyjzM",
+  "description": "Inspired by this amazing video, I created a Gradient Cubes animation using CSS: https://x.com/i_dianov/status/1882139393424769086",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "cssgenuary"
+  ],
+  "license": "MIT",
+  "createdAt": "2025-01-23 07:20:44 UTC",
+  "updatedAt": "2025-01-27 15:54:52 UTC",
+  "counts": {
+    "loves": 117,
+    "views": 4592,
+    "comments": 4
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

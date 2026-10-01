@@ -1,0 +1,19 @@
+body,
+#canvas {
+  background-color: #111;
+  color: white;
+  overflow: hidden;
+}
+
+a.labs-follow-me-twitter {
+  position: absolute;
+  top: unset;
+  bottom: 0 ;
+  left: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+  svg {
+    transform: scale(1.5);
+  }
+}

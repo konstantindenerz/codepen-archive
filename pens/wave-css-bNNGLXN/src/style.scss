@@ -1,0 +1,72 @@
+
+@property --a {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+
+$count: 24;
+
+:root {
+  --size: 140deg;
+}
+
+.container {
+  display: flex;
+  width: 100dvw;
+  height: 100dvh;
+  --count: #{$count};
+  --per-item: #{50% / $count};
+  --p-per-item: #{1 / $count};
+  animation: main 12s cubic-bezier(0.83,-0.49, 0.15, 1.84) infinite;
+}
+
+@keyframes main {
+  from {
+    --a: 0deg;
+  }
+  to {
+    --a: 360deg;
+  }
+}
+
+.col {
+  flex: 1;
+  --a-per-item: calc(var(--size) / var(--count) * var(--i) - var(--a));
+  --pos1: calc(50% * cos(var(--a-per-item)));
+  background: linear-gradient(
+to bottom,
+    orange,
+    magenta var(--pos1),
+    #03072c 50%,
+    magenta calc(100% - var(--pos1)),
+    orange,
+  );
+
+  @for $i from 0 through $count - 1 {
+    &:nth-child(#{$i + 1}) {
+      --i: #{$i};
+    }
+  }
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  
+  
+  &:after {
+    content: "";
+    opacity: .5;
+    position: absolute;
+    background: url(https://assets.codepen.io/907471/noise.svg);
+    mix-blend-mode: hue;
+    inset: 0;
+    pointer-events: none;
+    filter: invert(1) brightness(5) saturate(.5);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}

@@ -1,0 +1,36 @@
+{
+  "slug": "MYWJRoo",
+  "dir": "ai-interaction-visualizer-aiiv-css-MYWJRoo",
+  "newEditor": false,
+  "title": "Ai Interaction Visualizer (AIIV) ✨ (CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/MYWJRoo",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2025-03-02 10:36:02 UTC",
+  "updatedAt": "2025-03-04 18:43:07 UTC",
+  "counts": {
+    "loves": 301,
+    "views": 8460,
+    "comments": 1
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

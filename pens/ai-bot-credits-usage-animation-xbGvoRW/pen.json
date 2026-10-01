@@ -1,0 +1,36 @@
+{
+  "slug": "xbGvoRW",
+  "dir": "ai-bot-credits-usage-animation-xbGvoRW",
+  "newEditor": false,
+  "title": "AI Bot Credits Usage Animation",
+  "url": "https://codepen.io/konstantindenerz/pen/xbGvoRW",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2025-07-07 20:00:23 UTC",
+  "updatedAt": "2025-08-17 10:20:05 UTC",
+  "counts": {
+    "loves": 14,
+    "views": 985,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "none",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.css",
+    "js": "src/script.js"
+  },
+  "cssStarter": "neither",
+  "cssPrefix": "neither",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

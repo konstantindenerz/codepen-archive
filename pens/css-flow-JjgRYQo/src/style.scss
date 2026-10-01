@@ -1,0 +1,116 @@
+:root {
+  --distance: max(120rem, 50dvw); // 200rem
+  --rotation-duration: 3s;
+  --fade-in-duration: 0.2s;
+  --delay-base: 0.012s;
+}
+@property --r {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+@property --l {
+  syntax: "<length>";
+  initial-value: 0;
+  inherits: true;
+}
+@property --distance {
+  syntax: "<length>";
+  initial-value: 0;
+  inherits: true;
+}
+
+.items {
+  width: 100dvw;
+  height: 100dvh;
+  mask: linear-gradient(to right, transparent 0%, black 30%);
+  font-size: 6rem;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+.item {
+  line-height: 80%;
+  position: absolute;
+  --x: calc(var(--distance) / var(--count));
+  transform: translate3d(calc(var(--i) * var(--x) - var(--distance)), 0%, 0) rotate(var(--r));
+  --delay: calc((var(--count) - var(--i)) * var(--delay-base));
+  animation: rotation var(--rotation-duration) var(--delay) linear infinite,
+    fade-in var(--fade-in-duration) var(--delay) linear forwards;
+  opacity: 0;
+
+  &:last-of-type {
+    filter: drop-shadow(0 0 .6rem rgba(255, 255, 255, 0.6));
+  }
+  &:not(:last-of-type) {
+    filter: blur(0.1rem);
+    color: black !important;
+  }
+
+  > div {
+    text-align: center;
+    &:first-of-type {
+      letter-spacing: -0.5rem;
+      background: conic-gradient(
+        from 290deg at 50% 100%,
+        #7ec915,
+        #ebf41a,
+        #fdbb14,
+        #ff4e37,
+        #ff52e7,
+        white,
+        #11d3ff,
+        #7ec915
+      );
+    }
+
+    &:last-of-type {
+      background: conic-gradient(
+        from 290deg at 50% 0%,
+        #7ec915,
+        #ebf41a,
+        #fdbb14,
+        #ff4e37,
+        #ff52e7,
+        white,
+        #11d3ff,
+        #7ec915
+      );
+    }
+
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+}
+
+@keyframes rotation {
+  from {
+    --r: 0deg;
+  }
+
+  to {
+    --r: -360deg;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+body {
+  display: grid;
+  color: #ffbaf6;
+  place-items: center;
+  height: 100dvh;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  background: #0e28ad;
+  position: relative;
+}

@@ -1,0 +1,72 @@
+@use 'sass:list';
+
+:root {
+  --c1: #ff2700;
+  --c2: #fcfefb;
+  --c3: #c9a969;
+  --c4: #271c22;
+}
+
+// [color index, width, height, x, y]
+$data: [ 
+  // stem
+  [3,1, 2, 4, -5], 
+  [3, 1, 1, 3, -3], 
+  [3, 1, 3, 2, -2],
+  [3, 2, 2, 5, -7], 
+  [3, 2, 1,3, -6], 
+  [3, 2, 1, 1, -5], 
+  [3, 1, 1, 0, -4], 
+  [3, 1, 1, -1, -3], 
+  [3, 1, 1, -2,-2],
+  // reflection
+  [2, 1, 1, 1, 2], 
+  [2, 1, 1, 2, 3], 
+  [2, 1, 1, -4, 0], 
+  [2, 1, 1, -3, 1],
+  // fruit
+  [1,3, 6, -4, -3], 
+  [1, 1, 4, -5, -2], 
+  [1, 1, 3, -1, -3], 
+  [1, 1, 1, 0, -2], 
+  [1, 6,4, 0, 0], 
+  [1, 4, 6, 1, -1], 
+];
+
+// draw rectangle
+@function r($item) {
+  $c: var(--c#{list.nth($item, 1)});
+  $w: list.nth($item, 2);
+  $h: list.nth($item, 3);
+  $x: list.nth($item, 4);
+  $y: list.nth($item, 5);
+  @return linear-gradient($c, color-mix(in srgb, $c, transparent 30%)) no-repeat calc(50vw + #{$x}rem)
+    calc(50vh + #{$y}rem) / #{$w}rem #{$h}rem;
+}
+
+@function 🍒() {
+  $result: ();
+  @each $item in $data {
+    $result: list.append($result, r($item), "comma");
+  }
+  @return $result;
+}
+
+body {
+  background: 🍒(), var(--c4);
+  color: var(--c3);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a.labs-follow-me {
+  display: grid;
+  place-items: center;
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center;
+}

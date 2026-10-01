@@ -1,0 +1,36 @@
+{
+  "slug": "KKxvdPq",
+  "dir": "follow-me-template-KKxvdPq",
+  "newEditor": false,
+  "title": "⚠️ Follow Me Template 🛑",
+  "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2023-03-06 10:02:50 UTC",
+  "updatedAt": "2024-01-17 13:10:10 UTC",
+  "counts": {
+    "loves": 2,
+    "views": 219,
+    "comments": 0
+  },
+  "featured": false,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "neither",
+  "cssPrefix": "neither",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

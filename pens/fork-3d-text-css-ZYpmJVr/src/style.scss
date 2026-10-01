@@ -1,0 +1,111 @@
+@use 'sass:list';
+
+:root {
+  --color-primary: white;
+  --color-surface: #030303;
+}
+
+
+@function highlight($gap, $size: 0.25vmin, $color: var(--c)) {
+  @return -#{$gap $gap / 1.5 $size $color};
+}
+
+@function highlights() {
+  $result: ();
+  $gap: 0.25vmin;
+  $count: 20;
+  @for $i from $count through 0 {
+    @if ($i == $count) {
+      $result: list.append(
+        $result,
+        highlight($i * $gap, 0.01vmin, var(--c2)),
+        "comma"
+      );
+    } @else if ($i == $count - 1) {
+      $result: list.append(
+        $result,
+        highlight($i * $gap, 0.1vmin, rgba(255, 255, 255, 0.9)),
+        "comma"
+      );
+    } @else {
+      $result: list.append(
+        $result,
+        highlight($i * $gap, 0.025vmin, var(--c)),
+        "comma"
+      );
+    }
+  }
+  @return $result;
+}
+
+.container {
+  font-size: 58vmin;
+  position: absolute;
+  display: grid;
+  place-items: center;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  background: conic-gradient(
+    #f6a2f6,
+    #e74f89,
+    #7e7ecb,
+    #ffd500,
+    #ee75d2,
+    #13f5fa,
+    #f6a2f6
+  );
+
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+
+  &::before {
+    content: "404";
+    position: absolute;
+    inset: 0;
+    color: transparent;
+    --c: color-mix(in srgb, white, transparent 94%);
+    --c2: var(--color-surface);
+    text-shadow: highlights();
+  }
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  margin: 0;
+  position: relative;
+  place-items: center;
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+
+  &::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    mix-blend-mode: screen;
+    filter: url(#noise) saturate(0) brightness(1.5);
+    opacity: 0.36;
+  }
+}
+
+.filter {
+  position: absolute;
+  visibility: hidden;
+}
+
+// center at bottom
+a.labs-follow-me {
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}

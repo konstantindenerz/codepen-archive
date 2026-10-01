@@ -1,0 +1,69 @@
+:root {
+  --costume-halloween: #f47433;
+  --costume-retro: #dbcec7;
+
+  --surface: #271c22;
+  --primary: #ffd600;
+  --secondary: #99cfd4;
+  --secondary-variant: #4a46ba;
+  --tertiary: #d52b5d;
+  --tertiary-variant: #4a2832;
+  --dot: #d0abb8;
+  --ghost-1: #d0abb8;
+  --ghost-2: #dda445;
+  --ghost-3: #99cfd4;
+  --ghost-4: #e0161a;
+  --ghost-variant: #4a46ba;
+  font-size: 400%;
+}
+
+// no effect
+// pacman-blinky .ghost{
+//   background: yellow;
+// }
+
+// will work 🔥 (https://caniuse.com/mdn-css_selectors_part)
+// pacman-blinky::part(body){
+//   background: yellow; // pacman mode
+// }
+
+// effects on host element possible
+pacman-blinky {
+  transition: border-color 0.3s ease, padding 0.3s ease, border-width .3s ease, filter .3s ease;
+  border-radius: 30%;
+      filter: drop-shadow(0 0 10rem);
+  &:hover {
+    padding: .8rem;
+    border-width: .8rem;
+    filter: drop-shadow(0 0 1rem magenta);
+    border-color: var(--secondary-variant);
+  }
+}
+
+body {
+  display: grid;
+  place-items: center;
+  font-family: "Micro 5", "Helvetica", sans-serif;
+  height: 100vh;
+  background: conic-gradient(#1b132d, black, #1b132d);
+  font-size: 2rem;
+  overflow: clip;
+   &:after {
+    content: "";
+     pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(transparent 40%, var(--surface)) repeat;
+    z-index: 120;
+    --led-size: 0.1rem;
+    background-size: var(--led-size) var(--led-size);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-surface: #0e0331;
+}

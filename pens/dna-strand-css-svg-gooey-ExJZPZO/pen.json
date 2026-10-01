@@ -1,0 +1,48 @@
+{
+  "slug": "ExJZPZO",
+  "dir": "dna-strand-css-svg-gooey-ExJZPZO",
+  "newEditor": false,
+  "title": "DNA Strand 🧬 (CSS, SVG:Gooey)",
+  "url": "https://codepen.io/konstantindenerz/pen/ExJZPZO",
+  "description": "Step into a digital helix 🧬✨ with my latest #CSS creation on @CodePen: a DNA strand featuring a mesmerizing Gooey effect (#SVG). \n\n✅ Runs great on Chrome. ",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "dna",
+    "svg",
+    "synthwave",
+    "gooey"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-03-18 15:40:36 UTC",
+  "updatedAt": "2024-03-18 15:51:53 UTC",
+  "counts": {
+    "loves": 129,
+    "views": 4194,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

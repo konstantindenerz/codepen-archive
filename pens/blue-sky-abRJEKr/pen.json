@@ -1,0 +1,42 @@
+{
+  "slug": "abRJEKr",
+  "dir": "blue-sky-abRJEKr",
+  "newEditor": false,
+  "title": "Blue Sky",
+  "url": "https://codepen.io/konstantindenerz/pen/abRJEKr",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2023-04-24 20:03:54 UTC",
+  "updatedAt": "2024-03-03 09:41:02 UTC",
+  "counts": {
+    "loves": 6,
+    "views": 90,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

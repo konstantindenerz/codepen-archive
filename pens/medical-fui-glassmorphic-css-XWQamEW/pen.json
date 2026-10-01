@@ -1,0 +1,48 @@
+{
+  "slug": "XWQamEW",
+  "dir": "medical-fui-glassmorphic-css-XWQamEW",
+  "newEditor": false,
+  "title": "Medical FUI (Glassmorphic, CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/XWQamEW",
+  "description": "Check out my latest #CSS @CodePen featuring some futuristic #FUI  in a sleek glassmorphic style 😍 ! The animated background elevates the glassmorphic design! ✨\n\n✅ By pushing the blur filter to its limits, it runs quite well in Chrome. 😄\n",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "glassmorphic",
+    "fui",
+    "medical",
+    "animation"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-03-26 20:54:53 UTC",
+  "updatedAt": "2024-03-27 06:02:48 UTC",
+  "counts": {
+    "loves": 66,
+    "views": 2268,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap\" rel=\"stylesheet\">",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

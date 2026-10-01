@@ -1,0 +1,103 @@
+.container() {
+  -webkit-backdrop-filter: blur(30px) saturate(160%) brightness(130%);
+  animation: backdrop-filter-animation 3s ease infinite;
+  background: rgba(39, 39, 39, 0.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background-color .3s ease;
+  
+  @media (hover){
+    &:hover {
+      background: rgba(218, 39, 39, 0.3);
+    }
+  }
+}
+
+@keyframes backdrop-filter-animation {
+  from {
+     backdrop-filter: blur(30px) saturate(160%) brightness(130%);
+  }
+  
+  50% {
+    backdrop-filter: blur(10px) saturate(160%) brightness(130%);
+  }
+  to {
+     backdrop-filter: blur(30px) saturate(160%) brightness(130%);
+  }
+}
+.app-bar {
+  .container();
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  height: 60px;
+}
+
+.app-content {
+  .container();
+  position: sticky;
+  top: 150px;
+  display: flex;
+  width: 600px;
+  height: 400px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.app-footer {
+  .container();
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 60px;
+}
+
+
+.label {
+  border-radius: 2px;
+  font-family: 'Roboto Condensed';
+  font-style: italic;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  background:  rgba(218, 39, 39, 0.9);
+  color: white;
+  padding: 10px;
+  opacity: .9;
+}
+
+html,
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.5);
+
+  height: 1200px;
+}
+
+
+
+
+
+
+
+
+body {
+  background: url('https://assets.codepen.io/907471/vision-pro-ui-3.webp') center center no-repeat;
+  background-size: cover;
+}
+
+a {
+  color: white;
+  margin-left: 10px;
+}

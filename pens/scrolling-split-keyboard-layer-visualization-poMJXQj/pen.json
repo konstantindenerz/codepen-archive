@@ -1,0 +1,47 @@
+{
+  "slug": "poMJXQj",
+  "dir": "scrolling-split-keyboard-layer-visualization-poMJXQj",
+  "newEditor": false,
+  "title": "(Scrolling) Split Keyboard Layer Visualization",
+  "url": "https://codepen.io/konstantindenerz/pen/poMJXQj",
+  "description": "🔥 Scroll Animation & Scroll Snapping.\n✅  Works in Chrome.\n💡 Tip: Also try the 0.5x scale factor.\n\nPost: https://x.com/kdenerz/status/1840110478405841079\nZMK Config: https://github.com/konstantindenerz/zmk-config/blob/main/config/cradio.keymap\n",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "scrollanimation",
+    "snapping",
+    "splitkeyboard"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-09-28 13:08:48 UTC",
+  "updatedAt": "2024-10-13 18:12:33 UTC",
+  "counts": {
+    "loves": 72,
+    "views": 3767,
+    "comments": 6
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

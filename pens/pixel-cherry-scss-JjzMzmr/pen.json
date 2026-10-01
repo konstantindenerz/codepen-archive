@@ -1,0 +1,47 @@
+{
+  "slug": "JjzMzmr",
+  "dir": "pixel-cherry-scss-JjzMzmr",
+  "newEditor": false,
+  "title": "Pixel Cherry 🍒 (SCSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/JjzMzmr",
+  "description": "With SCSS functions, we have several advantages:\n\n  🍒 Dynamic styling with data-driven design\n  🍒 Enhanced reusability and modularity for maintainable code\n  🍒 Simplified complex styles for better readability and efficiency.",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "pixelart",
+    "css",
+    "pacman",
+    "cherry"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-01-29 21:22:03 UTC",
+  "updatedAt": "2024-01-30 09:15:38 UTC",
+  "counts": {
+    "loves": 20,
+    "views": 934,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

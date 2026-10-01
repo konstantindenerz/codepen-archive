@@ -1,0 +1,48 @@
+{
+  "slug": "XWQWYVW",
+  "dir": "eletric-spinner-css-svg-gooey-XWQWYVW",
+  "newEditor": false,
+  "title": "Eletric Spinner ⚡️ (CSS, SVG:Gooey)",
+  "url": "https://codepen.io/konstantindenerz/pen/XWQWYVW",
+  "description": "Can't get enough of the gooey effect 😍⚡️ Check out my latest #CodePen creation: a spinner with an electrifying twist! Built with CSS and featuring a SVG filter for that extra gooeyness. Perfect for adding a spark to your projects! 🔌🌀\n\nℹ️  Try different scales (1x, 0.5x 0.25x)\n\n✅ Chrome & Firefox\n",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "gooey",
+    "spinner",
+    "loading",
+    "eletric"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-02-29 21:34:24 UTC",
+  "updatedAt": "2024-02-29 21:51:15 UTC",
+  "counts": {
+    "loves": 230,
+    "views": 8061,
+    "comments": 2
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

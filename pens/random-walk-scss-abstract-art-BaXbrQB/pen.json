@@ -1,0 +1,36 @@
+{
+  "slug": "BaXbrQB",
+  "dir": "random-walk-scss-abstract-art-BaXbrQB",
+  "newEditor": false,
+  "title": "Random Walk (SCSS, Abstract, Art)",
+  "url": "https://codepen.io/konstantindenerz/pen/BaXbrQB",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2024-11-14 19:44:04 UTC",
+  "updatedAt": "2024-11-15 07:39:41 UTC",
+  "counts": {
+    "loves": 12,
+    "views": 156,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

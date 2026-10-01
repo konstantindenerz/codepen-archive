@@ -1,0 +1,22 @@
+body {
+  background: #111;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(10% 10% at center, #fef6ff, transparent);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+canvas {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}

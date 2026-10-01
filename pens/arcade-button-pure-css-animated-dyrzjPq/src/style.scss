@@ -1,0 +1,655 @@
+:root {
+  --surface: #271C22;
+  --primary: #FFD600;
+  --secondary: #99CFD4;
+  --secondary-variant: #4A46BA;
+  --tertiary: #D52B5D;
+  --tertiary-variant: #4A2832;
+
+  --dot:#D0ABB8;
+  --ghost-1: #D0ABB8;
+  --ghost-2: #DDA445;
+  --ghost-3: #99CFD4;
+  --ghost-4: #E0161A;
+  --ghost-variant: #4A46BA;
+}
+
+arcade-machine {
+  display: grid;
+  place-items: center;
+  border-bottom-left-radius: 10rem;
+  border-bottom-right-radius: 10rem;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom, #AB1740, #CB2057);
+  position: relative;
+
+  &:before {
+    content: '';
+    background: linear-gradient(to bottom, #DC3362, #CB2057);
+    box-shadow: -0.0825rem .1rem 1rem .0625rem rgba(70, 8, 17, .4), -0.0625rem .1rem 0 rgba(131, 30, 61, 0.34), 0.0625rem 0.1rem 0 rgba(131, 30, 61, 0.34);
+    position: absolute;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    top: 0;
+    left: 2rem;
+    right: 2rem;
+    bottom: 1.5rem;
+  }
+
+  &:after {
+    content: '';
+    background: linear-gradient(to bottom, #DC3362, #CB2057);
+    box-shadow: -0.0625rem 1rem .4rem #CB2057, 0.0625rem 1rem .4rem #CB2057;
+    position: absolute;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    top: 50%;
+    left: 2rem;
+    right: 2rem;
+    bottom: 1.5rem;
+  }
+}
+
+arcade-machine-title {
+  display: flex;
+  aspect-ratio: 4.8 / 20;
+  height: min(20rem, 35vh);
+  border-bottom-left-radius: 10rem;
+  border-bottom-right-radius: 10rem;
+  position: absolute;
+  left: 4rem;
+  top: 0;
+  background: url(https://assets.codepen.io/907471/arcade-button-title.svg) center center no-repeat, linear-gradient(to bottom, #CD1E4F, #C0134B 20%);
+  background-size: contain;
+  padding: .5rem;
+  background-origin: content-box;
+  box-shadow: inset -0.0625rem 0 0 rgba(131, 30, 61, 0.34), inset 0.0625rem 0 0 rgba(131, 30, 61, 0.34), inset 0  -.2rem .8rem rgba(0, 0, 0, .15);
+}
+
+arcade-button {
+  z-index: 1111111;
+  display: flex;
+  align-items: center;
+  color: var(--primary);
+  border-radius: 10rem;
+  width: 20rem;
+  height: 7rem;
+  position: relative;
+  overflow: hidden;
+  animation: progress 2s linear infinite;
+  transition: border .3s linear;
+  --border-color: var(--secondary);
+  border: .375rem solid var(--border-color);
+  text-transform: uppercase;
+
+
+  box-shadow: -0.0625rem -0.0625rem 0.125rem rgba(255, 255, 255, .25),
+  -0.125rem -0.125rem 0.8125rem rgba(231, 135, 164, 0.15),
+  -0.25rem -0.25rem 1.1875rem 0.3125rem #DD6589,
+  0.25rem 0.25rem .1875rem #7E233E,
+  0.25rem 0.25rem 1.5rem .4375rem #951D41,;
+
+  @media (hover) {
+    &:hover {
+      border-color: var(--tertiary);
+      border-width: .75rem;
+      cursor: pointer;
+
+      &:after, walls, dots, dots-v {
+        margin: -.375rem; // required fix
+      }
+    }
+  }
+
+  &:active {
+    border-color: var(--tertiary-variant);
+    border-width: .5rem;
+    cursor: pointer;
+
+    &:after {
+      margin: -.125rem; // required fix
+    }
+  }
+
+
+  &:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    animation: content-placeholder-animation var(--content-placeholder-animation-duration, 1.5s) ease 2 forwards;
+    background: transparent linear-gradient(
+                    to right,
+                    transparent 0,
+                    transparent calc(10% - 6.25rem),
+                    color-mix(in srgb, var(--tertiary-variant), transparent 15%) 50%,
+                    transparent calc(50% + 6.25rem),
+                    transparent 100%
+    ) center left;
+    background-size: 100% 100%;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(transparent 40%, var(--surface)) repeat;
+    z-index: 120;
+    background-size: 0.25rem 0.25rem;
+    transition: margin .3s linear;
+  }
+
+  background: var(--surface);
+
+  input {
+    display: none;
+    z-index: 111;
+
+    &:not(:checked) ~ *:not(arcade-button-text):not(.audio) {
+      display: none;
+      transition: all .3s ease;
+      opacity: 1;
+    }
+
+    &:not(:checked) ~ arcade-button-text {
+      animation: none;
+
+      &:after {
+        content: var(--button-label);
+      }
+    }
+
+    &:not(:checked) ~ walls {
+      opacity: 0;
+    }
+
+    &:checked ~ .audio {
+      display: block !important;
+    }
+  }
+}
+
+
+arcade-button-text {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  letter-spacing: .5rem;
+  animation: label 5s linear infinite;
+
+  &:after {
+    content: 'Loading'
+  }
+}
+
+
+@keyframes content-placeholder-animation {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+
+@keyframes label {
+  from {
+    opacity: 0;
+    transform: translateY(.26rem);
+  }
+
+  66% {
+    opacity: 0;
+    transform: translateY(.26rem);
+  }
+  69% {
+    transform: translateY(0);
+    opacity: .1
+  }
+  71% {
+    opacity: 1
+  }
+  74% {
+    opacity: .2
+  }
+  76% {
+    opacity: 1
+  }
+  78% {
+    opacity: .2
+  }
+
+  82% {
+    opacity: 1
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  93% {
+    opacity: 0;
+    transform: translateY(.26rem);
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+
+@property --ghost-eye-size {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@mixin dizzied {
+  --ghost-color-variant: var(--ghost-variant);
+  --ghost-eye-size: 0.5;
+  --ghost-eye-color: transparent;
+  --ghost-chomp-color: white;
+}
+
+ghost {
+  --ghost-eye-size: 1;
+  --ghost-chomp-color: transparent;
+  display: grid;
+  background: radial-gradient(calc(.45rem * var(--ghost-eye-size)) calc(.45rem * var(--ghost-eye-size)) at .85rem 1rem, var(--eye-color, var(--ghost-variant)) 50%, transparent 50%, transparent),
+  radial-gradient(calc(.45rem * var(--ghost-eye-size)) calc(.45rem * var(--ghost-eye-size)) at 1.75rem 1rem, var(--eye-color, var(--ghost-variant)) 50%, transparent 50%, transparent),
+  radial-gradient(calc(.60rem * var(--ghost-eye-size)) calc(.75rem * var(--ghost-eye-size)) at .75rem 1rem, white 50%, transparent 50%, transparent),
+  radial-gradient(calc(.60rem * var(--ghost-eye-size)) calc(.75rem * var(--ghost-eye-size)) at 1.6rem 1rem, white 50%, transparent 50%, transparent), var(--ghost-color);
+
+  clip-path: polygon(0% 100%, 0% 0%, 100% 0%, 99% 100%, 77% 86%, 58% 100%, 42% 84%, 27% 100%, 15% 84%);
+  animation: ghost-body .3s ease infinite, ghost-move 5s linear infinite;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  width: 2rem;
+  height: 2.4rem;
+  margin-top: 0.35rem;
+  left: 1rem;
+  z-index: 8;
+  place-items: center;
+
+  &:after {
+    content: '';
+    background: var(--ghost-chomp-color, white);
+    height: .4rem;
+    width: 1.25rem;
+    transform: translate(.25rem, .5rem);
+    clip-path: polygon(0% 77%, 24% 7%, 45% 47%, 63% 0%, 77% 45%, 94% 2%, 80% 76%, 63% 30%, 46% 90%, 25% 39%);
+    animation: ghost-chomp .3s ease infinite;
+
+  }
+
+  &.pinky {
+    --ghost-color: var(--ghost-color-variant, var(--ghost-1));
+  }
+
+  &.clyde {
+    --ghost-color: var(--ghost-color-variant, var(--ghost-2));
+  }
+
+  &.inky {
+    --ghost-color: var(--ghost-color-variant, var(--ghost-3));
+  }
+
+  &.blinky {
+    --ghost-color: var(--ghost-color-variant, var(--ghost-4));
+  }
+
+  &.dizzied {
+    --ghost-color: var(--ghost-variant);
+    @include dizzied;
+  }
+}
+
+
+@keyframes ghost-body {
+  from {
+    clip-path: polygon(0% 100%, 0% 0%, 100% 0%, 100% 100%, 90.56% 90.56%, 82.44% 73.62%, 75.44% 90.56%, 65.13% 100%, 56.49% 90.56%, 47.44% 73.62%, 42.25% 91.5%, 31.22% 100%, 21.24% 92.09%, 15% 73.62%, 8.5% 91.5%);
+  }
+  50% {
+    clip-path: polygon(0% 75.25%, 0% 0%, 100% 0%, 100% 75.25%, 90.56% 90.56%, 83.3% 100%, 75.44% 90.56%, 65.96% 73.58%, 56.49% 90.56%, 49.96% 100%, 42.25% 91.5%, 31.23% 73.58%, 21.24% 92.09%, 14.98% 100%, 8.5% 91.5%);
+  }
+  to {
+    clip-path: polygon(0% 100%, 0% 0%, 100% 0%, 100% 100%, 90.56% 90.56%, 82.44% 73.62%, 75.44% 90.56%, 65.13% 100%, 56.49% 90.56%, 47.44% 73.62%, 42.25% 91.5%, 31.22% 100%, 21.24% 92.09%, 15% 73.62%, 8.5% 91.5%);
+  }
+}
+
+@keyframes ghost-chomp {
+  from {
+    clip-path: polygon(0% 77%, 24% 7%, 45% 47%, 63% 0%, 77% 45%, 94% 2%, 80% 76%, 63% 30%, 46% 90%, 25% 39%);
+  }
+  50% {
+    clip-path: polygon(0 5%, 22% 64%, 44% 5%, 61% 70%, 77% 6%, 99% 76%, 79% 33%, 61% 91%, 44% 37%, 21% 95%);
+  }
+  to {
+    clip-path: polygon(0% 77%, 24% 7%, 45% 47%, 63% 0%, 77% 45%, 94% 2%, 80% 76%, 63% 30%, 46% 90%, 25% 39%);
+  }
+}
+
+
+@keyframes ghost-move {
+  from {
+    transform: translateX(-15rem);
+    --ghost-eye-size: 1;
+    --ghost-chomp-color: transparent;
+  }
+
+  49.99% {
+    transform: translateX(5rem);
+    --ghost-eye-size: 1;
+    --ghost-chomp-color: transparent;
+    --ghost-color-variant: unset;
+    --ghost-eye-color: unset;
+  }
+  50% {
+    transform: translateX(7rem) scaleX(-1);
+    @include dizzied;
+  }
+  60% {
+    transform: translateX(2rem) scaleX(-1);
+  }
+  to {
+    transform: translateX(-15rem) scaleX(-1);
+  }
+}
+
+
+.ghosts-bar {
+  position: absolute;
+  left: 0;
+  bottom: 6rem;
+  right: 0;
+  display: grid;
+  place-items: center;
+}
+
+.ghosts {
+  background: var(--surface);
+  bottom: 4rem;
+  display: flex;
+  gap: 1rem;
+  border-radius: 2rem;
+  padding: 1rem;
+  opacity: 0;
+  animation: fadeIn .35s 4s ease-in forwards;
+  transform: scale(0.5);
+
+  ghost {
+    position: relative;
+    left: unset;
+    top: unset;
+    animation: ghost-body .3s ease infinite;
+  }
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(0.5);
+  }
+}
+
+@property --pacman-chomp-deg {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+
+pacman {
+  --pacman-chomp-deg: 42deg;
+  display: block;
+  width: 2.5rem;
+  margin-top: .2rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: relative;
+  animation: pacman-chomp .6s linear infinite, pacman-move 5s linear infinite;
+  z-index: 10;
+
+  &:before {
+    content: '';
+    background-color: var(--primary);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1.25rem;
+    border-top-left-radius: 10rem;
+    border-top-right-radius: 10rem;
+    transform: rotate(calc(-1 * var(--pacman-chomp-deg)));
+    transform-origin: bottom;
+  }
+
+  &:after {
+    content: '';
+    background-color: var(--primary);
+    position: absolute;
+    top: 1.25rem;
+    left: 0;
+    right: 0;
+    height: 1.25rem;
+    border-bottom-left-radius: 10rem;
+    border-bottom-right-radius: 10rem;
+    transform: rotate(var(--pacman-chomp-deg));
+    transform-origin: top;
+  }
+}
+
+
+@keyframes pacman-chomp {
+  from {
+    --pacman-chomp-deg: 0deg;
+  }
+
+  50% {
+    --pacman-chomp-deg: 70deg;
+  }
+
+  to {
+    --pacman-chomp-deg: 0deg;
+  }
+}
+
+@keyframes pacman-move {
+  from {
+    transform: translateX(-10rem);
+  }
+
+  49.99% {
+    transform: translateX(10rem);
+  }
+  50% {
+    transform: translateX(10rem) scaleX(-1);
+  }
+  60% {
+    transform: translateX(4rem) scaleX(-1);
+  }
+  to {
+    transform: translateX(-10rem) scaleX(-1);
+  }
+}
+
+
+@function dot($size: .25rem, $x, $y: 50%) {
+  @return radial-gradient(#{$size} #{$size} at #{$x} #{$y}, var(--dot) 50%, transparent 50%, transparent);
+}
+
+
+
+dots {
+  --target-x-position: 70%;
+  display: block;
+  position: absolute;
+  height: 1.5rem;
+  left: 0;
+  min-width: 100%;
+  $result: "";
+  @for $i from 1 through 8 {
+    $size: .35rem;
+    @if $i == 5 {
+      $size: 1.5rem;
+    }
+    $bg: dot($size, 2.2rem * $i * 1.1);
+    $result: $result + $bg + " no-repeat,";
+  }
+  background: str_slice(unquote($result), 0, str_length($result)-1);
+  animation: dots 5s linear infinite;
+  transition: margin .3s linear;
+}
+
+dots-v {
+  display: block;
+  position: absolute;
+  height:5rem;
+  width: 100%;
+  left: 0;
+  $size: .35rem;
+  $result: dot($size, 12.1rem, 0.7rem) + " no-repeat," +  dot($size, 12.1rem, 4.4rem) + " no-repeat,";
+  background: str_slice(unquote($result), 0, str_length($result)-1);
+  transition: margin .3s linear;
+}
+
+
+@keyframes dots {
+  from {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  20% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  50% {
+    clip-path: polygon(var(--target-x-position) 0, 100% 0, 100% 100%, var(--target-x-position) 100%);
+  }
+  95% {
+    clip-path: polygon(var(--target-x-position) 0, 100% 0, 100% 100%, var(--target-x-position) 100%);
+  }
+  98% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+$thickness: .25rem;
+
+@function start-circle-fg($x, $y,$length, $width, $thickness: $thickness) {
+  $w: $width - $thickness * 2;
+  $l: $length - $thickness * 2;
+  $cx: $x - $l / 2;
+  $cy: $y;
+  $r: $w / 2;
+  $double_thickness: $thickness * 2;
+  @return radial-gradient($w at $cx $cy, var(--surface) $r, transparent $r, transparent) no-repeat center center / 100% 100%;
+}
+
+@function end-circle-fg($x, $y,$length, $width, $thickness: $thickness) {
+  $w: $width - $thickness * 2;
+  $l: $length - $thickness * 2;
+  $cx: $x + $l / 2;
+  $cy: $y;
+  $r: $w / 2;
+  @return radial-gradient($w at $cx $cy, var(--surface) $r, transparent $r, transparent) no-repeat center center / 100% 100%;
+}
+
+
+@function start-circle-bg($x, $y,$length, $width, $color) {
+  $cx: $x - $length / 2;
+  $cy: $y;
+  $r: $width / 2;
+  @return radial-gradient($width at $cx $cy, $color $r, transparent $r, transparent) no-repeat center center / 100% 100%;
+}
+
+@function end-circle-bg($x, $y,$length, $width, $color) {
+  $cx: $x + $length / 2;
+  $cy: $y;
+  $r: $width / 2;
+  @return radial-gradient($width at $cx $cy, $color $r, transparent $r, transparent) no-repeat center center / 100% 100%;
+}
+
+
+@function bar-fg($x, $y,$length,  $width, $thickness: $thickness) {
+  $double_thickness: $thickness * 2;
+  @return linear-gradient(45deg, var(--surface), var(--surface)) no-repeat #{($x - ($length / 2) + $thickness) ($y - ($width / 2) + $thickness)} / ($length - $double_thickness) ($width  - $double_thickness)
+}
+
+@function bar-bg($x, $y,$length, $width, $color) {
+  @return linear-gradient(45deg, $color, $color) no-repeat #{($x - ($length / 2)) ($y - ($width / 2))} / $length $width;
+}
+
+@function wall($x, $y,$length, $width, $color) {
+  @return start-circle-fg($x, $y, $length, $width),
+          end-circle-fg($x, $y, $length, $width),
+          bar-fg($x, $y, $length, $width),
+          start-circle-bg($x, $y, $length, $width, $color),
+          end-circle-bg($x, $y, $length, $width, $color),
+          bar-bg($x, $y, $length, $width, $color);
+}
+
+walls {
+  display: flex;
+  position: absolute;
+  background:
+          wall(0rem, 0.5rem, 19rem, 1.5rem, var(--secondary-variant)), wall(24rem, 0.5rem, 19rem, 1.5rem, var(--secondary-variant)),
+          wall(0rem, 5.7rem, 19rem, 1.5rem, var(--secondary-variant)), wall(24rem, 5.7rem, 19rem, 1.5rem, var(--secondary-variant));
+  width: 20rem;
+  height: 6rem;
+  transition: margin .3s linear, opacity .3s linear;
+  opacity: 1;
+}
+
+
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  margin: 0;
+  place-items: center;
+  font-family: 'Road Rage', 'Helvetica Neue', system-ui;
+  background-color: var(--surface);
+  color: var(--primary);
+
+  &:after {
+    content: "";
+    position: absolute;
+    background: url(https://assets.codepen.io/907471/noise.svg);
+    mix-blend-mode: overlay;
+    inset: 0;
+    pointer-events: none;
+    filter: invert(1) brightness(2);
+    z-index: var(--labs-sys-z-noise);
+  }
+}
+
+a.labs-follow-me {
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center
+}
+
+* {
+  box-sizing: border-box;
+}

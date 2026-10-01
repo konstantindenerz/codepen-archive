@@ -1,0 +1,36 @@
+{
+  "slug": "mdgQqzr",
+  "dir": "mdgQqzr",
+  "newEditor": false,
+  "title": "🌴",
+  "url": "https://codepen.io/konstantindenerz/pen/mdgQqzr",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2024-04-20 08:26:11 UTC",
+  "updatedAt": "2024-04-20 17:33:52 UTC",
+  "counts": {
+    "loves": 14,
+    "views": 827,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

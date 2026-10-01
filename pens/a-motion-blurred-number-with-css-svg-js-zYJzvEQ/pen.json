@@ -1,0 +1,53 @@
+{
+  "slug": "zYJzvEQ",
+  "dir": "a-motion-blurred-number-with-css-svg-js-zYJzvEQ",
+  "newEditor": false,
+  "title": "A Motion Blurred Number with CSS / SVG / JS",
+  "url": "https://codepen.io/konstantindenerz/pen/zYJzvEQ",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "motionblur",
+    "blur",
+    "svg",
+    "css",
+    "animation"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-03-04 12:03:59 UTC",
+  "updatedAt": "2023-03-29 22:02:32 UTC",
+  "counts": {
+    "loves": 618,
+    "views": 18838,
+    "comments": 6
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 1
+    },
+    {
+      "resourceType": "css",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.css",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

@@ -1,0 +1,36 @@
+{
+  "slug": "yLojxBR",
+  "dir": "animated-masked-text-with-stray-light-yLojxBR",
+  "newEditor": false,
+  "title": "Animated, Masked Text with Stray Light",
+  "url": "https://codepen.io/konstantindenerz/pen/yLojxBR",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2021-11-08 18:40:44 UTC",
+  "updatedAt": "2021-11-18 05:46:09 UTC",
+  "counts": {
+    "loves": 13,
+    "views": 280,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "neither",
+  "cssPrefix": "neither",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

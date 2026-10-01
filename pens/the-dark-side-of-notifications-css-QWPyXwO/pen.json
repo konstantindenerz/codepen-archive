@@ -1,0 +1,48 @@
+{
+  "slug": "QWPyXwO",
+  "dir": "the-dark-side-of-notifications-css-QWPyXwO",
+  "newEditor": false,
+  "title": "The Dark Side of Notifications (CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/QWPyXwO",
+  "description": "We all know the dark side of notifications, but this one is very tempting 🔥.\nIt can also serve as an Easter egg within your app. ✨\n\n✅ Chrome & Safari",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "codepenchallenge",
+    "cpc-notification-icons",
+    "vader",
+    "darkside",
+    "css"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-03-09 13:56:20 UTC",
+  "updatedAt": "2025-02-26 22:15:48 UTC",
+  "counts": {
+    "loves": 26,
+    "views": 1649,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

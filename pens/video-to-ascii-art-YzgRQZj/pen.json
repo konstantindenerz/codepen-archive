@@ -1,0 +1,47 @@
+{
+  "slug": "YzgRQZj",
+  "dir": "video-to-ascii-art-YzgRQZj",
+  "newEditor": false,
+  "title": "Video To ASCII Art",
+  "url": "https://codepen.io/konstantindenerz/pen/YzgRQZj",
+  "description": "Convert small videos to ASCII art.\n\nVideos:\n- https://pixabay.com/es/videos/ne%C3%B3n-terreno-retro-resumen-mundo-21368\n- https://pixabay.com/es/videos/rat%C3%B3n-roedor-3d-dibujos-animados-162514/\n- https://pixabay.com/es/videos/bailar%C3%ADn-baile-celebraci%C3%B3n-danza-70479/\n- https://pixabay.com/es/videos/arco%C3%ADris-espiral-rotaci%C3%B3n-colores-10546/",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "ascii",
+    "video",
+    "canvas",
+    "synthwave"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-02-13 01:12:23 UTC",
+  "updatedAt": "2024-12-04 11:05:56 UTC",
+  "counts": {
+    "loves": 291,
+    "views": 9234,
+    "comments": 2
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

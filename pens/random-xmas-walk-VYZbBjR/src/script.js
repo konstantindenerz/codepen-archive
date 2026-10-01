@@ -1,0 +1,66 @@
+const ctx = canvas.getContext("2d");
+const pointsCount = 500;
+let centerX;
+let centerY;
+let levels = [];
+
+let yStart = 10;
+const levelsCount = 30;
+let pos = [];
+
+const a = (count, map) => new Array(count).fill(0).map(map);
+
+const createPoints = () => {
+  levels = a(levelsCount, (_, level) =>
+    a(pointsCount, (_, index) => ({
+      x: pos.x,
+      y: pos.y + yStart * level * 0.5
+    }))
+  );
+};
+const createPos = () => {
+  pos = a(levelsCount, (_, index) => ({ x: centerX, y: yStart * (index + 1) }));
+};
+const updateSize = () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  centerX = canvas.width / 2;
+  centerY = canvas.height / 2;
+  ctx.fillStyle = "black";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  createPos();
+  createPoints();
+};
+
+updateSize();
+
+window.addEventListener("resize", updateSize);
+
+function random(min, max) {
+  const minCeiled = Math.ceil(min);
+  const maxFloored = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
+}
+
+const draw = () => {
+  ctx.fillStyle = "rgba(10,10,10,.2)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  levels.forEach((points, level) => {
+    points.forEach((point, index) => {
+      if (index % pointsCount === 2) {
+        createPos();
+      }
+      const l = level + 1;
+      pos[level].x += random(-0.35 * l, 0.35 * l);
+      pos[level].y += Math.floor(Math.random() * 3.5);
+      ctx.fillStyle = `hsla(${l * 20 + index * 0.1 + 145}, 100%, 50%, 1)`;
+      ctx.fillRect(pos[level].x, pos[level].y, 2, 2);
+    });
+  });
+  ctx.font = '18px serif';
+  ctx.fillText('⭐', centerX - 10, 24);
+  requestAnimationFrame(draw);
+};
+
+draw();

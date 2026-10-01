@@ -1,0 +1,111 @@
+:root {
+  --color-primary: white;
+  --color-secondary: #b3a2ba;
+}
+
+@property --radius {
+  syntax: "<percentage>";
+  initial-value: 0;
+  inherts: true;
+}
+
+@property --number {
+  syntax: "<number>";
+  initial-value: 0;
+  inherts: true;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(100, 1fr);
+  gap: 0rem;
+  animation: grid 5s 0.2s ease-in-out infinite;
+  position: absolute;
+  mix-blend-mode: darken;
+  pointer-events: none;
+}
+
+@keyframes grid {
+  from {
+    --radius: 20%;
+    gap: 0rem;
+  }
+
+  50% {
+    --radius: 50%;
+    gap: 30vmin;
+    rotate: 360deg;
+  }
+
+  55% {
+    --radius: 30%;
+    rotate: 160deg;
+  }
+
+  60% {
+    rotate: 360deg;
+  }
+
+  70% {
+    rotate: 0deg;
+    gap: 0rem;
+  }
+  90% {
+    rotate: 160deg;
+  }
+  to {
+    --radius: 20%;
+    gap: 0rem;
+  }
+}
+
+.cell {
+  border-radius: var(--radius, 20%);
+  min-width: 3.5rem;
+  aspect-ratio: 1;
+  background: var(--color-secondary);
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+  background: #111;
+  font-weight: bold;
+  font-family: "Kablammo", Helvetica, sans-serif;
+  position: absolute;
+  font-variation-settings: "MORF" var(--number);
+  animation: text 3s ease infinite;
+
+  &:after {
+    content: "404";
+    font-size: 35vmin;
+    display: grid;
+    place-items: center;
+    position: absolute;
+    color: var(--color-primary);
+    z-index: -1;
+    text-shadow: -1px -1px 1px white, 1px 1px 1px black,
+      0.5rem 0.5rem 4.04rem
+        color-mix(in oklch, var(--color-primary), rgba(255, 255, 255, 0.1) 70%);
+  }
+}
+
+@keyframes text {
+  @for $i from 0 through 50 {
+    #{$i}% {
+      --number: #{$i};
+    }
+  }
+
+  @for $i from 50 through 0 {
+    #{100 - $i}% {
+      --number: #{$i};
+    }
+  }
+}
+
+* {
+  box-sizing: border-box;
+}

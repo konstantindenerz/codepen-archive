@@ -1,0 +1,894 @@
+@layer tokens {
+	:root {
+		--color-primary: #ff3c3c;
+		--color-secondary: #75d8ee;
+		--color-on-surface: #6e6e6e;
+		--color-surface: #2a2a2a;
+		font-size: 500%;
+		@media screen and (max-width: 600px) {
+			font-size: 200%;
+		}
+		animation: var(--lightsaber-animation);
+		--default-vader-highlight: rgba(255, 255, 255, 0.1);
+	}
+
+	@property --lightsaber-grip-scale {
+		syntax: "<number>";
+		inherits: true;
+		initial-value: 1;
+	}
+
+	@property --bell-color {
+		syntax: "<color>";
+		inherits: true;
+		initial-value: #151414;
+	}
+	@property --vader-highlight {
+		syntax: "<color>";
+		inherits: true;
+		initial-value: rgba(255, 255, 255, 0.1);
+	}
+
+	@property --vader-opacity {
+		syntax: "<number>";
+		inherits: true;
+		initial-value: 1;
+	}
+
+	@property --count-light-x {
+		syntax: "<length>";
+		inherits: true;
+		initial-value: 0;
+	}
+
+	@property --lightsaber-rotate-x {
+		syntax: "<angle>";
+		inherits: true;
+		initial-value: 0deg;
+	}
+
+	@property --lightsaber-rotate-y {
+		syntax: "<angle>";
+		inherits: true;
+		initial-value: 0deg;
+	}
+
+	@property --lightsaber-rotate-z {
+		syntax: "<angle>";
+		inherits: true;
+		initial-value: 0deg;
+	}
+
+	:root {
+		--tp-base-background-color: var(--color-surface);
+		--tp-base-shadow-color: hsla(0, 0%, 0%, 0.2);
+		--tp-button-background-color: var(--color-secondary);
+		--tp-button-background-color-active: hsla(230, 7%, 85%, 1);
+		--tp-button-background-color-focus: hsla(230, 7%, 80%, 1);
+		--tp-button-background-color-hover: hsla(230, 7%, 75%, 1);
+		--tp-button-foreground-color: hsla(230, 7%, 17%, 1);
+		--tp-container-background-color: hsla(230, 7%, 75%, 0.1);
+		--tp-container-background-color-active: hsla(230, 7%, 75%, 0.25);
+		--tp-container-background-color-focus: hsla(230, 7%, 75%, 0.2);
+		--tp-container-background-color-hover: hsla(230, 7%, 75%, 0.15);
+		--tp-container-foreground-color: hsla(230, 7%, 75%, 1);
+		--tp-groove-foreground-color: hsla(230, 7%, 75%, 0.1);
+		--tp-input-background-color: hsla(230, 7%, 75%, 0.1);
+		--tp-input-background-color-active: hsla(230, 7%, 75%, 0.25);
+		--tp-input-background-color-focus: hsla(230, 7%, 75%, 0.2);
+		--tp-input-background-color-hover: hsla(230, 7%, 75%, 0.15);
+		--tp-input-foreground-color: var(--color-primary);
+		--tp-label-foreground-color: hsla(230, 7%, 75%, 0.7);
+		--tp-monitor-background-color: hsla(230, 7%, 0%, 0.2);
+		--tp-monitor-foreground-color: hsla(230, 7%, 75%, 0.7);
+	}
+}
+@layer mainloop {
+	@keyframes main {
+		from {
+			--lightsaber-length-animation: 0;
+			--lightsaber-light-opacity-animation: 0;
+			--lightsaber-rotate-x: 0deg;
+			--lightsaber-rotate-y: 0deg;
+			--lightsaber-rotate-z: 0deg;
+			--lightsaber-grip-scale: 1;
+			--count-light-x: 50rem;
+			--content: "00";
+			--vader-opacity: 0;
+			--bell-color: #181717;
+			--parcticles-on-off: 0;
+			--vader-highlight: var(--default-vader-highlight);
+		}
+
+		5% {
+			--lightsaber-length-animation: 0;
+			--lightsaber-light-opacity-animation: 0;
+			--vader-opacity: 0;
+			--bell-color: #181717;
+		}
+
+		20% {
+			--vader-opacity: 1;
+			--lightsaber-rotate-x: 3deg;
+			--lightsaber-rotate-y: 0deg;
+			--lightsaber-rotate-z: 0deg;
+			--lightsaber-light-opacity-animation: 1;
+			--bell-color: #131313;
+		}
+		24% {
+			--lightsaber-length-animation: 1;
+		}
+
+		25% {
+			--lightsaber-rotate-x: 3deg;
+			--lightsaber-rotate-y: 171deg;
+			--lightsaber-rotate-z: 105deg;
+		}
+
+		39% {
+			--lightsaber-rotate-x: 3deg;
+			--lightsaber-rotate-y: 176deg;
+			--lightsaber-rotate-z: 360deg;
+		}
+		39.1% {
+			--lightsaber-rotate-x: 3deg;
+			--lightsaber-rotate-y: 176deg;
+			--lightsaber-rotate-z: 0deg;
+			--count-light-x: 20rem;
+		}
+
+		40% {
+			--count-light-x: 2rem;
+			--lightsaber-rotate-x: 0deg;
+			--lightsaber-rotate-y: 176deg;
+			--lightsaber-rotate-z: 140deg;
+			--parcticles-on-off: 0;
+		}
+		42.5% {
+			--lightsaber-rotate-x: 0deg;
+			--lightsaber-rotate-y: 176deg;
+			--lightsaber-rotate-z: 139deg;
+			--parcticles-on-off: 1;
+		}
+		44% {
+			--lightsaber-rotate-x: 0deg;
+			--lightsaber-rotate-y: 176deg;
+			--lightsaber-rotate-z: 141deg;
+		}
+		45.5% {
+			--lightsaber-rotate-x: 0deg;
+			--lightsaber-rotate-y: 176deg;
+			--lightsaber-rotate-z: 140deg;
+		}
+		47% {
+			--lightsaber-rotate-x: 0deg;
+			--lightsaber-rotate-y: 176deg;
+			--lightsaber-rotate-z: 142deg;
+		}
+		48.5% {
+			--lightsaber-rotate-x: 0deg;
+			--lightsaber-rotate-y: 176deg;
+			--lightsaber-rotate-z: 141deg;
+		}
+
+		54% {
+			--lightsaber-rotate-x: -5deg;
+			--lightsaber-rotate-y: 176deg;
+			--lightsaber-rotate-z: 151deg;
+			--count-light-x: 2rem;
+			--content: "00";
+			--parcticles-on-off: 1;
+			--vader-highlight: var(--default-vader-highlight);
+		}
+		55% {
+			--vader-highlight: color-mix(
+				in srgb,
+				var(--default-vader-highlight),
+				var(--color-primary) 50%
+			);
+			--parcticles-on-off: 0;
+			--content: "42";
+			--count-light-x: 0rem;
+		}
+
+		60% {
+			--lightsaber-rotate-x: -50deg;
+			--lightsaber-rotate-y: 176deg;
+			--lightsaber-rotate-z: 221deg;
+		}
+
+		68% {
+			--count-light-x: -4rem;
+			--lightsaber-rotate-x: -50deg;
+			--lightsaber-rotate-y: 176deg;
+			--lightsaber-rotate-z: 221deg;
+			--vader-opacity: 1;
+		}
+		79.5% {
+			--count-light-x: -6rem;
+			--lightsaber-length-animation: 1;
+		}
+		80% {
+			--count-light-x: -9rem;
+			--lightsaber-rotate-x: -50deg;
+			--lightsaber-rotate-y: 250deg;
+			--lightsaber-rotate-z: 221deg;
+			--lightsaber-length-animation: 0.5;
+			--lightsaber-light-opacity-animation: 1;
+			--lightsaber-grip-scale: 1;
+			--bell-color: #0e0e0e;
+		}
+		81% {
+			--bell-color: #181717;
+			--lightsaber-length-animation: 0;
+			--lightsaber-grip-scale: 0;
+			--lightsaber-light-opacity-animation: 0;
+		}
+		99% {
+			--lightsaber-rotate-x: -50deg;
+			--lightsaber-rotate-y: 250deg;
+			--lightsaber-rotate-z: 221deg;
+		}
+
+		to {
+			--vader-highlight: var(--default-vader-highlight);
+			--vader-opacity: 0;
+			--count-light-x: -60rem;
+			--lightsaber-grip-scale: 0;
+			--lightsaber-length-animation: 0;
+			--lightsaber-light-opacity-animation: 0;
+			--lightsaber-rotate-x: -50deg;
+			--lightsaber-rotate-y: 250deg;
+			--lightsaber-rotate-z: 221deg;
+			--content: "42";
+			--bell-color: #181717;
+			--parcticles-on-off: 0;
+		}
+	}
+}
+@layer lightsaber {
+	$grip: 0.2;
+	$light: 0.8;
+	.lightsaber {
+		--length: calc(
+			var(--lightsaber-length) * var(--lightsaber-length-animation, 1)
+		);
+		--grip-length: calc(var(--length) * #{$grip});
+		--light-length: calc(var(--length) * #{$light});
+		--width: var(--lightsaber-width);
+		--half-width: calc(var(--width) / 2);
+		--half-width-negative: calc(-1 * var(--half-width));
+		position: absolute;
+		bottom: 0;
+		width: var(--width);
+		transform: rotateX(var(--lightsaber-rotate-x, 0deg))
+			rotateY(var(--lightsaber-rotate-y, 0deg))
+			rotateZ(var(--lightsaber-rotate-z, 0deg)) translateZ(-0.5rem);
+
+		display: flex;
+		flex-direction: column;
+		transform-style: preserve-3d;
+
+		.face {
+			position: absolute;
+			transform-style: preserve-3d;
+			--z: var(--half-width);
+
+			&.front {
+				transform: rotateY(0deg) translateZ(var(--z));
+			}
+
+			&.right {
+				transform: rotateY(90deg) translateZ(var(--z));
+			}
+
+			&.back {
+				transform: rotateY(180deg) translateZ(var(--z));
+			}
+
+			&.left {
+				transform: rotateY(-90deg) translateZ(var(--z));
+			}
+
+			&.top {
+				transform: rotateX(90deg) translateZ(var(--z));
+			}
+
+			&.bottom {
+				transform: rotateX(-90deg) translateZ(var(--z));
+			}
+		}
+
+		.grip {
+			--highlighting: rgb(100, 100, 100);
+			transform-style: preserve-3d;
+			transform: translateZ(var(--half-width-negative))
+				scale(var(--lightsaber-grip-scale, 1));
+
+			.face {
+				--t: 0.8;
+				width: var(--width);
+				height: var(--grip-length);
+				background: repeating-linear-gradient(
+					to right,
+					black var(--lightsaber-gripgap),
+					var(--highlighting)
+						calc(var(--lightsaber-gripgap) * 0.11 + var(--lightsaber-gripgap))
+				);
+				border-radius: 0.1rem;
+
+				&.top,
+				&.bottom {
+					height: var(--width);
+					background: conic-gradient(
+						from 183deg at 50% 50%,
+						black,
+						var(--highlighting),
+						black
+					);
+				}
+
+				&.bottom {
+					transform-origin: top;
+					transform: rotateX(-90deg)
+						translate3d(0, calc(-1 * var(--z)), calc(var(--length) * #{$grip}));
+				}
+
+				&.front {
+					display: grid;
+					place-items: center;
+
+					&:before {
+						content: "";
+						position: absolute;
+						width: calc(var(--width) * 0.7);
+						aspect-ratio: 1;
+						border-radius: 50%;
+						background: radial-gradient(
+							at center,
+							var(--highlighting) 20%,
+							rgb(30, 30, 30) 50%
+						);
+					}
+				}
+			}
+		}
+
+		.light {
+			transform-style: preserve-3d;
+			translate: 0 var(--grip-length) var(--half-width-negative);
+
+			.face {
+				--t: 0.6;
+				opacity: calc(1 * var(--lightsaber-light-opacity-animation));
+				filter: drop-shadow(
+					0 0 var(--foo) color-mix(in srgb, var(--color-primary), white 10%)
+				);
+				animation: pulse 0.2s linear infinite;
+				background: conic-gradient(
+					from 183deg at 50% 10%,
+					color-mix(in srgb, var(--color-primary), rgba(255, 255, 255, 0.5) 10%),
+					color-mix(in srgb, var(--color-primary), transparent 60%),
+					rgba(255, 255, 255, 0.8)
+				);
+				width: var(--width);
+				border-radius: 0.1rem;
+				height: var(--light-length);
+
+				&.top,
+				&.bottom {
+					height: var(--width);
+					background: conic-gradient(
+						from 183deg at 50% 50%,
+						#f5f4f4,
+						color-mix(in srgb, var(--color-primary), rgba(0, 0, 0, 0.5) 10%),
+						#f5f4f4
+					);
+				}
+
+				--shadow-color: color-mix(in srgb, var(--color-primary), transparent 50%);
+				box-shadow: -0.06rem -0.06rem 0.1rem white,
+					-0.06rem -0.06rem 0.2rem var(--shadow-color),
+					0.06rem 0.06rem 0.2rem var(--shadow-color);
+
+				&.top {
+					transform: rotateX(90deg) translateZ(var(--z)) scale(0.5);
+				}
+
+				&.bottom {
+					transform-origin: top;
+					transform: rotateX(-90deg)
+						translate3d(0, calc(-1 * var(--z)), calc(var(--length) * #{$light}));
+				}
+			}
+		}
+	}
+
+	@keyframes pulse {
+		from {
+			--foo: 0.2rem;
+		}
+
+		70% {
+			--foo: 0.6rem;
+		}
+
+		to {
+			--foo: 0.2rem;
+		}
+	}
+}
+@layer particles {
+	@property --parcticles-on-off {
+		syntax: "<number>";
+		inherits: true;
+		initial-value: 0;
+	}
+
+	@property --angle {
+		syntax: "<angle>";
+		inherits: true;
+		initial-value: 0deg;
+	}
+
+	.particles {
+		position: absolute;
+		translate: 2.6rem -1rem;
+		opacity: var(--parcticles-on-off);
+		transition: opacity 0.4s ease;
+
+		.one,
+		.two,
+		.three {
+			$count: 14;
+			--offset-per-surface: calc(360deg / #{$count});
+			--radius: 3rem;
+			position: absolute;
+			inset: 0;
+			--delay-offset: 0s;
+			--rotate: 45deg;
+			transform: translate(0, 0) rotate(var(--rotate));
+			transform-style: preserve-3d;
+
+			> div {			
+				transform-style: preserve-3d;
+				position: absolute;
+				width: 0.05rem;
+				aspect-ratio: 1;
+				animation: particles 1.5s ease-in-out infinite;
+				animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+
+				@for $i from 1 through ($count + 1) {
+					&:nth-child(#{$i - 1}) {
+						--index: #{$i - 1};
+						--angle-offset: calc(var(--index) * var(--offset-per-surface));
+						--x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+						--y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+
+						background: hsl(3deg 100% calc(100% - 50% * #{random()}));
+					}
+				}
+			}
+		}
+
+		.two {
+			--delay-offset: 0.35s;
+		}
+
+		.three {
+			--rotate: 320deg;
+			--delay-offset: 0.45s;
+		}
+	}
+
+	@keyframes particles {
+		from {
+			opacity: 1;
+			--angle: 360deg;
+			transform: rotateX(0) rotateY(0) translateY(0);
+		}
+		to {
+			opacity: 0.4;
+			--angle: 100deg;
+			transform: translateX(var(--x)) translateZ(var(--y)) translateY(-3rem);
+		}
+	}
+}
+@layer vader {
+	.vader {
+		position: absolute;
+		inset: 0;
+		display: grid;
+		place-items: center;
+		opacity: var(--vader-opacity);
+
+		--c: var(--vader-highlight);
+		filter: saturate(0.2);
+		animation: scale 6s ease-in-out infinite;
+
+		> * {
+			transition: all 0.3s linear;
+		}
+	}
+
+	@keyframes scale {
+		from {
+			transform: scale(1) translateY(0);
+		}
+		50% {
+			transform: scale(1.03) translateY(-0.04rem);
+		}
+		to {
+			transform: scale(1) translateY(0);
+		}
+	}
+
+	.helmet {
+		z-index: 1;
+		position: absolute;
+		left: 0.6rem;
+		top: 0.5rem;
+		right: 0.6rem;
+		border-radius: 2rem;
+		height: 3rem;
+		box-shadow: inset 0 0.08rem 0 0 color-mix(in srgb, var(--c), black 15%);
+		display: grid;
+		place-items: center;
+		background: rgba(0, 0, 0, 0.1);
+		mask: radial-gradient(5rem at 50% 0%, black 50%, transparent 50%);
+
+		&:before {
+			content: ""; // center line
+			position: absolute;
+			width: 0.15rem;
+			height: 1rem;
+			background: var(--c);
+			border-radius: 30%;
+			transform: translateY(-1rem);
+			z-index: 1;
+		}
+
+		&:after {
+			content: ""; // highlight center
+			position: absolute;
+			background: rgba(100, 100, 100, 0.1);
+			width: 2.3rem;
+			height: 2.5rem;
+			border-radius: 50%;
+			box-shadow: inset 0 0.15rem 0 0 rgba(20, 20, 20, 0.1);
+			translate: 0 -0.2rem;
+			mask: linear-gradient(to bottom, black 40%, transparent 40%);
+		}
+	}
+
+	.eye {
+		z-index: 1;
+		position: absolute;
+		width: 0.9rem;
+		border-radius: 50%;
+		aspect-ratio: 1.5/1;
+		display: grid;
+		place-items: center;
+		background: rgba(0, 0, 0, 0.1);
+
+		&:before {
+			content: ""; // eye highlighting
+			position: absolute;
+			width: 0.4rem;
+			height: 0.1rem;
+			border-radius: 50%;
+		}
+
+		&:after {
+			content: ""; // helmet eye space
+			position: absolute;
+			width: 1.8rem;
+			height: 2rem;
+			border-radius: 50%;
+			transform: translateY(0.5rem);
+			box-shadow: inset 0 0.04rem 0 0.04rem var(--c);
+		}
+
+		&.left {
+			box-shadow: -0.045rem 0 0 0.02rem var(--c);
+			transform: translate(-0.55rem, -0.45rem);
+
+			&:before {
+				border-bottom: 0.05rem solid var(--c);
+				transform: rotate(10deg) translate(-0.12rem, 0.16rem);
+			}
+
+			&:after {
+				mask-image: linear-gradient(155deg, black 35%, transparent 35%);
+			}
+		}
+
+		&.right {
+			box-shadow: 0.045rem 0 0 0.02rem var(--c);
+			transform: translate(0.55rem, -0.45rem);
+
+			&:before {
+				border-bottom: 0.05rem solid var(--c);
+				transform: rotate(-10deg) translate(0.12rem, 0.16rem);
+			}
+
+			&:after {
+				mask-image: linear-gradient(-155deg, black 35%, transparent 35%);
+			}
+		}
+	}
+
+	.nose {
+		z-index: 1;
+		position: absolute;
+		display: grid;
+		place-items: center;
+
+		.line {
+			position: absolute;
+			width: 0.4rem;
+			height: 0.2rem;
+			border-radius: 50%;
+			box-shadow: 0 -0.04rem 0 0 var(--c);
+			translate: 0 -0.1rem;
+
+			&:first-child {
+				width: 0.25rem;
+				translate: 0 -0.4rem;
+			}
+
+			&:last-child {
+				width: 0.28rem;
+				translate: 0 -0.25rem;
+			}
+		}
+
+		.triangle {
+			position: absolute;
+			width: 0.5rem;
+			height: 0.6rem;
+			background: rgba(100, 100, 100, 0.1);
+			mask: linear-gradient(to bottom right, transparent 50%, black 50%) no-repeat
+					left / 50% 100%,
+				linear-gradient(to top right, black 50%, transparent 50%) no-repeat right /
+					50% 100%;
+
+			&.left {
+				transform: rotate(55deg) translate(-0.2rem, 0.5rem);
+			}
+
+			&.right {
+				transform: rotate(-55deg) translate(0.2rem, 0.5rem);
+			}
+		}
+	}
+
+	// Triangle with CSS 🔥: https://alvaromontoro.com/blog/67970/drawing-a-triangle-with-css
+
+	.mouth {
+		z-index: 1;
+		position: absolute;
+		display: grid;
+		place-items: center;
+
+		&:after {
+			content: ""; // triangle + stripes
+			position: absolute;
+			width: 1rem;
+			height: 0.6rem;
+			--g: 0.077rem;
+			background: repeating-linear-gradient(
+				to right,
+				rgba(0, 0, 0, 0.1),
+				rgba(0, 0, 0, 0.1) var(--g),
+				var(--c) var(--g),
+				var(--c) calc(var(--g) * 2)
+			);
+			mask: linear-gradient(to bottom right, transparent 50%, black 50%) no-repeat
+					left center / 50% 100%,
+				linear-gradient(to top right, black 50%, transparent 50%) no-repeat right
+					center / 50% 100%;
+			translate: 0 0.35rem;
+		}
+
+		.circles {
+			position: absolute;
+			display: grid;
+			place-items: center;
+
+			&:before,
+			&:after {
+				content: "";
+				position: absolute;
+				width: 0.1rem;
+				aspect-ratio: 1;
+				background: var(--c);
+				border-radius: 50%;
+				opacity: 0.6;
+			}
+
+			&:before {
+				translate: -0.67rem 0.68rem;
+			}
+
+			&:after {
+				translate: 0.67rem 0.68rem;
+			}
+		}
+
+		.lines {
+			position: absolute;
+			display: grid;
+			place-items: center;
+
+			&:before,
+			&:after {
+				content: "";
+				position: absolute;
+				width: 0.7rem;
+				height: 0.02rem;
+				background: var(--c);
+				opacity: 0.6;
+			}
+
+			&:before {
+				transform: rotate(-52deg) translate(-0.5rem, -0.1rem);
+			}
+
+			&:after {
+				transform: rotate(52deg) translate(0.5rem, -0.1rem);
+			}
+		}
+	}
+
+	.body {
+		position: absolute;
+		display: grid;
+		place-items: center;
+		overflow: hidden;
+		background: rgba(0, 0, 0, 0.1);
+		width: 2rem;
+		height: 1.2rem;
+		border-radius: 50%;
+		translate: 0 0.95rem;
+		z-index: 0;
+		overflow: hidden;
+		mask: linear-gradient(
+			to bottom,
+			transparent 30%,
+			black 30%,
+			black 90%,
+			transparent 90%
+		);
+		mix-blend-mode: overlay;
+
+		.lines {
+			position: absolute;
+			box-shadow: inset 0 0.4rem 0 0 rgba(100, 100, 100, 0.1);
+			border-radius: 50%;
+			width: 1.6rem;
+			height: 2.5rem;
+			translate: 0 0.2rem;
+		}
+	}
+}
+@layer bell {
+	@property --lightsaber-length-animation {
+		syntax: "<number>";
+		inherits: true;
+		initial-value: 1;
+	}
+
+	@property --lightsaber-light-opacity-animation {
+		syntax: "<number>";
+		inherits: true;
+		initial-value: 1;
+	}
+
+	.icon {
+		width: 4rem;
+	}
+
+	.notification-bell {
+		position: relative;
+		display: grid;
+		place-items: center;
+		transform-style: preserve-3d;
+		color: var(--bell-color);
+	}
+
+	path {
+		transition: all 0.3s linear;
+	}
+
+	.count {
+		font-family: monospace;
+		font-weight: bold;
+		font-size: 1rem;
+		padding: 0.0225rem 0.5rem;
+		display: grid;
+		place-items: center;
+		background: radial-gradient(
+				circle at var(--count-light-x) 70%,
+				var(--color-primary),
+				transparent
+			),
+			rgb(40, 40, 40);
+		border-radius: 0.25rem;
+		color: var(--color-surface);
+		position: absolute;
+		right: 1rem;
+		top: 0.25rem;
+		translate: 100% 0;
+		box-shadow: -0.01rem -0.01rem 0.01rem rgba(255, 255, 255, 0.2),
+			0 0 1rem rgba(0, 0, 0, 0.5);
+
+		&:before {
+			content: var(--content, "00");
+		}
+	}
+}
+
+@layer env {
+	body {
+		overflow: hidden;
+		width: 100vw;
+		height: 100vh;
+		display: grid;
+		place-items: center;
+		--highlight: color-mix(
+			in srgb,
+			color-mix(in srgb, var(--color-surface), var(--color-primary) 10%),
+			white 10%
+		);
+		background: radial-gradient(
+				1rem 5rem at 50% 35%,
+				rgba(255, 255, 255, 0.05),
+				transparent
+			),
+			radial-gradient(4rem at 50% 45%, rgba(255, 255, 255, 0.1), transparent),
+			conic-gradient(
+				var(--highlight),
+				rgb(10, 10, 10),
+				black,
+				rgb(10, 10, 10),
+				var(--highlight)
+			);
+		color: var(--color-primary);
+		perspective: 800px;
+		&:after {
+			z-index: -1;
+			opacity: 0.15;
+			filter: url(#noise) saturate(.2) hue-rotate(190deg);
+			mix-blend-mode: overlay;
+			content: "";
+			position: absolute;
+			inset: 0;
+			mask: linear-gradient(to bottom, black, transparent);
+		}
+	}
+
+	.filter {
+		display: block;
+		width: 0;
+		height: 0;
+		overflow: visible !important;
+		position: absolute;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+}
+
+// center at bottom
+a.labs-follow-me {
+	left: 1vmin;
+	right: 1vmin;
+	bottom: 0.5vmin;
+	top: unset;
+	text-align: center;
+	backdrop-filter: blur(0.25rem);
+	padding: 0vmin 0vmin 0.1vmin 0vmin;
+	transform: scale(0.5);
+}

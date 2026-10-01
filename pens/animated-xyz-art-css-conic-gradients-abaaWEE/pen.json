@@ -1,0 +1,47 @@
+{
+  "slug": "abaaWEE",
+  "dir": "animated-xyz-art-css-conic-gradients-abaaWEE",
+  "newEditor": false,
+  "title": "Animated XYZ  (Art, CSS, Conic Gradients ♡)",
+  "url": "https://codepen.io/konstantindenerz/pen/abaaWEE",
+  "description": "Demonstration of conic gradient love with CSS.",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "conicgradient",
+    "art",
+    "xyz"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-03-20 09:52:57 UTC",
+  "updatedAt": "2024-10-29 07:12:02 UTC",
+  "counts": {
+    "loves": 48,
+    "views": 2127,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

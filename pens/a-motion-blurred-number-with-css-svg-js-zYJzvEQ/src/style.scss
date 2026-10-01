@@ -1,0 +1,64 @@
+.number {
+  display: flex;
+  align-items: center;
+  font-size: 6rem;
+  justify-content: flex-end;
+
+  .animate {
+    filter: url("#blurFilter");
+  }
+
+  .left,
+  .right {
+    min-width: 11rem;
+    text-align: right;
+  }
+	
+	.right {
+		padding-right: 1rem;
+	}
+
+  .separator {
+    opacity: 0;
+    transition: opacity 0.1s ease;
+
+    &.show {
+      opacity: 1;
+    }
+  }
+}
+
+.svgFilter {
+   display: block; width: 0; height: 0;
+}
+
+.slider {
+  accent-color: black;
+  background: red;
+  min-width: min(20rem, 60vw);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: #ffc107;
+  font-style: italic;
+	padding: 1;
+  font-weight: bold;
+}
+
+:root {
+  --labs-sys-color-on-background: black;
+}
+
+* {
+  box-sizing: border-box;
+}

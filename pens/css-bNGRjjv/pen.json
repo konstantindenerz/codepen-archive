@@ -1,0 +1,36 @@
+{
+  "slug": "bNGRjjv",
+  "dir": "css-bNGRjjv",
+  "newEditor": false,
+  "title": "◈ ✨ (CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/bNGRjjv",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2025-03-07 17:08:53 UTC",
+  "updatedAt": "2025-03-07 17:37:29 UTC",
+  "counts": {
+    "loves": 46,
+    "views": 1106,
+    "comments": 2
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

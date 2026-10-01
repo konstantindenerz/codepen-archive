@@ -1,0 +1,48 @@
+{
+  "slug": "VwEVRXa",
+  "dir": "css-pyramid-diamond-explosion-VwEVRXa",
+  "newEditor": false,
+  "title": "CSS Pyramid Diamond ♦️ - Explosion",
+  "url": "https://codepen.io/konstantindenerz/pen/VwEVRXa",
+  "description": "Diamond consists of pyramids with explosion effect.\n\n🧙‍♂️ @property rule (Houdini API)\n✅ Works perfect in Chromium",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "animation",
+    "generativeart",
+    "gm",
+    "diamond"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-05-20 18:36:18 UTC",
+  "updatedAt": "2023-06-18 08:29:19 UTC",
+  "counts": {
+    "loves": 89,
+    "views": 6488,
+    "comments": 2
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

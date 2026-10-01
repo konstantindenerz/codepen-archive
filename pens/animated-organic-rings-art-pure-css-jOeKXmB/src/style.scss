@@ -1,0 +1,68 @@
+// @property rule (CSS Future Tip 🔮): https://drafts.css-houdini.org/css-properties-values-api/
+// caniuse: https://caniuse.com/mdn-css_at-rules_property
+// 🔥 CSS trig functions: https://web.dev/css-trig-functions
+@property --a {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+@function gradient($size, $x, $y, $index) {
+  $color: hsla(186deg, 100%, max(0%, round(55% - 0.05% * $index)), 0.1);
+  $color2: hsla(286deg, 100%, 100%, 0.05);
+  $color3: hsla(286deg, 10%, max(0%, round(100% - 0.2% * $index)), 0.1);
+  @return "radial-gradient(#{$size} #{$size} at #{$x} #{$y}, #{$color3}, #{$color2}, #{$color} #{$size}, transparent #{$size}, transparent)";
+}
+
+@function backgrounds($n, $radius, $size, $ringIndex) {
+  $result: "";
+  $offset-per-circle: 360 / $n;
+  @for $i from 1 through $n {
+    $angle-offset: round($i * $offset-per-circle);
+    $bg: gradient(
+      $size,
+      "calc(50% + #{$radius} * sin(calc(var(--a) + #{$angle-offset}deg)) * #{.1 + $ringIndex})",
+      "calc(60vh - #{$n * .29vmin}  + #{$radius} * cos(calc(var(--a) - #{round($angle-offset - $ringIndex * 10)}deg)) * sin(calc(var(--a) - #{round($angle-offset - $ringIndex * 36)}deg)) )",
+      $angle-offset
+    );
+    $result: $result + $bg + " no-repeat,";
+  }
+  @return str_slice(unquote($result), 0, str_length($result)-1);
+}
+
+@function rings($layers) {
+  $result: "";
+  @for $i from $layers through 1 {
+    $bg: backgrounds($layers * $i, "#{.5 * $i}vmin", "#{.48 * $i}vmin", $i);
+    $result: $result + $bg + ",";
+  }
+  @return str_slice(unquote($result), 0, str_length($result)-1);
+}
+
+@keyframes rings {
+  from {
+    --a: 360deg;
+  }
+
+  to {
+    --a: 0deg;
+  }
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  color: #00bcd4;
+  --a: 360deg;
+  --bg: conic-gradient(
+    from 90deg at 50% 60vh,
+    #527d82,
+    #d6dbef,
+    #295257,
+    #211424,
+    #527d82
+  );
+  animation: rings 22s ease infinite;
+  -webkit-transform: translateZ(0);
+  background: rings(7), var(--bg);
+}

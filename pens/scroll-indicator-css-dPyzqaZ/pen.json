@@ -1,0 +1,41 @@
+{
+  "slug": "dPyzqaZ",
+  "dir": "scroll-indicator-css-dPyzqaZ",
+  "newEditor": false,
+  "title": "Scroll Indicator (CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/dPyzqaZ",
+  "description": "Inspiration 🔥  https://dribbble.com/shots/14896636-Scroll-indicator ",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "scrollindicator",
+    "animation",
+    "designsystem"
+  ],
+  "license": "MIT",
+  "createdAt": "2025-03-10 11:31:57 UTC",
+  "updatedAt": "2025-03-10 19:41:38 UTC",
+  "counts": {
+    "loves": 54,
+    "views": 2078,
+    "comments": 1
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

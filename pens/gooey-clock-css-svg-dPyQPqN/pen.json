@@ -1,0 +1,41 @@
+{
+  "slug": "dPyQPqN",
+  "dir": "gooey-clock-css-svg-dPyQPqN",
+  "newEditor": false,
+  "title": "Gooey Clock (CSS & SVG)",
+  "url": "https://codepen.io/konstantindenerz/pen/dPyQPqN",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "gooey",
+    "clock",
+    "animation",
+    "css"
+  ],
+  "license": "MIT",
+  "createdAt": "2025-03-31 07:25:27 UTC",
+  "updatedAt": "2025-03-31 15:42:55 UTC",
+  "counts": {
+    "loves": 38,
+    "views": 1174,
+    "comments": 1
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

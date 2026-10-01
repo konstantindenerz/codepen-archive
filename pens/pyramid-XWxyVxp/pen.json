@@ -1,0 +1,42 @@
+{
+  "slug": "XWxyVxp",
+  "dir": "pyramid-XWxyVxp",
+  "newEditor": false,
+  "title": "Pyramid",
+  "url": "https://codepen.io/konstantindenerz/pen/XWxyVxp",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "animation",
+    "generativeart",
+    "gm",
+    "pyramid"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-05-19 23:43:10 UTC",
+  "updatedAt": "2023-05-21 08:17:20 UTC",
+  "counts": {
+    "loves": 19,
+    "views": 870,
+    "comments": 2
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

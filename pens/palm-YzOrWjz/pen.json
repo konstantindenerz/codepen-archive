@@ -1,0 +1,52 @@
+{
+  "slug": "YzOrWjz",
+  "dir": "palm-YzOrWjz",
+  "newEditor": false,
+  "title": "Palm",
+  "url": "https://codepen.io/konstantindenerz/pen/YzOrWjz",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "palm",
+    "css",
+    "fun",
+    "synthwave"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-03-07 18:45:35 UTC",
+  "updatedAt": "2023-03-12 08:48:22 UTC",
+  "counts": {
+    "loves": 1,
+    "views": 241,
+    "comments": 4
+  },
+  "featured": false,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "css",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.css",
+      "order": 0
+    },
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

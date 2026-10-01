@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "Klingon pIqaD HaSta";
+  // license: https://assets.codepen.io/907471/pIqaD-HaSta-licence.txt
+  src: url("https://assets.codepen.io/907471/Klingon-pIqaD-HaSta.ttf")
+    format("truetype");
+}
+
+#container {
+  background: inherit;
+}
+
+body {
+  background: black;
+  height: 100vh;
+  width: 100vw;
+  color: #ea6161;
+  overflow: hidden;
+}

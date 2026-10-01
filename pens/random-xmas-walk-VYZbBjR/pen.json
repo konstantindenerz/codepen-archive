@@ -1,0 +1,36 @@
+{
+  "slug": "VYZbBjR",
+  "dir": "random-xmas-walk-VYZbBjR",
+  "newEditor": false,
+  "title": "Random Xmas Walk 🎄",
+  "url": "https://codepen.io/konstantindenerz/pen/VYZbBjR",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2024-12-21 19:28:53 UTC",
+  "updatedAt": "2024-12-21 19:45:28 UTC",
+  "counts": {
+    "loves": 29,
+    "views": 1001,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

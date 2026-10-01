@@ -1,0 +1,53 @@
+{
+  "slug": "ExpGzZp",
+  "dir": "pacman-css-animation-ExpGzZp",
+  "newEditor": false,
+  "title": "Pacman 🕹️  {CSS, Animation}",
+  "url": "https://codepen.io/konstantindenerz/pen/ExpGzZp",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "pacman",
+    "game",
+    "animation",
+    "css",
+    "fun"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-02-03 07:39:48 UTC",
+  "updatedAt": "2023-03-06 10:33:42 UTC",
+  "counts": {
+    "loves": 5,
+    "views": 299,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "neither",
+  "cssPrefix": "neither",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "css",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.css",
+      "order": 1
+    },
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 1
+    }
+  ],
+  "hasSource": true
+}

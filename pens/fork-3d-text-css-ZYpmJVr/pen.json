@@ -1,0 +1,51 @@
+{
+  "slug": "ZYpmJVr",
+  "dir": "fork-3d-text-css-ZYpmJVr",
+  "newEditor": false,
+  "title": "FORK 3D Text (CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/ZYpmJVr",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "filter",
+    "css",
+    "svg",
+    "space",
+    "3d"
+  ],
+  "license": "MIT",
+  "createdAt": "2026-04-12 18:42:30 UTC",
+  "updatedAt": "2026-04-12 18:43:32 UTC",
+  "counts": {
+    "loves": 1,
+    "views": 24,
+    "comments": 0
+  },
+  "featured": false,
+  "forkedFrom": {
+    "url": "https://codepen.io/konstantindenerz/pen/poBPMWE",
+    "title": "3D Text (CSS)"
+  },
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap\" rel=\"stylesheet\">\n",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

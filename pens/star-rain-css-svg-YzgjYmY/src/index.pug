@@ -1,0 +1,35 @@
+| <svg class=filter xmlns="http://www.w3.org/2000/svg" version="1.1">
+|   <filter id="blurFilter">
+|     <feGaussianBlur stdDeviation="5"></feGaussianBlur>
+|     <feColorMatrix type="matrix" values="1 0 0 0 0
+|               0 1 0 0 0
+|               0 0 1 0 0
+|               0 0 0 19 -9"></feColorMatrix>
+|   </filter>
+| </svg>
+
+
+- var d = 0;
+- var c = 0;
+- var w = 0;
+- var v = 0;
+- var wcount = 8;
+
+.walls
+    while w < wcount
+        -w++
+         - wi = (wcount / 2 * -1) + w
+        .wall(style="--wi:" + wi)
+            -c = 0
+            while c < 10
+                - c++
+                .column
+                    -v = 0
+                    while v < 2
+                        .variant
+                            -v++
+                            - d=0
+                            while d < 20
+                                - d++
+                                .drop
+

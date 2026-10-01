@@ -1,0 +1,36 @@
+{
+  "slug": "019a8119-2c1f-7684-831a-c6f06985c6e3",
+  "dir": "google-material-readonly-field-019a8119",
+  "newEditor": true,
+  "title": "Google Material Readonly Field",
+  "url": "https://codepen.io/editor/konstantindenerz/pen/019a8119-2c1f-7684-831a-c6f06985c6e3",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2025-11-14 07:27:18 UTC",
+  "updatedAt": "2025-11-14 10:43:07 UTC",
+  "counts": {
+    "loves": 0,
+    "views": 35,
+    "comments": 0
+  },
+  "featured": false,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "",
+    "css": "",
+    "js": ""
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.css",
+    "js": "src/script.js"
+  },
+  "cssStarter": "",
+  "cssPrefix": "",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": false
+}

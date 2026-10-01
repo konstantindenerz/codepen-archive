@@ -1,0 +1,36 @@
+{
+  "slug": "rNXjraj",
+  "dir": "1000-rNXjraj",
+  "newEditor": false,
+  "title": "1000 🎉",
+  "url": "https://codepen.io/konstantindenerz/pen/rNXjraj",
+  "description": "Thank you! 🤩\nTip: 🐭 Click!!!\n🍿 Post: https://x.com/kdenerz/status/1845212830762435062",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2024-10-12 20:56:16 UTC",
+  "updatedAt": "2024-10-23 08:31:32 UTC",
+  "counts": {
+    "loves": 80,
+    "views": 2047,
+    "comments": 5
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

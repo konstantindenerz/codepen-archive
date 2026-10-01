@@ -1,0 +1,59 @@
+// https://caniuse.com/mdn-css_at-rules_property
+@property --background-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+@property --color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+.container {
+  width: 20rem;
+  aspect-ratio: 3/4;
+  --background-angle: 45deg;
+  --color: #e976e9;
+  background: linear-gradient(var(--background-angle), var(--color), #57c582);
+  animation: color-swing 1.5s ease infinite;
+  position: relative;
+  border-radius: .2rem;
+  box-shadow: 0 0 2rem .5rem rgba(0,0,0,.5);
+  
+  &:before {
+    --size: 2rem;
+    content: "";
+    position: absolute;
+    background: var(--labs-sys-color-background);
+    top: var(--size);
+    right: var(--size);
+    bottom: var(--size);
+    left: var(--size);
+    border-radius: inherit;
+    box-shadow: inset 0 0 2rem rgba(0,0,0,.9);
+  }
+}
+
+@keyframes color-swing {
+  50% {
+    --background-angle: 145deg;
+    --color: #75e4ee;
+  }
+  to {
+    --background-angle: 45deg;
+    --color: #e976e9;
+  }
+}
+
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  background: var(--labs-sys-color-background);
+}
+
+:root {
+  --labs-sys-color-background: #222;
+}

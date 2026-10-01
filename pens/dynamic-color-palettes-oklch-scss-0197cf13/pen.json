@@ -1,0 +1,36 @@
+{
+  "slug": "0197cf13-779b-7fb1-8e66-b3ab8ea7e498",
+  "dir": "dynamic-color-palettes-oklch-scss-0197cf13",
+  "newEditor": true,
+  "title": "Dynamic Color Palettes (oklch, SCSS)",
+  "url": "https://codepen.io/editor/konstantindenerz/pen/0197cf13-779b-7fb1-8e66-b3ab8ea7e498",
+  "description": "Dynamic color palettes generated with SCSS using OKLCH and a cosine-based chroma curve.",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2025-07-03 06:58:33 UTC",
+  "updatedAt": "2025-07-03 11:01:47 UTC",
+  "counts": {
+    "loves": 0,
+    "views": 17,
+    "comments": 0
+  },
+  "featured": false,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "",
+    "css": "",
+    "js": ""
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.css",
+    "js": "src/script.js"
+  },
+  "cssStarter": "",
+  "cssPrefix": "",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": false
+}

@@ -1,0 +1,53 @@
+{
+  "slug": "MWqvmPm",
+  "dir": "git-graph-wallpaper-generator-MWqvmPm",
+  "newEditor": false,
+  "title": "Git Graph - Wallpaper Generator 🌈",
+  "url": "https://codepen.io/konstantindenerz/pen/MWqvmPm",
+  "description": "This pen is for fun. I was inspired by Tower's (git client) graph and some projects. 😊 For everyone who likes to merge.",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "git",
+    "js",
+    "fun",
+    "rainbow",
+    "graph"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-03-06 16:43:29 UTC",
+  "updatedAt": "2023-04-08 18:31:32 UTC",
+  "counts": {
+    "loves": 63,
+    "views": 4446,
+    "comments": 1
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "css",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.css",
+      "order": 1
+    },
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 1
+    }
+  ],
+  "hasSource": true
+}

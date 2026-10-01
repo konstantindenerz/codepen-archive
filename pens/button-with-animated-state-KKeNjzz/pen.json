@@ -1,0 +1,36 @@
+{
+  "slug": "KKeNjzz",
+  "dir": "button-with-animated-state-KKeNjzz",
+  "newEditor": false,
+  "title": "Button with animated State",
+  "url": "https://codepen.io/konstantindenerz/pen/KKeNjzz",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2022-11-08 16:26:04 UTC",
+  "updatedAt": "2023-02-27 18:55:22 UTC",
+  "counts": {
+    "loves": 12,
+    "views": 556,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "typescript"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.ts"
+  },
+  "cssStarter": "neither",
+  "cssPrefix": "neither",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

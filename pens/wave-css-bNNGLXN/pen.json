@@ -1,0 +1,36 @@
+{
+  "slug": "bNNGLXN",
+  "dir": "wave-css-bNNGLXN",
+  "newEditor": false,
+  "title": "Wave (CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/bNNGLXN",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2025-04-16 19:15:20 UTC",
+  "updatedAt": "2025-04-18 15:33:23 UTC",
+  "counts": {
+    "loves": 96,
+    "views": 2488,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

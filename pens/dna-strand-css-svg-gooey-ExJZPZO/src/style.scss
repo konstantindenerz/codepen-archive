@@ -1,0 +1,223 @@
+:root {
+  --color-primary: #00d9ff;
+  --color-secondary: #ec1583;
+  --color-tertiary: #deee75;
+  --color-quaternary: #9375ee;
+  --color-surface: #191919;
+}
+
+$count: 42;
+@property --rotate-y {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+@property --rotate {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 45deg;
+}
+
+@property --gap {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@keyframes dna {
+  from {
+    --rotate-y: 0deg;
+  }
+  to {
+    --rotate-y: 360deg;
+  }
+}
+
+@keyframes rotate-container {
+  from {
+    --rotate: 42deg;
+  }
+  50% {
+    --rotate: 142deg;
+  }
+  to {
+    --rotate: 42deg;
+  }
+}
+
+.container {
+  filter: url(#blurFilter) contrast(1.5) brightness(1.5) saturate(0.6);
+  position: absolute;
+  transform: scale(0.8);
+}
+
+.dna {
+  --width: 11rem;
+  --count: #{$count};
+  display: flex;
+  flex-direction: column;
+  z-index: 1111;
+  perspective: 50rem;
+  animation: dna 2.5s linear infinite, rotate-container 20s ease-in-out infinite;
+  @media (prefers-reduced-motion) {
+    animation: dna 2.5s linear infinite;
+  }
+
+  transform-style: preserve-3d;
+  rotate: var(--rotate);
+  transform: rotateY(var(--rotate-y, 0deg));
+
+  .item {
+    display: flex;
+    align-items: center;
+    transform-style: preserve-3d;
+
+    > div {
+      width: var(--width);
+      height: 0.381rem;
+      background: rgba(255, 255, 255, 1);
+      background: conic-gradient(var(--color-primary), var(--color-secondary));
+      transform-style: preserve-3d;
+
+      &:first-of-type,
+      &:last-of-type {
+        --thickness: 0.9rem;
+        width: var(--thickness);
+        height: var(--thickness);
+        background: var(--color-secondary);
+        border-radius: 50%;
+
+        @keyframes dot-scale {
+          from {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(0.6);
+          }
+          to {
+            transform: scale(1);
+          }
+        }
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          width: calc(var(--thickness) * 0.5);
+          border-radius: 50%;
+          aspect-ratio: 1;
+          transform-style: preserve-3d;
+        }
+
+        &::before {
+          background: white;
+          width: calc(var(--thickness) * 0.6);
+          left: -0.4rem;
+          top: -0.4rem;
+          animation: dot-scale 2s ease-in-out infinite;
+        }
+        &::after {
+          background: rgba(0, 0, 0, 0.09);
+          right: 0.3rem;
+          bottom: 0.3rem;
+        }
+      }
+
+      &:last-of-type {
+        background: var(--color-primary);
+      }
+    }
+
+    --a: calc(360deg / var(--count) * (var(--i)));
+    transform: rotateY(var(--a));
+
+    > div {
+      &:first-of-type,
+      &:last-of-type {
+        transform: rotateY(
+          calc(360deg / var(--count) * -1 * var(--i) - var(--rotate-y))
+        );
+      }
+    }
+
+    @for $i from 0 through $count {
+      &:nth-child(#{$i + 1}) {
+        --i: #{$i};
+      }
+    }
+  }
+}
+
+@keyframes bg-gap {
+  from {
+    --gap: 0;
+  }
+  50% {
+    --gap: 0.2rem;
+  }
+  to {
+    --gap: 0;
+  }
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  position: relative;
+  font-family: "Rajdhani";
+  animation: bg-gap 12s ease-in-out infinite;
+  @media (prefers-reduced-motion) {
+    animation: unset;
+  }
+  background: repeating-radial-gradient(
+      100vmin 100vmin at center,
+      hsl(0, 0%, 1%) 1rem,
+      transparent calc(1.4rem + var(--gap, 0))
+    ),
+    radial-gradient(
+      20rem at center,
+      color-mix(in oklch, var(--color-secondary), transparent 53%),
+      transparent
+    ),
+    radial-gradient(
+      color-mix(in oklch, var(--color-secondary), transparent 93%),
+      transparent
+    ),
+    var(--color-surface);
+  color: var(--color-secondary);
+  overflow: hidden;
+  margin: 0;
+
+  &::after {
+    content: "";
+    position: absolute;
+    background: url(https://assets.codepen.io/907471/noise.svg);
+    mix-blend-mode: overlay;
+    inset: 0;
+    pointer-events: none;
+    opacity: 1;
+    filter: invert(1) brightness(0.2);
+    z-index: 1000;
+  }
+}
+
+// center at bottom
+a.labs-follow-me {
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center;
+}
+
+.filter {
+  position: absolute;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+* {
+  box-sizing: border-box;
+}

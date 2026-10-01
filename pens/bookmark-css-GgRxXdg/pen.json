@@ -1,0 +1,42 @@
+{
+  "slug": "GgRxXdg",
+  "dir": "bookmark-css-GgRxXdg",
+  "newEditor": false,
+  "title": "Bookmark (CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/GgRxXdg",
+  "description": "🔥 Inspired by the amazing design of Voicu Apostol:   https://x.com/cerpow/status/1902002944435683613",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "bookmark",
+    "component",
+    "designsystem",
+    "animation",
+    "3d"
+  ],
+  "license": "MIT",
+  "createdAt": "2025-03-20 01:22:40 UTC",
+  "updatedAt": "2025-03-21 05:50:45 UTC",
+  "counts": {
+    "loves": 215,
+    "views": 4128,
+    "comments": 6
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

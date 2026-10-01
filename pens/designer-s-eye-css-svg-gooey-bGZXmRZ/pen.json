@@ -1,0 +1,48 @@
+{
+  "slug": "bGZXmRZ",
+  "dir": "designer-s-eye-css-svg-gooey-bGZXmRZ",
+  "newEditor": false,
+  "title": "Designer's Eye 👁️ (CSS, SVG:Gooey)",
+  "url": "https://codepen.io/konstantindenerz/pen/bGZXmRZ",
+  "description": "This CodePen is called Designer's Eye 👁️. It emphasizes the importance of the designer's eye. Entirely crafted using CSS. For the gooey effect, an SVG filter is used.\n\n✅ Works well in Chrome and Firefox",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "gooey",
+    "design",
+    "cssart",
+    "webdev"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-02-26 18:11:14 UTC",
+  "updatedAt": "2024-02-26 19:50:14 UTC",
+  "counts": {
+    "loves": 141,
+    "views": 5461,
+    "comments": 6
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

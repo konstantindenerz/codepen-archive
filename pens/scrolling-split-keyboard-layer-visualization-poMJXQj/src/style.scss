@@ -1,0 +1,184 @@
+@property --rotate-x {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+@property --scene-rotation {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+@property --key-color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+:root {
+  --color-primary: #5c4293;
+  --color-secondary: #dd6058;
+  --color-tertiary: #cfa469;
+  --color-quaternary: #27235a;
+  --color-surface: black;
+  --key-depth: 4rem;
+  --key-width: 4rem;
+  --key-height: 5rem;
+  --key-height-delta: 0rem;
+  --key-color: rgba(255, 255, 255, 0.6);
+}
+
+body {
+  color: var(--color-primary);
+  background: url("https://assets.codepen.io/907471/bokek-bg.png") center center
+      no-repeat,
+    #1f1f20;
+  overflow-x: hidden;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 0;
+  font-family: "Road Rage", "Helvetica Neue", Roboto, "sans-serif";
+
+  &:after {
+    height: 100dvh;
+    content: "";
+    position: fixed;
+    background: url(https://assets.codepen.io/907471/noise.svg);
+    mix-blend-mode: overlay;
+    inset: 0;
+    opacity: 0.5;
+    pointer-events: none;
+    filter: invert(1);
+    z-index: 0;
+  }
+}
+
+// center at bottom
+a.labs-follow-me {
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center;
+}
+
+@keyframes rotate360 {
+  from {
+    transform: rotate3d(1, 1, 1, 0deg);
+  }
+
+  to {
+    transform: rotate3d(1, 1, 1, 360deg);
+  }
+}
+
+@keyframes scene-rotation {
+  from {
+    --scene-rotation: -5deg;
+  }
+
+  50% {
+    --scene-rotation: 12deg;
+  }
+
+  to {
+    --scene-rotation: -5deg;
+  }
+}
+
+.scene {
+  transform-style: preserve-3d;
+  position: absolute;
+  transition: transform 0.1s linear;
+  transform: rotateX(calc(21deg - var(--rotate-x, 0deg)))
+    rotateY(var(--scene-rotation));
+}
+
+:root {
+  scroll-snap-type: y mandatory;
+}
+
+.views {
+  .item {
+    font-size: 14rem;
+    display: grid;
+    place-items: center;
+    scroll-snap-align: center;
+    height: 100dvh;
+    width: 100dvw;
+    text-shadow: 0 0 1rem #d4bee8;
+    color: white;
+
+    animation: show linear both;
+    animation-timeline: --bubu;
+    animation-range: entry-crossing 0% exit-crossing 100%;
+    view-timeline: --bubu block;
+  }
+}
+
+.layers {
+  position: fixed;
+  z-index: 2;
+  top: 50dvh;
+  font-size: 25dvh;
+  left: 0;
+  right: 0;
+  text-align: center;
+  animation: slide-up 0.01s linear;
+  animation-timeline: scroll(root block);
+
+  --num-children: 6;
+  --size-per-child: calc(100% / var(--num-children));
+  --half-size-per-child: calc(var(--size-per-child) / 2);
+  --start-pos: calc(var(--half-size-per-child) * -1);
+  --end-pos: calc(-100% + var(--half-size-per-child));
+  translate: 0 var(--start-pos);
+
+  .item {
+    height: 2rem;
+    color: white;
+    display: grid;
+    place-items: center;
+    transform-style: preserve-3d;
+
+    transition: transform 0.6s linear;
+    transform: translate3d(0, 30dvh, -400rem) perspective(27rem) scale(0.2);
+    --rotate-x: -50deg;
+
+    &.before {
+      transform: translate3d(0, -30dvh, -400rem) perspective(27rem) scale(0.2);
+      --rotate-x: -50deg;
+    }
+
+
+    &.active {
+      transform: translate3d(0, 0, 0rem) perspective(27rem) scale(1);
+      --rotate-x: -1deg;
+
+      .scene {
+        animation: 10s ease-in-out scene-rotation infinite;
+      }
+    }
+  }
+}
+
+@property --key-height-delta {
+  syntax: "<length>";
+  initial-value: 0;
+  inherits: true;
+}
+
+@media (width < 900px) {
+  .layers {
+    transform: scale(0.6);
+    .item {
+      visibility: hidden;
+      &:has(+ .active),
+      &.active,
+      &.active + .item {
+        visibility: visible;
+      }
+    }
+  }
+}

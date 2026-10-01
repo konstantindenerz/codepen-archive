@@ -1,0 +1,42 @@
+{
+  "slug": "ExqzZpw",
+  "dir": "random-walk-2-js-ExqzZpw",
+  "newEditor": false,
+  "title": "Random Walk #2 (JS)",
+  "url": "https://codepen.io/konstantindenerz/pen/ExqzZpw",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2024-11-18 21:16:20 UTC",
+  "updatedAt": "2024-12-19 06:35:17 UTC",
+  "counts": {
+    "loves": 36,
+    "views": 1428,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://cdn.jsdelivr.net/npm/tweakpane@4.0.5/dist/tweakpane.min.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

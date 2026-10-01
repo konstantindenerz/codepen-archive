@@ -1,0 +1,53 @@
+{
+  "slug": "wvOZaeW",
+  "dir": "3d-text-css-wvOZaeW",
+  "newEditor": false,
+  "title": "3D Text (CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/wvOZaeW",
+  "description": "3D text created using 400 layers, featuring a metallic look, shadows, and light effects.\n\n✅ Works perfectly in Safari and Firefox ✨.",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "3d",
+    "text",
+    "crown",
+    "gold"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-02-19 23:49:06 UTC",
+  "updatedAt": "2024-12-04 11:06:53 UTC",
+  "counts": {
+    "loves": 15,
+    "views": 727,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap\" rel=\"stylesheet\">",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    },
+    {
+      "resourceType": "js",
+      "url": "https://cdn.jsdelivr.net/npm/tweakpane@4.0.5/dist/tweakpane.min.js",
+      "order": 1
+    }
+  ],
+  "hasSource": true
+}

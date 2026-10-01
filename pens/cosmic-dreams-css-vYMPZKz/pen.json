@@ -1,0 +1,48 @@
+{
+  "slug": "vYMPZKz",
+  "dir": "cosmic-dreams-css-vYMPZKz",
+  "newEditor": false,
+  "title": "Cosmic Dreams ✨ (CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/vYMPZKz",
+  "description": "Dive into the universe 🌌  with #CSS! Cosmic dreams ✨ , inspired by a mesmerizing video from @anxovizcaino (https://twitter.com/anxovizcaino/status/1782832442572693845).\n\n🔊 Sound by Suno (#GenAI)\n✅ Best perspective from portrait resolution.\n✅ Works well in Chrome ",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "cosmic",
+    "space",
+    "ambient",
+    "animation"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-04-26 07:17:55 UTC",
+  "updatedAt": "2025-12-17 08:17:53 UTC",
+  "counts": {
+    "loves": 806,
+    "views": 19506,
+    "comments": 17
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

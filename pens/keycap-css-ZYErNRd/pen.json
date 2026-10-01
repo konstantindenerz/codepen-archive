@@ -1,0 +1,36 @@
+{
+  "slug": "ZYErNRd",
+  "dir": "keycap-css-ZYErNRd",
+  "newEditor": false,
+  "title": "Keycap (CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/ZYErNRd",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2025-03-18 16:30:47 UTC",
+  "updatedAt": "2025-03-28 11:52:26 UTC",
+  "counts": {
+    "loves": 13,
+    "views": 823,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

@@ -1,0 +1,36 @@
+{
+  "slug": "gbOKRQz",
+  "dir": "gooey-ring-css-svg-gbOKRQz",
+  "newEditor": false,
+  "title": "Gooey  Ring (CSS & SVG)",
+  "url": "https://codepen.io/konstantindenerz/pen/gbOKRQz",
+  "description": "✨ Tip: Try different scalings: 1x, 0.5x, 0.25x.",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2025-03-23 18:32:49 UTC",
+  "updatedAt": "2025-03-26 06:23:46 UTC",
+  "counts": {
+    "loves": 147,
+    "views": 6376,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

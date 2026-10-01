@@ -1,0 +1,36 @@
+{
+  "slug": "bNGQpqJ",
+  "dir": "css-svg-bNGQpqJ",
+  "newEditor": false,
+  "title": "☯︎  (CSS & SVG)",
+  "url": "https://codepen.io/konstantindenerz/pen/bNGQpqJ",
+  "description": "✅ Works in Chrome",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2025-03-31 12:06:41 UTC",
+  "updatedAt": "2025-04-01 16:32:13 UTC",
+  "counts": {
+    "loves": 223,
+    "views": 7212,
+    "comments": 2
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

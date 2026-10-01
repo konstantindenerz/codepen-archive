@@ -1,0 +1,99 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(12rem, 1fr));
+  gap: 0.2rem;
+}
+
+.cell {
+  min-height: 2.5rem;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    $padding: 0.4rem;
+    top: $padding;
+    right: $padding;
+    bottom: $padding;
+    left: $padding;
+    border-radius: 1rem;
+    background: linear-gradient(
+        to right,
+        transparent 0,
+        transparent 30%,
+        rgba(255, 255, 255, 0.8) 50%,
+        transparent 70%,
+        transparent 100%
+      )
+      rgba(200, 200, 200, 0.6);
+    background-size: 1000px 100px;
+    background-position: center left;
+    animation: content-placeholder 1.5s ease infinite;
+  }
+}
+
+@keyframes content-placeholder {
+  from {
+    background-position: center right;
+  }
+
+  to {
+    background-position: center left;
+  }
+}
+
+.cell {
+  animation: cell-animation 1.5s ease infinite;
+}
+
+.cell:nth-child(-n + 5) {
+  display: grid;
+  place-items: center;
+  animation: none;
+  letter-spacing: 0.2rem;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  opacity: 0.8;
+  &:before {
+    display: none;
+  }
+}
+
+.cell:nth-child(n + 6):nth-child(-n + 10) {
+  animation-delay: 0.2s;
+  opacity: 0.4;
+}
+
+.cell:nth-child(n + 11):nth-child(-n + 15) {
+  animation-delay: 0.4s;
+  opacity: 0.2;
+}
+
+.cell:nth-child(n + 16):nth-child(-n + 20) {
+  animation-delay: 0.6s;
+  opacity: 0.1;
+}
+
+@keyframes cell-animation {
+  from {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(17%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+body {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  font-family: "Road Rage", "Roboto";
+  background: #f2dbb4;
+  background: -webkit-linear-gradient(to bottom right, #84f2ff, #29093c);
+  background: -moz-linear-gradient(to bottom right, #84f2ff, #29093c);
+  background: linear-gradient(to bottom right, #84f2ff, #29093c);
+  color: white;
+}

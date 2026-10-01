@@ -1,0 +1,87 @@
+.clock {
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    width: 5rem;
+    aspect-ratio: 1;
+    translate: -50% -50%;
+    border-radius: 1.5rem;
+    background: conic-gradient(#ff2c74, #43202c);
+  }
+}
+
+.arrow {
+  position: absolute;
+  width: 20rem;
+  height: 4rem;
+  border-bottom-right-radius: 10rem;
+  --duration: 5s;
+  translate: 0 -50%;
+  transform-origin: left;
+  animation: clock calc(var(--duration) * 60) linear infinite;
+  background: linear-gradient(to right, #e91e63, #00bcd4);
+
+  &:first-of-type {
+    width: 25rem;
+    height: 1rem;
+    background: #00bcd4;
+    background: linear-gradient(to right, #e91e63, #00bcd4);
+    animation-duration: var(--duration);
+  }
+  
+  &:nth-child(2) {
+    width: 14rem;
+    background: #00bcd4;
+    background: linear-gradient(to right, #e91e63, #00bcd4);
+    animation-duration: calc(var(--duration) * 60 * 60);
+  }
+}
+.marks {
+  --size: 1.5rem;
+  translate: calc(var(--size) * -.5) calc(var(--size) * -.5);
+}
+
+.mark {
+  width: var(--size);
+  aspect-ratio: 1 / 2.5;
+  position: absolute;
+  background: #e91e63;
+  --r: 20rem;
+  --ai: calc(360deg/12 * var(--i));
+  translate: calc(cos(var(--ai)) * var(--r)) calc(sin(var(--ai)) * var(--r) * -1);
+  rotate: calc(90deg - 360deg / 12 * var(--i));
+  
+  @for $i from 0 through 12 {
+    &:nth-child(#{$i+1}) {
+      --i: #{$i};
+    }
+  }
+}
+
+@keyframes clock {
+  to {
+    rotate: 360deg;
+  }
+}
+
+body {
+  overflow: hidden;
+  filter: url(#blurFilter);
+  display: grid;
+  place-items: center;
+  height: 100dvh;
+  width: 100dvw;
+  --c1: rgba(255, 255, 255, 0.04);
+  --c2: transparent;
+  background: conic-gradient(var(--c1), var(--c2)),
+    conic-gradient(from 180deg, var(--c1), var(--c2)), #111;
+}
+.filter {
+  position: absolute;
+  visibility: hidden;
+  pointer-events: none;
+}
+* {
+  box-sizing: border-box;
+}

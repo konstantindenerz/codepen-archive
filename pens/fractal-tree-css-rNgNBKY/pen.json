@@ -1,0 +1,48 @@
+{
+  "slug": "rNgNBKY",
+  "dir": "fractal-tree-css-rNgNBKY",
+  "newEditor": false,
+  "title": "Fractal tree 🌳 (CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/rNgNBKY",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "fractaltree",
+    "animation",
+    "math",
+    "cssart"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-05-08 22:40:30 UTC",
+  "updatedAt": "2025-04-26 18:53:11 UTC",
+  "counts": {
+    "loves": 88,
+    "views": 4771,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

@@ -1,0 +1,48 @@
+{
+  "slug": "ExJQZyo",
+  "dir": "c64-css-animation-ExJQZyo",
+  "newEditor": false,
+  "title": "C64 ✨ (CSS, Animation)",
+  "url": "https://codepen.io/konstantindenerz/pen/ExJQZyo",
+  "description": "Many cuboids that are used here. I have left other patterns for the surfaces of the cuboids commented out. Feel free to try out these patterns.\nOn the .scene level, there are additional parameters to play around with.",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "c64",
+    "commodore",
+    "logo",
+    "3d"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-04-04 21:14:16 UTC",
+  "updatedAt": "2024-04-07 07:01:31 UTC",
+  "counts": {
+    "loves": 61,
+    "views": 6693,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

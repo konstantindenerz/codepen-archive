@@ -1,0 +1,315 @@
+@use "sass:list";
+@use "sass:math";
+@use "sass:color";
+
+@property --y {
+  syntax: "<length>";
+  initial-value: 0;
+  inherits: true;
+}
+
+@property --x {
+  syntax: "<length>";
+  initial-value: 0;
+  inherits: true;
+}
+
+@property --p {
+  syntax: "<percentage>";
+  initial-value: 0%;
+  inherits: true;
+}
+
+$sceneWidth: 160px;
+$sceneHeight: 100px;
+$baseColor: #630a57;
+$horizont: 22px;
+
+@function r($item) {
+  $w: list.nth($item, 1);
+  $h: list.nth($item, 2);
+  $x: list.nth($item, 3);
+  $y: list.nth($item, 4);
+  $c: list.nth($item, 5);
+
+  @return linear-gradient($c, transparent) #{$x} calc(#{$y} + var(--y)) / #{$w}
+    clamp(0px, calc(#{$y - $horizont + $h * 0.6} + var(--y)), #{$h});
+}
+@function random1() {
+  @return if(math.random(2) == 1, 1, -1);
+}
+@function numbers($count) {
+  $result: ();
+
+  @for $i from 0 through $count {
+    $result: append($result, random1(), "comma");
+  }
+
+  @return $result;
+}
+
+$numbers: numbers(200);
+@debug $numbers;
+
+@function elevation($item, $x, $y) {
+  $layers: list.nth($item, 1);
+  $maxLayers: list.nth($item, 2);
+  $col: list.nth($item, 3);
+  $r: list.nth($item, 4);
+  $cw: list.nth($item, 5);
+  $ch: list.nth($item, 6);
+  $b: list.nth($item, 7);
+
+  $baseBrightness: 90%;
+  $result: ();
+
+  $r2: $r / 2;
+  $index: 0;
+  $result: list.append(
+    $result,
+    linear-gradient(to right, transparent, #100c0f9c, transparent) #{$x - $cw *
+      $col} calc(#{$y} + var(--y) + #{$ch * $layers}) / #{$cw * $col * 2}
+      clamp(0px, calc(#{$y - $horizont} + var(--y)), #{$ch * $layers}),
+    "comma"
+  );
+
+  @for $i from 0 through $layers - 1 {
+    $cols: $col - 1 + $i;
+    @for $c from 0 through $cols {
+      $index: $index + 1;
+      $number: nth($numbers, $index);
+      $w: $cw + $r2 * ($layers - 2 - $i);
+      $h: $ch * $layers * ($i + 1) + $cw * $number;
+      $ba: -290deg;
+      @if $i == 0 {
+        $ba: 180deg;
+      } @else if $i == $layers - 1 {
+        $ba: -180deg;
+      }
+      $a: $ba / ($col - 1) * $c;
+      $x2: $x + $r * ($layers - $i) * math.cos($a);
+      $y2: $y - $h + $r2 * math.sin($a) + ($layers - $i) * $ch;
+
+      $c: color.adjust(
+        $baseColor,
+        $lightness: (
+          $baseBrightness / $maxLayers * $i + $c * if($i > 0, 2.5%, 0%)
+        ) *
+        $b,
+        $saturation: -50%
+      );
+      $h2: $h + ($layers - $i) * 0.5px;
+      $rect: ($w, $h2, $x2, $y2, $c);
+
+      $result: list.append($result, r($rect), "comma");
+    }
+  }
+  @return $result;
+}
+
+// layers, max layers, columns, ...
+$m1: (5, 15, 8, 1.7px, 2px, 0.8px, 0.8);
+$m2: (5, 6, 9, 1.7px, 1px, 0.1px, 0.5);
+$m3: (4, 3, 2, 0.7px, 3px, 0.7px, 0.5);
+$m4: (7, 19, 9, 1.5px, 1px, 0.8px, 0.9);
+$m6: (7, 19, 7, 1.5px, 1px, 0.8px, 0.9);
+$m5: (2, 9, 4, 1.5px, 1px, 0.8px, 0.9);
+
+@function 🌃() {
+  $result: ();
+  $data: ();
+  $cx: $sceneWidth / 2px;
+  $cy: $sceneHeight / 2px;
+  $wd: 20; // way padding left or right
+  $data: (
+    ($m6, $cx - $wd, $cy + 50),
+    ($m1, $cx + $wd, $cy + 50),
+    ($m1, $cx - $wd, $cy + 30),
+    ($m2, $cx - $wd - 10, $cy + 26),
+    ($m1, $cx - $wd - 30, $cy + 20),
+    ($m4, $cx - $wd - 40, $cy + 10),
+    ($m4, $cx + $wd + 30, $cy + 40),
+    ($m1, $cx + $wd, $cy),
+    ($m1, $cx - $wd - 10, $cy - 10),
+    ($m1, $cx + $wd, $cy - 20),
+    ($m2, $cx + $wd + 4, $cy - 25),
+    ($m1, $cx - $wd, $cy - 30),
+    ($m3, $cx + $wd + 30, $cy - 40),
+    ($m2, $cx - $wd - 20, $cy - 42),
+    ($m3, $cx - $wd - 20, $cy - 45),
+    ($m1, $cx - $wd - 10, $cy - 50),
+    ($m5, $cx + $wd + 30, $cy - 54)
+  );
+
+  @for $i from 1 through length($data) {
+    $item: nth($data, $i);
+    $m: nth($item, 1);
+    $x: nth($item, 2);
+    $y: nth($item, 3);
+    $result: list.append(
+      $result,
+      elevation($m, $x * 1px, $y * 1px - 100px),
+      "comma"
+    );
+    $result: list.append($result, elevation($m, $x * 1px, $y * 1px), "comma");
+  }
+  @return $result;
+}
+
+@function part($item) {
+  $w: list.nth($item, 1);
+  $h: list.nth($item, 2);
+  $x: list.nth($item, 3);
+  $y: list.nth($item, 4);
+  $c: list.nth($item, 5);
+  $c2: list.nth($item, 6);
+  @return linear-gradient($c, $c2) calc(#{$x} + var(--x)) #{$y} / #{$w} #{$h};
+}
+
+@function 🚀() {
+  $c: #b2a8d5;
+  $c2: #ea35f7;
+  $c3: transparent;
+  $r: (
+    part((1px, 1px, $sceneWidth / 2, $sceneHeight/2 + 21px, $c, $c3)),
+    part((3px, 4px, $sceneWidth / 2 - 1px, $sceneHeight/2 + 20px, $c, $c3)),
+    part((1px, 2px, $sceneWidth / 2-1.6px, $sceneHeight/2 + 21px, $c, $c3)),
+    part((1px, 2px, $sceneWidth / 2+1.6px, $sceneHeight/2 + 21px, $c, $c3)),
+    part((1px, 3px, $sceneWidth / 2, $sceneHeight/2 + 24px, $c, $c3)),
+    part((1px, 1px, $sceneWidth / 2 - 1px, $sceneHeight/2 + 25px, $c, $c3)),
+    part((1px, 1px, $sceneWidth / 2 + 1px, $sceneHeight/2 + 25px, $c, $c3)),
+    part((1px, 4px, $sceneWidth / 2 - 1.5px, $sceneHeight/2 + 24.5px, $c, $c3)),
+    part((1px, 4px, $sceneWidth / 2 + 1.5px, $sceneHeight/2 + 24.5px, $c, $c3)),
+    part((1px, 1.5px, $sceneWidth / 2 + 1.5px, $sceneHeight/2 + 28.5px, $c2, transparent var(--p))),
+    part((1px, 1.5px, $sceneWidth / 2 - 1.5px, $sceneHeight/2 + 28.5px, $c2, transparent var(--p)))
+  );
+  @return $r;
+}
+
+.scene {
+  width: #{$sceneWidth};
+  height: #{$sceneHeight};
+  background: 🚀(), 🌃();
+  background-repeat: no-repeat;
+  scale: 9;
+  
+@media screen and (max-width: 600px) {
+  scale: 4;
+  }
+  
+  transform-origin: center bottom;
+  animation: move 8s linear infinite;
+  filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.4));
+}
+
+@keyframes move {
+  from {
+    --p: 100%;
+  }
+  30%, 70% {
+    --x: 1px;
+  }
+  20%, 22%, 44%,46%,48% {
+    --p: 100%;
+  }
+  21%, 45%, 47% {
+    --p: 0%;
+  }
+  40%, 80% {
+    --x: -1px;
+  }
+  to {
+    --y: 100px;
+    --x: 0px;
+    --p: 100%;
+  }
+}
+
+@function ⭐($item) {
+  $w: list.nth($item, 1);
+  $h: list.nth($item, 2);
+  $x: list.nth($item, 3);
+  $y: list.nth($item, 4);
+  $c: list.nth($item, 5);
+
+  @return linear-gradient(to right, $c, transparent) #{$x} calc(
+      #{$y} + var(--y)
+    ) / #{$w} #{$h};
+}
+
+@function ✨() {
+  $r: ();
+  @for $i from 0 through 100 {
+    $star: ⭐(
+      (
+        #{random(2) * 1px},
+        #{random(5) * 1px},
+        #{random(100) * 1%},
+        #{random(50) * 1%},
+        white
+      )
+    );
+    $r: append($r, $star, comma);
+  }
+  @return $r;
+}
+@keyframes stars-move {
+  from {
+    opacity: 0;
+  }
+  5%,
+  95% {
+    opacity: 1;
+  }
+  to {
+    --y: -100px;
+    opacity: 0;
+  }
+}
+
+body {
+
+  &:before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    mask: linear-gradient(black, transparent 50%);
+    background: ✨();
+    animation: stars-move 5s linear infinite;
+    background-repeat: no-repeat;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100dvh;
+  margin: 0;
+  background: radial-gradient(
+      200% 100% at 50% 100%,
+      #191217 55%,
+      #251f2d 62%,
+      transparent
+    ),
+    radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 0px) center / 40px
+      10px,
+    #111;
+  overflow: hidden;
+  &:after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    inset: 0;
+    mask: linear-gradient(to top, black, transparent 20%, transparent);
+    z-index: 1;
+    backdrop-filter: blur(2rem);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}

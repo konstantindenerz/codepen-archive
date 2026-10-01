@@ -1,0 +1,48 @@
+{
+  "slug": "mdGpxKg",
+  "dir": "animated-logo-glitch-effect-retro-look-css-mdGpxKg",
+  "newEditor": false,
+  "title": "Animated Logo & Glitch Effect & Retro Look (CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/mdGpxKg",
+  "description": "This pen is a part of the retro wave scene:\nhttps://codepen.io/konstantindenerz/pen/WNgEqbG",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "animation",
+    "logo",
+    "retrowave",
+    "synthwave"
+  ],
+  "license": "MIT",
+  "createdAt": "2023-03-11 07:25:55 UTC",
+  "updatedAt": "2023-06-22 05:19:21 UTC",
+  "counts": {
+    "loves": 92,
+    "views": 6135,
+    "comments": 3
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 1
+    }
+  ],
+  "hasSource": true
+}

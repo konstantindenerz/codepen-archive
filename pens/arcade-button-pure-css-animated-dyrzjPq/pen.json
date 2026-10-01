@@ -1,0 +1,48 @@
+{
+  "slug": "dyrzjPq",
+  "dir": "arcade-button-pure-css-animated-dyrzjPq",
+  "newEditor": false,
+  "title": "Arcade Button 👾🕹️ (Pure CSS, Animated)",
+  "url": "https://codepen.io/konstantindenerz/pen/dyrzjPq",
+  "description": "It's fun pen to demonstrate some (S) CSS features ✨ like CSS Variables,  Gradients, Animations & Transitions, Clip Path and SCSS functions ",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "arcade",
+    "game",
+    "button",
+    "pacman"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-01-23 17:26:04 UTC",
+  "updatedAt": "2024-01-31 18:22:11 UTC",
+  "counts": {
+    "loves": 247,
+    "views": 11904,
+    "comments": 4
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

@@ -1,0 +1,41 @@
+{
+  "slug": "WbxrOJY",
+  "dir": "c64-logo-css-shape-WbxrOJY",
+  "newEditor": false,
+  "title": "C64 Logo (CSS Shape())",
+  "url": "https://codepen.io/konstantindenerz/pen/WbxrOJY",
+  "description": "Commodore logo built with CSS shapes function and conic gradient.",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "c64",
+    "css",
+    "c64u",
+    "commodore"
+  ],
+  "license": "MIT",
+  "createdAt": "2026-01-04 12:02:02 UTC",
+  "updatedAt": "2026-01-22 11:52:24 UTC",
+  "counts": {
+    "loves": 20,
+    "views": 1666,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "none",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.css",
+    "js": "src/script.js"
+  },
+  "cssStarter": "neither",
+  "cssPrefix": "neither",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

@@ -1,0 +1,127 @@
+:root {
+  --color-primary: #75d8ee;
+  --color-secondary: #ee75d2;
+  --color-tertiary: #ffd600;
+  --color-quaternary: #9375ee;
+  --color-surface: #0e0331;
+}
+
+.container {
+  filter: url(#blurFilter);
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 calc(var(--height) / 4);
+  box-sizing: border-box;
+  position: relative;
+}
+
+.switch {
+  --width: 16vmax;
+  --height: 8vmax;
+  width: var(--width);
+  height: var(--height);
+  border-radius: var(--height);
+  border: 0.5vmax solid
+    color-mix(in srgb, var(--color-secondary), transparent 40%);
+  cursor: pointer;
+
+  .thumb {
+    position: absolute;
+    background: var(--color-primary);
+    border-radius: inherit;
+    height: inherit;
+    left: 0;
+    aspect-ratio: 1;
+    animation: unchecked 0.65s ease-out forwards;
+  }
+
+  .left,
+  .right {
+    border-radius: inherit;
+    height: calc(var(--height) / 2);
+    aspect-ratio: 1;
+  }
+
+  .left {
+    background: var(--color-secondary);
+  }
+
+  .right {
+    background: var(--color-primary);
+  }
+
+  input {
+    display: none;
+
+    &:checked ~ .container {
+      .thumb {
+        animation: checked 0.65s ease-out forwards;
+      }
+    }
+  }
+}
+
+@keyframes checked {
+  from {
+    translate: 0;
+    scale: 1;
+  }
+
+  50% {
+    scale: 0.4;
+    background-color: var(--color-secondary);
+  }
+
+  to {
+    scale: 1;
+    translate: calc(var(--width) - var(--height));
+    background-color: var(--color-primary);
+  }
+}
+
+@keyframes unchecked {
+  from {
+    scale: 1;
+    translate: calc(var(--width) - var(--height));
+  }
+
+  50% {
+    scale: 0.4;
+    background-color: var(--color-primary);
+  }
+
+  to {
+    translate: 0;
+    scale: 1;
+    background-color: var(--color-secondary);
+  }
+}
+
+.filter {
+  display: block;
+  width: 0; 
+  height: 0;
+	overflow: visible !important;
+  position: absolute;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--color-surface);
+  color: var(--color-tertiary);
+}
+
+a.labs-follow-me {
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center;
+}

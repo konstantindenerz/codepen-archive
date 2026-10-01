@@ -1,0 +1,42 @@
+{
+  "slug": "NWpePPm",
+  "dir": "loading-table-with-placeholdern-animation-NWpePPm",
+  "newEditor": false,
+  "title": "Loading Table with Placeholdern Animation",
+  "url": "https://codepen.io/konstantindenerz/pen/NWpePPm",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "loader",
+    "spinner",
+    "skeleton",
+    "contentplaceholder",
+    "css"
+  ],
+  "license": "MIT",
+  "createdAt": "2021-06-14 19:27:09 UTC",
+  "updatedAt": "2024-05-01 14:17:26 UTC",
+  "counts": {
+    "loves": 14,
+    "views": 488,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "neither",
+  "cssPrefix": "neither",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

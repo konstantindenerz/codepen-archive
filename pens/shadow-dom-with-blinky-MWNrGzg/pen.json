@@ -1,0 +1,36 @@
+{
+  "slug": "MWNrGzg",
+  "dir": "shadow-dom-with-blinky-MWNrGzg",
+  "newEditor": false,
+  "title": "Shadow Dom with Blinky 🎃",
+  "url": "https://codepen.io/konstantindenerz/pen/MWNrGzg",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2024-10-26 19:35:23 UTC",
+  "updatedAt": "2024-10-28 17:34:50 UTC",
+  "counts": {
+    "loves": 13,
+    "views": 839,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

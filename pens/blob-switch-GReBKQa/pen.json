@@ -1,0 +1,48 @@
+{
+  "slug": "GReBKQa",
+  "dir": "blob-switch-GReBKQa",
+  "newEditor": false,
+  "title": "Blob Switch",
+  "url": "https://codepen.io/konstantindenerz/pen/GReBKQa",
+  "description": "This post + thread (https://twitter.com/joyofcodedev/status/1754218335405736273) 😍 inspired me to create a simple blob switch with an SVG filter ✨.\n✅ Works perfect in Chromium & Firefox.",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "switch",
+    "blob",
+    "animation",
+    "uxui"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-02-06 14:02:46 UTC",
+  "updatedAt": "2024-02-07 10:38:08 UTC",
+  "counts": {
+    "loves": 27,
+    "views": 1453,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

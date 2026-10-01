@@ -1,0 +1,48 @@
+{
+  "slug": "zYbpNmz",
+  "dir": "synthwave-rain-css-zYbpNmz",
+  "newEditor": false,
+  "title": "Synthwave Rain ✨ (CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/zYbpNmz",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "art",
+    "synthwave",
+    "generative",
+    "digitalrain"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-01-28 23:28:32 UTC",
+  "updatedAt": "2024-01-29 06:28:11 UTC",
+  "counts": {
+    "loves": 283,
+    "views": 5336,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Honk&family=Rajdhani:wght@700&display=swap\" rel=\"stylesheet\">\n",
+  "htmlClasses": "",
+  "resources": [
+    {
+      "resourceType": "js",
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "order": 0
+    }
+  ],
+  "hasSource": true
+}

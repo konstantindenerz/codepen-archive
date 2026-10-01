@@ -1,0 +1,14 @@
+- count = 11 // 🍿 try another odd value
+- i = 0
+.wrapper(style='--c:'+count) 
+  .scene
+    - rowIndex = 0
+    while rowIndex < count
+      - rowIndex++
+      .container
+        - cubeIndex = 0
+        while cubeIndex < count
+          - cubeIndex++
+          - i++
+          .cube(style='--i:'+i + ';--row:'+rowIndex +';--col:'+cubeIndex) 
+            .top

@@ -1,0 +1,41 @@
+{
+  "slug": "JjgRYQo",
+  "dir": "css-flow-JjgRYQo",
+  "newEditor": false,
+  "title": "CSS ✨ Flow",
+  "url": "https://codepen.io/konstantindenerz/pen/JjgRYQo",
+  "description": "I found this great animation (https://x.com/realvjy/status/1843259227152031823) 🔥 and had to prototype it with #CSS. ✨ \n\n✅ Works in Chrome & Firefox\n🔥 Try replacing CSS with FIG and ✨ with MA ",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [
+    "css",
+    "figma",
+    "animation",
+    "rainbow"
+  ],
+  "license": "MIT",
+  "createdAt": "2024-10-07 17:38:33 UTC",
+  "updatedAt": "2024-10-08 17:59:22 UTC",
+  "counts": {
+    "loves": 54,
+    "views": 1357,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap\" rel=\"stylesheet\">",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

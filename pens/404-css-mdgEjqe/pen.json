@@ -1,0 +1,36 @@
+{
+  "slug": "mdgEjqe",
+  "dir": "404-css-mdgEjqe",
+  "newEditor": false,
+  "title": "404 (CSS)",
+  "url": "https://codepen.io/konstantindenerz/pen/mdgEjqe",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2024-03-13 08:06:34 UTC",
+  "updatedAt": "2024-03-14 06:16:09 UTC",
+  "counts": {
+    "loves": 28,
+    "views": 949,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "pug",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.pug",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Kablammo:MORF@0..60&display=swap\" rel=\"stylesheet\">",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

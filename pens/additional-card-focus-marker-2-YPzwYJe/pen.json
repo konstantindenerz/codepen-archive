@@ -1,0 +1,39 @@
+{
+  "slug": "YPzwYJe",
+  "dir": "additional-card-focus-marker-2-YPzwYJe",
+  "newEditor": false,
+  "title": "Additional Card Focus Marker #2",
+  "url": "https://codepen.io/konstantindenerz/pen/YPzwYJe",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2025-02-19 13:33:45 UTC",
+  "updatedAt": "2025-02-19 13:33:55 UTC",
+  "counts": {
+    "loves": 3,
+    "views": 97,
+    "comments": 0
+  },
+  "featured": true,
+  "forkedFrom": {
+    "url": "https://codepen.io/konstantindenerz/pen/JojYEZY",
+    "title": "Additional Card Focus Marker"
+  },
+  "preProcessors": {
+    "html": "none",
+    "css": "scss",
+    "js": "none"
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.scss",
+    "js": "src/script.js"
+  },
+  "cssStarter": "normalize",
+  "cssPrefix": "autoprefixer",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": true
+}

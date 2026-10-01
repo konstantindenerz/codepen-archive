@@ -1,0 +1,9 @@
+mixin item(index)
+  .item(style='--i:' + index + ';')
+    div (..⏝⦿⏝..)
+    div (.⏜o⏜.)
+- var count = 200;
+- var n = 0;
+.items(style='--count:' + count + ';')
+  while n < count
+    +item(n++)

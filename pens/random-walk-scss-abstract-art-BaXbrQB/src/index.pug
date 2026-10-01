@@ -1,0 +1,7 @@
+- var i = 0;
+.input-container
+  input(type="range", min=1,max=2,step=1, value=1,oninput="this.dataset.value=this.value", data-value=1,style="width: 2rem")
+.container
+  while i < 3000
+    .i
+    - i++

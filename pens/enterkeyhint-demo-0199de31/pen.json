@@ -1,0 +1,36 @@
+{
+  "slug": "0199de31-74db-7ff4-be46-510b07d23503",
+  "dir": "enterkeyhint-demo-0199de31",
+  "newEditor": true,
+  "title": "enterkeyhint Demo",
+  "url": "https://codepen.io/editor/konstantindenerz/pen/0199de31-74db-7ff4-be46-510b07d23503",
+  "description": "",
+  "descriptionFormat": "MARKDOWN",
+  "tags": [],
+  "license": "MIT",
+  "createdAt": "2025-10-13 15:31:26 UTC",
+  "updatedAt": "2025-10-13 15:40:24 UTC",
+  "counts": {
+    "loves": 0,
+    "views": 31,
+    "comments": 0
+  },
+  "featured": false,
+  "forkedFrom": null,
+  "preProcessors": {
+    "html": "",
+    "css": "",
+    "js": ""
+  },
+  "sourceFiles": {
+    "html": "src/index.html",
+    "css": "src/style.css",
+    "js": "src/script.js"
+  },
+  "cssStarter": "",
+  "cssPrefix": "",
+  "head": "",
+  "htmlClasses": "",
+  "resources": [],
+  "hasSource": false
+}
