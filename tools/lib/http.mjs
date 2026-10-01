@@ -13,12 +13,18 @@ const UA =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 ' +
   '(KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36';
 
-// Per-host pause in ms. CodePen gets the longest leash.
+// Per-host pause in ms. CodePen gets the longest leash — it is the host we
+// cannot afford to be blocked by. Large public CDNs are not rate-limit
+// sensitive at this volume and would only make the run needlessly slow.
 const DELAY = {
   'cdpn.io': 4000,
   'codepen.io': 4000,
   'assets.codepen.io': 4000,
   'konstantin-denerz.com': 1500,
+  'fonts.googleapis.com': 400,
+  'fonts.gstatic.com': 200,
+  'cdn.jsdelivr.net': 400,
+  'public.codepenassets.com': 400,
   default: 3000,
 };
 
