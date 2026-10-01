@@ -1,0 +1,949 @@
+<!--
+  Dance (CSS, Abstract, ⦿&o)
+
+  Archived from https://codepen.io/konstantindenerz/pen/VwoKEdE
+  Created 2024-10-08 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  
+  
+
+  <title>Dance (CSS, Abstract, ⦿&amp;o) </title>
+  
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+:root {
+  --distance: 100vh;
+  --rotation-duration: 3s;
+  --fade-in-duration: 0.2s;
+  --delay-base: 0.018s;
+}
+
+@property --r {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+@property --l {
+  syntax: "<length>";
+  initial-value: 0;
+  inherits: true;
+}
+@property --distance {
+  syntax: "<length>";
+  initial-value: 0;
+  inherits: true;
+}
+.items {
+  width: 100dvw;
+  height: 100dvh;
+  -webkit-mask: linear-gradient(to bottom, transparent 10%, black 40%, black 0%, transparent 90%);
+          mask: linear-gradient(to bottom, transparent 10%, black 40%, black 0%, transparent 90%);
+  font-size: 6rem;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.item {
+  line-height: 80%;
+  position: absolute;
+  --x: calc(var(--distance) / var(--count));
+  transform: translate3d(0, calc(var(--i) * -1 * var(--x) + var(--distance) / 1.1), 0) rotate(var(--r)) scale(calc((var(--i)) * 0.005 + .09));
+  --delay: calc((var(--count) - var(--i)) * var(--delay-base));
+  -webkit-animation: rotation var(--rotation-duration) var(--delay) linear infinite, fade-in var(--fade-in-duration) var(--delay) linear forwards;
+          animation: rotation var(--rotation-duration) var(--delay) linear infinite, fade-in var(--fade-in-duration) var(--delay) linear forwards;
+  opacity: 0;
+}
+.item:not(:last-of-type) {
+  filter: blur(0.1rem);
+  color: black !important;
+}
+.item > div {
+  text-align: center;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+.item > div:first-of-type {
+  letter-spacing: -0.5rem;
+  background: conic-gradient(from 290deg at 50% 100%, #ececec, #c9c9c9, #9e9e9e, #636363, #d8d8d8, #ffffff, #9a9a9a, #e8e8e8);
+}
+.item > div:last-of-type {
+  background: conic-gradient(from 290deg at 50% 0%, #ececec, #c9c9c9, #9e9e9e, #636363, #d8d8d8, #ffffff, #9a9a9a, #e8e8e8);
+}
+
+@-webkit-keyframes rotation {
+  from {
+    --r: 0deg;
+  }
+  to {
+    --r: -360deg;
+  }
+}
+
+@keyframes rotation {
+  from {
+    --r: 0deg;
+  }
+  to {
+    --r: -360deg;
+  }
+}
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+body {
+  display: grid;
+  color: #ffbaf6;
+  place-items: center;
+  height: 100dvh;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  background: #f2f2f2;
+  position: relative;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="items" style="--count:200;">
+  <div class="item" style="--i:0;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:1;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:2;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:3;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:4;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:5;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:6;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:7;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:8;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:9;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:10;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:11;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:12;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:13;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:14;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:15;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:16;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:17;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:18;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:19;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:20;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:21;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:22;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:23;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:24;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:25;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:26;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:27;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:28;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:29;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:30;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:31;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:32;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:33;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:34;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:35;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:36;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:37;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:38;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:39;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:40;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:41;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:42;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:43;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:44;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:45;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:46;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:47;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:48;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:49;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:50;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:51;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:52;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:53;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:54;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:55;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:56;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:57;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:58;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:59;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:60;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:61;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:62;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:63;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:64;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:65;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:66;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:67;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:68;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:69;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:70;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:71;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:72;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:73;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:74;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:75;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:76;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:77;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:78;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:79;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:80;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:81;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:82;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:83;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:84;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:85;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:86;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:87;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:88;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:89;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:90;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:91;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:92;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:93;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:94;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:95;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:96;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:97;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:98;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:99;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:100;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:101;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:102;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:103;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:104;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:105;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:106;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:107;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:108;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:109;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:110;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:111;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:112;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:113;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:114;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:115;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:116;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:117;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:118;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:119;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:120;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:121;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:122;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:123;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:124;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:125;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:126;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:127;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:128;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:129;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:130;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:131;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:132;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:133;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:134;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:135;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:136;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:137;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:138;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:139;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:140;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:141;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:142;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:143;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:144;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:145;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:146;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:147;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:148;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:149;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:150;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:151;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:152;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:153;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:154;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:155;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:156;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:157;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:158;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:159;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:160;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:161;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:162;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:163;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:164;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:165;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:166;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:167;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:168;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:169;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:170;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:171;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:172;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:173;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:174;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:175;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:176;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:177;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:178;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:179;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:180;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:181;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:182;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:183;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:184;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:185;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:186;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:187;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:188;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:189;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:190;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:191;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:192;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:193;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:194;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:195;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:196;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:197;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:198;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+  <div class="item" style="--i:199;">
+    <div>(..⏝⦿⏝..)</div>
+    <div>(.⏜o⏜.)</div>
+  </div>
+</div>
+  
+  
+  
+</body>
+
+</html>

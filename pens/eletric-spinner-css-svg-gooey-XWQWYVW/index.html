@@ -1,0 +1,295 @@
+<!--
+  Eletric Spinner ⚡️ (CSS, SVG:Gooey)
+
+  Archived from https://codepen.io/konstantindenerz/pen/XWQWYVW
+  Created 2024-02-29 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  
+  
+
+  <title>Eletric Spinner ⚡️ (CSS, SVG:Gooey)</title>
+  
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+@property --value {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+@property --width-ratio {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+@property --scale {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+:root {
+  --width: 1.8vmin;
+  --duration: 7s;
+  --size: 70vmin;
+  --logo: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNDAuNTgxIiBoZWlnaHQ9IjU3Ljg0NiIgdmlld0JveD0iMCAwIDQwLjU4MSA1Ny44NDYiPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQiIHgxPSIwLjkxMSIgeTE9IjAuMDgyIiB4Mj0iMC4xODUiIHkyPSIwLjkxIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2UyMDBmZiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuMTA3IiBzdG9wLWNvbG9yPSIjZWVhM2Y3Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMC40NDMiIHN0b3AtY29sb3I9IiNlMWQwZTMiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIwLjU3NiIgc3RvcC1jb2xvcj0iI2ZmZiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM4N2NjZjAiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxwYXRoIGlkPSJQYXRoXzEiIGRhdGEtbmFtZT0iUGF0aCAxIiBkPSJNOTMzLjYxMyw2OTkuNDkybC0zMS40NTMsMzEuODVoMjAuMzA4bC0xOC43OCwyNiwzOS4wNTMtMzQuNzk1SDkyMS4wN1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC05MDIuMTU5IC02OTkuNDkyKSIgZmlsbD0idXJsKCNsaW5lYXItZ3JhZGllbnQpIi8+Cjwvc3ZnPgoK");
+}
+@supports not (background: paint(foo)) {
+  :root {
+    --duration: 4s;
+  }
+}
+
+.rings {
+  filter: url(#blurFilter);
+  width: var(--size);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: relative;
+  perspective: var(--size);
+}
+.rings:before, .rings:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: red;
+  border-radius: 50%;
+  --width-ratio: 1;
+  border: calc(var(--width) * var(--width-ratio)) solid transparent;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+          mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  background: conic-gradient(from calc(var(--value) * 3), #41dbff, transparent, #04f5ff, #278ebb, #3bf6ff, transparent, transparent, #00a8ff, transparent, #24e0ff, #00cdff, white, transparent, transparent, transparent) border-box;
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  --start: 180deg;
+  --value: var(--start);
+  --scale: 1;
+  transform: rotateY(var(--value)) rotateX(var(--value)) rotateZ(var(--value)) scale(var(--scale));
+}
+@supports (background: paint(foo)) {
+  .rings:before, .rings:after {
+    -webkit-animation: ring var(--duration) ease-in-out infinite;
+            animation: ring var(--duration) ease-in-out infinite;
+  }
+}
+@supports not (background: paint(foo)) {
+  .rings:before, .rings:after {
+    -webkit-animation: ring-legacy var(--duration) ease-in-out infinite;
+            animation: ring-legacy var(--duration) ease-in-out infinite;
+  }
+}
+.rings:before {
+  --start: 180deg;
+}
+.rings:after {
+  --start: 90deg;
+}
+.rings > .rings:before {
+  --start: 360deg;
+}
+.rings > .rings:after {
+  --start: 270deg;
+}
+
+@-webkit-keyframes ring {
+  from {
+    --value: var(--start);
+    --scale: 1;
+  }
+  50% {
+    --scale: 1.2;
+    --width-ratio: 1.5;
+  }
+  70% {
+    --scale: 1;
+    --value: calc(var(--start) + 180deg);
+    --width-ratio: 1;
+  }
+  80% {
+    --scale: 1.2;
+    --width-ratio: 1.5;
+  }
+  to {
+    --value: calc(var(--start) + 360deg);
+    --scale: 1;
+    --width-ratio: 1;
+  }
+}
+
+@keyframes ring {
+  from {
+    --value: var(--start);
+    --scale: 1;
+  }
+  50% {
+    --scale: 1.2;
+    --width-ratio: 1.5;
+  }
+  70% {
+    --scale: 1;
+    --value: calc(var(--start) + 180deg);
+    --width-ratio: 1;
+  }
+  80% {
+    --scale: 1.2;
+    --width-ratio: 1.5;
+  }
+  to {
+    --value: calc(var(--start) + 360deg);
+    --scale: 1;
+    --width-ratio: 1;
+  }
+}
+@-webkit-keyframes ring-legacy {
+  from {
+    --value: var(--start);
+    --scale: 1;
+    transform: rotateY(var(--value)) rotateX(var(--value)) rotateZ(var(--value)) scale(var(--scale));
+  }
+  70% {
+    --scale: 1.2;
+    --value: calc(var(--start) + 180deg);
+    transform: rotateY(var(--value)) rotateX(var(--value)) rotateZ(var(--value)) scale(var(--scale));
+  }
+  to {
+    --value: calc(var(--start) + 360deg);
+    --scale: 1;
+    transform: rotateY(var(--value)) rotateX(var(--value)) rotateZ(var(--value)) scale(var(--scale));
+  }
+}
+@keyframes ring-legacy {
+  from {
+    --value: var(--start);
+    --scale: 1;
+    transform: rotateY(var(--value)) rotateX(var(--value)) rotateZ(var(--value)) scale(var(--scale));
+  }
+  70% {
+    --scale: 1.2;
+    --value: calc(var(--start) + 180deg);
+    transform: rotateY(var(--value)) rotateX(var(--value)) rotateZ(var(--value)) scale(var(--scale));
+  }
+  to {
+    --value: calc(var(--start) + 360deg);
+    --scale: 1;
+    transform: rotateY(var(--value)) rotateX(var(--value)) rotateZ(var(--value)) scale(var(--scale));
+  }
+}
+.logo {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  inset: 0;
+  filter: drop-shadow(0 0 1.5rem rgba(138, 205, 240, 0.8));
+  display: grid;
+  place-items: center;
+  background: var(--logo) center center no-repeat;
+  background-size: calc(var(--size) / 1.5);
+  opacity: 0.5;
+}
+
+.demo {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  width: 100vw;
+  --floor-tile-size: 2rem;
+  --floor-color: rgb(213 134 238 / 10%);
+  background: radial-gradient(transparent 25%, black 60%), repeating-linear-gradient(45deg, var(--floor-color) 0, var(--floor-color) 1.9rem, transparent 1.9rem, transparent var(--floor-tile-size, 1rem)), repeating-linear-gradient(115deg, var(--floor-color) 0, var(--floor-color) 1.9rem, transparent 1.9rem, transparent var(--floor-tile-size, 1rem)), conic-gradient(from 0deg, #555, black, #111, #555);
+}
+
+.filter {
+  display: block;
+  width: 0;
+  height: 0;
+  overflow: visible !important;
+  position: absolute;
+}
+
+body {
+  color: #a3f0f7;
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  heightl: 100vh;
+  overflow: hidden;
+}
+body:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  -webkit-backdrop-filter: blur(1rem);
+          backdrop-filter: blur(1rem);
+  -webkit-mask-image: radial-gradient(72vmin 72vmin at center, transparent 50%, black 70%);
+          mask-image: radial-gradient(72vmin 72vmin at center, transparent 50%, black 70%);
+  z-index: 111;
+}
+body:after {
+  content: "";
+  position: absolute;
+  background: url(https://assets.codepen.io/907471/noise.svg);
+  mix-blend-mode: lighten;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  filter: invert(1);
+  z-index: var(--labs-sys-z-noise);
+}
+
+a.labs-follow-me-twitter {
+  position: absolute;
+  left: auto;
+  right: auto;
+  display: grid;
+  place-items: center;
+  top: unset;
+  bottom: 2rem;
+  -webkit-backdrop-filter: blur(1rem);
+          backdrop-filter: blur(1rem);
+  border-radius: 0.1rem;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <svg class=filter xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <filter id="blurFilter">
+    <feGaussianBlur stdDeviation="4.5"></feGaussianBlur>
+    <feColorMatrix type="matrix" values="
+              1 0 0 0 0
+              0 1 0 0 0
+              0 0 1 0 0
+              0 0 0 19 -9"></feColorMatrix>
+  </filter>
+</svg>
+
+<div class="demo">
+  <div class="rings">
+    <div class="rings">
+      <div class="logo">
+      </div>
+    </div>
+  </div>
+</div>
+  <script src='https://codepen.io/konstantindenerz/pen/KKxvdPq.js'></script>
+  
+  
+</body>
+
+</html>

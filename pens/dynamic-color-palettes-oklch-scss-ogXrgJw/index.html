@@ -1,0 +1,964 @@
+<!--
+  Dynamic Color Palettes (oklch, SCSS)
+
+  Archived from https://codepen.io/konstantindenerz/pen/ogXrgJw
+  Created 2025-07-03 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  <title>Dynamic Color Palettes (oklch, SCSS)</title>
+  
+  
+  
+  
+<style>
+:root {
+  --surface: #111;
+  --chroma-base: var(--chroma-base-input, 0.11);
+  --chroma-amplitude: 0.09;
+  --md-ref-primary: #fc78fc;
+  --md-ref-secondary: #4daef5;
+  --md-ref-tertiary: #f6e32c;
+  --md-ref-quaternary: cyan;
+  --md-ref-error: #de1c0a;
+  --md-ref-neutral: var(--md-ref-primary);
+  --md-ref-neutral-variant: var(--md-ref-secondary);
+  --chroma-base-neutral: 0;
+  --chroma-amplitude-neutral: calc(var(--chroma-base) / 1.995);
+  --chroma-base-neutral-variant: 0;
+  --chroma-amplitude-neutral-variant: calc(var(--chroma-base) / 1.995);
+  --md-ref-primary-primary0: oklch(
+    from var(--md-ref-primary)
+      0%
+      calc(
+        var(--chroma-base-primary, var(--chroma-base)) +
+          var(--chroma-amplitude-primary, var(--chroma-amplitude)) *
+          cos(-180deg)
+      )
+      h
+  );
+  --md-ref-primary-primary10: oklch(
+    from var(--md-ref-primary)
+      10%
+      calc(
+        var(--chroma-base-primary, var(--chroma-base)) +
+          var(--chroma-amplitude-primary, var(--chroma-amplitude)) *
+          cos(-144deg)
+      )
+      h
+  );
+  --md-ref-primary-primary20: oklch(
+    from var(--md-ref-primary)
+      20%
+      calc(
+        var(--chroma-base-primary, var(--chroma-base)) +
+          var(--chroma-amplitude-primary, var(--chroma-amplitude)) *
+          cos(-108deg)
+      )
+      h
+  );
+  --md-ref-primary-primary30: oklch(
+    from var(--md-ref-primary)
+      30%
+      calc(
+        var(--chroma-base-primary, var(--chroma-base)) +
+          var(--chroma-amplitude-primary, var(--chroma-amplitude)) *
+          cos(-72deg)
+      )
+      h
+  );
+  --md-ref-primary-primary40: oklch(
+    from var(--md-ref-primary)
+      40%
+      calc(
+        var(--chroma-base-primary, var(--chroma-base)) +
+          var(--chroma-amplitude-primary, var(--chroma-amplitude)) *
+          cos(-36deg)
+      )
+      h
+  );
+  --md-ref-primary-primary50: oklch(
+    from var(--md-ref-primary)
+      50%
+      calc(
+        var(--chroma-base-primary, var(--chroma-base)) +
+          var(--chroma-amplitude-primary, var(--chroma-amplitude)) *
+          cos(0deg)
+      )
+      h
+  );
+  --md-ref-primary-primary60: oklch(
+    from var(--md-ref-primary)
+      60%
+      calc(
+        var(--chroma-base-primary, var(--chroma-base)) +
+          var(--chroma-amplitude-primary, var(--chroma-amplitude)) *
+          cos(36deg)
+      )
+      h
+  );
+  --md-ref-primary-primary70: oklch(
+    from var(--md-ref-primary)
+      70%
+      calc(
+        var(--chroma-base-primary, var(--chroma-base)) +
+          var(--chroma-amplitude-primary, var(--chroma-amplitude)) *
+          cos(72deg)
+      )
+      h
+  );
+  --md-ref-primary-primary80: oklch(
+    from var(--md-ref-primary)
+      80%
+      calc(
+        var(--chroma-base-primary, var(--chroma-base)) +
+          var(--chroma-amplitude-primary, var(--chroma-amplitude)) *
+          cos(108deg)
+      )
+      h
+  );
+  --md-ref-primary-primary90: oklch(
+    from var(--md-ref-primary)
+      90%
+      calc(
+        var(--chroma-base-primary, var(--chroma-base)) +
+          var(--chroma-amplitude-primary, var(--chroma-amplitude)) *
+          cos(144deg)
+      )
+      h
+  );
+  --md-ref-primary-primary100: oklch(
+    from var(--md-ref-primary)
+      100%
+      calc(
+        var(--chroma-base-primary, var(--chroma-base)) +
+          var(--chroma-amplitude-primary, var(--chroma-amplitude)) *
+          cos(180deg)
+      )
+      h
+  );
+  --md-ref-secondary-secondary0: oklch(
+    from var(--md-ref-secondary)
+      0%
+      calc(
+        var(--chroma-base-secondary, var(--chroma-base)) +
+          var(--chroma-amplitude-secondary, var(--chroma-amplitude)) *
+          cos(-180deg)
+      )
+      h
+  );
+  --md-ref-secondary-secondary10: oklch(
+    from var(--md-ref-secondary)
+      10%
+      calc(
+        var(--chroma-base-secondary, var(--chroma-base)) +
+          var(--chroma-amplitude-secondary, var(--chroma-amplitude)) *
+          cos(-144deg)
+      )
+      h
+  );
+  --md-ref-secondary-secondary20: oklch(
+    from var(--md-ref-secondary)
+      20%
+      calc(
+        var(--chroma-base-secondary, var(--chroma-base)) +
+          var(--chroma-amplitude-secondary, var(--chroma-amplitude)) *
+          cos(-108deg)
+      )
+      h
+  );
+  --md-ref-secondary-secondary30: oklch(
+    from var(--md-ref-secondary)
+      30%
+      calc(
+        var(--chroma-base-secondary, var(--chroma-base)) +
+          var(--chroma-amplitude-secondary, var(--chroma-amplitude)) *
+          cos(-72deg)
+      )
+      h
+  );
+  --md-ref-secondary-secondary40: oklch(
+    from var(--md-ref-secondary)
+      40%
+      calc(
+        var(--chroma-base-secondary, var(--chroma-base)) +
+          var(--chroma-amplitude-secondary, var(--chroma-amplitude)) *
+          cos(-36deg)
+      )
+      h
+  );
+  --md-ref-secondary-secondary50: oklch(
+    from var(--md-ref-secondary)
+      50%
+      calc(
+        var(--chroma-base-secondary, var(--chroma-base)) +
+          var(--chroma-amplitude-secondary, var(--chroma-amplitude)) *
+          cos(0deg)
+      )
+      h
+  );
+  --md-ref-secondary-secondary60: oklch(
+    from var(--md-ref-secondary)
+      60%
+      calc(
+        var(--chroma-base-secondary, var(--chroma-base)) +
+          var(--chroma-amplitude-secondary, var(--chroma-amplitude)) *
+          cos(36deg)
+      )
+      h
+  );
+  --md-ref-secondary-secondary70: oklch(
+    from var(--md-ref-secondary)
+      70%
+      calc(
+        var(--chroma-base-secondary, var(--chroma-base)) +
+          var(--chroma-amplitude-secondary, var(--chroma-amplitude)) *
+          cos(72deg)
+      )
+      h
+  );
+  --md-ref-secondary-secondary80: oklch(
+    from var(--md-ref-secondary)
+      80%
+      calc(
+        var(--chroma-base-secondary, var(--chroma-base)) +
+          var(--chroma-amplitude-secondary, var(--chroma-amplitude)) *
+          cos(108deg)
+      )
+      h
+  );
+  --md-ref-secondary-secondary90: oklch(
+    from var(--md-ref-secondary)
+      90%
+      calc(
+        var(--chroma-base-secondary, var(--chroma-base)) +
+          var(--chroma-amplitude-secondary, var(--chroma-amplitude)) *
+          cos(144deg)
+      )
+      h
+  );
+  --md-ref-secondary-secondary100: oklch(
+    from var(--md-ref-secondary)
+      100%
+      calc(
+        var(--chroma-base-secondary, var(--chroma-base)) +
+          var(--chroma-amplitude-secondary, var(--chroma-amplitude)) *
+          cos(180deg)
+      )
+      h
+  );
+  --md-ref-tertiary-tertiary0: oklch(
+    from var(--md-ref-tertiary)
+      0%
+      calc(
+        var(--chroma-base-tertiary, var(--chroma-base)) +
+          var(--chroma-amplitude-tertiary, var(--chroma-amplitude)) *
+          cos(-180deg)
+      )
+      h
+  );
+  --md-ref-tertiary-tertiary10: oklch(
+    from var(--md-ref-tertiary)
+      10%
+      calc(
+        var(--chroma-base-tertiary, var(--chroma-base)) +
+          var(--chroma-amplitude-tertiary, var(--chroma-amplitude)) *
+          cos(-144deg)
+      )
+      h
+  );
+  --md-ref-tertiary-tertiary20: oklch(
+    from var(--md-ref-tertiary)
+      20%
+      calc(
+        var(--chroma-base-tertiary, var(--chroma-base)) +
+          var(--chroma-amplitude-tertiary, var(--chroma-amplitude)) *
+          cos(-108deg)
+      )
+      h
+  );
+  --md-ref-tertiary-tertiary30: oklch(
+    from var(--md-ref-tertiary)
+      30%
+      calc(
+        var(--chroma-base-tertiary, var(--chroma-base)) +
+          var(--chroma-amplitude-tertiary, var(--chroma-amplitude)) *
+          cos(-72deg)
+      )
+      h
+  );
+  --md-ref-tertiary-tertiary40: oklch(
+    from var(--md-ref-tertiary)
+      40%
+      calc(
+        var(--chroma-base-tertiary, var(--chroma-base)) +
+          var(--chroma-amplitude-tertiary, var(--chroma-amplitude)) *
+          cos(-36deg)
+      )
+      h
+  );
+  --md-ref-tertiary-tertiary50: oklch(
+    from var(--md-ref-tertiary)
+      50%
+      calc(
+        var(--chroma-base-tertiary, var(--chroma-base)) +
+          var(--chroma-amplitude-tertiary, var(--chroma-amplitude)) *
+          cos(0deg)
+      )
+      h
+  );
+  --md-ref-tertiary-tertiary60: oklch(
+    from var(--md-ref-tertiary)
+      60%
+      calc(
+        var(--chroma-base-tertiary, var(--chroma-base)) +
+          var(--chroma-amplitude-tertiary, var(--chroma-amplitude)) *
+          cos(36deg)
+      )
+      h
+  );
+  --md-ref-tertiary-tertiary70: oklch(
+    from var(--md-ref-tertiary)
+      70%
+      calc(
+        var(--chroma-base-tertiary, var(--chroma-base)) +
+          var(--chroma-amplitude-tertiary, var(--chroma-amplitude)) *
+          cos(72deg)
+      )
+      h
+  );
+  --md-ref-tertiary-tertiary80: oklch(
+    from var(--md-ref-tertiary)
+      80%
+      calc(
+        var(--chroma-base-tertiary, var(--chroma-base)) +
+          var(--chroma-amplitude-tertiary, var(--chroma-amplitude)) *
+          cos(108deg)
+      )
+      h
+  );
+  --md-ref-tertiary-tertiary90: oklch(
+    from var(--md-ref-tertiary)
+      90%
+      calc(
+        var(--chroma-base-tertiary, var(--chroma-base)) +
+          var(--chroma-amplitude-tertiary, var(--chroma-amplitude)) *
+          cos(144deg)
+      )
+      h
+  );
+  --md-ref-tertiary-tertiary100: oklch(
+    from var(--md-ref-tertiary)
+      100%
+      calc(
+        var(--chroma-base-tertiary, var(--chroma-base)) +
+          var(--chroma-amplitude-tertiary, var(--chroma-amplitude)) *
+          cos(180deg)
+      )
+      h
+  );
+  --md-ref-quaternary-quaternary0: oklch(
+    from var(--md-ref-quaternary)
+      0%
+      calc(
+        var(--chroma-base-quaternary, var(--chroma-base)) +
+          var(--chroma-amplitude-quaternary, var(--chroma-amplitude)) *
+          cos(-180deg)
+      )
+      h
+  );
+  --md-ref-quaternary-quaternary10: oklch(
+    from var(--md-ref-quaternary)
+      10%
+      calc(
+        var(--chroma-base-quaternary, var(--chroma-base)) +
+          var(--chroma-amplitude-quaternary, var(--chroma-amplitude)) *
+          cos(-144deg)
+      )
+      h
+  );
+  --md-ref-quaternary-quaternary20: oklch(
+    from var(--md-ref-quaternary)
+      20%
+      calc(
+        var(--chroma-base-quaternary, var(--chroma-base)) +
+          var(--chroma-amplitude-quaternary, var(--chroma-amplitude)) *
+          cos(-108deg)
+      )
+      h
+  );
+  --md-ref-quaternary-quaternary30: oklch(
+    from var(--md-ref-quaternary)
+      30%
+      calc(
+        var(--chroma-base-quaternary, var(--chroma-base)) +
+          var(--chroma-amplitude-quaternary, var(--chroma-amplitude)) *
+          cos(-72deg)
+      )
+      h
+  );
+  --md-ref-quaternary-quaternary40: oklch(
+    from var(--md-ref-quaternary)
+      40%
+      calc(
+        var(--chroma-base-quaternary, var(--chroma-base)) +
+          var(--chroma-amplitude-quaternary, var(--chroma-amplitude)) *
+          cos(-36deg)
+      )
+      h
+  );
+  --md-ref-quaternary-quaternary50: oklch(
+    from var(--md-ref-quaternary)
+      50%
+      calc(
+        var(--chroma-base-quaternary, var(--chroma-base)) +
+          var(--chroma-amplitude-quaternary, var(--chroma-amplitude)) *
+          cos(0deg)
+      )
+      h
+  );
+  --md-ref-quaternary-quaternary60: oklch(
+    from var(--md-ref-quaternary)
+      60%
+      calc(
+        var(--chroma-base-quaternary, var(--chroma-base)) +
+          var(--chroma-amplitude-quaternary, var(--chroma-amplitude)) *
+          cos(36deg)
+      )
+      h
+  );
+  --md-ref-quaternary-quaternary70: oklch(
+    from var(--md-ref-quaternary)
+      70%
+      calc(
+        var(--chroma-base-quaternary, var(--chroma-base)) +
+          var(--chroma-amplitude-quaternary, var(--chroma-amplitude)) *
+          cos(72deg)
+      )
+      h
+  );
+  --md-ref-quaternary-quaternary80: oklch(
+    from var(--md-ref-quaternary)
+      80%
+      calc(
+        var(--chroma-base-quaternary, var(--chroma-base)) +
+          var(--chroma-amplitude-quaternary, var(--chroma-amplitude)) *
+          cos(108deg)
+      )
+      h
+  );
+  --md-ref-quaternary-quaternary90: oklch(
+    from var(--md-ref-quaternary)
+      90%
+      calc(
+        var(--chroma-base-quaternary, var(--chroma-base)) +
+          var(--chroma-amplitude-quaternary, var(--chroma-amplitude)) *
+          cos(144deg)
+      )
+      h
+  );
+  --md-ref-quaternary-quaternary100: oklch(
+    from var(--md-ref-quaternary)
+      100%
+      calc(
+        var(--chroma-base-quaternary, var(--chroma-base)) +
+          var(--chroma-amplitude-quaternary, var(--chroma-amplitude)) *
+          cos(180deg)
+      )
+      h
+  );
+  --md-ref-error-error0: oklch(
+    from var(--md-ref-error)
+      0%
+      calc(
+        var(--chroma-base-error, var(--chroma-base)) +
+          var(--chroma-amplitude-error, var(--chroma-amplitude)) *
+          cos(-180deg)
+      )
+      h
+  );
+  --md-ref-error-error10: oklch(
+    from var(--md-ref-error)
+      10%
+      calc(
+        var(--chroma-base-error, var(--chroma-base)) +
+          var(--chroma-amplitude-error, var(--chroma-amplitude)) *
+          cos(-144deg)
+      )
+      h
+  );
+  --md-ref-error-error20: oklch(
+    from var(--md-ref-error)
+      20%
+      calc(
+        var(--chroma-base-error, var(--chroma-base)) +
+          var(--chroma-amplitude-error, var(--chroma-amplitude)) *
+          cos(-108deg)
+      )
+      h
+  );
+  --md-ref-error-error30: oklch(
+    from var(--md-ref-error)
+      30%
+      calc(
+        var(--chroma-base-error, var(--chroma-base)) +
+          var(--chroma-amplitude-error, var(--chroma-amplitude)) *
+          cos(-72deg)
+      )
+      h
+  );
+  --md-ref-error-error40: oklch(
+    from var(--md-ref-error)
+      40%
+      calc(
+        var(--chroma-base-error, var(--chroma-base)) +
+          var(--chroma-amplitude-error, var(--chroma-amplitude)) *
+          cos(-36deg)
+      )
+      h
+  );
+  --md-ref-error-error50: oklch(
+    from var(--md-ref-error)
+      50%
+      calc(
+        var(--chroma-base-error, var(--chroma-base)) +
+          var(--chroma-amplitude-error, var(--chroma-amplitude)) *
+          cos(0deg)
+      )
+      h
+  );
+  --md-ref-error-error60: oklch(
+    from var(--md-ref-error)
+      60%
+      calc(
+        var(--chroma-base-error, var(--chroma-base)) +
+          var(--chroma-amplitude-error, var(--chroma-amplitude)) *
+          cos(36deg)
+      )
+      h
+  );
+  --md-ref-error-error70: oklch(
+    from var(--md-ref-error)
+      70%
+      calc(
+        var(--chroma-base-error, var(--chroma-base)) +
+          var(--chroma-amplitude-error, var(--chroma-amplitude)) *
+          cos(72deg)
+      )
+      h
+  );
+  --md-ref-error-error80: oklch(
+    from var(--md-ref-error)
+      80%
+      calc(
+        var(--chroma-base-error, var(--chroma-base)) +
+          var(--chroma-amplitude-error, var(--chroma-amplitude)) *
+          cos(108deg)
+      )
+      h
+  );
+  --md-ref-error-error90: oklch(
+    from var(--md-ref-error)
+      90%
+      calc(
+        var(--chroma-base-error, var(--chroma-base)) +
+          var(--chroma-amplitude-error, var(--chroma-amplitude)) *
+          cos(144deg)
+      )
+      h
+  );
+  --md-ref-error-error100: oklch(
+    from var(--md-ref-error)
+      100%
+      calc(
+        var(--chroma-base-error, var(--chroma-base)) +
+          var(--chroma-amplitude-error, var(--chroma-amplitude)) *
+          cos(180deg)
+      )
+      h
+  );
+  --md-ref-neutral-neutral0: oklch(
+    from var(--md-ref-neutral)
+      0%
+      calc(
+        var(--chroma-base-neutral, var(--chroma-base)) +
+          var(--chroma-amplitude-neutral, var(--chroma-amplitude)) *
+          cos(-180deg)
+      )
+      h
+  );
+  --md-ref-neutral-neutral10: oklch(
+    from var(--md-ref-neutral)
+      10%
+      calc(
+        var(--chroma-base-neutral, var(--chroma-base)) +
+          var(--chroma-amplitude-neutral, var(--chroma-amplitude)) *
+          cos(-144deg)
+      )
+      h
+  );
+  --md-ref-neutral-neutral20: oklch(
+    from var(--md-ref-neutral)
+      20%
+      calc(
+        var(--chroma-base-neutral, var(--chroma-base)) +
+          var(--chroma-amplitude-neutral, var(--chroma-amplitude)) *
+          cos(-108deg)
+      )
+      h
+  );
+  --md-ref-neutral-neutral30: oklch(
+    from var(--md-ref-neutral)
+      30%
+      calc(
+        var(--chroma-base-neutral, var(--chroma-base)) +
+          var(--chroma-amplitude-neutral, var(--chroma-amplitude)) *
+          cos(-72deg)
+      )
+      h
+  );
+  --md-ref-neutral-neutral40: oklch(
+    from var(--md-ref-neutral)
+      40%
+      calc(
+        var(--chroma-base-neutral, var(--chroma-base)) +
+          var(--chroma-amplitude-neutral, var(--chroma-amplitude)) *
+          cos(-36deg)
+      )
+      h
+  );
+  --md-ref-neutral-neutral50: oklch(
+    from var(--md-ref-neutral)
+      50%
+      calc(
+        var(--chroma-base-neutral, var(--chroma-base)) +
+          var(--chroma-amplitude-neutral, var(--chroma-amplitude)) *
+          cos(0deg)
+      )
+      h
+  );
+  --md-ref-neutral-neutral60: oklch(
+    from var(--md-ref-neutral)
+      60%
+      calc(
+        var(--chroma-base-neutral, var(--chroma-base)) +
+          var(--chroma-amplitude-neutral, var(--chroma-amplitude)) *
+          cos(36deg)
+      )
+      h
+  );
+  --md-ref-neutral-neutral70: oklch(
+    from var(--md-ref-neutral)
+      70%
+      calc(
+        var(--chroma-base-neutral, var(--chroma-base)) +
+          var(--chroma-amplitude-neutral, var(--chroma-amplitude)) *
+          cos(72deg)
+      )
+      h
+  );
+  --md-ref-neutral-neutral80: oklch(
+    from var(--md-ref-neutral)
+      80%
+      calc(
+        var(--chroma-base-neutral, var(--chroma-base)) +
+          var(--chroma-amplitude-neutral, var(--chroma-amplitude)) *
+          cos(108deg)
+      )
+      h
+  );
+  --md-ref-neutral-neutral90: oklch(
+    from var(--md-ref-neutral)
+      90%
+      calc(
+        var(--chroma-base-neutral, var(--chroma-base)) +
+          var(--chroma-amplitude-neutral, var(--chroma-amplitude)) *
+          cos(144deg)
+      )
+      h
+  );
+  --md-ref-neutral-neutral100: oklch(
+    from var(--md-ref-neutral)
+      100%
+      calc(
+        var(--chroma-base-neutral, var(--chroma-base)) +
+          var(--chroma-amplitude-neutral, var(--chroma-amplitude)) *
+          cos(180deg)
+      )
+      h
+  );
+  --md-ref-neutral-variant-neutral-variant0: oklch(
+    from var(--md-ref-neutral-variant)
+      0%
+      calc(
+        var(--chroma-base-neutral-variant, var(--chroma-base)) +
+          var(--chroma-amplitude-neutral-variant, var(--chroma-amplitude)) *
+          cos(-180deg)
+      )
+      h
+  );
+  --md-ref-neutral-variant-neutral-variant10: oklch(
+    from var(--md-ref-neutral-variant)
+      10%
+      calc(
+        var(--chroma-base-neutral-variant, var(--chroma-base)) +
+          var(--chroma-amplitude-neutral-variant, var(--chroma-amplitude)) *
+          cos(-144deg)
+      )
+      h
+  );
+  --md-ref-neutral-variant-neutral-variant20: oklch(
+    from var(--md-ref-neutral-variant)
+      20%
+      calc(
+        var(--chroma-base-neutral-variant, var(--chroma-base)) +
+          var(--chroma-amplitude-neutral-variant, var(--chroma-amplitude)) *
+          cos(-108deg)
+      )
+      h
+  );
+  --md-ref-neutral-variant-neutral-variant30: oklch(
+    from var(--md-ref-neutral-variant)
+      30%
+      calc(
+        var(--chroma-base-neutral-variant, var(--chroma-base)) +
+          var(--chroma-amplitude-neutral-variant, var(--chroma-amplitude)) *
+          cos(-72deg)
+      )
+      h
+  );
+  --md-ref-neutral-variant-neutral-variant40: oklch(
+    from var(--md-ref-neutral-variant)
+      40%
+      calc(
+        var(--chroma-base-neutral-variant, var(--chroma-base)) +
+          var(--chroma-amplitude-neutral-variant, var(--chroma-amplitude)) *
+          cos(-36deg)
+      )
+      h
+  );
+  --md-ref-neutral-variant-neutral-variant50: oklch(
+    from var(--md-ref-neutral-variant)
+      50%
+      calc(
+        var(--chroma-base-neutral-variant, var(--chroma-base)) +
+          var(--chroma-amplitude-neutral-variant, var(--chroma-amplitude)) *
+          cos(0deg)
+      )
+      h
+  );
+  --md-ref-neutral-variant-neutral-variant60: oklch(
+    from var(--md-ref-neutral-variant)
+      60%
+      calc(
+        var(--chroma-base-neutral-variant, var(--chroma-base)) +
+          var(--chroma-amplitude-neutral-variant, var(--chroma-amplitude)) *
+          cos(36deg)
+      )
+      h
+  );
+  --md-ref-neutral-variant-neutral-variant70: oklch(
+    from var(--md-ref-neutral-variant)
+      70%
+      calc(
+        var(--chroma-base-neutral-variant, var(--chroma-base)) +
+          var(--chroma-amplitude-neutral-variant, var(--chroma-amplitude)) *
+          cos(72deg)
+      )
+      h
+  );
+  --md-ref-neutral-variant-neutral-variant80: oklch(
+    from var(--md-ref-neutral-variant)
+      80%
+      calc(
+        var(--chroma-base-neutral-variant, var(--chroma-base)) +
+          var(--chroma-amplitude-neutral-variant, var(--chroma-amplitude)) *
+          cos(108deg)
+      )
+      h
+  );
+  --md-ref-neutral-variant-neutral-variant90: oklch(
+    from var(--md-ref-neutral-variant)
+      90%
+      calc(
+        var(--chroma-base-neutral-variant, var(--chroma-base)) +
+          var(--chroma-amplitude-neutral-variant, var(--chroma-amplitude)) *
+          cos(144deg)
+      )
+      h
+  );
+  --md-ref-neutral-variant-neutral-variant100: oklch(
+    from var(--md-ref-neutral-variant)
+      100%
+      calc(
+        var(--chroma-base-neutral-variant, var(--chroma-base)) +
+          var(--chroma-amplitude-neutral-variant, var(--chroma-amplitude)) *
+          cos(180deg)
+      )
+      h
+  );
+}
+
+.colors {
+  container: colors/size;
+  border-radius: 20%;
+  width: 20cqw;
+  aspect-ratio: 1;
+  position: relative;
+}
+.colors input[type=color] {
+  -webkit-appearance: none;
+  border: none;
+}
+.colors input[type=color]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+.colors input[type=color]::-webkit-color-swatch {
+  border: none;
+}
+.colors input {
+  position: absolute;
+  inset: 30%;
+  inline-size: unset;
+  block-size: unset;
+  z-index: 1;
+  border-radius: 20%;
+  background: transparent;
+}
+@media (hover) {
+  .colors input {
+    filter: saturate(0) brightness(0.1);
+    transition: filter 0.3s ease;
+  }
+}
+.colors:after {
+  position: absolute;
+  inset: 20%;
+  border-radius: 20%;
+  background: var(--c);
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+}
+@media (hover) {
+  .colors:hover input {
+    opacity: 1;
+    filter: saturate(1);
+  }
+}
+.colors.primary {
+  --c: var(--md-ref-primary);
+  background: conic-gradient(var(--md-ref-primary-primary0) calc(0%), var(--md-ref-primary-primary0) calc(10%), var(--md-ref-primary-primary10) calc(10%), var(--md-ref-primary-primary10) calc(20%), var(--md-ref-primary-primary20) calc(20%), var(--md-ref-primary-primary20) calc(30%), var(--md-ref-primary-primary30) calc(30%), var(--md-ref-primary-primary30) calc(40%), var(--md-ref-primary-primary40) calc(40%), var(--md-ref-primary-primary40) calc(50%), var(--md-ref-primary-primary50) calc(50%), var(--md-ref-primary-primary50) calc(60%), var(--md-ref-primary-primary60) calc(60%), var(--md-ref-primary-primary60) calc(70%), var(--md-ref-primary-primary70) calc(70%), var(--md-ref-primary-primary70) calc(80%), var(--md-ref-primary-primary80) calc(80%), var(--md-ref-primary-primary80) calc(90%), var(--md-ref-primary-primary90) calc(90%), var(--md-ref-primary-primary90) calc(100%), var(--md-ref-primary-primary100) calc(100%), var(--md-ref-primary-primary100) calc(110%));
+}
+.colors.secondary {
+  --c: var(--md-ref-secondary);
+  background: conic-gradient(var(--md-ref-secondary-secondary0) calc(0%), var(--md-ref-secondary-secondary0) calc(10%), var(--md-ref-secondary-secondary10) calc(10%), var(--md-ref-secondary-secondary10) calc(20%), var(--md-ref-secondary-secondary20) calc(20%), var(--md-ref-secondary-secondary20) calc(30%), var(--md-ref-secondary-secondary30) calc(30%), var(--md-ref-secondary-secondary30) calc(40%), var(--md-ref-secondary-secondary40) calc(40%), var(--md-ref-secondary-secondary40) calc(50%), var(--md-ref-secondary-secondary50) calc(50%), var(--md-ref-secondary-secondary50) calc(60%), var(--md-ref-secondary-secondary60) calc(60%), var(--md-ref-secondary-secondary60) calc(70%), var(--md-ref-secondary-secondary70) calc(70%), var(--md-ref-secondary-secondary70) calc(80%), var(--md-ref-secondary-secondary80) calc(80%), var(--md-ref-secondary-secondary80) calc(90%), var(--md-ref-secondary-secondary90) calc(90%), var(--md-ref-secondary-secondary90) calc(100%), var(--md-ref-secondary-secondary100) calc(100%), var(--md-ref-secondary-secondary100) calc(110%));
+}
+.colors.tertiary {
+  --c: var(--md-ref-tertiary);
+  background: conic-gradient(var(--md-ref-tertiary-tertiary0) calc(0%), var(--md-ref-tertiary-tertiary0) calc(10%), var(--md-ref-tertiary-tertiary10) calc(10%), var(--md-ref-tertiary-tertiary10) calc(20%), var(--md-ref-tertiary-tertiary20) calc(20%), var(--md-ref-tertiary-tertiary20) calc(30%), var(--md-ref-tertiary-tertiary30) calc(30%), var(--md-ref-tertiary-tertiary30) calc(40%), var(--md-ref-tertiary-tertiary40) calc(40%), var(--md-ref-tertiary-tertiary40) calc(50%), var(--md-ref-tertiary-tertiary50) calc(50%), var(--md-ref-tertiary-tertiary50) calc(60%), var(--md-ref-tertiary-tertiary60) calc(60%), var(--md-ref-tertiary-tertiary60) calc(70%), var(--md-ref-tertiary-tertiary70) calc(70%), var(--md-ref-tertiary-tertiary70) calc(80%), var(--md-ref-tertiary-tertiary80) calc(80%), var(--md-ref-tertiary-tertiary80) calc(90%), var(--md-ref-tertiary-tertiary90) calc(90%), var(--md-ref-tertiary-tertiary90) calc(100%), var(--md-ref-tertiary-tertiary100) calc(100%), var(--md-ref-tertiary-tertiary100) calc(110%));
+}
+.colors.quaternary {
+  --c: var(--md-ref-quaternary);
+  background: conic-gradient(var(--md-ref-quaternary-quaternary0) calc(0%), var(--md-ref-quaternary-quaternary0) calc(10%), var(--md-ref-quaternary-quaternary10) calc(10%), var(--md-ref-quaternary-quaternary10) calc(20%), var(--md-ref-quaternary-quaternary20) calc(20%), var(--md-ref-quaternary-quaternary20) calc(30%), var(--md-ref-quaternary-quaternary30) calc(30%), var(--md-ref-quaternary-quaternary30) calc(40%), var(--md-ref-quaternary-quaternary40) calc(40%), var(--md-ref-quaternary-quaternary40) calc(50%), var(--md-ref-quaternary-quaternary50) calc(50%), var(--md-ref-quaternary-quaternary50) calc(60%), var(--md-ref-quaternary-quaternary60) calc(60%), var(--md-ref-quaternary-quaternary60) calc(70%), var(--md-ref-quaternary-quaternary70) calc(70%), var(--md-ref-quaternary-quaternary70) calc(80%), var(--md-ref-quaternary-quaternary80) calc(80%), var(--md-ref-quaternary-quaternary80) calc(90%), var(--md-ref-quaternary-quaternary90) calc(90%), var(--md-ref-quaternary-quaternary90) calc(100%), var(--md-ref-quaternary-quaternary100) calc(100%), var(--md-ref-quaternary-quaternary100) calc(110%));
+}
+.colors.error {
+  --c: var(--md-ref-error);
+  background: conic-gradient(var(--md-ref-error-error0) calc(0%), var(--md-ref-error-error0) calc(10%), var(--md-ref-error-error10) calc(10%), var(--md-ref-error-error10) calc(20%), var(--md-ref-error-error20) calc(20%), var(--md-ref-error-error20) calc(30%), var(--md-ref-error-error30) calc(30%), var(--md-ref-error-error30) calc(40%), var(--md-ref-error-error40) calc(40%), var(--md-ref-error-error40) calc(50%), var(--md-ref-error-error50) calc(50%), var(--md-ref-error-error50) calc(60%), var(--md-ref-error-error60) calc(60%), var(--md-ref-error-error60) calc(70%), var(--md-ref-error-error70) calc(70%), var(--md-ref-error-error70) calc(80%), var(--md-ref-error-error80) calc(80%), var(--md-ref-error-error80) calc(90%), var(--md-ref-error-error90) calc(90%), var(--md-ref-error-error90) calc(100%), var(--md-ref-error-error100) calc(100%), var(--md-ref-error-error100) calc(110%));
+}
+.colors.neutral {
+  --c: var(--md-ref-neutral);
+  background: conic-gradient(var(--md-ref-neutral-neutral0) calc(0%), var(--md-ref-neutral-neutral0) calc(10%), var(--md-ref-neutral-neutral10) calc(10%), var(--md-ref-neutral-neutral10) calc(20%), var(--md-ref-neutral-neutral20) calc(20%), var(--md-ref-neutral-neutral20) calc(30%), var(--md-ref-neutral-neutral30) calc(30%), var(--md-ref-neutral-neutral30) calc(40%), var(--md-ref-neutral-neutral40) calc(40%), var(--md-ref-neutral-neutral40) calc(50%), var(--md-ref-neutral-neutral50) calc(50%), var(--md-ref-neutral-neutral50) calc(60%), var(--md-ref-neutral-neutral60) calc(60%), var(--md-ref-neutral-neutral60) calc(70%), var(--md-ref-neutral-neutral70) calc(70%), var(--md-ref-neutral-neutral70) calc(80%), var(--md-ref-neutral-neutral80) calc(80%), var(--md-ref-neutral-neutral80) calc(90%), var(--md-ref-neutral-neutral90) calc(90%), var(--md-ref-neutral-neutral90) calc(100%), var(--md-ref-neutral-neutral100) calc(100%), var(--md-ref-neutral-neutral100) calc(110%));
+}
+.colors.neutral-variant {
+  --c: var(--md-ref-neutral-variant);
+  background: conic-gradient(var(--md-ref-neutral-variant-neutral-variant0) calc(0%), var(--md-ref-neutral-variant-neutral-variant0) calc(10%), var(--md-ref-neutral-variant-neutral-variant10) calc(10%), var(--md-ref-neutral-variant-neutral-variant10) calc(20%), var(--md-ref-neutral-variant-neutral-variant20) calc(20%), var(--md-ref-neutral-variant-neutral-variant20) calc(30%), var(--md-ref-neutral-variant-neutral-variant30) calc(30%), var(--md-ref-neutral-variant-neutral-variant30) calc(40%), var(--md-ref-neutral-variant-neutral-variant40) calc(40%), var(--md-ref-neutral-variant-neutral-variant40) calc(50%), var(--md-ref-neutral-variant-neutral-variant50) calc(50%), var(--md-ref-neutral-variant-neutral-variant50) calc(60%), var(--md-ref-neutral-variant-neutral-variant60) calc(60%), var(--md-ref-neutral-variant-neutral-variant60) calc(70%), var(--md-ref-neutral-variant-neutral-variant70) calc(70%), var(--md-ref-neutral-variant-neutral-variant70) calc(80%), var(--md-ref-neutral-variant-neutral-variant80) calc(80%), var(--md-ref-neutral-variant-neutral-variant80) calc(90%), var(--md-ref-neutral-variant-neutral-variant90) calc(90%), var(--md-ref-neutral-variant-neutral-variant90) calc(100%), var(--md-ref-neutral-variant-neutral-variant100) calc(100%), var(--md-ref-neutral-variant-neutral-variant100) calc(110%));
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  place-items: center;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  gap: 1rem;
+  height: 100dvh;
+  background: var(--surface);
+  color: white;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="main">
+  <label for="base">Chroma (Base)</label>
+  <input id="base" type="range" min="0" value="0.11" max=".25" step=".01" style='accent-color: var(--md-ref-primary)'>
+  <div class="container">
+    <div class="colors primary" title="primary">
+      <input type="color" value="#fc78fc">
+    </div>
+    <div class="colors secondary" title="secondary">
+      <input type="color" value="#4daef5">
+    </div>
+    <div class="colors tertiary" title="tertiary">
+      <input type="color" value="#f6e32c">
+    </div>
+    <div class="colors quaternary" title="quaternary">
+      <input type="color" value="#00FFFF">
+    </div>
+    <div class="colors error" title="error">
+      <input type="color" value="#de1c0a">
+    </div>
+    <div class="colors neutral" title="neutral">
+      <input type="color" value="#fc78fc">
+    </div>
+    <div class="colors neutral-variant" title="neutral-variant">
+      <input type="color" value="#4daef5">
+    </div>
+  </div>
+
+</div>
+  
+    <script id="rendered-js" >
+document.querySelectorAll('.colors').forEach(color => {
+  const input = color.querySelector('input');
+  const role = new Array(...color.classList)[1];
+  input.addEventListener('change', event => {
+    document.documentElement.style.setProperty('--md-ref-' + role, event.target.value);
+
+  });
+});
+
+base.addEventListener('change', event => {
+  document.documentElement.style.setProperty('--chroma-base-input', event.target.value);
+});
+//# sourceURL=pen.js
+  </script>
+
+  
+</body>
+
+</html>

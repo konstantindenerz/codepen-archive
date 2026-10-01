@@ -1,0 +1,1753 @@
+<!--
+  CSS ✨ Flow
+
+  Archived from https://codepen.io/konstantindenerz/pen/JjgRYQo
+  Created 2024-10-07 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  
+  
+
+  <title>CSS ✨ Flow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+:root {
+  --distance: max(120rem, 50dvw);
+  --rotation-duration: 3s;
+  --fade-in-duration: 0.2s;
+  --delay-base: 0.012s;
+}
+
+@property --r {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+@property --l {
+  syntax: "<length>";
+  initial-value: 0;
+  inherits: true;
+}
+@property --distance {
+  syntax: "<length>";
+  initial-value: 0;
+  inherits: true;
+}
+.items {
+  width: 100dvw;
+  height: 100dvh;
+  -webkit-mask: linear-gradient(to right, transparent 0%, black 30%);
+          mask: linear-gradient(to right, transparent 0%, black 30%);
+  font-size: 6rem;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.item {
+  line-height: 80%;
+  position: absolute;
+  --x: calc(var(--distance) / var(--count));
+  transform: translate3d(calc(var(--i) * var(--x) - var(--distance)), 0%, 0) rotate(var(--r));
+  --delay: calc((var(--count) - var(--i)) * var(--delay-base));
+  -webkit-animation: rotation var(--rotation-duration) var(--delay) linear infinite, fade-in var(--fade-in-duration) var(--delay) linear forwards;
+          animation: rotation var(--rotation-duration) var(--delay) linear infinite, fade-in var(--fade-in-duration) var(--delay) linear forwards;
+  opacity: 0;
+}
+.item:last-of-type {
+  filter: drop-shadow(0 0 0.6rem rgba(255, 255, 255, 0.6));
+}
+.item:not(:last-of-type) {
+  filter: blur(0.1rem);
+  color: black !important;
+}
+.item > div {
+  text-align: center;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+.item > div:first-of-type {
+  letter-spacing: -0.5rem;
+  background: conic-gradient(from 290deg at 50% 100%, #7ec915, #ebf41a, #fdbb14, #ff4e37, #ff52e7, white, #11d3ff, #7ec915);
+}
+.item > div:last-of-type {
+  background: conic-gradient(from 290deg at 50% 0%, #7ec915, #ebf41a, #fdbb14, #ff4e37, #ff52e7, white, #11d3ff, #7ec915);
+}
+
+@-webkit-keyframes rotation {
+  from {
+    --r: 0deg;
+  }
+  to {
+    --r: -360deg;
+  }
+}
+
+@keyframes rotation {
+  from {
+    --r: 0deg;
+  }
+  to {
+    --r: -360deg;
+  }
+}
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+body {
+  display: grid;
+  color: #ffbaf6;
+  place-items: center;
+  height: 100dvh;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  background: #0e28ad;
+  position: relative;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="items" style="--count:400;">
+  <div class="item" style="--i:0;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:1;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:2;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:3;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:4;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:5;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:6;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:7;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:8;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:9;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:10;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:11;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:12;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:13;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:14;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:15;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:16;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:17;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:18;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:19;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:20;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:21;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:22;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:23;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:24;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:25;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:26;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:27;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:28;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:29;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:30;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:31;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:32;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:33;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:34;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:35;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:36;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:37;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:38;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:39;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:40;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:41;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:42;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:43;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:44;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:45;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:46;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:47;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:48;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:49;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:50;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:51;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:52;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:53;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:54;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:55;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:56;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:57;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:58;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:59;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:60;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:61;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:62;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:63;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:64;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:65;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:66;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:67;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:68;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:69;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:70;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:71;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:72;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:73;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:74;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:75;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:76;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:77;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:78;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:79;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:80;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:81;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:82;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:83;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:84;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:85;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:86;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:87;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:88;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:89;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:90;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:91;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:92;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:93;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:94;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:95;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:96;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:97;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:98;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:99;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:100;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:101;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:102;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:103;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:104;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:105;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:106;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:107;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:108;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:109;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:110;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:111;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:112;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:113;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:114;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:115;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:116;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:117;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:118;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:119;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:120;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:121;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:122;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:123;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:124;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:125;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:126;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:127;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:128;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:129;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:130;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:131;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:132;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:133;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:134;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:135;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:136;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:137;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:138;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:139;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:140;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:141;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:142;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:143;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:144;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:145;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:146;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:147;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:148;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:149;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:150;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:151;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:152;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:153;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:154;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:155;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:156;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:157;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:158;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:159;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:160;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:161;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:162;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:163;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:164;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:165;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:166;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:167;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:168;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:169;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:170;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:171;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:172;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:173;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:174;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:175;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:176;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:177;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:178;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:179;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:180;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:181;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:182;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:183;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:184;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:185;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:186;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:187;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:188;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:189;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:190;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:191;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:192;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:193;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:194;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:195;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:196;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:197;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:198;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:199;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:200;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:201;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:202;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:203;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:204;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:205;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:206;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:207;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:208;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:209;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:210;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:211;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:212;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:213;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:214;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:215;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:216;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:217;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:218;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:219;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:220;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:221;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:222;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:223;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:224;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:225;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:226;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:227;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:228;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:229;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:230;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:231;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:232;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:233;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:234;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:235;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:236;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:237;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:238;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:239;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:240;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:241;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:242;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:243;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:244;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:245;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:246;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:247;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:248;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:249;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:250;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:251;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:252;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:253;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:254;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:255;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:256;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:257;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:258;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:259;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:260;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:261;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:262;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:263;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:264;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:265;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:266;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:267;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:268;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:269;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:270;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:271;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:272;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:273;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:274;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:275;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:276;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:277;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:278;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:279;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:280;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:281;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:282;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:283;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:284;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:285;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:286;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:287;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:288;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:289;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:290;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:291;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:292;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:293;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:294;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:295;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:296;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:297;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:298;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:299;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:300;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:301;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:302;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:303;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:304;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:305;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:306;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:307;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:308;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:309;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:310;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:311;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:312;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:313;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:314;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:315;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:316;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:317;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:318;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:319;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:320;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:321;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:322;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:323;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:324;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:325;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:326;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:327;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:328;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:329;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:330;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:331;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:332;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:333;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:334;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:335;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:336;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:337;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:338;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:339;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:340;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:341;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:342;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:343;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:344;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:345;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:346;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:347;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:348;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:349;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:350;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:351;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:352;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:353;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:354;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:355;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:356;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:357;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:358;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:359;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:360;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:361;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:362;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:363;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:364;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:365;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:366;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:367;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:368;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:369;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:370;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:371;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:372;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:373;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:374;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:375;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:376;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:377;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:378;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:379;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:380;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:381;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:382;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:383;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:384;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:385;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:386;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:387;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:388;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:389;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:390;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:391;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:392;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:393;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:394;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:395;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:396;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:397;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:398;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+  <div class="item" style="--i:399;">
+    <div>CSS</div>
+    <div>✨</div>
+  </div>
+</div>
+  
+  
+  
+</body>
+
+</html>

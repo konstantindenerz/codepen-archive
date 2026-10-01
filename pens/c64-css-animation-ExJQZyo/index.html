@@ -1,0 +1,1907 @@
+<!--
+  C64 ✨ (CSS, Animation)
+
+  Archived from https://codepen.io/konstantindenerz/pen/ExJQZyo
+  Created 2024-04-04 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  
+  
+
+  <title>C64 ✨ (CSS, Animation)</title>
+  
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+:root {
+  --color-primary: white;
+  --color-surface: #111;
+}
+
+@-webkit-keyframes c-animation {
+  from {
+    --saturation: 0%;
+    --lightness: 100%;
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  to {
+    --saturation: 100%;
+    --lightness: 50%;
+    opacity: 1;
+  }
+}
+
+@keyframes c-animation {
+  from {
+    --saturation: 0%;
+    --lightness: 100%;
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  to {
+    --saturation: 100%;
+    --lightness: 50%;
+    opacity: 1;
+  }
+}
+@layer scene {
+  .scene {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    inset: 0;
+    perspective: 50rem;
+    --rotate-z: 87deg;
+    --inner-radius: 20vmin;
+    --item-size: 4vmin;
+    --ring-gap: calc(var(--item-size) + .6vmin);
+    --depth: 3;
+    --border-radius: 1.2vmin;
+    --flag-row-gap: .2vmin;
+    filter: drop-shadow(0 0 4rem black);
+    --saturation: 0%;
+    --lightness: 100%;
+    -webkit-animation: c-animation 0.001s 9.5s linear forwards;
+            animation: c-animation 0.001s 9.5s linear forwards;
+  }
+
+  .logo {
+    position: absolute;
+    -webkit-animation: rotate-logo 10s ease infinite;
+            animation: rotate-logo 10s ease infinite;
+    transform-style: preserve-3d;
+  }
+
+  @-webkit-keyframes rotate-logo {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+
+  @keyframes rotate-logo {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+}
+@property --saturation {
+  syntax: "<percentage>";
+  initial-value: 0%;
+  inherits: true;
+}
+@property --lightness {
+  syntax: "<percentage>";
+  initial-value: 0%;
+  inherits: true;
+}
+@layer c {
+  .c {
+    transform: rotateZ(var(--rotate-z));
+    display: grid;
+    place-items: center;
+    transform-style: preserve-3d;
+  }
+
+  @-webkit-keyframes cube-animation {
+    from {
+      opacity: 0;
+      scale: 2.5;
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+
+  @keyframes cube-animation {
+    from {
+      opacity: 0;
+      scale: 2.5;
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+  .cube {
+    position: absolute;
+    --width: var(--item-size);
+    --width-n: calc(var(--item-size) * -1);
+    --height: calc(var(--item-size) * var(--depth));
+    --height-half: calc(var(--height) / 2);
+    --height-half-n: calc(var(--height) / -2);
+    width: var(--width);
+    height: var(--width);
+    --offset-per-item: calc(360deg / (var(--count) + 17 + var(--ring-index) * 5.5));
+    --angle: calc(var(--offset-per-item) * var(--item-index));
+    --radius: calc(var(--inner-radius) + (var(--ring-gap) * var(--ring-index)));
+    --x: calc(cos(var(--angle)) * var(--radius));
+    --y: calc(sin(var(--angle)) * var(--radius));
+    transform: translate3d(var(--x), var(--y), 0) rotate3d(0, 0, 1, var(--angle));
+    transform-style: preserve-3d;
+    transform-origin: var(--pos);
+  }
+  .cube > div {
+    --z: calc(var(--width) / 2);
+    transform-style: preserve-3d;
+    width: var(--width);
+    height: var(--width);
+    position: absolute;
+    border-radius: var(--border-radius);
+    opacity: 0;
+    --duration: .5s;
+    --delay: calc(.02s * (var(--ring-index) + 1) * (var(--item-index) + 1));
+    -webkit-animation: cube-animation var(--duration) var(--delay, 0s) ease forwards, bg 10s 5s linear infinite;
+            animation: cube-animation var(--duration) var(--delay, 0s) ease forwards, bg 10s 5s linear infinite;
+    --a: .45;
+    --circle-size: .1vmin;
+    background: repeating-conic-gradient(from 45deg, hsla(208, var(--saturation), calc(var(--lightness) + var(--ring-index) * 10%), 0.4) 1%, transparent 40%);
+  }
+  .cube > div.front {
+    transform: translate3d(0, 0, var(--height-half));
+  }
+  .cube > div.back {
+    transform: translate3d(0, 0, var(--height-half-n));
+  }
+  .cube > div.top {
+    height: var(--height);
+    transform: rotate3d(1, 0, 0, 90deg) translate3d(0, 0, var(--height-half));
+  }
+  .cube > div.bottom {
+    height: var(--height);
+    transform-origin: top;
+    transform: rotate3d(1, 0, 0, -90deg) translate3d(0, var(--height-half-n), var(--width));
+  }
+  .cube > div.right {
+    width: var(--height);
+    --z: calc(var(--height-half-n) + var(--width));
+    transform: rotate3d(0, 1, 0, 90deg) translate3d(0, 0, var(--z));
+  }
+  .cube > div.left {
+    width: var(--height);
+    --z: calc(var(--height-half));
+    transform: rotate3d(0, 1, 0, -90deg) translate3d(0, 0, var(--z));
+  }
+  .cube > div.front {
+    --color: hsla(0, 100%, 50%, var(--a, 1));
+    --c: 0;
+  }
+  .cube > div.right {
+    --color: hsla(60, 100%, 50%, var(--a));
+    --c: 10;
+  }
+  .cube > div.back {
+    --color: hsla(120, 100%, 50%, var(--a));
+    --c: 20;
+  }
+  .cube > div.left {
+    --color: hsla(180, 100%, 50%, var(--a));
+    --c: 30;
+  }
+  .cube > div.top {
+    --color: hsla(240, 100%, 50%, var(--a));
+    --c: 40;
+  }
+  .cube > div.bottom {
+    --color: hsla(300, 100%, 50%, var(--a));
+    --c: 50;
+  }
+}
+@layer flag {
+  .flag {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    transform-style: preserve-3d;
+    translate: 2vmin -17vmin;
+    gap: var(--flag-row-gap, 0);
+  }
+  .flag .row {
+    height: var(--item-size);
+    display: flex;
+    transform-style: preserve-3d;
+    gap: 0.4vmin;
+  }
+  .flag .row:nth-child(4) {
+    margin-bottom: 0.2vmin;
+  }
+  .flag .row:nth-child(5) {
+    margin-top: 0.2vmin;
+  }
+  .flag .row:nth-child(n+5) .cube > div {
+    background: repeating-radial-gradient(60% 60% at 0 0, hsla(8, var(--saturation), var(--lightness), 0.4) 1%, transparent 40%);
+  }
+  .flag .cube {
+    position: relative;
+    transform: unset;
+  }
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(black, var(--color-surface));
+  color: var(--color-primary);
+  position: relative;
+}
+
+a.labs-follow-me {
+  -webkit-backdrop-filter: blur(1rem);
+          backdrop-filter: blur(1rem);
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center;
+  display: grid;
+  place-items: center;
+  --bg: linear-gradient(to bottom, transparent, #EA282E, transparent, transparent, transparent, transparent, #EF6946, transparent, transparent, transparent, transparent, #FDCF1B, transparent, transparent, transparent, transparent, #50BA49, transparent, transparent, transparent, transparent, #01A7EE, transparent, transparent, transparent, transparent);
+}
+a.labs-follow-me:before, a.labs-follow-me:after {
+  content: "";
+  position: absolute;
+  width: 10vmin;
+  height: 2vmin;
+  left: -4vmin;
+  background: var(--bg);
+  transform: scaleY(1.5);
+}
+a.labs-follow-me:after {
+  left: unset;
+  right: -4vmin;
+}
+
+* {
+  box-sizing: border-box;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="scene">
+  <div class="logo">
+    <div class="c">
+      <div class="cube" style="--ring-index:0;--item-index: 0;--count: 20">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:0;--item-index: 1;--count: 20">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:0;--item-index: 2;--count: 20">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:0;--item-index: 3;--count: 20">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:0;--item-index: 4;--count: 20">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:0;--item-index: 5;--count: 20">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:0;--item-index: 6;--count: 20">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:0;--item-index: 7;--count: 20">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:0;--item-index: 8;--count: 20">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:0;--item-index: 9;--count: 20">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:0;--item-index: 10;--count: 20">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:0;--item-index: 11;--count: 20">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:0;--item-index: 12;--count: 20">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:0;--item-index: 13;--count: 20">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:0;--item-index: 14;--count: 20">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:0;--item-index: 15;--count: 20">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:0;--item-index: 16;--count: 20">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:0;--item-index: 17;--count: 20">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:0;--item-index: 18;--count: 20">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:0;--item-index: 19;--count: 20">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 0;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 1;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 2;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 3;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 4;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 5;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 6;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 7;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 8;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 9;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 10;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 11;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 12;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 13;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 14;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 15;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 16;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 17;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 18;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 19;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 20;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 21;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 22;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 23;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 24;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:1;--item-index: 25;--count: 26">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 0;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 1;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 2;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 3;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 4;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 5;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 6;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 7;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 8;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 9;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 10;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 11;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 12;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 13;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 14;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 15;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 16;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 17;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 18;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 19;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 20;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 21;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 22;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 23;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 24;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 25;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 26;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 27;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 28;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 29;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 30;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:2;--item-index: 31;--count: 32">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 0;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 1;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 2;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 3;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 4;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 5;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 6;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 7;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 8;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 9;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 10;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 11;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 12;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 13;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 14;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 15;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 16;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 17;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 18;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 19;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 20;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 21;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 22;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 23;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 24;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 25;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 26;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 27;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 28;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 29;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 30;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 31;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 32;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 33;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 34;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 35;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 36;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:3;--item-index: 37;--count: 38">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 0;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 1;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 2;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 3;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 4;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 5;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 6;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 7;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 8;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 9;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 10;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 11;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 12;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 13;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 14;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 15;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 16;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 17;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 18;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 19;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 20;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 21;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 22;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 23;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 24;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 25;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 26;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 27;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 28;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 29;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 30;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 31;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 32;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 33;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 34;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 35;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 36;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 37;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 38;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 39;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 40;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 41;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 42;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+      <div class="cube" style="--ring-index:4;--item-index: 43;--count: 44">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="front"></div>
+        <div class="back"></div>
+      </div>
+    </div>
+    <div class="flag">
+      <div class="row">
+        <div class="cube" style="--ring-index:0;--item-index: 0;--count: 6">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 1;--count: 6">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 2;--count: 6">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 3;--count: 6">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 4;--count: 6">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 5;--count: 6">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="cube" style="--ring-index:0;--item-index: 0;--count: 5">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 1;--count: 5">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 2;--count: 5">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 3;--count: 5">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 4;--count: 5">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="cube" style="--ring-index:0;--item-index: 0;--count: 4">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 1;--count: 4">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 2;--count: 4">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 3;--count: 4">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="cube" style="--ring-index:0;--item-index: 0;--count: 3">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 1;--count: 3">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 2;--count: 3">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="cube" style="--ring-index:0;--item-index: 0;--count: 3">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 1;--count: 3">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 2;--count: 3">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="cube" style="--ring-index:0;--item-index: 0;--count: 4">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 1;--count: 4">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 2;--count: 4">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 3;--count: 4">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="cube" style="--ring-index:0;--item-index: 0;--count: 5">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 1;--count: 5">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 2;--count: 5">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 3;--count: 5">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 4;--count: 5">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="cube" style="--ring-index:0;--item-index: 0;--count: 6">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 1;--count: 6">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 2;--count: 6">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 3;--count: 6">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 4;--count: 6">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+        <div class="cube" style="--ring-index:0;--item-index: 5;--count: 6">
+          <div class="top"></div>
+          <div class="bottom"></div>
+          <div class="left"></div>
+          <div class="right"></div>
+          <div class="front"></div>
+          <div class="back"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <script src='https://codepen.io/konstantindenerz/pen/KKxvdPq.js'></script>
+  
+  
+</body>
+
+</html>

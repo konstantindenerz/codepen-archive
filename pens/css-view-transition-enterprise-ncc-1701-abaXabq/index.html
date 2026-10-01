@@ -1,0 +1,242 @@
+<!--
+  CSS View Transition - Enterprise (NCC 1701)
+
+  Archived from https://codepen.io/konstantindenerz/pen/abaXabq
+  Created 2023-03-26 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  
+  
+
+  <title>CSS View Transition - Enterprise (NCC 1701)</title>
+  <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0,width=device-width" />
+
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+:root {
+  --duration: 2.8s;
+}
+
+.old-page {
+  position: absolute;
+  inset: 0;
+  background: url("https://assets.codepen.io/907471/science-fiction-room-2_1.png?v42") center center no-repeat;
+  background-size: cover;
+  transform: scale(1.5);
+}
+@media (orientation: portrait) {
+  .old-page {
+    -webkit-mask: url("https://assets.codepen.io/907471/tail.svg?v1") center top no-repeat, url("https://assets.codepen.io/907471/space.svg?v42") center center no-repeat, url("https://assets.codepen.io/907471/ncc1701.svg") center center no-repeat;
+            mask: url("https://assets.codepen.io/907471/tail.svg?v1") center top no-repeat, url("https://assets.codepen.io/907471/space.svg?v42") center center no-repeat, url("https://assets.codepen.io/907471/ncc1701.svg") center center no-repeat;
+    -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+    -webkit-mask-size: 10rem 20rem, 300% 300%, 100% 30%;
+            mask-size: 10rem 20rem, 300% 300%, 100% 30%;
+    -webkit-animation: hide-view-portrait var(--duration) cubic-bezier(0.975, -0.005, 0, 1.02) infinite forwards;
+            animation: hide-view-portrait var(--duration) cubic-bezier(0.975, -0.005, 0, 1.02) infinite forwards;
+  }
+}
+@media (orientation: landscape) {
+  .old-page {
+    -webkit-mask: url("https://assets.codepen.io/907471/tail.svg?v1") center top no-repeat, url("https://assets.codepen.io/907471/space-landscape.svg?v4") center center no-repeat, url("https://assets.codepen.io/907471/ncc1701.svg") center center no-repeat;
+            mask: url("https://assets.codepen.io/907471/tail.svg?v1") center top no-repeat, url("https://assets.codepen.io/907471/space-landscape.svg?v4") center center no-repeat, url("https://assets.codepen.io/907471/ncc1701.svg") center center no-repeat;
+    -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+    -webkit-mask-size: 10rem 30rem, 500% 500%, 100% 30%;
+            mask-size: 10rem 30rem, 500% 500%, 100% 30%;
+    -webkit-animation: hide-view-landscape var(--duration) cubic-bezier(0.975, -0.005, 0, 1.02) infinite forwards;
+            animation: hide-view-landscape var(--duration) cubic-bezier(0.975, -0.005, 0, 1.02) infinite forwards;
+  }
+}
+@media (orientation: landscape) and (max-height: 300px) {
+  .old-page {
+    -webkit-mask-size: 10rem 10rem, 500% 500%, 100% 30%;
+            mask-size: 10rem 10rem, 500% 500%, 100% 30%;
+  }
+}
+
+@-webkit-keyframes hide-view-portrait {
+  from {
+    -webkit-mask-position: 50% 120%, 50% 0%, 50% 150%;
+            mask-position: 50% 120%, 50% 0%, 50% 150%;
+    transform: scale(1.5);
+  }
+  45% {
+    transform: scale(1);
+  }
+  50% {
+    -webkit-mask-position: 50% 120%, 50% 80%, 50% 60%;
+            mask-position: 50% 120%, 50% 80%, 50% 60%;
+  }
+  80% {
+    -webkit-mask-position: 50% -60%, 50% 140%, 50% -70%;
+            mask-position: 50% -60%, 50% 140%, 50% -70%;
+  }
+  to {
+    -webkit-mask-position: 50% -60%, 50% 140%, 50% -70%;
+            mask-position: 50% -60%, 50% 140%, 50% -70%;
+    transform: scale(1);
+  }
+}
+
+@keyframes hide-view-portrait {
+  from {
+    -webkit-mask-position: 50% 120%, 50% 0%, 50% 150%;
+            mask-position: 50% 120%, 50% 0%, 50% 150%;
+    transform: scale(1.5);
+  }
+  45% {
+    transform: scale(1);
+  }
+  50% {
+    -webkit-mask-position: 50% 120%, 50% 80%, 50% 60%;
+            mask-position: 50% 120%, 50% 80%, 50% 60%;
+  }
+  80% {
+    -webkit-mask-position: 50% -60%, 50% 140%, 50% -70%;
+            mask-position: 50% -60%, 50% 140%, 50% -70%;
+  }
+  to {
+    -webkit-mask-position: 50% -60%, 50% 140%, 50% -70%;
+            mask-position: 50% -60%, 50% 140%, 50% -70%;
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes hide-view-landscape {
+  from {
+    -webkit-mask-position: 50% 120%, 50% 0%, 50% 150%;
+            mask-position: 50% 120%, 50% 0%, 50% 150%;
+    transform: scale(1.5);
+  }
+  45% {
+    transform: scale(1);
+  }
+  50% {
+    -webkit-mask-position: 50% 120%, 50% 72%, 50% 60%;
+            mask-position: 50% 120%, 50% 72%, 50% 60%;
+  }
+  80% {
+    -webkit-mask-position: 50% -80%, 50% 140%, 50% -70%;
+            mask-position: 50% -80%, 50% 140%, 50% -70%;
+  }
+  to {
+    -webkit-mask-position: 50% -80%, 50% 140%, 50% -70%;
+            mask-position: 50% -80%, 50% 140%, 50% -70%;
+    transform: scale(1);
+  }
+}
+@keyframes hide-view-landscape {
+  from {
+    -webkit-mask-position: 50% 120%, 50% 0%, 50% 150%;
+            mask-position: 50% 120%, 50% 0%, 50% 150%;
+    transform: scale(1.5);
+  }
+  45% {
+    transform: scale(1);
+  }
+  50% {
+    -webkit-mask-position: 50% 120%, 50% 72%, 50% 60%;
+            mask-position: 50% 120%, 50% 72%, 50% 60%;
+  }
+  80% {
+    -webkit-mask-position: 50% -80%, 50% 140%, 50% -70%;
+            mask-position: 50% -80%, 50% 140%, 50% -70%;
+  }
+  to {
+    -webkit-mask-position: 50% -80%, 50% 140%, 50% -70%;
+            mask-position: 50% -80%, 50% 140%, 50% -70%;
+    transform: scale(1);
+  }
+}
+.new-page {
+  position: absolute;
+  inset: 0;
+  background: url("https://assets.codepen.io/907471/science-fiction-room_1.png?v42") center center no-repeat, #111;
+  background-size: cover;
+  -webkit-animation: show var(--duration) cubic-bezier(0.975, -0.005, 0, 1.02) infinite forwards;
+          animation: show var(--duration) cubic-bezier(0.975, -0.005, 0, 1.02) infinite forwards;
+}
+
+@-webkit-keyframes show {
+  from {
+    filter: saturate(0%);
+    opacity: 0.4;
+  }
+  40% {
+    filter: saturate(0%);
+    opacity: 0.4;
+  }
+  80% {
+    filter: saturate(100%);
+    opacity: 1;
+  }
+  to {
+    filter: saturate(100%);
+  }
+}
+
+@keyframes show {
+  from {
+    filter: saturate(0%);
+    opacity: 0.4;
+  }
+  40% {
+    filter: saturate(0%);
+    opacity: 0.4;
+  }
+  80% {
+    filter: saturate(100%);
+    opacity: 1;
+  }
+  to {
+    filter: saturate(100%);
+  }
+}
+body {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  color: #ca5600;
+  background: black;
+  overflow: hidden;
+}
+
+.labs-follow-me {
+  transform: scale(0.8) !important;
+}
+
+@media screen and (max-height: 800px) {
+  :root {
+    font-size: 8px;
+  }
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="new-page"></div>
+<div class="old-page"></div>
+  <script src='https://codepen.io/konstantindenerz/pen/KKxvdPq.js'></script>
+  
+  
+</body>
+
+</html>
