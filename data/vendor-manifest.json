@@ -2,8 +2,196 @@
   "fetchedAt": "2026-10-01T08:42:04.091Z",
   "assets": [
     {
+      "url": "https://assets.codepen.io/907471/arcade-button-title.svg",
+      "name": "arcade-button-title-c5eb8f.svg"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/avatar.webp",
+      "name": "avatar-03ab66.webp"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/back-to-the-css.svg",
+      "name": "back-to-the-css-7ac7cf.svg"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/background.jpg",
+      "name": "background-f9ff6e.jpg"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/backtothekode.svg",
+      "name": "backtothekode-19b288.svg"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/bokek-bg.png",
+      "name": "bokek-bg-3ba4a9.png"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/bookmark.svg?v4",
+      "name": "bookmark-dccbce.svg"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/bookmark.svg?v5",
+      "name": "bookmark-cd74a1.svg"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/bookmark2.svg?v5",
+      "name": "bookmark2-fc3d8f.svg"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/cosmic_dreams.mp3",
+      "name": "cosmic-dreams-cf4238.mp3"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/DALL%C2%B7E+2024-07-25+12.21.18+-+A+vibrant+background+perfect+for+a+glassmorphic+user+interface+in+a+landscape+format.+The+design+features+a+gradient+of+gold%2C+brown%2C+black%2C+and+white%2C.webp",
+      "name": "dall-e-2024-07-25-12-21-18-a-vibrant-background-af6932.webp"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/DALL%C2%B7E+2024-11-07+22.19.21+-+A+very+dark%2C+hyper-futuristic+abstract+image+with+a+central+vanishing+point+and+a+high-tech+aesthetic.+The+color+palette+is+dominated+by+deep+blacks%2C+.webp",
+      "name": "dall-e-2024-11-07-22-19-21-a-very-dark-hyper-fut-761670.webp"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/dancer.mp4",
+      "name": "dancer-953d6a.mp4"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/darkside.svg?v42",
+      "name": "darkside-b27694.svg"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/deathstar-mask.svg",
+      "name": "deathstar-mask-94685d.svg"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/Delorean_DMC-12_Logo.svg",
+      "name": "delorean-dmc-12-logo-2994a9.svg"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/holo-card-lines.png?v5",
+      "name": "holo-card-lines-d1d6d0.png"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/Klingon-pIqaD-HaSta.ttf",
+      "name": "klingon-piqad-hasta-d6f169.ttf"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/lightside.svg?v42",
+      "name": "lightside-642090.svg"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/mouse.mp4",
+      "name": "mouse-eb9920.mp4"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/nanohexagon.mp3",
+      "name": "nanohexagon-0e5553.mp3"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/ncc1701.svg",
+      "name": "ncc1701-197dd1.svg"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/noise.png",
+      "name": "noise-beffd1.png"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/noise.svg",
+      "name": "noise-8ccdf2.svg"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/noise3.png",
+      "name": "noise3-719797.png"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/portrait-astronaut_1.png?width=712&height=788",
+      "name": "portrait-astronaut-1-9ed858.png"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/rainbow_s.mp4",
+      "name": "rainbow-s-bb3c79.mp4"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/science-fiction-room_1.png?v42",
+      "name": "science-fiction-room-1-93d3d6.png"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/science-fiction-room-2_1.png?v42",
+      "name": "science-fiction-room-2-1-e3c214.png"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/space-landscape.svg?v4",
+      "name": "space-landscape-7c6695.svg"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/space.svg?v42",
+      "name": "space-76dc89.svg"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/synthesizer-synthwave-80s-110045-license.txt",
+      "name": "synthesizer-synthwave-80s-110045-license-83af19.txt"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/synthwave-80s-110045.mp3",
+      "name": "synthwave-80s-110045-bea7f2.mp3"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/tail.svg?v1",
+      "name": "tail-3f62cf.svg"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/triangle-mask.svg",
+      "name": "triangle-mask-2036fe.svg"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/triangle-mask.svg?v42",
+      "name": "triangle-mask-c70982.svg"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/video.mp4",
+      "name": "video-1d1a60.mp4"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/vision-pro-palm.jpg",
+      "name": "vision-pro-palm-c30f0b.jpg"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/vision-pro-ui-3.webp",
+      "name": "vision-pro-ui-3-f08e60.webp"
+    },
+    {
+      "url": "https://assets.codepen.io/907471/vision-pro-ui-4.webp",
+      "name": "vision-pro-ui-4-2fea31.webp"
+    },
+    {
       "url": "https://cdn.jsdelivr.net/npm/tweakpane@4.0.5/dist/tweakpane.min.js",
       "name": "tweakpane-min-e4d2dc.js"
+    },
+    {
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.css",
+      "name": "kkxvdpq-eb236b.css"
+    },
+    {
+      "url": "https://codepen.io/konstantindenerz/pen/KKxvdPq.js",
+      "name": "kkxvdpq-550e20.js"
+    },
+    {
+      "url": "https://codepen.io/konstantindenerz/pen/mdGpxKg.css",
+      "name": "mdgpxkg-c92f8e.css"
+    },
+    {
+      "url": "https://codepen.io/konstantindenerz/pen/mdGpxKg.js",
+      "name": "mdgpxkg-24eb50.js"
+    },
+    {
+      "url": "https://codepen.io/konstantindenerz/pen/xxaXjZv.css",
+      "name": "xxaxjzv-252fe9.css"
+    },
+    {
+      "url": "https://codepen.io/konstantindenerz/pen/YzOrWjz.css",
+      "name": "yzorwjz-c42778.css"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css?family=Roboto+Condensed:700i&display=swap",
+      "name": "roboto-condensed-07750d.css"
     },
     {
       "url": "https://fonts.googleapis.com/css2?family=Audiowide&display=swap",
@@ -52,10 +240,6 @@
     {
       "url": "https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap",
       "name": "rubik-glitch-320f0a.css"
-    },
-    {
-      "url": "https://fonts.googleapis.com/css?family=Roboto+Condensed:700i&display=swap",
-      "name": "roboto-condensed-07750d.css"
     },
     {
       "url": "https://gravatar.com/avatar/bdf3dd08b9c2a5f3792dd103a192a765?size=300",
