@@ -1,0 +1,121 @@
+<!--
+  Random Xmas Walk 🎄 #2
+
+  Archived from https://codepen.io/konstantindenerz/pen/ogvWMwV
+  Created 2024-12-21 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  <title>Random Xmas Walk 🎄 #2</title>
+  
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100dvh;
+  width: 100dvw;
+  overflow: hidden;
+  background: black;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <canvas id="canvas"></canvas>
+  
+    <script id="rendered-js" >
+const ctx = canvas.getContext("2d");
+const pointsCount = 60;
+let centerX;
+let centerY;
+let levels = [];
+
+let yStart = 10;
+const levelsCount = 100;
+let pos = [];
+
+const a = (count, map) => new Array(count).fill(0).map(map);
+
+const createPoints = () => {
+  levels = a(levelsCount, (_, level) =>
+  a(pointsCount, (_, index) => ({
+    x: pos.x,
+    y: pos.y + yStart * level * 0.5 })));
+
+};
+const createPos = () => {
+  pos = a(levelsCount, (_, index) => ({ x: centerX, y: yStart * (index + 1) }));
+};
+const updateSize = () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  centerX = canvas.width / 2;
+  centerY = canvas.height / 2;
+  ctx.fillStyle = "black";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  createPos();
+  createPoints();
+};
+
+updateSize();
+
+window.addEventListener("resize", updateSize);
+
+function random(min, max) {
+  const minCeiled = Math.ceil(min);
+  const maxFloored = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
+}
+
+const draw = () => {
+  ctx.fillStyle = "rgba(10,10,10,.2)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  levels.forEach((points, level) => {
+    points.forEach((point, index) => {
+      if (index % pointsCount === 2) {
+        createPos();
+      }
+      const l = level + 1;
+      pos[level].x += random(-0.4 * l, 0.4 * l);
+      pos[level].y += Math.floor(Math.random() * 1);
+      ctx.fillStyle = `hsla(${l * 20 + index * 0.1 + 145}, 100%, 50%, 1)`;
+      ctx.fillRect(pos[level].x, pos[level].y, 2, 2);
+    });
+  });
+  ctx.fillStyle = '#00d1ff';
+  ctx.font = '80px serif';
+  ctx.fillText('⋆', centerX - 18, 40);
+  requestAnimationFrame(draw);
+};
+
+draw();
+//# sourceURL=pen.js
+  </script>
+
+  
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!--
+  Spinner (indeterminate)
+
+  Archived from https://codepen.io/konstantindenerz/pen/JoPQzqx
+  Created 2025-02-06 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  
+  
+
+  <title>Spinner (indeterminate)</title>
+  
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+@property --deg {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+@property --p {
+  syntax: "<percentage>";
+  initial-value: 0%;
+  inherits: true;
+}
+@property --line-width {
+  syntax: "<length>";
+  initial-value: 1rem;
+  inherits: true;
+}
+.spinner {
+  --size: 10rem;
+  --color: #ffeb3b;
+  --color-2: #9c27b0;
+  --color-3: #03a9f4;
+  width: var(--size);
+  background: conic-gradient(from var(--deg), var(--color), var(--color-2), var(--color-3), transparent var(--p));
+  -webkit-mask: radial-gradient(circle, transparent calc(var(--size) / 2 - var(--line-width, 1rem)), black calc(var(--size) / 2 - var(--line-width, 1rem)));
+          mask: radial-gradient(circle, transparent calc(var(--size) / 2 - var(--line-width, 1rem)), black calc(var(--size) / 2 - var(--line-width, 1rem)));
+  filter: drop-shadow(1rem 0 2rem var(--color-3));
+  border-radius: 50%;
+  aspect-ratio: 1;
+  -webkit-animation: rotate 1.1s ease infinite, line-width 3.3s ease infinite;
+          animation: rotate 1.1s ease infinite, line-width 3.3s ease infinite;
+}
+
+@-webkit-keyframes rotate {
+  from {
+    --p: 20%;
+  }
+  50% {
+    --p: 50%;
+  }
+  70% {
+    --p: 30%;
+  }
+  90% {
+    --p: 10%;
+  }
+  to {
+    --p: 20%;
+    --deg: -360deg;
+  }
+}
+
+@keyframes rotate {
+  from {
+    --p: 20%;
+  }
+  50% {
+    --p: 50%;
+  }
+  70% {
+    --p: 30%;
+  }
+  90% {
+    --p: 10%;
+  }
+  to {
+    --p: 20%;
+    --deg: -360deg;
+  }
+}
+@-webkit-keyframes line-width {
+  from, 20%, 70%, to {
+    --line-width: 1rem;
+  }
+  50% {
+    --line-width: .1rem;
+  }
+}
+@keyframes line-width {
+  from, 20%, 70%, to {
+    --line-width: 1rem;
+  }
+  50% {
+    --line-width: .1rem;
+  }
+}
+body {
+  width: 100dvw;
+  height: 100dvh;
+  background: #111;
+  display: grid;
+  place-items: center;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="spinner"></div>
+  
+  
+  
+</body>
+
+</html>

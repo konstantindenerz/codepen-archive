@@ -1,0 +1,139 @@
+<!--
+  Scroll Indicator (Top / Bottom) CSS
+
+  Archived from https://codepen.io/konstantindenerz/pen/LEVjJrp
+  Created 2025-06-07 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  
+  
+
+  <title>Scroll Indicator (Top / Bottom) CSS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+:root {
+  --size: 3rem;
+}
+
+@property --p1 {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: true;
+}
+@property --p2 {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: true;
+}
+@-webkit-keyframes p1 {
+  from {
+    --p1: 0;
+  }
+  to {
+    --p1: 1;
+  }
+}
+@keyframes p1 {
+  from {
+    --p1: 0;
+  }
+  to {
+    --p1: 1;
+  }
+}
+@-webkit-keyframes p2 {
+  from {
+    --p2: 1;
+  }
+  to {
+    --p2: 0;
+  }
+}
+@keyframes p2 {
+  from {
+    --p2: 1;
+  }
+  to {
+    --p2: 0;
+  }
+}
+.scroll-container {
+  width: 60vmin;
+  height: 50vmin;
+  overflow: hidden auto;
+  border-radius: 1rem;
+  -webkit-backdrop-filter: blur(1rem);
+          backdrop-filter: blur(1rem);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  position: relative;
+  -webkit-animation: p1 linear, p2 linear;
+          animation: p1 linear, p2 linear;
+  animation-timeline: scroll(self), scroll(self);
+  animation-range: 0 var(--size), contain calc(100% - var(--size));
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  -webkit-mask: linear-gradient(transparent, black calc(var(--size) * var(--p1)), black calc(100% - var(--size) * var(--p2)), transparent);
+          mask: linear-gradient(transparent, black calc(var(--size) * var(--p1)), black calc(100% - var(--size) * var(--p2)), transparent);
+  text-wrap: balance;
+  padding: 2rem;
+  font-size: 2.5rem;
+  letter-spacing: 0.25rem;
+}
+@supports not (animation-timeline: scroll()) {
+  .scroll-container {
+    -webkit-mask: unset;
+            mask: unset;
+  }
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #555 transparent;
+}
+
+body {
+  display: grid;
+  font-family: "Rubik Glitch", system-ui;
+  place-items: center;
+  min-height: 100vh;
+  color: #ffe1be;
+  text-shadow: 0.25rem 0.25rem rgba(0, 0, 0, 0.4);
+  background: url(https://assets.codepen.io/907471/vision-pro-ui-4.webp) center center no-repeat, #333;
+  background-size: cover;
+  margin: 0;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="scroll-container">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor, purus sit amet ultrices euismod, dui erat pulvinar libero, vel accumsan enim ipsum vel orci. Nullam congue ex vitae mattis ullamcorper. Pellentesque nibh felis, semper luctus justo molestie, suscipit vulputate neque. Donec eu pellentesque neque. Sed nec felis vestibulum, rutrum tellus sed, vestibulum lectus. Proin ornare tortor eget tellus efficitur, vel luctus enim feugiat. Vivamus sodales efficitur sodales. Nulla sit amet ullamcorper tellus, et mollis velit. Quisque at velit id libero pellentesque finibus. Etiam sagittis, dolor vitae egestas gravida, nisl turpis molestie sem, sit amet consequat urna libero sed mi.
+</div>
+  
+  
+  
+</body>
+
+</html>

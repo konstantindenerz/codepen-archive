@@ -1,0 +1,242 @@
+<!--
+  ☠️ ✨
+
+  Archived from https://codepen.io/konstantindenerz/pen/QWeprQq
+  Created 2024-10-15 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  <title>☠️ ✨</title>
+  
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+#count {
+  display: none;
+}
+
+canvas {
+  display: none;
+}
+
+:root {
+  --tile-size: 0.7vmin;
+  --distance: 1vmin;
+}
+
+@property --x {
+  syntax: "<length>";
+  initial-value: 0;
+  inherits: true;
+}
+@property --y {
+  syntax: "<length>";
+  initial-value: 0;
+  inherits: true;
+}
+@property --scale {
+  syntax: "<number>";
+  initial-value: 1;
+  inherits: true;
+}
+#tiles {
+  filter: drop-shadow(0 0 1rem black);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  translate: 0 -12vh;
+}
+#tiles > div {
+  border-radius: 50%;
+  width: var(--tile-size);
+  aspect-ratio: 1;
+  background: hsla(var(--hue), 100%, calc(50% + var(--light) * 50% ), 1);
+  position: absolute;
+  transform: translate3d(var(--x), var(--y), 0) scale(var(--scale));
+  --delay: calc(var(--p-r) * 1s);
+  --hue: calc(var(--p-r) * (361 - 80) + 80);
+  --light: calc((var(--p-r) * (.5 - .05) + -.05));
+  --duration: calc(var(--p-r2) * 10s);
+}
+#tiles.show > div {
+  -webkit-animation: fade-in 0.3s linear forwards, show var(--duration) var(--delay) cubic-bezier(0.86, 0.86, 0.41, 1.16) infinite, blink 1s var(--delay) ease-in-out infinite;
+          animation: fade-in 0.3s linear forwards, show var(--duration) var(--delay) cubic-bezier(0.86, 0.86, 0.41, 1.16) infinite, blink 1s var(--delay) ease-in-out infinite;
+}
+
+@-webkit-keyframes blink {
+  from, 50%, to {
+    opacity: 1;
+  }
+  30%, 70% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes blink {
+  from, 50%, to {
+    opacity: 1;
+  }
+  30%, 70% {
+    opacity: 0.3;
+  }
+}
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes show {
+  from {
+    --x: calc(1dvw * var(--p-r));
+    --y: calc(-100dvh * var(--p-r));
+    filter: blur(0.5rem);
+    --scale: calc(clamp(1.5, 10 * var(--p-r2), 5));
+  }
+  5% {
+    filter: blur(0rem);
+  }
+  10% {
+    --x: calc(var(--p-x) * var(--distance));
+    --y: calc(var(--p-y) * var(--distance));
+    --scale: calc(1);
+  }
+  to {
+    --x: calc(var(--p-x) * var(--distance));
+    --y: calc(var(--p-y) * var(--distance));
+  }
+}
+@keyframes show {
+  from {
+    --x: calc(1dvw * var(--p-r));
+    --y: calc(-100dvh * var(--p-r));
+    filter: blur(0.5rem);
+    --scale: calc(clamp(1.5, 10 * var(--p-r2), 5));
+  }
+  5% {
+    filter: blur(0rem);
+  }
+  10% {
+    --x: calc(var(--p-x) * var(--distance));
+    --y: calc(var(--p-y) * var(--distance));
+    --scale: calc(1);
+  }
+  to {
+    --x: calc(var(--p-x) * var(--distance));
+    --y: calc(var(--p-y) * var(--distance));
+  }
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(at 50% 52%, #180a3e, black, black, #180a3e);
+  color: #ee75d2;
+  margin: 0;
+  overflow: clip;
+  cursor: pointer;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a.labs-follow-me {
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div id="tiles" class="show"></div>
+<div id="count" class="content">☠</div>
+<canvas id="canvas"></canvas>
+  
+    <script id="rendered-js" >
+const counts = count.innerText;
+const size = 110;
+const ctx = canvas.getContext("2d");
+const font = `bold ${size}px monospace`;
+ctx.font = font;
+const metrics = ctx.measureText(counts);
+canvas.width = metrics.width;
+canvas.height = size;
+
+ctx.fillStyle = "white";
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+ctx.font = font;
+ctx.fillStyle = "black";
+ctx.fillText(counts, 0, canvas.height);
+
+const { data } = ctx.getImageData(0, 0, canvas.width, canvas.height);
+const length = data.length;
+const pixels = [];
+let x = 0,
+y = 0;
+const centerX = canvas.width / 2;
+const centerY = canvas.height / 2;
+for (let i = 0; i < length; i += 4) {
+  const pixel = { hit: data[i] !== 255, i, x: x - centerX, y: y - centerY };
+  if (data[i] === 0) {
+    pixels.push(pixel);
+  }
+  x++;
+  if (x === canvas.width) {
+    x = 0;
+    y++;
+  }
+}
+pixels.forEach(({ x, y }, index) => {
+  const tile = document.createElement("div");
+  tile.style.setProperty("--p-x", `${x}`);
+  tile.style.setProperty("--p-y", `${y}`);
+  tile.style.setProperty("--p-i", `${index}`);
+  tile.style.setProperty("--p-r", `${Math.random()}`);
+  tile.style.setProperty("--p-r2", `${Math.random()}`);
+  tiles.appendChild(tile);
+});
+
+document.addEventListener("click", () => {
+  tiles.classList.remove("show");
+  requestAnimationFrame(() => {
+    tiles.classList.add("show");
+  });
+});
+//# sourceURL=pen.js
+  </script>
+
+  
+</body>
+
+</html>

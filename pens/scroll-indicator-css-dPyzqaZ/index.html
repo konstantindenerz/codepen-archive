@@ -1,0 +1,116 @@
+<!--
+  Scroll Indicator (CSS)
+
+  Archived from https://codepen.io/konstantindenerz/pen/dPyzqaZ
+  Created 2025-03-10 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  
+  
+
+  <title>Scroll Indicator (CSS)</title>
+  
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+:root {
+  --primary: #ff007c;
+}
+
+.scroll-indicator {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 4rem;
+  height: 6rem;
+  display: grid;
+  place-items: center;
+}
+.scroll-indicator:before {
+  background: white;
+  box-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.15);
+  content: "";
+  height: 100%;
+  aspect-ratio: 1/2;
+  border-radius: 2rem;
+}
+.scroll-indicator:after {
+  position: absolute;
+  content: "";
+  border-radius: 0.5rem;
+  width: 1rem;
+  aspect-ratio: 1;
+  background: var(--primary);
+  translate: 0 -1.55rem;
+  -webkit-animation: indicator 1.5s ease-out infinite;
+          animation: indicator 1.5s ease-out infinite;
+}
+
+@-webkit-keyframes indicator {
+  from {
+    aspect-ratio: 1;
+    translate: 0 -1.55rem;
+  }
+  25% {
+    aspect-ratio: 1/4;
+    translate: 0 0rem;
+  }
+  50%, 60% {
+    aspect-ratio: 1;
+    translate: 0 1.8rem;
+  }
+  to {
+    translate: 0 -1.55rem;
+  }
+}
+
+@keyframes indicator {
+  from {
+    aspect-ratio: 1;
+    translate: 0 -1.55rem;
+  }
+  25% {
+    aspect-ratio: 1/4;
+    translate: 0 0rem;
+  }
+  50%, 60% {
+    aspect-ratio: 1;
+    translate: 0 1.8rem;
+  }
+  to {
+    translate: 0 -1.55rem;
+  }
+}
+body {
+  background: conic-gradient(at 50% calc(100% - 4rem), #efefef, #f6f6f6);
+  height: 100dvh;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="scroll-indicator"></div>
+  
+  
+  
+</body>
+
+</html>

@@ -1,0 +1,3233 @@
+<!--
+  [Talk - Fork] - Abstract Sphere (CSS)
+
+  Archived from https://codepen.io/konstantindenerz/pen/RwqRNJN
+  Created 2023-06-19 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  
+  
+
+  <title>[Talk - Fork] - Abstract Sphere (CSS)</title>
+  
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+@layer props {
+  @property --a {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 0deg;
+  }
+  @property --ratio {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+}
+@-webkit-keyframes rotate {
+  from {
+    --a: 0deg;
+  }
+  to {
+    --a: 360deg;
+  }
+}
+@keyframes rotate {
+  from {
+    --a: 0deg;
+  }
+  to {
+    --a: 360deg;
+  }
+}
+@-webkit-keyframes move {
+  from {
+    --ratio: 1;
+  }
+  30% {
+    --ratio: 1;
+  }
+  50% {
+    --ratio: 3;
+  }
+  70% {
+    --ratio: 1;
+  }
+  to {
+    --ratio: 1;
+  }
+}
+@keyframes move {
+  from {
+    --ratio: 1;
+  }
+  30% {
+    --ratio: 1;
+  }
+  50% {
+    --ratio: 3;
+  }
+  70% {
+    --ratio: 1;
+  }
+  to {
+    --ratio: 1;
+  }
+}
+:root {
+  --d: 50vmin;
+  --r: calc(var(--d) / 2);
+  --pi: 3.1415926536;
+  --surface-size: calc(var(--d) / 20);
+}
+
+.scene {
+  perspective: 100vmin;
+}
+
+.sphere {
+  position: relative;
+  width: var(--d);
+  aspect-ratio: 1;
+  transform-style: preserve-3d;
+  transform: rotate3d(1, 1, 1, var(--a));
+  --ratio: 1;
+  -webkit-animation: rotate 10s linear infinite, move 16s 2s linear infinite;
+          animation: rotate 10s linear infinite, move 16s 2s linear infinite;
+}
+.sphere .slice {
+  transform-style: preserve-3d;
+  border-radius: 50%;
+  position: absolute;
+  border: 2px solid red;
+  inset: 0;
+  --angle-offset: 18deg;
+  border-color: #A8C8FFa2;
+  transform: rotateY(var(--slice-offset));
+}
+.sphere .slice:nth-child(1) {
+  --slice-index: 0;
+  --slice-offset: calc(var(--angle-offset) * var(--slice-index));
+}
+.sphere .slice:nth-child(1) .surface {
+  height: var(--surface-size);
+  --w: calc(var(--d) * var(--pi) / 20);
+  width: var(--w);
+  background: #DBBCE12a;
+  border: 1px solid #9fa8b82a;
+  transform: rotateY(90deg) rotateX(calc(var(--surface-offset) * var(--ratio))) translateZ(calc(cos(var(--surface-offset)) * var(--r)));
+}
+.sphere .slice:nth-child(1) .surface:nth-child(1) {
+  --surface-index: 0;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(1) .surface:nth-child(2) {
+  --surface-index: 1;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(1) .surface:nth-child(3) {
+  --surface-index: 2;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(1) .surface:nth-child(4) {
+  --surface-index: 3;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(1) .surface:nth-child(5) {
+  --surface-index: 4;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(1) .surface:nth-child(6) {
+  --surface-index: 5;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(1) .surface:nth-child(7) {
+  --surface-index: 6;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(1) .surface:nth-child(8) {
+  --surface-index: 7;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(1) .surface:nth-child(9) {
+  --surface-index: 8;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(1) .surface:nth-child(10) {
+  --surface-index: 9;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(1) .surface:nth-child(11) {
+  --surface-index: 10;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(1) .surface:nth-child(12) {
+  --surface-index: 11;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(1) .surface:nth-child(13) {
+  --surface-index: 12;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(1) .surface:nth-child(14) {
+  --surface-index: 13;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(1) .surface:nth-child(15) {
+  --surface-index: 14;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(1) .surface:nth-child(16) {
+  --surface-index: 15;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(1) .surface:nth-child(17) {
+  --surface-index: 16;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(1) .surface:nth-child(18) {
+  --surface-index: 17;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(1) .surface:nth-child(19) {
+  --surface-index: 18;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(1) .surface:nth-child(20) {
+  --surface-index: 19;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(2) {
+  --slice-index: 1;
+  --slice-offset: calc(var(--angle-offset) * var(--slice-index));
+}
+.sphere .slice:nth-child(2) .surface {
+  height: var(--surface-size);
+  --w: calc(var(--d) * var(--pi) / 20);
+  width: var(--w);
+  background: #DBBCE12a;
+  border: 1px solid #9fa8b82a;
+  transform: rotateY(90deg) rotateX(calc(var(--surface-offset) * var(--ratio))) translateZ(calc(cos(var(--surface-offset)) * var(--r)));
+}
+.sphere .slice:nth-child(2) .surface:nth-child(1) {
+  --surface-index: 0;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(2) .surface:nth-child(2) {
+  --surface-index: 1;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(2) .surface:nth-child(3) {
+  --surface-index: 2;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(2) .surface:nth-child(4) {
+  --surface-index: 3;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(2) .surface:nth-child(5) {
+  --surface-index: 4;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(2) .surface:nth-child(6) {
+  --surface-index: 5;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(2) .surface:nth-child(7) {
+  --surface-index: 6;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(2) .surface:nth-child(8) {
+  --surface-index: 7;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(2) .surface:nth-child(9) {
+  --surface-index: 8;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(2) .surface:nth-child(10) {
+  --surface-index: 9;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(2) .surface:nth-child(11) {
+  --surface-index: 10;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(2) .surface:nth-child(12) {
+  --surface-index: 11;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(2) .surface:nth-child(13) {
+  --surface-index: 12;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(2) .surface:nth-child(14) {
+  --surface-index: 13;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(2) .surface:nth-child(15) {
+  --surface-index: 14;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(2) .surface:nth-child(16) {
+  --surface-index: 15;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(2) .surface:nth-child(17) {
+  --surface-index: 16;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(2) .surface:nth-child(18) {
+  --surface-index: 17;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(2) .surface:nth-child(19) {
+  --surface-index: 18;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(2) .surface:nth-child(20) {
+  --surface-index: 19;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(3) {
+  --slice-index: 2;
+  --slice-offset: calc(var(--angle-offset) * var(--slice-index));
+}
+.sphere .slice:nth-child(3) .surface {
+  height: var(--surface-size);
+  --w: calc(var(--d) * var(--pi) / 20);
+  width: var(--w);
+  background: #DBBCE12a;
+  border: 1px solid #9fa8b82a;
+  transform: rotateY(90deg) rotateX(calc(var(--surface-offset) * var(--ratio))) translateZ(calc(cos(var(--surface-offset)) * var(--r)));
+}
+.sphere .slice:nth-child(3) .surface:nth-child(1) {
+  --surface-index: 0;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(3) .surface:nth-child(2) {
+  --surface-index: 1;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(3) .surface:nth-child(3) {
+  --surface-index: 2;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(3) .surface:nth-child(4) {
+  --surface-index: 3;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(3) .surface:nth-child(5) {
+  --surface-index: 4;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(3) .surface:nth-child(6) {
+  --surface-index: 5;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(3) .surface:nth-child(7) {
+  --surface-index: 6;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(3) .surface:nth-child(8) {
+  --surface-index: 7;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(3) .surface:nth-child(9) {
+  --surface-index: 8;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(3) .surface:nth-child(10) {
+  --surface-index: 9;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(3) .surface:nth-child(11) {
+  --surface-index: 10;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(3) .surface:nth-child(12) {
+  --surface-index: 11;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(3) .surface:nth-child(13) {
+  --surface-index: 12;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(3) .surface:nth-child(14) {
+  --surface-index: 13;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(3) .surface:nth-child(15) {
+  --surface-index: 14;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(3) .surface:nth-child(16) {
+  --surface-index: 15;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(3) .surface:nth-child(17) {
+  --surface-index: 16;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(3) .surface:nth-child(18) {
+  --surface-index: 17;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(3) .surface:nth-child(19) {
+  --surface-index: 18;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(3) .surface:nth-child(20) {
+  --surface-index: 19;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(4) {
+  --slice-index: 3;
+  --slice-offset: calc(var(--angle-offset) * var(--slice-index));
+}
+.sphere .slice:nth-child(4) .surface {
+  height: var(--surface-size);
+  --w: calc(var(--d) * var(--pi) / 20);
+  width: var(--w);
+  background: #DBBCE12a;
+  border: 1px solid #9fa8b82a;
+  transform: rotateY(90deg) rotateX(calc(var(--surface-offset) * var(--ratio))) translateZ(calc(cos(var(--surface-offset)) * var(--r)));
+}
+.sphere .slice:nth-child(4) .surface:nth-child(1) {
+  --surface-index: 0;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(4) .surface:nth-child(2) {
+  --surface-index: 1;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(4) .surface:nth-child(3) {
+  --surface-index: 2;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(4) .surface:nth-child(4) {
+  --surface-index: 3;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(4) .surface:nth-child(5) {
+  --surface-index: 4;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(4) .surface:nth-child(6) {
+  --surface-index: 5;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(4) .surface:nth-child(7) {
+  --surface-index: 6;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(4) .surface:nth-child(8) {
+  --surface-index: 7;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(4) .surface:nth-child(9) {
+  --surface-index: 8;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(4) .surface:nth-child(10) {
+  --surface-index: 9;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(4) .surface:nth-child(11) {
+  --surface-index: 10;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(4) .surface:nth-child(12) {
+  --surface-index: 11;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(4) .surface:nth-child(13) {
+  --surface-index: 12;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(4) .surface:nth-child(14) {
+  --surface-index: 13;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(4) .surface:nth-child(15) {
+  --surface-index: 14;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(4) .surface:nth-child(16) {
+  --surface-index: 15;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(4) .surface:nth-child(17) {
+  --surface-index: 16;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(4) .surface:nth-child(18) {
+  --surface-index: 17;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(4) .surface:nth-child(19) {
+  --surface-index: 18;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(4) .surface:nth-child(20) {
+  --surface-index: 19;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(5) {
+  --slice-index: 4;
+  --slice-offset: calc(var(--angle-offset) * var(--slice-index));
+}
+.sphere .slice:nth-child(5) .surface {
+  height: var(--surface-size);
+  --w: calc(var(--d) * var(--pi) / 20);
+  width: var(--w);
+  background: #DBBCE12a;
+  border: 1px solid #9fa8b82a;
+  transform: rotateY(90deg) rotateX(calc(var(--surface-offset) * var(--ratio))) translateZ(calc(cos(var(--surface-offset)) * var(--r)));
+}
+.sphere .slice:nth-child(5) .surface:nth-child(1) {
+  --surface-index: 0;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(5) .surface:nth-child(2) {
+  --surface-index: 1;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(5) .surface:nth-child(3) {
+  --surface-index: 2;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(5) .surface:nth-child(4) {
+  --surface-index: 3;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(5) .surface:nth-child(5) {
+  --surface-index: 4;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(5) .surface:nth-child(6) {
+  --surface-index: 5;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(5) .surface:nth-child(7) {
+  --surface-index: 6;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(5) .surface:nth-child(8) {
+  --surface-index: 7;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(5) .surface:nth-child(9) {
+  --surface-index: 8;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(5) .surface:nth-child(10) {
+  --surface-index: 9;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(5) .surface:nth-child(11) {
+  --surface-index: 10;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(5) .surface:nth-child(12) {
+  --surface-index: 11;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(5) .surface:nth-child(13) {
+  --surface-index: 12;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(5) .surface:nth-child(14) {
+  --surface-index: 13;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(5) .surface:nth-child(15) {
+  --surface-index: 14;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(5) .surface:nth-child(16) {
+  --surface-index: 15;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(5) .surface:nth-child(17) {
+  --surface-index: 16;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(5) .surface:nth-child(18) {
+  --surface-index: 17;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(5) .surface:nth-child(19) {
+  --surface-index: 18;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(5) .surface:nth-child(20) {
+  --surface-index: 19;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(6) {
+  --slice-index: 5;
+  --slice-offset: calc(var(--angle-offset) * var(--slice-index));
+}
+.sphere .slice:nth-child(6) .surface {
+  height: var(--surface-size);
+  --w: calc(var(--d) * var(--pi) / 20);
+  width: var(--w);
+  background: #DBBCE12a;
+  border: 1px solid #9fa8b82a;
+  transform: rotateY(90deg) rotateX(calc(var(--surface-offset) * var(--ratio))) translateZ(calc(cos(var(--surface-offset)) * var(--r)));
+}
+.sphere .slice:nth-child(6) .surface:nth-child(1) {
+  --surface-index: 0;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(6) .surface:nth-child(2) {
+  --surface-index: 1;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(6) .surface:nth-child(3) {
+  --surface-index: 2;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(6) .surface:nth-child(4) {
+  --surface-index: 3;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(6) .surface:nth-child(5) {
+  --surface-index: 4;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(6) .surface:nth-child(6) {
+  --surface-index: 5;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(6) .surface:nth-child(7) {
+  --surface-index: 6;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(6) .surface:nth-child(8) {
+  --surface-index: 7;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(6) .surface:nth-child(9) {
+  --surface-index: 8;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(6) .surface:nth-child(10) {
+  --surface-index: 9;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(6) .surface:nth-child(11) {
+  --surface-index: 10;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(6) .surface:nth-child(12) {
+  --surface-index: 11;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(6) .surface:nth-child(13) {
+  --surface-index: 12;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(6) .surface:nth-child(14) {
+  --surface-index: 13;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(6) .surface:nth-child(15) {
+  --surface-index: 14;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(6) .surface:nth-child(16) {
+  --surface-index: 15;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(6) .surface:nth-child(17) {
+  --surface-index: 16;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(6) .surface:nth-child(18) {
+  --surface-index: 17;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(6) .surface:nth-child(19) {
+  --surface-index: 18;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(6) .surface:nth-child(20) {
+  --surface-index: 19;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(7) {
+  --slice-index: 6;
+  --slice-offset: calc(var(--angle-offset) * var(--slice-index));
+}
+.sphere .slice:nth-child(7) .surface {
+  height: var(--surface-size);
+  --w: calc(var(--d) * var(--pi) / 20);
+  width: var(--w);
+  background: #DBBCE12a;
+  border: 1px solid #9fa8b82a;
+  transform: rotateY(90deg) rotateX(calc(var(--surface-offset) * var(--ratio))) translateZ(calc(cos(var(--surface-offset)) * var(--r)));
+}
+.sphere .slice:nth-child(7) .surface:nth-child(1) {
+  --surface-index: 0;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(7) .surface:nth-child(2) {
+  --surface-index: 1;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(7) .surface:nth-child(3) {
+  --surface-index: 2;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(7) .surface:nth-child(4) {
+  --surface-index: 3;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(7) .surface:nth-child(5) {
+  --surface-index: 4;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(7) .surface:nth-child(6) {
+  --surface-index: 5;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(7) .surface:nth-child(7) {
+  --surface-index: 6;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(7) .surface:nth-child(8) {
+  --surface-index: 7;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(7) .surface:nth-child(9) {
+  --surface-index: 8;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(7) .surface:nth-child(10) {
+  --surface-index: 9;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(7) .surface:nth-child(11) {
+  --surface-index: 10;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(7) .surface:nth-child(12) {
+  --surface-index: 11;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(7) .surface:nth-child(13) {
+  --surface-index: 12;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(7) .surface:nth-child(14) {
+  --surface-index: 13;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(7) .surface:nth-child(15) {
+  --surface-index: 14;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(7) .surface:nth-child(16) {
+  --surface-index: 15;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(7) .surface:nth-child(17) {
+  --surface-index: 16;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(7) .surface:nth-child(18) {
+  --surface-index: 17;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(7) .surface:nth-child(19) {
+  --surface-index: 18;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(7) .surface:nth-child(20) {
+  --surface-index: 19;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(8) {
+  --slice-index: 7;
+  --slice-offset: calc(var(--angle-offset) * var(--slice-index));
+}
+.sphere .slice:nth-child(8) .surface {
+  height: var(--surface-size);
+  --w: calc(var(--d) * var(--pi) / 20);
+  width: var(--w);
+  background: #DBBCE12a;
+  border: 1px solid #9fa8b82a;
+  transform: rotateY(90deg) rotateX(calc(var(--surface-offset) * var(--ratio))) translateZ(calc(cos(var(--surface-offset)) * var(--r)));
+}
+.sphere .slice:nth-child(8) .surface:nth-child(1) {
+  --surface-index: 0;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(8) .surface:nth-child(2) {
+  --surface-index: 1;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(8) .surface:nth-child(3) {
+  --surface-index: 2;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(8) .surface:nth-child(4) {
+  --surface-index: 3;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(8) .surface:nth-child(5) {
+  --surface-index: 4;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(8) .surface:nth-child(6) {
+  --surface-index: 5;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(8) .surface:nth-child(7) {
+  --surface-index: 6;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(8) .surface:nth-child(8) {
+  --surface-index: 7;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(8) .surface:nth-child(9) {
+  --surface-index: 8;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(8) .surface:nth-child(10) {
+  --surface-index: 9;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(8) .surface:nth-child(11) {
+  --surface-index: 10;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(8) .surface:nth-child(12) {
+  --surface-index: 11;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(8) .surface:nth-child(13) {
+  --surface-index: 12;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(8) .surface:nth-child(14) {
+  --surface-index: 13;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(8) .surface:nth-child(15) {
+  --surface-index: 14;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(8) .surface:nth-child(16) {
+  --surface-index: 15;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(8) .surface:nth-child(17) {
+  --surface-index: 16;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(8) .surface:nth-child(18) {
+  --surface-index: 17;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(8) .surface:nth-child(19) {
+  --surface-index: 18;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(8) .surface:nth-child(20) {
+  --surface-index: 19;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(9) {
+  --slice-index: 8;
+  --slice-offset: calc(var(--angle-offset) * var(--slice-index));
+}
+.sphere .slice:nth-child(9) .surface {
+  height: var(--surface-size);
+  --w: calc(var(--d) * var(--pi) / 20);
+  width: var(--w);
+  background: #DBBCE12a;
+  border: 1px solid #9fa8b82a;
+  transform: rotateY(90deg) rotateX(calc(var(--surface-offset) * var(--ratio))) translateZ(calc(cos(var(--surface-offset)) * var(--r)));
+}
+.sphere .slice:nth-child(9) .surface:nth-child(1) {
+  --surface-index: 0;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(9) .surface:nth-child(2) {
+  --surface-index: 1;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(9) .surface:nth-child(3) {
+  --surface-index: 2;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(9) .surface:nth-child(4) {
+  --surface-index: 3;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(9) .surface:nth-child(5) {
+  --surface-index: 4;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(9) .surface:nth-child(6) {
+  --surface-index: 5;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(9) .surface:nth-child(7) {
+  --surface-index: 6;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(9) .surface:nth-child(8) {
+  --surface-index: 7;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(9) .surface:nth-child(9) {
+  --surface-index: 8;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(9) .surface:nth-child(10) {
+  --surface-index: 9;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(9) .surface:nth-child(11) {
+  --surface-index: 10;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(9) .surface:nth-child(12) {
+  --surface-index: 11;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(9) .surface:nth-child(13) {
+  --surface-index: 12;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(9) .surface:nth-child(14) {
+  --surface-index: 13;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(9) .surface:nth-child(15) {
+  --surface-index: 14;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(9) .surface:nth-child(16) {
+  --surface-index: 15;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(9) .surface:nth-child(17) {
+  --surface-index: 16;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(9) .surface:nth-child(18) {
+  --surface-index: 17;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(9) .surface:nth-child(19) {
+  --surface-index: 18;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(9) .surface:nth-child(20) {
+  --surface-index: 19;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(10) {
+  --slice-index: 9;
+  --slice-offset: calc(var(--angle-offset) * var(--slice-index));
+}
+.sphere .slice:nth-child(10) .surface {
+  height: var(--surface-size);
+  --w: calc(var(--d) * var(--pi) / 20);
+  width: var(--w);
+  background: #DBBCE12a;
+  border: 1px solid #9fa8b82a;
+  transform: rotateY(90deg) rotateX(calc(var(--surface-offset) * var(--ratio))) translateZ(calc(cos(var(--surface-offset)) * var(--r)));
+}
+.sphere .slice:nth-child(10) .surface:nth-child(1) {
+  --surface-index: 0;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(10) .surface:nth-child(2) {
+  --surface-index: 1;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(10) .surface:nth-child(3) {
+  --surface-index: 2;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(10) .surface:nth-child(4) {
+  --surface-index: 3;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(10) .surface:nth-child(5) {
+  --surface-index: 4;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(10) .surface:nth-child(6) {
+  --surface-index: 5;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(10) .surface:nth-child(7) {
+  --surface-index: 6;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(10) .surface:nth-child(8) {
+  --surface-index: 7;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(10) .surface:nth-child(9) {
+  --surface-index: 8;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(10) .surface:nth-child(10) {
+  --surface-index: 9;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(10) .surface:nth-child(11) {
+  --surface-index: 10;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(10) .surface:nth-child(12) {
+  --surface-index: 11;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(10) .surface:nth-child(13) {
+  --surface-index: 12;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(10) .surface:nth-child(14) {
+  --surface-index: 13;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(10) .surface:nth-child(15) {
+  --surface-index: 14;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(10) .surface:nth-child(16) {
+  --surface-index: 15;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(10) .surface:nth-child(17) {
+  --surface-index: 16;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(10) .surface:nth-child(18) {
+  --surface-index: 17;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(10) .surface:nth-child(19) {
+  --surface-index: 18;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(10) .surface:nth-child(20) {
+  --surface-index: 19;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(11) {
+  --slice-index: 10;
+  --slice-offset: calc(var(--angle-offset) * var(--slice-index));
+}
+.sphere .slice:nth-child(11) .surface {
+  height: var(--surface-size);
+  --w: calc(var(--d) * var(--pi) / 20);
+  width: var(--w);
+  background: #DBBCE12a;
+  border: 1px solid #9fa8b82a;
+  transform: rotateY(90deg) rotateX(calc(var(--surface-offset) * var(--ratio))) translateZ(calc(cos(var(--surface-offset)) * var(--r)));
+}
+.sphere .slice:nth-child(11) .surface:nth-child(1) {
+  --surface-index: 0;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(11) .surface:nth-child(2) {
+  --surface-index: 1;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(11) .surface:nth-child(3) {
+  --surface-index: 2;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(11) .surface:nth-child(4) {
+  --surface-index: 3;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(11) .surface:nth-child(5) {
+  --surface-index: 4;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(11) .surface:nth-child(6) {
+  --surface-index: 5;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(11) .surface:nth-child(7) {
+  --surface-index: 6;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(11) .surface:nth-child(8) {
+  --surface-index: 7;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(11) .surface:nth-child(9) {
+  --surface-index: 8;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(11) .surface:nth-child(10) {
+  --surface-index: 9;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(11) .surface:nth-child(11) {
+  --surface-index: 10;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(11) .surface:nth-child(12) {
+  --surface-index: 11;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(11) .surface:nth-child(13) {
+  --surface-index: 12;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(11) .surface:nth-child(14) {
+  --surface-index: 13;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(11) .surface:nth-child(15) {
+  --surface-index: 14;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(11) .surface:nth-child(16) {
+  --surface-index: 15;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(11) .surface:nth-child(17) {
+  --surface-index: 16;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(11) .surface:nth-child(18) {
+  --surface-index: 17;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(11) .surface:nth-child(19) {
+  --surface-index: 18;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(11) .surface:nth-child(20) {
+  --surface-index: 19;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(12) {
+  --slice-index: 11;
+  --slice-offset: calc(var(--angle-offset) * var(--slice-index));
+}
+.sphere .slice:nth-child(12) .surface {
+  height: var(--surface-size);
+  --w: calc(var(--d) * var(--pi) / 20);
+  width: var(--w);
+  background: #DBBCE12a;
+  border: 1px solid #9fa8b82a;
+  transform: rotateY(90deg) rotateX(calc(var(--surface-offset) * var(--ratio))) translateZ(calc(cos(var(--surface-offset)) * var(--r)));
+}
+.sphere .slice:nth-child(12) .surface:nth-child(1) {
+  --surface-index: 0;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(12) .surface:nth-child(2) {
+  --surface-index: 1;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(12) .surface:nth-child(3) {
+  --surface-index: 2;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(12) .surface:nth-child(4) {
+  --surface-index: 3;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(12) .surface:nth-child(5) {
+  --surface-index: 4;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(12) .surface:nth-child(6) {
+  --surface-index: 5;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(12) .surface:nth-child(7) {
+  --surface-index: 6;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(12) .surface:nth-child(8) {
+  --surface-index: 7;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(12) .surface:nth-child(9) {
+  --surface-index: 8;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(12) .surface:nth-child(10) {
+  --surface-index: 9;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(12) .surface:nth-child(11) {
+  --surface-index: 10;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(12) .surface:nth-child(12) {
+  --surface-index: 11;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(12) .surface:nth-child(13) {
+  --surface-index: 12;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(12) .surface:nth-child(14) {
+  --surface-index: 13;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(12) .surface:nth-child(15) {
+  --surface-index: 14;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(12) .surface:nth-child(16) {
+  --surface-index: 15;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(12) .surface:nth-child(17) {
+  --surface-index: 16;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(12) .surface:nth-child(18) {
+  --surface-index: 17;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(12) .surface:nth-child(19) {
+  --surface-index: 18;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(12) .surface:nth-child(20) {
+  --surface-index: 19;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(13) {
+  --slice-index: 12;
+  --slice-offset: calc(var(--angle-offset) * var(--slice-index));
+}
+.sphere .slice:nth-child(13) .surface {
+  height: var(--surface-size);
+  --w: calc(var(--d) * var(--pi) / 20);
+  width: var(--w);
+  background: #DBBCE12a;
+  border: 1px solid #9fa8b82a;
+  transform: rotateY(90deg) rotateX(calc(var(--surface-offset) * var(--ratio))) translateZ(calc(cos(var(--surface-offset)) * var(--r)));
+}
+.sphere .slice:nth-child(13) .surface:nth-child(1) {
+  --surface-index: 0;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(13) .surface:nth-child(2) {
+  --surface-index: 1;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(13) .surface:nth-child(3) {
+  --surface-index: 2;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(13) .surface:nth-child(4) {
+  --surface-index: 3;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(13) .surface:nth-child(5) {
+  --surface-index: 4;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(13) .surface:nth-child(6) {
+  --surface-index: 5;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(13) .surface:nth-child(7) {
+  --surface-index: 6;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(13) .surface:nth-child(8) {
+  --surface-index: 7;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(13) .surface:nth-child(9) {
+  --surface-index: 8;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(13) .surface:nth-child(10) {
+  --surface-index: 9;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(13) .surface:nth-child(11) {
+  --surface-index: 10;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(13) .surface:nth-child(12) {
+  --surface-index: 11;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(13) .surface:nth-child(13) {
+  --surface-index: 12;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(13) .surface:nth-child(14) {
+  --surface-index: 13;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(13) .surface:nth-child(15) {
+  --surface-index: 14;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(13) .surface:nth-child(16) {
+  --surface-index: 15;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(13) .surface:nth-child(17) {
+  --surface-index: 16;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(13) .surface:nth-child(18) {
+  --surface-index: 17;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(13) .surface:nth-child(19) {
+  --surface-index: 18;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(13) .surface:nth-child(20) {
+  --surface-index: 19;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(14) {
+  --slice-index: 13;
+  --slice-offset: calc(var(--angle-offset) * var(--slice-index));
+}
+.sphere .slice:nth-child(14) .surface {
+  height: var(--surface-size);
+  --w: calc(var(--d) * var(--pi) / 20);
+  width: var(--w);
+  background: #DBBCE12a;
+  border: 1px solid #9fa8b82a;
+  transform: rotateY(90deg) rotateX(calc(var(--surface-offset) * var(--ratio))) translateZ(calc(cos(var(--surface-offset)) * var(--r)));
+}
+.sphere .slice:nth-child(14) .surface:nth-child(1) {
+  --surface-index: 0;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(14) .surface:nth-child(2) {
+  --surface-index: 1;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(14) .surface:nth-child(3) {
+  --surface-index: 2;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(14) .surface:nth-child(4) {
+  --surface-index: 3;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(14) .surface:nth-child(5) {
+  --surface-index: 4;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(14) .surface:nth-child(6) {
+  --surface-index: 5;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(14) .surface:nth-child(7) {
+  --surface-index: 6;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(14) .surface:nth-child(8) {
+  --surface-index: 7;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(14) .surface:nth-child(9) {
+  --surface-index: 8;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(14) .surface:nth-child(10) {
+  --surface-index: 9;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(14) .surface:nth-child(11) {
+  --surface-index: 10;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(14) .surface:nth-child(12) {
+  --surface-index: 11;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(14) .surface:nth-child(13) {
+  --surface-index: 12;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(14) .surface:nth-child(14) {
+  --surface-index: 13;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(14) .surface:nth-child(15) {
+  --surface-index: 14;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(14) .surface:nth-child(16) {
+  --surface-index: 15;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(14) .surface:nth-child(17) {
+  --surface-index: 16;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(14) .surface:nth-child(18) {
+  --surface-index: 17;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(14) .surface:nth-child(19) {
+  --surface-index: 18;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(14) .surface:nth-child(20) {
+  --surface-index: 19;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(15) {
+  --slice-index: 14;
+  --slice-offset: calc(var(--angle-offset) * var(--slice-index));
+}
+.sphere .slice:nth-child(15) .surface {
+  height: var(--surface-size);
+  --w: calc(var(--d) * var(--pi) / 20);
+  width: var(--w);
+  background: #DBBCE12a;
+  border: 1px solid #9fa8b82a;
+  transform: rotateY(90deg) rotateX(calc(var(--surface-offset) * var(--ratio))) translateZ(calc(cos(var(--surface-offset)) * var(--r)));
+}
+.sphere .slice:nth-child(15) .surface:nth-child(1) {
+  --surface-index: 0;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(15) .surface:nth-child(2) {
+  --surface-index: 1;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(15) .surface:nth-child(3) {
+  --surface-index: 2;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(15) .surface:nth-child(4) {
+  --surface-index: 3;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(15) .surface:nth-child(5) {
+  --surface-index: 4;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(15) .surface:nth-child(6) {
+  --surface-index: 5;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(15) .surface:nth-child(7) {
+  --surface-index: 6;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(15) .surface:nth-child(8) {
+  --surface-index: 7;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(15) .surface:nth-child(9) {
+  --surface-index: 8;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(15) .surface:nth-child(10) {
+  --surface-index: 9;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(15) .surface:nth-child(11) {
+  --surface-index: 10;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(15) .surface:nth-child(12) {
+  --surface-index: 11;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(15) .surface:nth-child(13) {
+  --surface-index: 12;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(15) .surface:nth-child(14) {
+  --surface-index: 13;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(15) .surface:nth-child(15) {
+  --surface-index: 14;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(15) .surface:nth-child(16) {
+  --surface-index: 15;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(15) .surface:nth-child(17) {
+  --surface-index: 16;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(15) .surface:nth-child(18) {
+  --surface-index: 17;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(15) .surface:nth-child(19) {
+  --surface-index: 18;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(15) .surface:nth-child(20) {
+  --surface-index: 19;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(16) {
+  --slice-index: 15;
+  --slice-offset: calc(var(--angle-offset) * var(--slice-index));
+}
+.sphere .slice:nth-child(16) .surface {
+  height: var(--surface-size);
+  --w: calc(var(--d) * var(--pi) / 20);
+  width: var(--w);
+  background: #DBBCE12a;
+  border: 1px solid #9fa8b82a;
+  transform: rotateY(90deg) rotateX(calc(var(--surface-offset) * var(--ratio))) translateZ(calc(cos(var(--surface-offset)) * var(--r)));
+}
+.sphere .slice:nth-child(16) .surface:nth-child(1) {
+  --surface-index: 0;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(16) .surface:nth-child(2) {
+  --surface-index: 1;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(16) .surface:nth-child(3) {
+  --surface-index: 2;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(16) .surface:nth-child(4) {
+  --surface-index: 3;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(16) .surface:nth-child(5) {
+  --surface-index: 4;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(16) .surface:nth-child(6) {
+  --surface-index: 5;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(16) .surface:nth-child(7) {
+  --surface-index: 6;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(16) .surface:nth-child(8) {
+  --surface-index: 7;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(16) .surface:nth-child(9) {
+  --surface-index: 8;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(16) .surface:nth-child(10) {
+  --surface-index: 9;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(16) .surface:nth-child(11) {
+  --surface-index: 10;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(16) .surface:nth-child(12) {
+  --surface-index: 11;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(16) .surface:nth-child(13) {
+  --surface-index: 12;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(16) .surface:nth-child(14) {
+  --surface-index: 13;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(16) .surface:nth-child(15) {
+  --surface-index: 14;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(16) .surface:nth-child(16) {
+  --surface-index: 15;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(16) .surface:nth-child(17) {
+  --surface-index: 16;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(16) .surface:nth-child(18) {
+  --surface-index: 17;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(16) .surface:nth-child(19) {
+  --surface-index: 18;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(16) .surface:nth-child(20) {
+  --surface-index: 19;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(17) {
+  --slice-index: 16;
+  --slice-offset: calc(var(--angle-offset) * var(--slice-index));
+}
+.sphere .slice:nth-child(17) .surface {
+  height: var(--surface-size);
+  --w: calc(var(--d) * var(--pi) / 20);
+  width: var(--w);
+  background: #DBBCE12a;
+  border: 1px solid #9fa8b82a;
+  transform: rotateY(90deg) rotateX(calc(var(--surface-offset) * var(--ratio))) translateZ(calc(cos(var(--surface-offset)) * var(--r)));
+}
+.sphere .slice:nth-child(17) .surface:nth-child(1) {
+  --surface-index: 0;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(17) .surface:nth-child(2) {
+  --surface-index: 1;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(17) .surface:nth-child(3) {
+  --surface-index: 2;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(17) .surface:nth-child(4) {
+  --surface-index: 3;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(17) .surface:nth-child(5) {
+  --surface-index: 4;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(17) .surface:nth-child(6) {
+  --surface-index: 5;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(17) .surface:nth-child(7) {
+  --surface-index: 6;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(17) .surface:nth-child(8) {
+  --surface-index: 7;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(17) .surface:nth-child(9) {
+  --surface-index: 8;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(17) .surface:nth-child(10) {
+  --surface-index: 9;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(17) .surface:nth-child(11) {
+  --surface-index: 10;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(17) .surface:nth-child(12) {
+  --surface-index: 11;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(17) .surface:nth-child(13) {
+  --surface-index: 12;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(17) .surface:nth-child(14) {
+  --surface-index: 13;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(17) .surface:nth-child(15) {
+  --surface-index: 14;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(17) .surface:nth-child(16) {
+  --surface-index: 15;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(17) .surface:nth-child(17) {
+  --surface-index: 16;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(17) .surface:nth-child(18) {
+  --surface-index: 17;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(17) .surface:nth-child(19) {
+  --surface-index: 18;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(17) .surface:nth-child(20) {
+  --surface-index: 19;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(18) {
+  --slice-index: 17;
+  --slice-offset: calc(var(--angle-offset) * var(--slice-index));
+}
+.sphere .slice:nth-child(18) .surface {
+  height: var(--surface-size);
+  --w: calc(var(--d) * var(--pi) / 20);
+  width: var(--w);
+  background: #DBBCE12a;
+  border: 1px solid #9fa8b82a;
+  transform: rotateY(90deg) rotateX(calc(var(--surface-offset) * var(--ratio))) translateZ(calc(cos(var(--surface-offset)) * var(--r)));
+}
+.sphere .slice:nth-child(18) .surface:nth-child(1) {
+  --surface-index: 0;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(18) .surface:nth-child(2) {
+  --surface-index: 1;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(18) .surface:nth-child(3) {
+  --surface-index: 2;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(18) .surface:nth-child(4) {
+  --surface-index: 3;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(18) .surface:nth-child(5) {
+  --surface-index: 4;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(18) .surface:nth-child(6) {
+  --surface-index: 5;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(18) .surface:nth-child(7) {
+  --surface-index: 6;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(18) .surface:nth-child(8) {
+  --surface-index: 7;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(18) .surface:nth-child(9) {
+  --surface-index: 8;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(18) .surface:nth-child(10) {
+  --surface-index: 9;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(18) .surface:nth-child(11) {
+  --surface-index: 10;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(18) .surface:nth-child(12) {
+  --surface-index: 11;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(18) .surface:nth-child(13) {
+  --surface-index: 12;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(18) .surface:nth-child(14) {
+  --surface-index: 13;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(18) .surface:nth-child(15) {
+  --surface-index: 14;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(18) .surface:nth-child(16) {
+  --surface-index: 15;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(18) .surface:nth-child(17) {
+  --surface-index: 16;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(18) .surface:nth-child(18) {
+  --surface-index: 17;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(18) .surface:nth-child(19) {
+  --surface-index: 18;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(18) .surface:nth-child(20) {
+  --surface-index: 19;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(19) {
+  --slice-index: 18;
+  --slice-offset: calc(var(--angle-offset) * var(--slice-index));
+}
+.sphere .slice:nth-child(19) .surface {
+  height: var(--surface-size);
+  --w: calc(var(--d) * var(--pi) / 20);
+  width: var(--w);
+  background: #DBBCE12a;
+  border: 1px solid #9fa8b82a;
+  transform: rotateY(90deg) rotateX(calc(var(--surface-offset) * var(--ratio))) translateZ(calc(cos(var(--surface-offset)) * var(--r)));
+}
+.sphere .slice:nth-child(19) .surface:nth-child(1) {
+  --surface-index: 0;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(19) .surface:nth-child(2) {
+  --surface-index: 1;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(19) .surface:nth-child(3) {
+  --surface-index: 2;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(19) .surface:nth-child(4) {
+  --surface-index: 3;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(19) .surface:nth-child(5) {
+  --surface-index: 4;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(19) .surface:nth-child(6) {
+  --surface-index: 5;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(19) .surface:nth-child(7) {
+  --surface-index: 6;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(19) .surface:nth-child(8) {
+  --surface-index: 7;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(19) .surface:nth-child(9) {
+  --surface-index: 8;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(19) .surface:nth-child(10) {
+  --surface-index: 9;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(19) .surface:nth-child(11) {
+  --surface-index: 10;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(19) .surface:nth-child(12) {
+  --surface-index: 11;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(19) .surface:nth-child(13) {
+  --surface-index: 12;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(19) .surface:nth-child(14) {
+  --surface-index: 13;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(19) .surface:nth-child(15) {
+  --surface-index: 14;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(19) .surface:nth-child(16) {
+  --surface-index: 15;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(19) .surface:nth-child(17) {
+  --surface-index: 16;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(19) .surface:nth-child(18) {
+  --surface-index: 17;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(19) .surface:nth-child(19) {
+  --surface-index: 18;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(19) .surface:nth-child(20) {
+  --surface-index: 19;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(20) {
+  --slice-index: 19;
+  --slice-offset: calc(var(--angle-offset) * var(--slice-index));
+}
+.sphere .slice:nth-child(20) .surface {
+  height: var(--surface-size);
+  --w: calc(var(--d) * var(--pi) / 20);
+  width: var(--w);
+  background: #DBBCE12a;
+  border: 1px solid #9fa8b82a;
+  transform: rotateY(90deg) rotateX(calc(var(--surface-offset) * var(--ratio))) translateZ(calc(cos(var(--surface-offset)) * var(--r)));
+}
+.sphere .slice:nth-child(20) .surface:nth-child(1) {
+  --surface-index: 0;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(20) .surface:nth-child(2) {
+  --surface-index: 1;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(20) .surface:nth-child(3) {
+  --surface-index: 2;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(20) .surface:nth-child(4) {
+  --surface-index: 3;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(20) .surface:nth-child(5) {
+  --surface-index: 4;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(20) .surface:nth-child(6) {
+  --surface-index: 5;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(20) .surface:nth-child(7) {
+  --surface-index: 6;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(20) .surface:nth-child(8) {
+  --surface-index: 7;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(20) .surface:nth-child(9) {
+  --surface-index: 8;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(20) .surface:nth-child(10) {
+  --surface-index: 9;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(20) .surface:nth-child(11) {
+  --surface-index: 10;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(20) .surface:nth-child(12) {
+  --surface-index: 11;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(20) .surface:nth-child(13) {
+  --surface-index: 12;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(20) .surface:nth-child(14) {
+  --surface-index: 13;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(20) .surface:nth-child(15) {
+  --surface-index: 14;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(20) .surface:nth-child(16) {
+  --surface-index: 15;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(20) .surface:nth-child(17) {
+  --surface-index: 16;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(20) .surface:nth-child(18) {
+  --surface-index: 17;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(20) .surface:nth-child(19) {
+  --surface-index: 18;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+.sphere .slice:nth-child(20) .surface:nth-child(20) {
+  --surface-index: 19;
+  --surface-offset: calc(
+    var(--angle-offset) * var(--surface-index)
+  );
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(#1f1422, black, #1f0f0a, black, #110b1e, black, #1f1422);
+  position: relative;
+  color: #A8C8FF;
+}
+
+* {
+  box-sizing: border-box;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="scene">
+  <div class="sphere">
+    <div class="slice">
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+    </div>
+    <div class="slice">
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+    </div>
+    <div class="slice">
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+    </div>
+    <div class="slice">
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+    </div>
+    <div class="slice">
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+    </div>
+    <div class="slice">
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+    </div>
+    <div class="slice">
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+    </div>
+    <div class="slice">
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+    </div>
+    <div class="slice">
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+    </div>
+    <div class="slice">
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+    </div>
+    <div class="slice">
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+    </div>
+    <div class="slice">
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+    </div>
+    <div class="slice">
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+    </div>
+    <div class="slice">
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+    </div>
+    <div class="slice">
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+    </div>
+    <div class="slice">
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+    </div>
+    <div class="slice">
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+    </div>
+    <div class="slice">
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+    </div>
+    <div class="slice">
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+    </div>
+    <div class="slice">
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+      <div class="surface"></div>
+    </div>
+  </div>
+</div>
+  <script src='https://codepen.io/konstantindenerz/pen/KKxvdPq.js'></script>
+  
+  
+</body>
+
+</html>

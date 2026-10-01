@@ -1,0 +1,332 @@
+<!--
+  Scratched Folder (CSS, SVG)
+
+  Archived from https://codepen.io/konstantindenerz/pen/zYXONxz
+  Created 2024-02-27 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  
+  
+
+  <title>Scratched Folder (CSS, SVG)</title>
+  
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+@charset "UTF-8";
+:root {
+  --color-primary: #0e91eb;
+  --color-secondary: #0a78eb;
+  --color-tertiary: #deee75;
+  --color-quaternary: #9375ee;
+  --color-surface: #f5f5f5;
+}
+
+.folder {
+  border-top: 0.4vmin solid rgba(255, 255, 255, 0.5);
+  width: 50vmin;
+  aspect-ratio: 1;
+  border-radius: 12vmin;
+  position: relative;
+  overflow: hidden;
+  background: var(--color-secondary);
+  box-shadow: -1px 2px 0 2px color-mix(in srgb, var(--color-secondary), rgba(0, 0, 0, 0.2) 65%), -1px 2px 0 2px color-mix(in srgb, var(--color-secondary), rgba(0, 0, 0, 0.2) 65%), 0 3vmin 4vmin color-mix(in srgb, var(--color-secondary), rgba(0, 0, 0, 0.04) 80%);
+}
+.folder:after {
+  border-radius: 1.5vmin;
+  padding: 0 0.5vmin;
+  line-height: 6vmin;
+  content: "✿";
+  -webkit-backdrop-filter: blur(0.2rem);
+          backdrop-filter: blur(0.2rem);
+  background-color: rgba(0, 0, 0, 0.14);
+  z-index: 1111;
+  position: absolute;
+  left: 6vmin;
+  bottom: 6vmin;
+  font-size: 6vmin;
+}
+@media (hover) {
+  .folder {
+    cursor: pointer;
+  }
+  .folder:hover .doc {
+    top: 7vmin;
+  }
+  .folder:hover .doc:before {
+    transform: translateY(-1vmin) translateX(0.5vmin) rotate(15deg);
+  }
+  .folder:hover .doc:after {
+    transform: translateY(-2vmin) translateY(-0.5vmin) rotate(-15deg);
+  }
+}
+
+.dots {
+  pointer-events: none;
+  filter: url(#noise);
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  mix-blend-mode: screen;
+  opacity: 0.16;
+}
+
+.scratches {
+  pointer-events: none;
+}
+.scratches:before {
+  filter: url(#noise);
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  mix-blend-mode: screen;
+  opacity: 0.12;
+  transform: rotate(55deg) scaleY(61.5);
+}
+.scratches:after {
+  filter: url(#noise);
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  mix-blend-mode: screen;
+  opacity: 0.15;
+  transform: rotate(25deg) scaleY(111.5);
+}
+
+.fg {
+  position: absolute;
+  border-radius: 0 6vmin;
+  bottom: -0.6vmin;
+  left: 0;
+  right: 0;
+  aspect-ratio: 1/0.498;
+}
+.fg:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  --highlight-color: rgba(255, 255, 255, 0.4);
+  --darken-color: color-mix(in srgb, var(--color-secondary), black 30%);
+  background: radial-gradient(14vmin 0.7vmin at 30vmin 24.6vmin, var(--darken-color), transparent), radial-gradient(14vmin 0.7vmin at 10.3vmin 24.6vmin, var(--darken-color), transparent), radial-gradient(14vmin 0.7vmin at 45vmin 0, var(--highlight-color), transparent), radial-gradient(6vmin 2vmin at 50vmin 0, var(--highlight-color), transparent), color-mix(in srgb, var(--color-primary), rgba(255, 255, 255, 0.1) 70%);
+  -webkit-backdrop-filter: blur(0.5rem);
+          backdrop-filter: blur(0.5rem);
+  --shadow-color: color-mix(in srgb, var(--color-secondary), black 10%);
+  border-bottom: 0.25vmin solid color-mix(in srgb, var(--color-secondary), black 30%);
+}
+
+.fg-top {
+  background: color-mix(in srgb, var(--color-primary), rgba(255, 255, 255, 0.1) 70%);
+  -webkit-backdrop-filter: blur(0.5rem);
+          backdrop-filter: blur(0.5rem);
+  position: absolute;
+  inset: 0;
+  --size: 7vmin;
+  height: var(--size);
+  transform: translateY(calc(-1 * var(--size)));
+  border-top: 3px solid rgba(255, 255, 255, 0.5);
+  border-radius: 12vmin 0 0 0;
+  width: 20vmin;
+}
+
+.fg-top-2 {
+  position: absolute;
+  left: 20vmin;
+  top: -7vmin;
+  width: 4vmin;
+  border-radius: 0 12vmin 0 0;
+  --size: 7vmin;
+  height: var(--size);
+  background: color-mix(in srgb, var(--color-primary), rgba(255, 255, 255, 0.1) 70%);
+  -webkit-backdrop-filter: blur(0.5rem);
+          backdrop-filter: blur(0.5rem);
+  border-top: 3px solid rgba(255, 255, 255, 0.5);
+  bottom: 0;
+}
+
+.fg-top-3 {
+  position: absolute;
+  left: 24vmin;
+  width: 4vmin;
+  top: -4vmin;
+  border-radius: 0 12vmin 0 0;
+  --size: 4vmin;
+  height: var(--size);
+  -webkit-mask-image: radial-gradient(200% 200% at 100% 0%, transparent 50%, black 50%);
+          mask-image: radial-gradient(200% 200% at 100% 0%, transparent 50%, black 50%);
+  background: color-mix(in srgb, var(--color-primary), rgba(255, 255, 255, 0.1) 70%);
+  -webkit-backdrop-filter: blur(0.5rem);
+          backdrop-filter: blur(0.5rem);
+}
+
+.doc-container {
+  position: absolute;
+  inset: 0;
+  -webkit-mask: linear-gradient(to bottom, black 70%, transparent 80%);
+          mask: linear-gradient(to bottom, black 70%, transparent 80%);
+}
+
+.doc {
+  position: absolute;
+  left: 8vmin;
+  top: 8vmin;
+  right: 8vmin;
+  height: 26vmin;
+  background: linear-gradient(to bottom, white 70%, var(--color-secondary));
+  border-radius: 4vmin 4vmin 0 0;
+  box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.2);
+  transition: top 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 4vmin 3vmin;
+  gap: 2vmin;
+}
+.doc:before {
+  content: "";
+  position: absolute;
+  left: 2vmin;
+  top: 0;
+  right: 2vmin;
+  bottom: 0;
+  transform: translateY(-1vmin) rotate(5deg);
+  z-index: -1;
+  background: color-mix(in srgb, var(--color-secondary), white 20%);
+  border: 0.3vmin solid rgba(255, 255, 255, 0.1);
+  border-radius: inherit;
+  transition: transform 0.3s ease;
+  transform-origin: right;
+}
+.doc:after {
+  content: "";
+  position: absolute;
+  left: 2vmin;
+  top: 0;
+  right: 2vmin;
+  bottom: 0;
+  transform: translateY(-2.5vmin) rotate(-5deg);
+  z-index: -2;
+  border: 0.3vmin solid rgba(255, 255, 255, 0.1);
+  background: color-mix(in srgb, var(--color-secondary), black 5%);
+  border-radius: inherit;
+  transition: transform 0.3s ease;
+  transform-origin: left;
+}
+.doc .row {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vmin;
+}
+.doc .row .placeholder {
+  background-color: rgba(0, 0, 0, 0.08);
+  width: 100%;
+  height: 3vmin;
+  border-radius: 4vmin;
+}
+.doc .row .placeholder:last-child {
+  width: 66%;
+}
+.doc .row:last-child .placeholder {
+  width: 40%;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+}
+body:after {
+  content: "";
+  position: absolute;
+  background: url(https://assets.codepen.io/907471/noise.svg);
+  mix-blend-mode: lighten;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  filter: invert(0);
+  z-index: 10000;
+}
+
+.filter {
+  display: block;
+  width: 0;
+  height: 0;
+  overflow: visible !important;
+  position: absolute;
+}
+
+a.labs-follow-me {
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <svg class=filter xmlns="http://www.w3.org/2000/svg">
+   <filter id="noise">
+       <feTurbulence baseFrequency="0.195"/>
+       <feColorMatrix values="0 0 0 9 -5
+                              0 0 0 9 -4
+                              0 0 0 9 -5
+                              0 0 0 0 1"/>
+   </filter>
+</svg>
+<div class="folder" aria-label="Animated Scratched Folder Icon">
+  <div class="dots"></div>
+  <div class="scratches"></div>
+  <div class="doc-container">
+    <div class="doc">
+      <div class="row">
+        <div class="placeholder"></div>
+        <div class="placeholder"></div>
+      </div>
+      <div class="row">
+        <div class="placeholder"></div>
+      </div>
+    </div>
+  </div>
+  <div class="fg-container">
+    <div class="fg">
+      <div class="fg-top"></div>
+      <div class="fg-top-2"></div>
+      <div class="fg-top-3"></div>
+      <div class="dots"></div>
+      <div class="scratches"></div>
+    </div>
+  </div>
+</div>
+  <script src='https://codepen.io/konstantindenerz/pen/KKxvdPq.js'></script>
+  
+  
+</body>
+
+</html>

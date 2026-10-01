@@ -1,0 +1,198 @@
+<!--
+  Tabs with Rounded Corners
+
+  Archived from https://codepen.io/konstantindenerz/pen/gOEdazP
+  Created 2024-02-08 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  <title>Tabs with Rounded Corners</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+:root {
+  --color-primary: #ee75d2;
+  --color-on-primary: white;
+  --color-secondary: #75d8ee;
+  --color-tertiary: #ffeb3b;
+  --color-quaternary: red;
+  --color-bg: #11071d;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  height: 50vh;
+  max-width: 90vw;
+  box-shadow: 0 0 20rem color-mix(in srgb, var(--color-bg), white 60%);
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.tabs {
+  overflow: hidden;
+  display: flex;
+  gap: 0.25rem;
+  border-bottom: 0.625rem solid #2f2340;
+  background: color-mix(in oklab, var(--color-bg), rgba(255, 255, 255, 0.5) 20%);
+}
+.tabs .tab {
+  padding: 1rem;
+  width: 10rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.tabs .tab:not(.active) {
+  cursor: pointer;
+}
+.tabs .tab .sub {
+  font-size: 0.5rem;
+}
+.tabs .tab .title {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.tabs .tab:before, .tabs .tab:after {
+  content: "";
+  background: #2f2340;
+  position: absolute;
+  bottom: 0;
+  height: 1rem;
+  width: 1rem;
+  --size: 2rem;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: background 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+.tabs .tab:before {
+  -webkit-mask-image: radial-gradient(var(--size) var(--size) at 0 0, transparent 50%, black 50%);
+          mask-image: radial-gradient(var(--size) var(--size) at 0 0, transparent 50%, black 50%);
+  left: -1rem;
+}
+.tabs .tab:after {
+  -webkit-mask-image: radial-gradient(var(--size) var(--size) at 100% 0, transparent 50%, black 50%);
+          mask-image: radial-gradient(var(--size) var(--size) at 100% 0, transparent 50%, black 50%);
+  right: -1rem;
+}
+@media (hover) {
+  .tabs .tab {
+    transition: color 0.3s ease, background 0.2s ease;
+  }
+  .tabs .tab:hover {
+    background: #4c3966;
+  }
+}
+.tabs .tab.active {
+  z-index: 111;
+  box-shadow: 0 -0.625rem 0.955rem rgba(0, 0, 0, 0.12);
+  background: #2f2340;
+  color: var(--color-secondary);
+  pointer-events: none;
+}
+.tabs .tab.active:before, .tabs .tab.active:after {
+  transition: color 3s ease, background 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content {
+  display: grid;
+  place-items: center;
+  flex: 1;
+  background: linear-gradient(to top, color-mix(in srgb, var(--color-bg), rgba(255, 255, 255, 0.2) 30%), rgba(0, 0, 0, 0.8));
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  font-family: "Road Rage", "Audiowide", "Helvetica Neue", "serif";
+  font-weight: bold;
+  overflow: hidden;
+  background: radial-gradient(at center, transparent, var(--color-bg) 60%), linear-gradient(to right, color-mix(in srgb, var(--color-bg), white 10%) 5%, transparent 5%) repeat-x 0 0/2rem 100%, linear-gradient(to bottom, color-mix(in srgb, var(--color-bg), white 10%) 5%, transparent 5%) repeat-y 0 0/100% 2rem, linear-gradient(to bottom, var(--color-bg), black);
+  color: var(--color-primary);
+}
+
+a.labs-follow-me {
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div id="container" class="container">
+  <div class="tabs">
+    <div class="tab active">
+      <div class="sub">Lorem ipsum</div>
+      <div class="title">Lorem ipsum, lorem ipsum</div>
+    </div>
+    <div class="tab">
+      <div class="sub">description</div>
+      <div class="title">Title</div>
+    </div>
+    <div class="tab">
+      <div class="sub">description</div>
+      <div class="title">Title</div>
+    </div>
+  </div>
+  <div class="content">Content</div>
+</div>
+  
+    <script id="rendered-js" >
+(() => {
+  const tabs = document.querySelectorAll('.tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(c => c.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+})();
+//# sourceURL=pen.js
+  </script>
+
+  
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!--
+  Random Walk ⚡️ (JS)
+
+  Archived from https://codepen.io/konstantindenerz/pen/KKOYdpp
+  Created 2024-11-15 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  <title>Random Walk ⚡️ (JS)</title>
+  
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100dvh;
+  width: 100dvw;
+  overflow: hidden;
+  background: black;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <canvas id="canvas"></canvas>
+  
+    <script id="rendered-js" >
+const ctx = canvas.getContext("2d");
+const pointsCount = 5000;
+let centerX;
+let centerY;
+let points = [];
+let pos;
+const updateSize = () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  centerX = canvas.width / 2;
+  centerY = canvas.height / 2;
+  ctx.fillStyle = "black";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  pos = { x: 0, y: centerY };
+
+  points = new Array(pointsCount).fill(0).map(() => ({
+    x: 0,
+    y: centerY }));
+
+};
+
+updateSize();
+
+window.addEventListener("resize", updateSize);
+
+function random(min, max) {
+  const minCeiled = Math.ceil(min);
+  const maxFloored = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
+}
+
+const draw = () => {
+  ctx.fillStyle = "rgba(10,10,10,.2)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  points.forEach((point, index) => {
+    if (index % pointsCount === 2) {
+      pos = { x: 0, y: centerY };
+      points = new Array(pointsCount).fill(0).map(() => ({
+        x: 0,
+        y: centerY }));
+
+    }
+    // pos.x += random(-1,1);
+    pos.x += Math.floor(Math.random() * 2);
+    pos.y += random(-1, 1);
+    ctx.fillStyle = `hsla(${index * .06 + 145}, 100%, 50%, 1)`;
+    ctx.fillRect(pos.x, pos.y, 2, 2);
+  });
+
+  requestAnimationFrame(draw);
+};
+
+draw();
+//# sourceURL=pen.js
+  </script>
+
+  
+</body>
+
+</html>

@@ -1,0 +1,1147 @@
+<!--
+  Vortex 🌀 (CSS)
+
+  Archived from https://codepen.io/konstantindenerz/pen/vYMxmyX
+  Created 2024-03-20 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  <title>Vortex 🌀 (CSS)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+@property --rotation {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+@-webkit-keyframes container-scale {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(10.5) rotate(360deg);
+  }
+}
+@keyframes container-scale {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(10.5) rotate(360deg);
+  }
+}
+.container {
+  width: var(--width);
+  height: var(--height);
+  position: absolute;
+  display: grid;
+  place-items: center;
+  perspective: var(--perspective, 37rem);
+  --count: 200;
+  --offset-per-item: calc(360deg / var(--count));
+  --delay-per-item: calc(
+    var(--duration) / var(--count) + var(--rotation-delay-offset)
+  );
+  transform: scale(5.5);
+  -webkit-animation: container-scale 20s ease-in-out forwards;
+          animation: container-scale 20s ease-in-out forwards;
+  transform-style: preserve-3d;
+}
+.container::before {
+  content: "";
+  display: grid;
+  place-items: center;
+  font-size: 0.5rem;
+  position: absolute;
+  border-radius: 25%;
+  inset: 2vmin;
+  box-shadow: 0 0 0.5rem color-mix(in oklch, var(--color-primary), transparent 40%);
+  background: var(--color-primary);
+}
+.container::after {
+  content: "CSS";
+  color: var(--color-surface);
+  display: grid;
+  place-items: center;
+  font-size: 2vmin;
+  position: absolute;
+  font-weight: bold;
+  inset: 2vmin;
+  opacity: 0;
+  text-shadow: 0 0 0.5rem color-mix(in oklch, var(--color-primary), transparent 40%);
+  -webkit-animation: label-fade-in 0.35s 20s linear forwards;
+          animation: label-fade-in 0.35s 20s linear forwards;
+  z-index: 42000;
+}
+
+.rect {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  --percent: calc((100% / var(--count) * var(--i)) / var(--color));
+  border: var(--line-width) solid color-mix(in oklch, var(--color-primary), var(--color-secondary) var(--percent));
+  transform-style: preserve-3d;
+  --rotate: calc(var(--offset-per-item) * var(--i) + var(--rotation));
+  --animation-delay: calc(var(--delay-per-item) * var(--i));
+  --default-animation: fade-in var(--animation-delay) linear forwards,
+    rotation var(--duration) var(--animation-delay) linear infinite;
+  -webkit-animation: var(--animation, var(--default-animation));
+          animation: var(--animation, var(--default-animation));
+  --z: calc(var(--i) * var(--z-offset));
+  transform: rotate(var(--rotate)) translateZ(var(--z));
+  --item-blur: calc(var(--blur) * var(--percent) / 100);
+  filter: blur(var(--blur));
+  transition: opacity 0.3s linear;
+  border-radius: var(--border-radius);
+}
+.rect:nth-child(1) {
+  --i: 0;
+}
+.rect:nth-child(2) {
+  --i: 1;
+}
+.rect:nth-child(3) {
+  --i: 2;
+}
+.rect:nth-child(4) {
+  --i: 3;
+}
+.rect:nth-child(5) {
+  --i: 4;
+}
+.rect:nth-child(6) {
+  --i: 5;
+}
+.rect:nth-child(7) {
+  --i: 6;
+}
+.rect:nth-child(8) {
+  --i: 7;
+}
+.rect:nth-child(9) {
+  --i: 8;
+}
+.rect:nth-child(10) {
+  --i: 9;
+}
+.rect:nth-child(11) {
+  --i: 10;
+}
+.rect:nth-child(12) {
+  --i: 11;
+}
+.rect:nth-child(13) {
+  --i: 12;
+}
+.rect:nth-child(14) {
+  --i: 13;
+}
+.rect:nth-child(15) {
+  --i: 14;
+}
+.rect:nth-child(16) {
+  --i: 15;
+}
+.rect:nth-child(17) {
+  --i: 16;
+}
+.rect:nth-child(18) {
+  --i: 17;
+}
+.rect:nth-child(19) {
+  --i: 18;
+}
+.rect:nth-child(20) {
+  --i: 19;
+}
+.rect:nth-child(21) {
+  --i: 20;
+}
+.rect:nth-child(22) {
+  --i: 21;
+}
+.rect:nth-child(23) {
+  --i: 22;
+}
+.rect:nth-child(24) {
+  --i: 23;
+}
+.rect:nth-child(25) {
+  --i: 24;
+}
+.rect:nth-child(26) {
+  --i: 25;
+}
+.rect:nth-child(27) {
+  --i: 26;
+}
+.rect:nth-child(28) {
+  --i: 27;
+}
+.rect:nth-child(29) {
+  --i: 28;
+}
+.rect:nth-child(30) {
+  --i: 29;
+}
+.rect:nth-child(31) {
+  --i: 30;
+}
+.rect:nth-child(32) {
+  --i: 31;
+}
+.rect:nth-child(33) {
+  --i: 32;
+}
+.rect:nth-child(34) {
+  --i: 33;
+}
+.rect:nth-child(35) {
+  --i: 34;
+}
+.rect:nth-child(36) {
+  --i: 35;
+}
+.rect:nth-child(37) {
+  --i: 36;
+}
+.rect:nth-child(38) {
+  --i: 37;
+}
+.rect:nth-child(39) {
+  --i: 38;
+}
+.rect:nth-child(40) {
+  --i: 39;
+}
+.rect:nth-child(41) {
+  --i: 40;
+}
+.rect:nth-child(42) {
+  --i: 41;
+}
+.rect:nth-child(43) {
+  --i: 42;
+}
+.rect:nth-child(44) {
+  --i: 43;
+}
+.rect:nth-child(45) {
+  --i: 44;
+}
+.rect:nth-child(46) {
+  --i: 45;
+}
+.rect:nth-child(47) {
+  --i: 46;
+}
+.rect:nth-child(48) {
+  --i: 47;
+}
+.rect:nth-child(49) {
+  --i: 48;
+}
+.rect:nth-child(50) {
+  --i: 49;
+}
+.rect:nth-child(51) {
+  --i: 50;
+}
+.rect:nth-child(52) {
+  --i: 51;
+}
+.rect:nth-child(53) {
+  --i: 52;
+}
+.rect:nth-child(54) {
+  --i: 53;
+}
+.rect:nth-child(55) {
+  --i: 54;
+}
+.rect:nth-child(56) {
+  --i: 55;
+}
+.rect:nth-child(57) {
+  --i: 56;
+}
+.rect:nth-child(58) {
+  --i: 57;
+}
+.rect:nth-child(59) {
+  --i: 58;
+}
+.rect:nth-child(60) {
+  --i: 59;
+}
+.rect:nth-child(61) {
+  --i: 60;
+}
+.rect:nth-child(62) {
+  --i: 61;
+}
+.rect:nth-child(63) {
+  --i: 62;
+}
+.rect:nth-child(64) {
+  --i: 63;
+}
+.rect:nth-child(65) {
+  --i: 64;
+}
+.rect:nth-child(66) {
+  --i: 65;
+}
+.rect:nth-child(67) {
+  --i: 66;
+}
+.rect:nth-child(68) {
+  --i: 67;
+}
+.rect:nth-child(69) {
+  --i: 68;
+}
+.rect:nth-child(70) {
+  --i: 69;
+}
+.rect:nth-child(71) {
+  --i: 70;
+}
+.rect:nth-child(72) {
+  --i: 71;
+}
+.rect:nth-child(73) {
+  --i: 72;
+}
+.rect:nth-child(74) {
+  --i: 73;
+}
+.rect:nth-child(75) {
+  --i: 74;
+}
+.rect:nth-child(76) {
+  --i: 75;
+}
+.rect:nth-child(77) {
+  --i: 76;
+}
+.rect:nth-child(78) {
+  --i: 77;
+}
+.rect:nth-child(79) {
+  --i: 78;
+}
+.rect:nth-child(80) {
+  --i: 79;
+}
+.rect:nth-child(81) {
+  --i: 80;
+}
+.rect:nth-child(82) {
+  --i: 81;
+}
+.rect:nth-child(83) {
+  --i: 82;
+}
+.rect:nth-child(84) {
+  --i: 83;
+}
+.rect:nth-child(85) {
+  --i: 84;
+}
+.rect:nth-child(86) {
+  --i: 85;
+}
+.rect:nth-child(87) {
+  --i: 86;
+}
+.rect:nth-child(88) {
+  --i: 87;
+}
+.rect:nth-child(89) {
+  --i: 88;
+}
+.rect:nth-child(90) {
+  --i: 89;
+}
+.rect:nth-child(91) {
+  --i: 90;
+}
+.rect:nth-child(92) {
+  --i: 91;
+}
+.rect:nth-child(93) {
+  --i: 92;
+}
+.rect:nth-child(94) {
+  --i: 93;
+}
+.rect:nth-child(95) {
+  --i: 94;
+}
+.rect:nth-child(96) {
+  --i: 95;
+}
+.rect:nth-child(97) {
+  --i: 96;
+}
+.rect:nth-child(98) {
+  --i: 97;
+}
+.rect:nth-child(99) {
+  --i: 98;
+}
+.rect:nth-child(100) {
+  --i: 99;
+}
+.rect:nth-child(101) {
+  --i: 100;
+}
+.rect:nth-child(102) {
+  --i: 101;
+}
+.rect:nth-child(103) {
+  --i: 102;
+}
+.rect:nth-child(104) {
+  --i: 103;
+}
+.rect:nth-child(105) {
+  --i: 104;
+}
+.rect:nth-child(106) {
+  --i: 105;
+}
+.rect:nth-child(107) {
+  --i: 106;
+}
+.rect:nth-child(108) {
+  --i: 107;
+}
+.rect:nth-child(109) {
+  --i: 108;
+}
+.rect:nth-child(110) {
+  --i: 109;
+}
+.rect:nth-child(111) {
+  --i: 110;
+}
+.rect:nth-child(112) {
+  --i: 111;
+}
+.rect:nth-child(113) {
+  --i: 112;
+}
+.rect:nth-child(114) {
+  --i: 113;
+}
+.rect:nth-child(115) {
+  --i: 114;
+}
+.rect:nth-child(116) {
+  --i: 115;
+}
+.rect:nth-child(117) {
+  --i: 116;
+}
+.rect:nth-child(118) {
+  --i: 117;
+}
+.rect:nth-child(119) {
+  --i: 118;
+}
+.rect:nth-child(120) {
+  --i: 119;
+}
+.rect:nth-child(121) {
+  --i: 120;
+}
+.rect:nth-child(122) {
+  --i: 121;
+}
+.rect:nth-child(123) {
+  --i: 122;
+}
+.rect:nth-child(124) {
+  --i: 123;
+}
+.rect:nth-child(125) {
+  --i: 124;
+}
+.rect:nth-child(126) {
+  --i: 125;
+}
+.rect:nth-child(127) {
+  --i: 126;
+}
+.rect:nth-child(128) {
+  --i: 127;
+}
+.rect:nth-child(129) {
+  --i: 128;
+}
+.rect:nth-child(130) {
+  --i: 129;
+}
+.rect:nth-child(131) {
+  --i: 130;
+}
+.rect:nth-child(132) {
+  --i: 131;
+}
+.rect:nth-child(133) {
+  --i: 132;
+}
+.rect:nth-child(134) {
+  --i: 133;
+}
+.rect:nth-child(135) {
+  --i: 134;
+}
+.rect:nth-child(136) {
+  --i: 135;
+}
+.rect:nth-child(137) {
+  --i: 136;
+}
+.rect:nth-child(138) {
+  --i: 137;
+}
+.rect:nth-child(139) {
+  --i: 138;
+}
+.rect:nth-child(140) {
+  --i: 139;
+}
+.rect:nth-child(141) {
+  --i: 140;
+}
+.rect:nth-child(142) {
+  --i: 141;
+}
+.rect:nth-child(143) {
+  --i: 142;
+}
+.rect:nth-child(144) {
+  --i: 143;
+}
+.rect:nth-child(145) {
+  --i: 144;
+}
+.rect:nth-child(146) {
+  --i: 145;
+}
+.rect:nth-child(147) {
+  --i: 146;
+}
+.rect:nth-child(148) {
+  --i: 147;
+}
+.rect:nth-child(149) {
+  --i: 148;
+}
+.rect:nth-child(150) {
+  --i: 149;
+}
+.rect:nth-child(151) {
+  --i: 150;
+}
+.rect:nth-child(152) {
+  --i: 151;
+}
+.rect:nth-child(153) {
+  --i: 152;
+}
+.rect:nth-child(154) {
+  --i: 153;
+}
+.rect:nth-child(155) {
+  --i: 154;
+}
+.rect:nth-child(156) {
+  --i: 155;
+}
+.rect:nth-child(157) {
+  --i: 156;
+}
+.rect:nth-child(158) {
+  --i: 157;
+}
+.rect:nth-child(159) {
+  --i: 158;
+}
+.rect:nth-child(160) {
+  --i: 159;
+}
+.rect:nth-child(161) {
+  --i: 160;
+}
+.rect:nth-child(162) {
+  --i: 161;
+}
+.rect:nth-child(163) {
+  --i: 162;
+}
+.rect:nth-child(164) {
+  --i: 163;
+}
+.rect:nth-child(165) {
+  --i: 164;
+}
+.rect:nth-child(166) {
+  --i: 165;
+}
+.rect:nth-child(167) {
+  --i: 166;
+}
+.rect:nth-child(168) {
+  --i: 167;
+}
+.rect:nth-child(169) {
+  --i: 168;
+}
+.rect:nth-child(170) {
+  --i: 169;
+}
+.rect:nth-child(171) {
+  --i: 170;
+}
+.rect:nth-child(172) {
+  --i: 171;
+}
+.rect:nth-child(173) {
+  --i: 172;
+}
+.rect:nth-child(174) {
+  --i: 173;
+}
+.rect:nth-child(175) {
+  --i: 174;
+}
+.rect:nth-child(176) {
+  --i: 175;
+}
+.rect:nth-child(177) {
+  --i: 176;
+}
+.rect:nth-child(178) {
+  --i: 177;
+}
+.rect:nth-child(179) {
+  --i: 178;
+}
+.rect:nth-child(180) {
+  --i: 179;
+}
+.rect:nth-child(181) {
+  --i: 180;
+}
+.rect:nth-child(182) {
+  --i: 181;
+}
+.rect:nth-child(183) {
+  --i: 182;
+}
+.rect:nth-child(184) {
+  --i: 183;
+}
+.rect:nth-child(185) {
+  --i: 184;
+}
+.rect:nth-child(186) {
+  --i: 185;
+}
+.rect:nth-child(187) {
+  --i: 186;
+}
+.rect:nth-child(188) {
+  --i: 187;
+}
+.rect:nth-child(189) {
+  --i: 188;
+}
+.rect:nth-child(190) {
+  --i: 189;
+}
+.rect:nth-child(191) {
+  --i: 190;
+}
+.rect:nth-child(192) {
+  --i: 191;
+}
+.rect:nth-child(193) {
+  --i: 192;
+}
+.rect:nth-child(194) {
+  --i: 193;
+}
+.rect:nth-child(195) {
+  --i: 194;
+}
+.rect:nth-child(196) {
+  --i: 195;
+}
+.rect:nth-child(197) {
+  --i: 196;
+}
+.rect:nth-child(198) {
+  --i: 197;
+}
+.rect:nth-child(199) {
+  --i: 198;
+}
+.rect:nth-child(200) {
+  --i: 199;
+}
+.rect:nth-child(201) {
+  --i: 200;
+}
+
+@-webkit-keyframes label-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes label-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.1;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.1;
+  }
+}
+@-webkit-keyframes rotation {
+  from {
+    --rotation: 0deg;
+  }
+  to {
+    --rotation: 360deg;
+  }
+}
+@keyframes rotation {
+  from {
+    --rotation: 0deg;
+  }
+  to {
+    --rotation: 360deg;
+  }
+}
+body {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: "Rajdhani", "sans-serif";
+  --c: rgba(10, 10, 10, 1);
+  background: conic-gradient(from 45deg, var(--c), transparent, var(--c)), var(--color-surface);
+  color: var(--color-primary);
+  margin: 0;
+  overflow: hidden;
+}
+
+a.labs-follow-me {
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --tp-base-background-color: var(--color-surface);
+  --tp-base-shadow-color: hsla(0, 0%, 0%, 0.2);
+  --tp-button-background-color: var(--color-secondary);
+  --tp-button-background-color-active: hsla(230, 7%, 85%, 1);
+  --tp-button-background-color-focus: hsla(230, 7%, 80%, 1);
+  --tp-button-background-color-hover: hsla(230, 7%, 75%, 1);
+  --tp-button-foreground-color: hsla(230, 7%, 17%, 1);
+  --tp-container-background-color: hsla(230, 7%, 75%, 0.1);
+  --tp-container-background-color-active: hsla(230, 7%, 75%, 0.25);
+  --tp-container-background-color-focus: hsla(230, 7%, 75%, 0.2);
+  --tp-container-background-color-hover: hsla(230, 7%, 75%, 0.15);
+  --tp-container-foreground-color: hsla(230, 7%, 75%, 1);
+  --tp-groove-foreground-color: hsla(230, 7%, 75%, 0.1);
+  --tp-input-background-color: hsla(230, 7%, 75%, 0.1);
+  --tp-input-background-color-active: hsla(230, 7%, 75%, 0.25);
+  --tp-input-background-color-focus: hsla(230, 7%, 75%, 0.2);
+  --tp-input-background-color-hover: hsla(230, 7%, 75%, 0.15);
+  --tp-input-foreground-color: var(--color-primary);
+  --tp-label-foreground-color: hsla(230, 7%, 75%, 0.7);
+  --tp-monitor-background-color: hsla(230, 7%, 0%, 0.2);
+  --tp-monitor-foreground-color: hsla(230, 7%, 75%, 0.7);
+}
+@media (max-width: 600px), (max-height: 600px) {
+  :root {
+    font-size: 90%;
+  }
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="container">
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+  <div class="rect"></div>
+
+</div>
+  <script src='https://codepen.io/konstantindenerz/pen/KKxvdPq.js'></script>
+    <script id="rendered-js" type="module">
+import { Pane } from "https://cdn.jsdelivr.net/npm/tweakpane@4.0.5/dist/tweakpane.min.js";
+
+// https://tweakpane.github.io/docs/quick-tour/
+const pane = new Pane({ title: "Config", expanded: false });
+
+const config = {
+  global: {
+    colorPrimary: '#75d8ee',
+    colorSecondary: 'white',
+    colorSurface: 'black' },
+
+  scene: {
+    perspective: 50 },
+
+  shape: {
+    width: 8,
+    height: 8,
+    "line-width": .4,
+    blur: 0,
+    "border-radius": 1.5,
+    color: .4,
+    "z-offset": 9.6 },
+
+  animation: {
+    play: true,
+    duration: 10,
+    "rotation-delay-offset": .1 } };
+
+const prop = (name, value) => {
+  document.documentElement.style.setProperty(`--${name}`, value);
+};
+
+const global = pane.addFolder({ title: 'Global', expanded: true });
+global.addBinding(config.global, 'colorPrimary').on('change', ({ value }) => prop('color-primary', value));
+global.addBinding(config.global, 'colorSecondary').on('change', ({ value }) => prop('color-secondary', value));
+global.addBinding(config.global, 'colorSurface').on('change', ({ value }) => prop('color-surface', value));
+const shape = pane.addFolder({ title: 'Shape', expanded: true });
+["width", "height"].forEach(name => {
+  shape.addBinding(config.shape, name, { min: 0, max: 100, step: 0.0625 }).
+  on('change', ({ value }) => prop(name, value ? `${config.shape[name]}vmin` : '0'));
+});
+["line-width"].forEach(name => {
+  shape.addBinding(config.shape, name, { min: 0, max: 2, step: 0.00625 }).
+  on('change', ({ value }) => prop(name, value ? `${config.shape[name]}rem` : '0'));
+});
+
+["blur"].forEach(name => {
+  shape.addBinding(config.shape, name, { min: 0, max: 4, step: .001 }).
+  on('change', ({ value }) => prop(name, value ? `${config.shape[name]}rem` : '0'));
+});
+
+["border-radius"].forEach(name => {
+  shape.addBinding(config.shape, name, { min: 0, max: 10, step: 0.0625 }).
+  on('change', ({ value }) => prop(name, value ? `${config.shape[name]}vmin` : '0'));
+});
+
+["color"].forEach(name => {
+  shape.addBinding(config.shape, name, { min: 0, max: 1, step: 0.01 }).
+  on('change', ({ value }) => prop(name, value ? `${config.shape[name]}` : '0'));
+});
+
+["z-offset"].forEach(name => {
+  shape.addBinding(config.shape, name, { min: 0, max: 20, step: 1 }).
+  on('change', ({ value }) => prop(name, value ? `${config.shape[name]}px` : '0'));
+});
+
+const scene = pane.addFolder({ title: 'Scene', expanded: true });
+["perspective"].forEach(name => {
+  scene.addBinding(config.scene, name, { min: 0, max: 100, step: 0.0625 }).
+  on('change', ({ value }) => prop(name, value ? `${config.scene[name]}rem` : '0'));
+});
+
+const animation = pane.addFolder({ title: 'Animation', expanded: true });
+
+animation.addBinding(config.animation, 'play').
+on('change', ({ value }) => prop('animation', value ? `unset` : 'foo 0s infinite'));
+
+["duration", "rotation-delay-offset"].forEach(name => {
+  animation.addBinding(config.animation, name, { min: 0, max: 30, step: 0.01 }).
+  on('change', ({ value }) => prop(name, value ? `${config.animation[name]}s` : '0'));
+});
+const reset = animation.addButton({
+  title: 'Reset' });
+
+reset.on('click', () => {
+  prop('animation', 'foo 0s infinite');
+  setTimeout(() => {
+    prop('animation', 'unset');
+  }, 10);
+});
+
+// apply values from config
+Object.keys(config).forEach(section => {
+  Object.keys(config[section]).forEach(key => {
+    const value = config[section][key];
+    config[section][key] = undefined;
+    pane.refresh();
+    config[section][key] = value;
+  });
+});
+
+pane.refresh();
+//# sourceURL=pen.js
+  </script>
+
+  
+</body>
+
+</html>
