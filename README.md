@@ -39,6 +39,17 @@ gallery media 80.0 MB.
 
 Love, view and comment counts are a snapshot from **2026-10-01** and do not update.
 
+## Publishing
+
+The repository *is* the site — there is nothing to build, so GitHub Pages
+serves it straight from the branch:
+
+**Settings → Pages → Source: Deploy from a branch → `main` / `(root)`**
+
+Serving from the root matters: the gallery's viewer loads each demo from
+`pens/<dir>/`, the same path it has in the repository. `.nojekyll` keeps Pages
+from running the files through Jekyll.
+
 ## Re-running the pipeline
 
 ```sh

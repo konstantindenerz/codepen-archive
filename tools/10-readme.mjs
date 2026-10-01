@@ -88,6 +88,17 @@ ${unvendored.includes('None —')
 
 Love, view and comment counts are a snapshot from **${meta.fetchedAt.slice(0, 10)}** and do not update.
 
+## Publishing
+
+The repository *is* the site — there is nothing to build, so GitHub Pages
+serves it straight from the branch:
+
+**Settings → Pages → Source: Deploy from a branch → \`main\` / \`(root)\`**
+
+Serving from the root matters: the gallery's viewer loads each demo from
+\`pens/<dir>/\`, the same path it has in the repository. \`.nojekyll\` keeps Pages
+from running the files through Jekyll.
+
 ## Re-running the pipeline
 
 \`\`\`sh
