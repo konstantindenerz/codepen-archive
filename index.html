@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CodePen Archive — Konstantin Denerz</title>
+<meta name="description" content="Every public CodePen by Konstantin Denerz, archived so each demo still runs even if CodePen disappears.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='13' font-size='13'>&#128230;</text></svg>">
+<script>
+  // Applied before paint so an explicit theme choice never flashes the other one.
+  try {
+    const saved = localStorage.getItem('archive-theme');
+    if (saved === 'light' || saved === 'dark') {
+      document.documentElement.dataset.theme = saved;
+    }
+  } catch { /* private mode: fall back to the system preference */ }
+</script>
+<link rel="stylesheet" href="assets/inter.css">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+
+<a class="skip" href="#grid">Skip to the demos</a>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <p class="eyebrow">Offline archive</p>
+    <h1>CodePen Archive</h1>
+    <p class="lede">
+      Every public Pen by <a href="https://codepen.io/konstantindenerz">@konstantindenerz</a>,
+      copied here with its source, its assets and a compiled copy that runs on its own.
+      Nothing on this page loads from CodePen.
+    </p>
+
+    <dl class="ledger" id="ledger">
+      <div><dt>Pens archived</dt><dd data-stat="total">—</dd></div>
+      <div><dt>Run without CodePen</dt><dd data-stat="archived">—</dd></div>
+      <div><dt>Combined loves</dt><dd data-stat="loves">—</dd></div>
+      <div><dt>Snapshot taken</dt><dd data-stat="captured">—</dd></div>
+    </dl>
+  </div>
+</header>
+
+<main>
+  <section class="controls" aria-label="Filter the archive">
+    <div class="controls-row">
+      <div class="search">
+        <label class="visually-hidden" for="search">Search by title, tag or description</label>
+        <input id="search" type="search" placeholder="Search titles, tags, descriptions" autocomplete="off" spellcheck="false">
+      </div>
+
+      <div class="chips" role="group" aria-label="Category">
+        <button type="button" class="chip" data-category="all" aria-pressed="true">All</button>
+        <button type="button" class="chip" data-category="css-js" aria-pressed="false">CSS &amp; JS</button>
+        <button type="button" class="chip" data-category="tools" aria-pressed="false">Tools</button>
+        <button type="button" class="chip" data-category="ai" aria-pressed="false">AI</button>
+      </div>
+
+      <div class="selects">
+        <label class="visually-hidden" for="sort">Sort by</label>
+        <select id="sort">
+          <option value="loves">Most loved</option>
+          <option value="views">Most viewed</option>
+          <option value="newest">Newest first</option>
+          <option value="oldest">Oldest first</option>
+          <option value="title">By title</option>
+        </select>
+
+        <label class="switch">
+          <input type="checkbox" id="show-all">
+          <span>Include Pens with 2 loves or fewer</span>
+        </label>
+
+        <button type="button" class="theme" id="theme" aria-live="polite">Theme: system</button>
+      </div>
+    </div>
+
+    <p class="result-count" id="result-count" role="status" aria-live="polite"></p>
+    <div class="tagbar" id="tagbar" role="group" aria-label="Tag"></div>
+  </section>
+
+  <ul class="grid" id="grid"></ul>
+
+  <p class="empty" id="empty" hidden>No Pen matches that. <button type="button" class="linkish" id="reset">Clear the filters</button></p>
+</main>
+
+<footer class="colophon">
+  <p>
+    Loves, views and comments are a snapshot from <span data-stat="captured">—</span> and do not update.
+    Four Pens written in CodePen's Editor 2.0 have no full-page view to copy, so they are listed with
+    their metadata and a link out, but no local demo.
+  </p>
+  <p>
+    <a href="https://github.com/konstantindenerz/codepen-archive">Source on GitHub</a> ·
+    <a href="https://codepen.io/konstantindenerz">CodePen profile</a> ·
+    <a href="https://konstantin-denerz.com">konstantin-denerz.com</a>
+  </p>
+</footer>
+
+<dialog class="viewer" id="viewer" aria-label="Demo viewer">
+  <div class="viewer-chrome">
+    <div class="viewer-id">
+      <h2 id="viewer-title">—</h2>
+      <p class="viewer-path"><span id="viewer-path">—</span></p>
+    </div>
+    <div class="viewer-actions">
+      <button type="button" class="btn" id="viewer-reload" title="Restart the demo">Restart</button>
+      <a class="btn" id="viewer-source" href="#">Source</a>
+      <a class="btn" id="viewer-codepen" href="#">CodePen</a>
+      <a class="btn" id="viewer-open" href="#" target="_blank" rel="noopener">Full page</a>
+      <button type="button" class="btn btn-close" id="viewer-close" aria-label="Close">Close</button>
+    </div>
+  </div>
+  <div class="viewer-stage"><iframe id="viewer-frame" title="Archived demo" src="about:blank"></iframe></div>
+  <div class="viewer-meta">
+    <p id="viewer-blurb"></p>
+    <ul class="viewer-tags" id="viewer-tags"></ul>
+  </div>
+</dialog>
+
+<script src="assets/app.js" type="module"></script>
+</body>
+</html>

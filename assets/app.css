@@ -1,0 +1,585 @@
+/* CodePen Archive — gallery styling.
+ *
+ * The design system is lifted from konstantin-denerz.com/projects so the
+ * archive reads as part of the same site: the same tokens, the same card
+ * behaviour, the same 8-item grid rhythm where the first and last tile of
+ * each run go large. What is new here belongs to the archive itself — the
+ * filters and the viewer that runs a demo straight out of this repository.
+ */
+
+:root {
+  --primary: #e86756;
+  --on-primary: rgba(0, 0, 0, 0.8);
+  --radius: 0.8rem;
+  --radius-lg: 1.5rem;
+  --row: 14rem;
+  --gap: 1.25rem;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  /* Light is the default; the dark block below mirrors the site's tokens. */
+  --text: rgb(45, 45, 45);
+  --on-surface: rgba(0, 0, 0, 0.8);
+  --muted: rgba(34, 34, 34, 0.78);
+  --background: rgb(213, 213, 213);
+  --surface: rgb(255, 255, 255);
+  --veil: rgba(213, 213, 213, 0.4);
+  --line: rgba(34, 34, 34, 0.12);
+  --faint: rgba(34, 34, 34, 0.04);
+  --shadow: rgba(0, 0, 0, 0.2);
+}
+
+/* Dark tokens live in a named block so both the system preference and an
+   explicit choice can pull them in without repeating the values. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --text: rgb(255, 255, 255);
+    --on-surface: rgb(169, 169, 179);
+    --muted: rgba(169, 169, 179, 0.78);
+    --background: rgb(42, 42, 42);
+    --surface: rgb(60, 60, 60);
+    --veil: rgba(42, 42, 42, 0.4);
+    --line: rgba(255, 255, 255, 0.12);
+    --faint: rgba(255, 255, 255, 0.04);
+    --shadow: rgba(0, 0, 0, 0.4);
+  }
+}
+
+:root[data-theme="dark"] {
+  --text: rgb(255, 255, 255);
+  --on-surface: rgb(169, 169, 179);
+  --muted: rgba(169, 169, 179, 0.78);
+  --background: rgb(42, 42, 42);
+  --surface: rgb(60, 60, 60);
+  --veil: rgba(42, 42, 42, 0.4);
+  --line: rgba(255, 255, 255, 0.12);
+  --faint: rgba(255, 255, 255, 0.04);
+  --shadow: rgba(0, 0, 0, 0.4);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  color: var(--on-surface);
+  background-color: var(--background);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}
+
+.skip {
+  position: absolute;
+  left: 0.75rem; top: -3rem;
+  z-index: 10;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius);
+  background: var(--primary);
+  color: var(--on-primary);
+  text-decoration: none;
+  transition: top 0.2s var(--ease);
+}
+.skip:focus { top: 0.75rem; }
+
+:where(a, button, input, select, summary):focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------- masthead */
+
+.masthead {
+  padding: clamp(2.25rem, 6vw, 4rem) clamp(1rem, 4vw, 3rem) 1.75rem;
+}
+
+.masthead-inner { max-width: 72rem; margin: 0 auto; }
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.masthead h1 {
+  margin: 0;
+  font-size: clamp(2.25rem, 7vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--text);
+}
+
+.lede {
+  margin: 1rem 0 0;
+  max-width: 46rem;
+  font-size: clamp(1rem, 1.6vw, 1.1rem);
+  line-height: 1.6;
+}
+.lede a { color: var(--primary); text-underline-offset: 0.2em; }
+
+/* A plain ledger of what the archive holds — facts, not a stat-card flex. */
+.ledger {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 clamp(1.5rem, 5vw, 3.5rem);
+  margin: 1.75rem 0 0;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--line);
+}
+.ledger div { padding: 0.5rem 0; }
+.ledger dt {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.ledger dd {
+  margin: 0.2rem 0 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+
+/* ---------------------------------------------------------------- controls */
+
+.controls {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: 1rem clamp(1rem, 4vw, 3rem);
+  background: color-mix(in srgb, var(--background) 86%, transparent);
+  backdrop-filter: blur(0.75rem);
+  -webkit-backdrop-filter: blur(0.75rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.controls-row {
+  max-width: 72rem;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+}
+
+.search { flex: 1 1 16rem; }
+
+.search input {
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+.search input::placeholder { color: var(--muted); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+.chip {
+  padding: 0.45rem 0.9rem;
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--on-surface);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.chip:hover { background: color-mix(in srgb, var(--primary) 16%, var(--surface)); }
+.chip[aria-pressed="true"] {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+  font-weight: 600;
+}
+
+.selects { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem; }
+
+.selects select {
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.theme {
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.theme:hover { background: color-mix(in srgb, var(--primary) 16%, var(--surface)); }
+
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.result-count {
+  max-width: 72rem;
+  margin: 0.75rem auto 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.tagbar {
+  max-width: 72rem;
+  margin: 0.5rem auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.tag {
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.tag:hover { color: var(--text); border-color: var(--primary); }
+.tag[aria-pressed="true"] {
+  color: var(--on-primary);
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+/* -------------------------------------------------------------------- grid */
+
+.grid {
+  max-width: 72rem;
+  margin: clamp(1.5rem, 4vw, 2.5rem) auto;
+  padding: 0 clamp(1rem, 4vw, 3rem);
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap);
+}
+
+@media (min-width: 40rem) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* The site's rhythm: in every run of eight, the first and last tile go
+   double-wide and double-high and the seventh goes tall. It is what keeps the
+   grid from reading as a uniform sheet of squares. */
+@media (min-width: 64rem) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: var(--row);
+    grid-auto-flow: dense;
+  }
+  .grid > li { grid-row: span 1; }
+  .grid > li:nth-child(8n + 1),
+  .grid > li:nth-child(8n + 8) { grid-column: span 2; grid-row: span 2; }
+  .grid > li:nth-child(8n + 7) { grid-row: span 2; }
+}
+
+.grid > li { min-width: 0; }
+
+/* -------------------------------------------------------------------- card */
+
+.card {
+  position: relative;
+  height: 100%;
+  min-height: var(--row);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--faint);
+  box-shadow: 0 1px 2px var(--shadow);
+}
+
+.card-media { position: absolute; inset: 0; }
+
+.card-media img,
+.card-media video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 0.6s var(--ease);
+  will-change: transform;
+}
+
+.card-media video { position: absolute; inset: 0; opacity: 0; transition: opacity 0.3s ease; }
+.card.is-playing .card-media video { opacity: 1; }
+
+.card-placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 0.4rem;
+  padding: 1rem;
+  text-align: center;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  padding: 0.9rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: var(--text);
+  transition: background-color 0.25s ease, backdrop-filter 0.25s ease;
+}
+
+.card-stats {
+  align-self: flex-start;
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem 0.7rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--on-surface);
+  /* Solid enough to stay readable over a white demo or a yellow one — the
+     site's translucent gradient loses the right-hand figures on bright art. */
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+  backdrop-filter: blur(0.5rem);
+  -webkit-backdrop-filter: blur(0.5rem);
+  border-radius: 3rem;
+}
+.card-stat { display: inline-flex; align-items: center; gap: 0.3rem; }
+.card-stat svg { width: 0.9em; height: 0.9em; flex-shrink: 0; }
+
+.card-body {
+  align-self: flex-start;
+  max-width: 100%;
+  opacity: 0;
+  transform: translateY(0.5rem);
+  transition: opacity 0.3s ease, transform 0.3s var(--ease);
+}
+
+.card-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.card-sub {
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.card-actions {
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  translate: 0 -50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.4rem);
+  transition: opacity 0.3s ease, transform 0.3s var(--ease);
+}
+
+.card-btn {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text);
+  background: var(--veil);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  backdrop-filter: blur(1.5rem);
+  -webkit-backdrop-filter: blur(1.5rem);
+  cursor: pointer;
+  font-family: inherit;
+}
+.card-btn:hover { background: color-mix(in srgb, var(--primary) 35%, var(--veil)); }
+.card-btn-primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+  font-weight: 600;
+}
+.card-btn-primary:hover { background: color-mix(in srgb, var(--primary) 85%, black); }
+
+.card:hover .card-overlay,
+.card:focus-within .card-overlay,
+.card.is-active .card-overlay {
+  background-color: color-mix(in srgb, var(--surface) 65%, transparent);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.card:hover .card-media img,
+.card:focus-within .card-media img,
+.card.is-active .card-media img { transform: scale(1.12); }
+.card:hover .card-body,
+.card:focus-within .card-body,
+.card.is-active .card-body,
+.card:hover .card-actions,
+.card:focus-within .card-actions,
+.card.is-active .card-actions { opacity: 1; transform: translateY(0); }
+.card:hover .card-actions,
+.card:focus-within .card-actions,
+.card.is-active .card-actions { pointer-events: auto; }
+
+.empty {
+  max-width: 72rem;
+  margin: 3rem auto;
+  padding: 0 clamp(1rem, 4vw, 3rem);
+  text-align: center;
+}
+
+.linkish {
+  font: inherit;
+  color: var(--primary);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* ------------------------------------------------------------------ viewer */
+
+.viewer {
+  width: min(96vw, 84rem);
+  height: min(92vh, 56rem);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  color: var(--on-surface);
+  overflow: hidden;
+}
+.viewer::backdrop { background: rgba(0, 0, 0, 0.72); backdrop-filter: blur(3px); }
+.viewer[open] { display: grid; grid-template-rows: auto 1fr auto; }
+
+.viewer-chrome {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.viewer-id { min-width: 0; }
+.viewer-id h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* The point of this archive, said out loud: you are running a local file. */
+.viewer-path {
+  margin: 0.15rem 0 0;
+  font-size: 0.75rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--muted);
+}
+
+.viewer-actions { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+.btn {
+  padding: 0.4rem 0.8rem;
+  font: inherit;
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: var(--text);
+  background: var(--faint);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.btn:hover { background: color-mix(in srgb, var(--primary) 20%, transparent); }
+.btn-close { background: var(--primary); border-color: var(--primary); color: var(--on-primary); font-weight: 600; }
+
+.viewer-stage { background: var(--background); min-height: 0; }
+.viewer-stage iframe { width: 100%; height: 100%; border: 0; display: block; background: #fff; }
+
+.viewer-meta {
+  padding: 0.85rem 1.1rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.85rem;
+}
+.viewer-meta p { margin: 0; }
+
+.viewer-tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+.viewer-tags li {
+  padding: 0.15rem 0.55rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+/* --------------------------------------------------------------- colophon */
+
+.colophon {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2.5rem clamp(1rem, 4vw, 3rem) 4rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.colophon p { margin: 0 0 0.6rem; max-width: 46rem; line-height: 1.6; }
+.colophon a { color: var(--primary); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .card-media img { transform: none !important; }
+}
