@@ -1,0 +1,470 @@
+<!--
+  Gooey Approve Button (With Cancel)
+
+  Archived from https://codepen.io/konstantindenerz/pen/ExqYGKJ
+  Created 2024-09-22 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  <title>Gooey Approve Button (With Cancel) </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+labs-button {
+  transform: scale(1.5);
+}
+@media (width > 1024px) {
+  labs-button {
+    transform: scale(2);
+  }
+}
+
+:root {
+  --color-primary: #c5e4ff;
+  --color-secondary: #145fcb;
+  --color-surface: #010101;
+  --color-tertiary: #a0c2d4;
+  --color-quaternary: #534e83;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  color: var(--color-primary);
+  margin: 0;
+  position: relative;
+  font-family: var(--labs-ref-typeface-brand);
+  background: conic-gradient(from -90deg, #222, transparent), conic-gradient(from 90deg, #222, black);
+}
+body:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  filter: blur(0.2rem);
+  z-index: -1;
+}
+
+@property --labs-button-progress {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 0%;
+}
+@property --labs-button-disabled {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 0%;
+}
+a.labs-follow-me {
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center;
+  -webkit-backdrop-filter: blur(0.5rem) brightness(1.3);
+          backdrop-filter: blur(0.5rem) brightness(1.3);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --labs-ref-typeface-brand: "Road Rage", "Helvetica Neue", Roboto, sans-serif;
+  --labs-ref-typeface-weight-regular: 400;
+  --labs-ref-typeface-weight-medium: 500;
+  --labs-sys-color-primary-container: var(--color-secondary);
+  --labs-sys-color-on-primary-container: var(--color-primary);
+}
+
+:root {
+  --labs-sys-size-00000: -.30rem;
+  /* -4px */
+  --labs-sys-size-0000: -.25rem;
+  /* -4px */
+  --labs-sys-size-000: -.125rem;
+  /* -2px */
+  --labs-sys-size-00: -.0625rem;
+  /* -1px */
+  --labs-sys-size-0: 0rem;
+  /* 0px */
+  --labs-sys-size-1: 0.0625rem;
+  /* 1px */
+  --labs-sys-size-2: 0.125rem;
+  /* 2px */
+  --labs-sys-size-3: 0.25rem;
+  /* 4px */
+  --labs-sys-size-4: 0.5rem;
+  /* 8px */
+  --labs-sys-size-5: 0.75rem;
+  /* 12px */
+  --labs-sys-size-6: 1rem;
+  /* 16px */
+  --labs-sys-size-7: 1.5rem;
+  /* 24px */
+  --labs-sys-size-8: 2rem;
+  /* 32px */
+  --labs-sys-size-9: 2.5rem;
+  /* 40px */
+  --labs-sys-size-10: 3rem;
+  /* 48px */
+  --labs-sys-size-11: 3.5rem;
+  /* 56px */
+  --labs-sys-size-12: 4rem;
+  /* 64px */
+  --labs-sys-size-13: 4.5rem;
+  /* 72px */
+  --labs-sys-size-14: 5rem;
+  /* 80px */
+  --labs-sys-size-15: 6rem;
+  /* 96px */
+  --labs-sys-size-16: 7rem;
+  /* 112px */
+  --labs-sys-size-17: 8rem;
+  /* 128px */
+  --labs-sys-size-18: 9rem;
+  /* 144px */
+  --labs-sys-size-19: 10rem;
+  /* 160px */
+  --labs-sys-size-20: 15rem;
+  /* 240px */
+}
+
+:root {
+  --labs-sys-shape-corner-full: 50%;
+  --labs-sys-shape-corner-extra-large-top: 1.75rem 1.75rem 0 0;
+  --labs-sys-shape-corner-extra-large: 1.75rem;
+  --labs-sys-shape-corner-large-top: 1rem 1rem 0 0;
+  --labs-sys-shape-corner-large-end: 0 1rem 1rem 0;
+  --labs-sys-shape-corner-large-start: 1rem 0 0 1rem;
+  --labs-sys-shape-corner-large: 1rem;
+  --labs-sys-shape-corner-medium: 0.75rem;
+  --labs-sys-shape-corner-small: 0.5rem;
+  --labs-sys-shape-corner-extra-small-top: 0.25rem 0.25rem 0 0;
+  --labs-sys-shape-corner-extra-small: 0.25rem;
+  --labs-sys-shape-corner-none: 0;
+}
+
+:root {
+  --labs-sys-typescale-label-large-font: var(--labs-ref-typeface-brand);
+  --labs-sys-typescale-label-large-line-height: 1.25rem;
+  --labs-sys-typescale-label-large-size: 0.875rem;
+  --labs-sys-typescale-label-large-tracking: 0.00625rem;
+  --labs-sys-typescale-label-large-weight: var(--labs-ref-typeface-weight-medium);
+  --labs-sys-typescale-label-large: var(--labs-sys-typescale-label-large-weight) var(--labs-sys-typescale-label-large-size) / var(--labs-sys-typescale-label-large-line-height) var(--labs-sys-typescale-label-large-font);
+  --labs-sys-typescale-label-medium-font: var(--labs-ref-typeface-brand);
+  --labs-sys-typescale-label-medium-line-height: 1rem;
+  --labs-sys-typescale-label-medium-size: 0.75rem;
+  --labs-sys-typescale-label-medium-tracking: 0.03125rem;
+  --labs-sys-typescale-label-medium-weight: var(--labs-ref-typeface-weight-medium);
+  --labs-sys-typescale-label-medium: var(--labs-sys-typescale-label-medium-weight) var(--labs-sys-typescale-label-medium-size) / var(--labs-sys-typescale-label-medium-line-height) var(--labs-sys-typescale-label-medium-font);
+  --labs-sys-typescale-label-small-font: var(--labs-ref-typeface-brand);
+  --labs-sys-typescale-label-small-line-height: 1rem;
+  --labs-sys-typescale-label-small-size: 0.6875rem;
+  --labs-sys-typescale-label-small-tracking: 0.03125rem;
+  --labs-sys-typescale-label-small-weight: var(--labs-ref-typeface-weight-medium);
+  --labs-sys-typescale-label-small: var(--labs-sys-typescale-label-small-weight) var(--labs-sys-typescale-label-small-size) / var(--labs-sys-typescale-label-small-line-height) var(--labs-sys-typescale-label-small-font);
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <labs-button id="button" delay="2000" onclick="console.log('✨ Approved')">Approve</labs-button>
+  <script src='https://codepen.io/konstantindenerz/pen/KKxvdPq.js'></script>
+    <script id="rendered-js" >
+let template = document.createElement("template");
+template.innerHTML = `
+<style>
+
+button {
+    text-transform: uppercase;
+    cursor: pointer;
+    color: color-mix(in srgb, var(--labs-sys-color-on-primary-container) calc(100% - var(--labs-button-disabled)), rgba(0,0,0,.1) var(--labs-button-disabled));
+    padding: var(--labs-sys-size-5) var(--labs-sys-size-6);
+    border: var(--labs-sys-size-0);
+    border-radius: var(--labs-sys-shape-corner-extra-large);
+    background: transparent; 
+    font: var(--labs-sys-typescale-label-large-weight) var(--labs-sys-typescale-label-large-size) / var(--labs-sys-typescale-label-large-line-height) var(--labs-sys-typescale-label-large-font);
+    letter-spacing: var(--labs-sys-typescale-label-large-tracking);
+    position: relative;
+    white-space: nowrap;
+    background: var(--labs-sys-color-primary-container);    
+    background:  color-mix(in srgb, var(--labs-sys-color-primary-container) calc(100% - var(--labs-button-disabled)), var(--color-quaternary) var(--labs-button-disabled));    
+    transition: transform .45s ease-in-out, outline-color .2s linear;
+    z-index: 1;
+    user-select: none;
+}
+
+button:focus {
+    outline-color: var(--color-tertiary);
+    outline-style: solid;
+}
+
+.action {
+    &:before {
+        transform: translate3d(0,0,0);
+        content: '';
+        border-radius: inherit;
+        position: absolute;
+        inset: var(--labs-sys-size-00000);
+        background: conic-gradient(from 100deg, var(--labs-sys-color-on-primary-container) var(--labs-button-progress),0, transparent calc(100% - var(--labs-button-progress)));
+        z-index: -1;
+    }
+    
+    &:after {
+        content: '';
+        border-radius: inherit;
+        position: absolute;
+        inset: var(--labs-sys-size-0);
+        background: inherit;
+        z-index: -1;
+    }
+}
+
+.cancel {
+    transform: translateX(calc(-50% + var(--labs-sys-size-4))) scale(.5);
+    z-index: 0;
+    width: var(--labs-sys-size-9);
+    height: var(--labs-sys-size-9);
+    display: grid;
+    place-items: center;
+    border-radius:var(--labs-sys-shape-corner-full);
+    position: absolute;
+    right: 0;
+    font: var(--labs-sys-typescale-label-small-weight) var(--labs-sys-typescale-label-small-size) / var(--labs-sys-typescale-label-small-line-height) var(--labs-sys-typescale-label-small-font);
+  letter-spacing: var(--labs-sys-typescale-label-small-tracking);
+  
+  &:before {
+    content: 'x';
+  }
+  
+  &.success {
+      &:before {
+        content: '✓';
+        animation: zoom-in-out .35s ease-in-out;
+      }
+  }
+}
+
+.container {
+display: flex;
+width: min-content;
+align-items: center;
+filter: url(#goo);
+
+    &.active {
+        .action {
+            pointer-events: none;
+           
+            &:before {
+            animation: progress-bar var(--labs-button-duration) linear forwards;
+            }
+            animation: activate-action .3s ease-in-out forwards, action-press .3s cubic-bezier(0.71, 0.26, 0.62, 1.9);
+            animation-delay: .2s, 0s;
+        }
+        .cancel {
+           transform: translateX(calc(100% + var(--labs-sys-size-4))) scale(.9);
+           pointer-events: all;
+        }      
+    }
+    
+    &.success {
+        .cancel {
+           transition-duration: 1.2s;
+           transition-timing-function: ease-in-out;
+           pointer-events: all;
+        }     
+    }
+}
+
+:host(.disabled) {
+    pointer-events: none;
+   
+}
+
+:host {
+ filter:drop-shadow(0 0 .5rem rgba(0,0,0,.5))
+}
+
+@keyframes activate-action {
+    from {
+        --labs-button-disabled: 0%;
+    }
+    
+    to {
+        --labs-button-disabled: 60%;
+    }
+}
+
+@keyframes action-press {
+    from {
+        transform: scale(1);
+    }
+    
+    50% {
+        transform: scale(.9);
+    }
+    
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes progress-bar {
+  0% {
+    --labs-button-progress: 0%;
+  }
+ 
+  100% {
+    --labs-button-progress: 100%;
+  }
+}
+@keyframes zoom-in-out {
+  0% {
+    transform: scale(1);
+    filter: saturate(0);
+  }
+  
+  50% {
+      transform: scale(2);
+      
+  }
+ 
+  100% {
+    transform: scale(1.5);
+    filter: saturate(1) brightness(1.5);
+  }
+}
+
+.filter {
+  display: block;
+  width: 0; 
+  height: 0;
+  overflow: visible !important;
+  position: absolute;
+}
+</style>
+<div class="container">
+<button class="action"><slot/></button>
+<button class="cancel"></button>
+</div>
+
+<svg class="filter" xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <defs>
+    <filter id="goo">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="9.5" result="blur" />
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+      <feBlend in="SourceGraphic" in2="goo" />
+  </filter>
+  </defs>
+</svg>
+`;
+
+const DELAY = "delay";
+const SKIP_DELAY = 42;
+const ACTIVE = "active";
+const DISABLED = "disabled";
+const SUCCESS = "success";
+const CONTAINER = ".container";
+const ACTION = ".action";
+const CANCEL = ".cancel";
+
+class DelayedMouseEvent extends MouseEvent {}
+
+class LabsButton extends HTMLElement {
+  isDelayed = () => this.hasAttribute(DELAY);
+  active = null;
+  static observedAttributes = ["delay"];
+
+  constructor() {
+    super();
+    this.addEventListener("click", (e) => this.handleClick(e), {
+      capture: true
+    });
+
+    let shadowRoot = this.attachShadow({ mode: "open" });
+    shadowRoot.appendChild(template.content.cloneNode(true));
+  }
+
+  handleClick(event) {
+    if (event instanceof DelayedMouseEvent) {
+      return; // skip
+    }
+    if (this.isDelayed()) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      const container = this.shadowRoot.querySelector(CONTAINER);
+      const action = container.querySelector(ACTION);
+      const cancel = container.querySelector(CANCEL);
+      container.classList.toggle(ACTIVE);
+      container.classList.remove(SUCCESS);
+      this.shadowRoot.host.classList.add(DISABLED);
+      cancel.classList.remove(SUCCESS);
+      if (this.active !== null) {
+        clearTimeout(this.active);
+        this.active = null;
+        container.classList.remove(ACTIVE);
+        this.shadowRoot.host.classList.remove(DISABLED);
+        action.focus();
+        return;
+      }
+
+      cancel.focus();
+      this.active = setTimeout(() => {
+        container.classList.remove(ACTIVE);
+        container.classList.add(SUCCESS);
+        cancel.classList.add(SUCCESS);
+        this.shadowRoot.host.classList.remove(DISABLED);
+        this.dispatchEvent(
+          new DelayedMouseEvent("click", {
+            bubbles: false,
+            cancelable: true,
+            detail: SKIP_DELAY
+          })
+        );
+        this.active = null;
+        action.focus();
+      }, +this.getAttribute(DELAY));
+    }
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === DELAY) {
+      const container = this.shadowRoot.querySelector(CONTAINER);
+      container.style.setProperty("--labs-button-duration", `${newValue}ms`);
+    }
+  }
+}
+
+customElements.define("labs-button", LabsButton);
+
+setTimeout(() => button.click(), 90);
+//# sourceURL=pen.js
+  </script>
+
+  
+</body>
+
+</html>

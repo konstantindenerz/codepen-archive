@@ -1,0 +1,70 @@
+<!--
+  Keycap (CSS)
+
+  Archived from https://codepen.io/konstantindenerz/pen/ZYErNRd
+  Created 2025-03-18 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  
+  
+
+  <title>Keycap (CSS)</title>
+  
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+key {
+  --base: #d4d4d4;
+  color: #313131;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  --h: rgba(255, 255, 255, 0.4);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent 60%, rgba(0, 0, 0, 0.1)), conic-gradient(from 135deg, transparent, var(--h)), conic-gradient(from 225deg, transparent, var(--h)), conic-gradient(from 45deg, transparent, var(--h)), conic-gradient(from -45deg, var(--h), transparent), var(--base);
+  border-radius: 1rem;
+  box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1), 0 0 1rem rgba(0, 0, 0, 0.1);
+}
+key:after {
+  content: var(--value);
+  font-size: 1.5rem;
+  background: radial-gradient(50% 50% at center, rgba(0, 0, 0, 0.08), transparent), #f7f7f7;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: -0.0625rem -0.0625rem 0 rgba(0, 0, 0, 0.04), 0.0625rem 0.0625rem 0 white;
+  text-shadow: 0.0625rem 0.0625rem white;
+}
+
+body {
+  background: conic-gradient(from 180deg, #e5e5e5, transparent), conic-gradient(from 45deg, #e5e5e5, transparent), conic-gradient(from -45deg, #e5e5e5, transparent), white;
+  display: grid;
+  place-items: center;
+  height: 100dvh;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <key style="--value:'⌘'"></key>
+  
+  
+  
+</body>
+
+</html>

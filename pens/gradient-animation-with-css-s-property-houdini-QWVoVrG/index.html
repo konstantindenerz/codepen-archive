@@ -1,0 +1,132 @@
+<!--
+  Gradient Animation with CSS's @property (Houdini 🧙‍♂️)
+
+  Archived from https://codepen.io/konstantindenerz/pen/QWVoVrG
+  Created 2023-03-28 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  <title>Gradient Animation with CSS&#39;s @property (Houdini 🧙‍♂️)</title>
+  
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+@charset "UTF-8";
+@property --progress {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 0%;
+}
+:root {
+  --c1: #6eccee;
+  --c2: #f672ca;
+  --c3: #fdb428;
+  --c4: #b9f;
+}
+
+@-webkit-keyframes progress {
+  from {
+    --progress: 0%;
+  }
+  to {
+    --progress: 100%;
+  }
+}
+
+@keyframes progress {
+  from {
+    --progress: 0%;
+  }
+  to {
+    --progress: 100%;
+  }
+}
+.circle {
+  --progress: 60%;
+  background: conic-gradient(at center, var(--c1) var(--progress), black var(--progress), var(--c2) calc(var(--progress) + 20%), var(--c3) calc(var(--progress) + 30%), var(--c3) calc(var(--progress) + 50%), transparent, transparent, transparent, transparent);
+  -webkit-animation: progress 4s linear infinite;
+          animation: progress 4s linear infinite;
+  border-radius: 50%;
+  -webkit-mask: radial-gradient(circle at center, transparent 65%, black 65%);
+          mask: radial-gradient(circle at center, transparent 65%, black 65%);
+  position: absolute;
+  inset: 0;
+}
+@supports (background: paint(houdini)) {
+  .circle {
+    --progress: 0%;
+  }
+}
+.circle:nth-child(2) {
+  inset: 4vmin;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+.circle:nth-child(3) {
+  inset: 8vmin;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+
+.container {
+  filter: drop-shadow(0 0 0.8vmin black);
+  position: relative;
+  width: 40vmin;
+  aspect-ratio: 1;
+}
+.container:after {
+  content: "@property 🧙‍♂️✨";
+  font-weight: bold;
+  position: absolute;
+  font-size: 2.5vmin;
+  inset: 0;
+  color: white;
+  display: grid;
+  place-items: center;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  font-family: Roboto, Inter, "Helvetica Neue", Helvetica, sans-serif;
+  background: radial-gradient(30% 40% at center, rgba(255, 255, 255, 0.03), transparent), #111;
+  color: var(--c1);
+  display: grid;
+  place-items: center;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="container">
+  <div class="circle">
+  </div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+</div>
+  <script src='https://codepen.io/konstantindenerz/pen/KKxvdPq.js'></script>
+    <script id="rendered-js" >
+// ¯\_(ツ)_/¯
+//# sourceURL=pen.js
+  </script>
+
+  
+</body>
+
+</html>

@@ -1,0 +1,1979 @@
+<!--
+  Medical FUI (Glassmorphic, CSS)
+
+  Archived from https://codepen.io/konstantindenerz/pen/XWQamEW
+  Created 2024-03-26 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  <title>Medical FUI (Glassmorphic, CSS)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+@layer tokens {
+  :root {
+    --color-primary: #9871be;
+    --color-secondary: #9db092;
+    --color-tertiary: #deee75;
+    --color-quaternary: #9375ee;
+    --color-surface: #eaf6f1;
+  }
+  @media (max-height: 800px) {
+    :root {
+      font-size: 80%;
+    }
+  }
+}
+@layer background {
+  @property --bg-x {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  @property --bg-x2 {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  @property --bg-y {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  @-webkit-keyframes bg {
+    from {
+      --bg-x: 0;
+      --bg-x2: 0;
+      --bg-y: 0;
+    }
+    30% {
+      --bg-x2: 1;
+    }
+    50% {
+      --bg-x: 1;
+      --bg-y: 1;
+    }
+    to {
+      --bg-x: 0;
+      --bg-x2: 0;
+      --bg-y: 0;
+    }
+  }
+  @keyframes bg {
+    from {
+      --bg-x: 0;
+      --bg-x2: 0;
+      --bg-y: 0;
+    }
+    30% {
+      --bg-x2: 1;
+    }
+    50% {
+      --bg-x: 1;
+      --bg-y: 1;
+    }
+    to {
+      --bg-x: 0;
+      --bg-x2: 0;
+      --bg-y: 0;
+    }
+  }
+  .background {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    -webkit-animation: bg 3.6s ease-in-out infinite;
+            animation: bg 3.6s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @media (prefers-reduced-motion) {
+    .background {
+      -webkit-animation: unset;
+              animation: unset;
+    }
+  }
+  .background::before {
+    z-index: 0;
+    content: "";
+    background: radial-gradient(30vmax at 1rem 100%, #e3edec 40%, transparent), radial-gradient(40vmax at 1rem 1rem, #e3edec 40%, transparent);
+    -webkit-backdrop-filter: blur(5.5rem) brightness(1.05);
+    backdrop-filter: blur(5.5rem) brightness(1.05);
+    position: absolute;
+    inset: 0;
+  }
+  .background::after {
+    z-index: 0;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, #e3edec 0%, transparent 90%) repeat 0 0/0.9rem 0.9rem, radial-gradient(#e3edec, transparent 70%) repeat 0 0/1rem 1rem;
+    opacity: 0.15;
+  }
+  .background > div {
+    z-index: -1;
+    position: absolute;
+    opacity: 0.9;
+  }
+
+  .r1 {
+    background: #93c9cc;
+    width: 25vmax;
+    border-radius: 50%;
+    aspect-ratio: 4/2;
+    translate: calc(-4vmax + (-4vmax * var(--bg-x))) calc(-30vmax + (-3rem * var(--bg-y)));
+    rotate: calc(45deg * var(--bg-x2));
+  }
+
+  .r2 {
+    background: #aab896;
+    width: 35vmax;
+    border-radius: 50%;
+    aspect-ratio: 1.5/3;
+    translate: calc(-35vmax + (-2vmax * var(--bg-x))) calc(-25vmax + (2rem * var(--bg-y)));
+    rotate: calc(15deg * var(--bg-x));
+  }
+
+  .r3 {
+    background: radial-gradient(#334c74, transparent);
+    width: 35vmax;
+    border-radius: 20%;
+    aspect-ratio: 2/3;
+    translate: calc(-5vmax + (-5vmax * var(--bg-x))) calc(5vmax + (-2vmax * var(--bg-y)));
+    rotate: -35deg;
+    opacity: calc(var(--bg-x));
+  }
+
+  .r4 {
+    background: #d7cbc7;
+    width: 25vmax;
+    border-radius: 50%;
+    aspect-ratio: 2/3;
+    translate: calc(10vmax + (7vmax * var(--bg-x))) calc(7vmax + (-5vmax * var(--bg-y)));
+    rotate: 35deg;
+  }
+
+  .r5 {
+    background: rgba(105, 133, 87, 0.54);
+    width: calc(35vmax + 2vmax * var(--bg-x2));
+    border-radius: 50%;
+    aspect-ratio: 5/3;
+    translate: calc(22vmax + (2vmax * var(--bg-x2))) calc(-9vmax + (-2vmax * var(--bg-x2)));
+    rotate: calc(-35deg * var(--bg-x));
+  }
+
+  .r6 {
+    background: rgba(127, 190, 192, 0.64);
+    width: 65vmax;
+    border-radius: 50%;
+    aspect-ratio: 6/2;
+    translate: -35vmax 35vmax;
+    rotate: calc(-35deg * var(--bg-x2));
+  }
+
+  .r7 {
+    background: rgba(217, 193, 247, 0.72);
+    width: calc(30vmax - 5vmax * var(--bg-x));
+    border-radius: 50%;
+    aspect-ratio: 1;
+    translate: calc(-15vmax + (3vmax * var(--bg-x))) calc(-30vmax + (-1vmax * var(--bg-y)));
+    rotate: 35deg;
+  }
+
+  .r8 {
+    background: rgba(217, 193, 247, 0.52);
+    width: 40vmax;
+    border-radius: 50%;
+    aspect-ratio: 2/1;
+    translate: calc(24vmax + (5vmax * var(--bg-x))) calc(30vmax + (5vmax * var(--bg-y)));
+    rotate: calc(35deg * var(--bg-x));
+  }
+
+  .r9 {
+    background: rgba(105, 133, 87, 0.59);
+    width: 30vmax;
+    border-radius: 50%;
+    aspect-ratio: 1/1.2;
+    translate: calc(44vmax + (-4vmax * var(--bg-x))) calc(-10vmax + (1vmax * var(--bg-y)));
+    rotate: calc(35deg * var(--bg-x2));
+  }
+
+  .r10 {
+    background: white;
+    width: 10vmax;
+    border-radius: 50%;
+    aspect-ratio: 1/1.2;
+    translate: calc(12vmax + (-4vmax * var(--bg-x))) calc(14vmax + (5vmax * var(--bg-y)));
+    rotate: calc(42deg * var(--bg-x2));
+  }
+
+  .r11 {
+    background: rgba(255, 255, 255, 0.7);
+    width: 20vmax;
+    border-radius: 50%;
+    aspect-ratio: 1/1.2;
+    translate: calc(-12vmax + (4vmax * var(--bg-x))) calc(-14vmax + (5vmax * var(--bg-y)));
+    rotate: calc(42deg * var(--bg-x2));
+  }
+}
+@layer card {
+  @-webkit-keyframes card-enter {
+    from {
+      opacity: 0.01;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes card-enter {
+    from {
+      opacity: 0.01;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  .card {
+    -webkit-backdrop-filter: blur(2rem) brightness(1.054) saturate(1);
+    backdrop-filter: blur(2rem) brightness(1.054);
+    border-radius: 1rem;
+    -webkit-animation: card-enter 0.45s ease-in forwards;
+            animation: card-enter 0.45s ease-in forwards;
+    display: grid;
+    place-items: center;
+    color: white;
+    font-size: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: -1px -1px 1px rgba(0, 0, 0, 0.04), 1px 1px 0 1px rgba(0, 0, 0, 0.01);
+    z-index: 100;
+    --size: 2rem;
+    --s: 36%;
+    --d: 3deg;
+    --x: calc(100% - var(--size));
+    --y: 0;
+    --s2: 28%;
+    --d2: -148deg;
+    --x2: var(--size);
+    --y2: 100%;
+    --mask: exclude;
+    -webkit-mask: conic-gradient(from var(--d2) at var(--x2) var(--y2), black var(--s2), transparent var(--s2)), conic-gradient(from var(--d) at var(--x) var(--y), transparent var(--s), black var(--s));
+            mask: conic-gradient(from var(--d2) at var(--x2) var(--y2), black var(--s2), transparent var(--s2)), conic-gradient(from var(--d) at var(--x) var(--y), transparent var(--s), black var(--s));
+    -webkit-mask-composite: var(--mask);
+    mask-composite: var(--mask);
+  }
+  .card::before {
+    content: "";
+    --c: rgba(0, 0, 0, 0.05);
+    background: radial-gradient(0.09rem 2rem at 0 2.5rem, var(--c), transparent), radial-gradient(2rem 0.09rem at 2.5rem 0, var(--c), transparent);
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  .card.full-shape {
+    -webkit-mask: unset;
+            mask: unset;
+  }
+}
+@layer avatar {
+  .card.avatar {
+    --size: max(1.8vmin, 1rem);
+    width: max(9vmin, 5rem);
+    height: max(11vmin, 6rem);
+    justify-self: flex-end;
+    overflow: hidden;
+    -webkit-backdrop-filter: unset;
+            backdrop-filter: unset;
+    position: absolute;
+    border-radius: 0;
+    top: 2rem;
+    right: 2rem;
+  }
+  .card.avatar .image {
+    margin-bottom: 1rem;
+    overflow: hidden;
+    height: 140%;
+  }
+  .card.avatar .image img {
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .card.avatar .actions {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2.5vmin;
+    -webkit-backdrop-filter: blur(0.2rem) saturate(0.5) brightness(1);
+    backdrop-filter: blur(0.2rem) saturate(0.5) brightness(1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 1.6vmin;
+    gap: 1.5vmin;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  }
+  .card.avatar .actions .action {
+    padding: 0.5vmin;
+  }
+  .card.avatar::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    --c: rgba(255, 255, 255, 0.6);
+    background: linear-gradient(-135deg, var(--c), transparent 70%), radial-gradient(0.5rem at 95% 10%, var(--c), transparent), radial-gradient(3rem at 90% 10%, var(--c), transparent);
+  }
+}
+@layer hexagon {
+  @property --index {
+    syntax: "<number>";
+    initial-value: 0;
+    inherits: true;
+  }
+  :root {
+    --hexagon-size: 8vmin;
+    --gap: 0.1vmin;
+  }
+
+  .hexagon {
+    --mix-percentage: calc(var(--column) * var(--index) * 3%);
+    width: var(--hexagon-size);
+    aspect-ratio: 1;
+    position: relative;
+    -webkit-backdrop-filter: blur(1rem) brightness(1.054);
+    backdrop-filter: blur(1rem) brightness(1.054);
+    color: transparent;
+    -webkit-clip-path: polygon(98.66024% 45%, 99.39693% 46.5798%, 99.84808% 48.26352%, 100% 50%, 99.84808% 51.73648%, 99.39693% 53.4202%, 98.66025% 55%, 78.66025% 89.64102%, 77.66044% 91.06889%, 76.42788% 92.30146%, 75% 93.30127%, 73.4202% 94.03794%, 71.73648% 94.48909%, 70% 94.64102%, 30% 94.64102%, 28.26352% 94.48909%, 26.5798% 94.03794%, 25% 93.30127%, 23.57212% 92.30146%, 22.33956% 91.06889%, 21.33975% 89.64102%, 1.33975% 55%, 0.60307% 53.4202%, 0.15192% 51.73648%, 0% 50%, 0.15192% 48.26352%, 0.60307% 46.5798%, 1.33975% 45%, 21.33975% 10.35898%, 22.33956% 8.93111%, 23.57212% 7.69854%, 25% 6.69873%, 26.5798% 5.96206%, 28.26352% 5.51091%, 30% 5.35898%, 70% 5.35898%, 71.73648% 5.51091%, 73.4202% 5.96206%, 75% 6.69873%, 76.42788% 7.69854%, 77.66044% 8.93111%, 78.66025% 10.35898%);
+            clip-path: polygon(98.66024% 45%, 99.39693% 46.5798%, 99.84808% 48.26352%, 100% 50%, 99.84808% 51.73648%, 99.39693% 53.4202%, 98.66025% 55%, 78.66025% 89.64102%, 77.66044% 91.06889%, 76.42788% 92.30146%, 75% 93.30127%, 73.4202% 94.03794%, 71.73648% 94.48909%, 70% 94.64102%, 30% 94.64102%, 28.26352% 94.48909%, 26.5798% 94.03794%, 25% 93.30127%, 23.57212% 92.30146%, 22.33956% 91.06889%, 21.33975% 89.64102%, 1.33975% 55%, 0.60307% 53.4202%, 0.15192% 51.73648%, 0% 50%, 0.15192% 48.26352%, 0.60307% 46.5798%, 1.33975% 45%, 21.33975% 10.35898%, 22.33956% 8.93111%, 23.57212% 7.69854%, 25% 6.69873%, 26.5798% 5.96206%, 28.26352% 5.51091%, 30% 5.35898%, 70% 5.35898%, 71.73648% 5.51091%, 73.4202% 5.96206%, 75% 6.69873%, 76.42788% 7.69854%, 77.66044% 8.93111%, 78.66025% 10.35898%);
+    cursor: pointer;
+  }
+  @media (hover) {
+    .hexagon:hover {
+      -webkit-backdrop-filter: blur(1rem) brightness(0.54);
+      backdrop-filter: blur(1rem) brightness(0.54);
+    }
+  }
+  .hexagon:after {
+    content: var(--icon);
+    display: grid;
+    place-items: center;
+    position: absolute;
+    filter: var(--icon-filter, invert(1) saturate(0.5) brightness(1.5));
+    font-size: 6vmin;
+    inset: 0;
+    transform: scale(0.25);
+    text-shadow: 2px 2px 1px black;
+  }
+
+  @-webkit-keyframes grid-container-enter {
+    from {
+      transform: scale(0.01) rotate(-145deg);
+    }
+    to {
+      transform: scale(1) rotate(0);
+    }
+  }
+
+  @keyframes grid-container-enter {
+    from {
+      transform: scale(0.01) rotate(-145deg);
+    }
+    to {
+      transform: scale(1) rotate(0);
+    }
+  }
+  .grid-container {
+    display: flex;
+    position: relative;
+    align-items: center;
+    -webkit-animation: grid-container-enter 0.6s ease-in-out forwards;
+            animation: grid-container-enter 0.6s ease-in-out forwards;
+  }
+  .grid-container .column {
+    margin: 0 -0.2vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .grid-container .column:nth-of-type(4) .hexagon:nth-of-type(n + 3):nth-of-type(-n + 6) {
+    opacity: 0;
+  }
+  .grid-container .column:nth-of-type(5) .hexagon:nth-of-type(n + 4):nth-of-type(-n + 6) {
+    opacity: 0;
+  }
+  .grid-container .column:nth-of-type(6) .hexagon:nth-of-type(n + 3):nth-of-type(-n + 6) {
+    opacity: 0;
+  }
+
+  @property --reflection-size {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+  @-webkit-keyframes sphere-enter {
+    from {
+      opacity: 0.01;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes sphere-enter {
+    from {
+      opacity: 0.01;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  .sphere {
+    -webkit-clip-path: polygon(98.66024% 45%, 99.39693% 46.5798%, 99.84808% 48.26352%, 100% 50%, 99.84808% 51.73648%, 99.39693% 53.4202%, 98.66025% 55%, 78.66025% 89.64102%, 77.66044% 91.06889%, 76.42788% 92.30146%, 75% 93.30127%, 73.4202% 94.03794%, 71.73648% 94.48909%, 70% 94.64102%, 30% 94.64102%, 28.26352% 94.48909%, 26.5798% 94.03794%, 25% 93.30127%, 23.57212% 92.30146%, 22.33956% 91.06889%, 21.33975% 89.64102%, 1.33975% 55%, 0.60307% 53.4202%, 0.15192% 51.73648%, 0% 50%, 0.15192% 48.26352%, 0.60307% 46.5798%, 1.33975% 45%, 21.33975% 10.35898%, 22.33956% 8.93111%, 23.57212% 7.69854%, 25% 6.69873%, 26.5798% 5.96206%, 28.26352% 5.51091%, 30% 5.35898%, 70% 5.35898%, 71.73648% 5.51091%, 73.4202% 5.96206%, 75% 6.69873%, 76.42788% 7.69854%, 77.66044% 8.93111%, 78.66025% 10.35898%);
+            clip-path: polygon(98.66024% 45%, 99.39693% 46.5798%, 99.84808% 48.26352%, 100% 50%, 99.84808% 51.73648%, 99.39693% 53.4202%, 98.66025% 55%, 78.66025% 89.64102%, 77.66044% 91.06889%, 76.42788% 92.30146%, 75% 93.30127%, 73.4202% 94.03794%, 71.73648% 94.48909%, 70% 94.64102%, 30% 94.64102%, 28.26352% 94.48909%, 26.5798% 94.03794%, 25% 93.30127%, 23.57212% 92.30146%, 22.33956% 91.06889%, 21.33975% 89.64102%, 1.33975% 55%, 0.60307% 53.4202%, 0.15192% 51.73648%, 0% 50%, 0.15192% 48.26352%, 0.60307% 46.5798%, 1.33975% 45%, 21.33975% 10.35898%, 22.33956% 8.93111%, 23.57212% 7.69854%, 25% 6.69873%, 26.5798% 5.96206%, 28.26352% 5.51091%, 30% 5.35898%, 70% 5.35898%, 71.73648% 5.51091%, 73.4202% 5.96206%, 75% 6.69873%, 76.42788% 7.69854%, 77.66044% 8.93111%, 78.66025% 10.35898%);
+    display: grid;
+    place-items: center;
+    position: absolute;
+    width: 40vmin;
+    aspect-ratio: 1;
+    -webkit-backdrop-filter: blur(5rem) brightness(1.05);
+    backdrop-filter: blur(5rem) brightness(1.05);
+    z-index: 1;
+    border-radius: 50%;
+    -webkit-animation: sphere-enter 0.5s ease-in;
+            animation: sphere-enter 0.5s ease-in;
+    --c: rgba(255, 255, 255, 0.5);
+    box-shadow: -0.0625rem -0.0625rem 0.0625rem var(--c), 0.0625rem 0.0625rem 0.0625rem var(--c);
+  }
+  .sphere::before {
+    -webkit-clip-path: polygon(98.66024% 45%, 99.39693% 46.5798%, 99.84808% 48.26352%, 100% 50%, 99.84808% 51.73648%, 99.39693% 53.4202%, 98.66025% 55%, 78.66025% 89.64102%, 77.66044% 91.06889%, 76.42788% 92.30146%, 75% 93.30127%, 73.4202% 94.03794%, 71.73648% 94.48909%, 70% 94.64102%, 30% 94.64102%, 28.26352% 94.48909%, 26.5798% 94.03794%, 25% 93.30127%, 23.57212% 92.30146%, 22.33956% 91.06889%, 21.33975% 89.64102%, 1.33975% 55%, 0.60307% 53.4202%, 0.15192% 51.73648%, 0% 50%, 0.15192% 48.26352%, 0.60307% 46.5798%, 1.33975% 45%, 21.33975% 10.35898%, 22.33956% 8.93111%, 23.57212% 7.69854%, 25% 6.69873%, 26.5798% 5.96206%, 28.26352% 5.51091%, 30% 5.35898%, 70% 5.35898%, 71.73648% 5.51091%, 73.4202% 5.96206%, 75% 6.69873%, 76.42788% 7.69854%, 77.66044% 8.93111%, 78.66025% 10.35898%);
+            clip-path: polygon(98.66024% 45%, 99.39693% 46.5798%, 99.84808% 48.26352%, 100% 50%, 99.84808% 51.73648%, 99.39693% 53.4202%, 98.66025% 55%, 78.66025% 89.64102%, 77.66044% 91.06889%, 76.42788% 92.30146%, 75% 93.30127%, 73.4202% 94.03794%, 71.73648% 94.48909%, 70% 94.64102%, 30% 94.64102%, 28.26352% 94.48909%, 26.5798% 94.03794%, 25% 93.30127%, 23.57212% 92.30146%, 22.33956% 91.06889%, 21.33975% 89.64102%, 1.33975% 55%, 0.60307% 53.4202%, 0.15192% 51.73648%, 0% 50%, 0.15192% 48.26352%, 0.60307% 46.5798%, 1.33975% 45%, 21.33975% 10.35898%, 22.33956% 8.93111%, 23.57212% 7.69854%, 25% 6.69873%, 26.5798% 5.96206%, 28.26352% 5.51091%, 30% 5.35898%, 70% 5.35898%, 71.73648% 5.51091%, 73.4202% 5.96206%, 75% 6.69873%, 76.42788% 7.69854%, 77.66044% 8.93111%, 78.66025% 10.35898%);
+    content: "";
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: -0.0625rem -0.0625rem 0.0625rem var(--c), 0.0625rem 0.0625rem 0.0625rem var(--c);
+    position: absolute;
+    inset: 6vmin;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+  @-webkit-keyframes glass {
+    from {
+      --reflection-size: 1;
+    }
+    50% {
+      --reflection-size: 1.5;
+    }
+    to {
+      --reflection-size: 1;
+    }
+  }
+  @keyframes glass {
+    from {
+      --reflection-size: 1;
+    }
+    50% {
+      --reflection-size: 1.5;
+    }
+    to {
+      --reflection-size: 1;
+    }
+  }
+  .sphere .glass {
+    -webkit-animation: glass 4s ease-in-out infinite;
+            animation: glass 4s ease-in-out infinite;
+    border-radius: inherit;
+    background: radial-gradient(calc(0.9vmin * var(--reflection-size)) at 70% 20%, rgba(255, 255, 255, 0.1), transparent), radial-gradient(calc(1.7vmin * var(--reflection-size)) at 70% 20%, rgba(255, 255, 255, 0.1), transparent), radial-gradient(calc(2.1vmin * var(--reflection-size)) 2vmin at 75% 30%, rgba(255, 255, 255, 0.4), transparent), radial-gradient(calc(10vmin * var(--reflection-size)) at 72% 24%, rgba(255, 255, 255, 0.6), transparent), radial-gradient(calc(4vmin * var(--reflection-size)) at 70% 20%, rgba(255, 255, 255, 0.4), transparent), radial-gradient(calc(10vmin * var(--reflection-size)) at 20% 95%, rgba(255, 255, 255, 0.4), transparent);
+    position: absolute;
+    inset: 0;
+    z-index: 11;
+  }
+
+  @property --line-thickness {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 0%;
+  }
+  @property --line-1-a {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+  }
+  @property --line-2-p {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 0%;
+  }
+  .sphere-highlighting {
+    -webkit-clip-path: polygon(98.66024% 45%, 99.39693% 46.5798%, 99.84808% 48.26352%, 100% 50%, 99.84808% 51.73648%, 99.39693% 53.4202%, 98.66025% 55%, 78.66025% 89.64102%, 77.66044% 91.06889%, 76.42788% 92.30146%, 75% 93.30127%, 73.4202% 94.03794%, 71.73648% 94.48909%, 70% 94.64102%, 30% 94.64102%, 28.26352% 94.48909%, 26.5798% 94.03794%, 25% 93.30127%, 23.57212% 92.30146%, 22.33956% 91.06889%, 21.33975% 89.64102%, 1.33975% 55%, 0.60307% 53.4202%, 0.15192% 51.73648%, 0% 50%, 0.15192% 48.26352%, 0.60307% 46.5798%, 1.33975% 45%, 21.33975% 10.35898%, 22.33956% 8.93111%, 23.57212% 7.69854%, 25% 6.69873%, 26.5798% 5.96206%, 28.26352% 5.51091%, 30% 5.35898%, 70% 5.35898%, 71.73648% 5.51091%, 73.4202% 5.96206%, 75% 6.69873%, 76.42788% 7.69854%, 77.66044% 8.93111%, 78.66025% 10.35898%);
+            clip-path: polygon(98.66024% 45%, 99.39693% 46.5798%, 99.84808% 48.26352%, 100% 50%, 99.84808% 51.73648%, 99.39693% 53.4202%, 98.66025% 55%, 78.66025% 89.64102%, 77.66044% 91.06889%, 76.42788% 92.30146%, 75% 93.30127%, 73.4202% 94.03794%, 71.73648% 94.48909%, 70% 94.64102%, 30% 94.64102%, 28.26352% 94.48909%, 26.5798% 94.03794%, 25% 93.30127%, 23.57212% 92.30146%, 22.33956% 91.06889%, 21.33975% 89.64102%, 1.33975% 55%, 0.60307% 53.4202%, 0.15192% 51.73648%, 0% 50%, 0.15192% 48.26352%, 0.60307% 46.5798%, 1.33975% 45%, 21.33975% 10.35898%, 22.33956% 8.93111%, 23.57212% 7.69854%, 25% 6.69873%, 26.5798% 5.96206%, 28.26352% 5.51091%, 30% 5.35898%, 70% 5.35898%, 71.73648% 5.51091%, 73.4202% 5.96206%, 75% 6.69873%, 76.42788% 7.69854%, 77.66044% 8.93111%, 78.66025% 10.35898%);
+    position: absolute;
+    width: 55vmin;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    filter: blur(0.5rem);
+    pointer-events: none;
+  }
+  .sphere-highlighting:after {
+    -webkit-clip-path: polygon(98.66024% 45%, 99.39693% 46.5798%, 99.84808% 48.26352%, 100% 50%, 99.84808% 51.73648%, 99.39693% 53.4202%, 98.66025% 55%, 78.66025% 89.64102%, 77.66044% 91.06889%, 76.42788% 92.30146%, 75% 93.30127%, 73.4202% 94.03794%, 71.73648% 94.48909%, 70% 94.64102%, 30% 94.64102%, 28.26352% 94.48909%, 26.5798% 94.03794%, 25% 93.30127%, 23.57212% 92.30146%, 22.33956% 91.06889%, 21.33975% 89.64102%, 1.33975% 55%, 0.60307% 53.4202%, 0.15192% 51.73648%, 0% 50%, 0.15192% 48.26352%, 0.60307% 46.5798%, 1.33975% 45%, 21.33975% 10.35898%, 22.33956% 8.93111%, 23.57212% 7.69854%, 25% 6.69873%, 26.5798% 5.96206%, 28.26352% 5.51091%, 30% 5.35898%, 70% 5.35898%, 71.73648% 5.51091%, 73.4202% 5.96206%, 75% 6.69873%, 76.42788% 7.69854%, 77.66044% 8.93111%, 78.66025% 10.35898%);
+            clip-path: polygon(98.66024% 45%, 99.39693% 46.5798%, 99.84808% 48.26352%, 100% 50%, 99.84808% 51.73648%, 99.39693% 53.4202%, 98.66025% 55%, 78.66025% 89.64102%, 77.66044% 91.06889%, 76.42788% 92.30146%, 75% 93.30127%, 73.4202% 94.03794%, 71.73648% 94.48909%, 70% 94.64102%, 30% 94.64102%, 28.26352% 94.48909%, 26.5798% 94.03794%, 25% 93.30127%, 23.57212% 92.30146%, 22.33956% 91.06889%, 21.33975% 89.64102%, 1.33975% 55%, 0.60307% 53.4202%, 0.15192% 51.73648%, 0% 50%, 0.15192% 48.26352%, 0.60307% 46.5798%, 1.33975% 45%, 21.33975% 10.35898%, 22.33956% 8.93111%, 23.57212% 7.69854%, 25% 6.69873%, 26.5798% 5.96206%, 28.26352% 5.51091%, 30% 5.35898%, 70% 5.35898%, 71.73648% 5.51091%, 73.4202% 5.96206%, 75% 6.69873%, 76.42788% 7.69854%, 77.66044% 8.93111%, 78.66025% 10.35898%);
+    content: "";
+    box-shadow: inset 0 0 8vmin rgba(255, 255, 255, 0.5);
+    position: absolute;
+    inset: 3rem;
+    filter: blur(0.5rem);
+  }
+
+  .sphere-blur {
+    position: absolute;
+    inset: 0;
+    -webkit-backdrop-filter: blur(4rem) saturate(1.1);
+    backdrop-filter: blur(4rem);
+    -webkit-mask-image: radial-gradient(100vmin 100vmin at center, black 22%, transparent 30%);
+            mask-image: radial-gradient(100vmin 100vmin at center, black 22%, transparent 30%);
+    pointer-events: none;
+    z-index: 1;
+    -webkit-animation: sphere-blur-enter 0.7s ease-in forwards;
+            animation: sphere-blur-enter 0.7s ease-in forwards;
+  }
+
+  @-webkit-keyframes sphere-blur-enter {
+    from {
+      transform: scale(0.5);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes sphere-blur-enter {
+    from {
+      transform: scale(0.5);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  .sphere-lines {
+    --c: rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    position: absolute;
+    width: 75vmin;
+    aspect-ratio: 1;
+    --line-1-a: -45deg;
+    --line-thickness: 69.5%;
+    --line-2-p: 10%;
+    -webkit-mask-image: radial-gradient(transparent var(--line-thickness), black var(--line-thickness));
+            mask-image: radial-gradient(transparent var(--line-thickness), black var(--line-thickness));
+    background: conic-gradient(from var(--line-1-a), var(--c), var(--c) 10%, transparent 12%), conic-gradient(from 50deg, var(--c), var(--c) var(--line-2-p), transparent calc(var(--line-2-p) + 5%)), conic-gradient(from 200deg, var(--c), var(--c) 10%, transparent 15%);
+    -webkit-animation: circle-lines-enter 0.3s 0.1s ease-in-out, circle-lines 6s 0.6s ease-in-out infinite;
+            animation: circle-lines-enter 0.3s 0.1s ease-in-out, circle-lines 6s 0.6s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion) {
+    .sphere-lines {
+      -webkit-animation: unset;
+              animation: unset;
+    }
+  }
+
+  @-webkit-keyframes circle-lines-enter {
+    from {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    70% {
+      opacity: 1;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes circle-lines-enter {
+    from {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    70% {
+      opacity: 1;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @-webkit-keyframes circle-lines {
+    from {
+      --line-1-a: -50deg;
+      --line-thickness: 69.5%;
+      --line-2-p: 10%;
+      transform: scale(1);
+    }
+    20% {
+      --line-thickness: 69%;
+    }
+    50% {
+      --line-thickness: 68%;
+      --line-1-a: 300deg;
+      --line-2-p: 0%;
+      transform: scale(0.99) rotate(199deg);
+    }
+    60% {
+      --line-thickness: 69.6%;
+    }
+    70% {
+      transform: scale(0.99) rotate(-199deg);
+    }
+    to {
+      --line-thickness: 69.5%;
+      --line-1-a: -50deg;
+      --line-2-p: 10%;
+      transform: scale(1);
+    }
+  }
+  @keyframes circle-lines {
+    from {
+      --line-1-a: -50deg;
+      --line-thickness: 69.5%;
+      --line-2-p: 10%;
+      transform: scale(1);
+    }
+    20% {
+      --line-thickness: 69%;
+    }
+    50% {
+      --line-thickness: 68%;
+      --line-1-a: 300deg;
+      --line-2-p: 0%;
+      transform: scale(0.99) rotate(199deg);
+    }
+    60% {
+      --line-thickness: 69.6%;
+    }
+    70% {
+      transform: scale(0.99) rotate(-199deg);
+    }
+    to {
+      --line-thickness: 69.5%;
+      --line-1-a: -50deg;
+      --line-2-p: 10%;
+      transform: scale(1);
+    }
+  }
+}
+@layer bars {
+  @property --target {
+    syntax: "<percentage>";
+    inherits: true;
+    initial-value: 0;
+  }
+  .bars {
+    width: 19vmax;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+    color: white;
+    position: absolute;
+  }
+  .bars .bar {
+    width: 100%;
+    height: 0.25rem;
+    -webkit-animation: bars 2.5s ease-in-out infinite;
+            animation: bars 2.5s ease-in-out infinite;
+    -webkit-backdrop-filter: blur(2rem) brightness(1.06) saturate(1);
+    backdrop-filter: blur(2rem) brightness(1.06) saturate(1);
+  }
+  .bars .bar:after {
+    content: "42-2024-123-123-42";
+    font-size: 0.4rem;
+  }
+  .bars .bar:first-of-type {
+    width: 46%;
+    -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+    --target: 120%;
+  }
+  .bars .bar:last-of-type {
+    width: 57%;
+    -webkit-animation-delay: 0.6s;
+            animation-delay: 0.6s;
+    -webkit-animation-duration: 2.4s;
+            animation-duration: 2.4s;
+  }
+  .bars.left {
+    left: 0;
+  }
+  .bars.left .bar {
+    transform-origin: left;
+  }
+  .bars.right {
+    right: 0;
+    align-items: flex-end;
+  }
+  .bars.right .bar {
+    transform-origin: right;
+  }
+
+  @-webkit-keyframes bars {
+    from {
+      transform: scaleX(100%);
+    }
+    30% {
+      transform: scaleX(120%);
+    }
+    50% {
+      transform: scaleX(var(--target, 90%));
+    }
+    to {
+      transform: scaleX(100%);
+    }
+  }
+
+  @keyframes bars {
+    from {
+      transform: scaleX(100%);
+    }
+    30% {
+      transform: scaleX(120%);
+    }
+    50% {
+      transform: scaleX(var(--target, 90%));
+    }
+    to {
+      transform: scaleX(100%);
+    }
+  }
+}
+@layer dna {
+  @property --rotate-y {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 0deg;
+  }
+  @-webkit-keyframes dna {
+    from {
+      --rotate-y: 0deg;
+    }
+    to {
+      --rotate-y: 360deg;
+    }
+  }
+  @keyframes dna {
+    from {
+      --rotate-y: 0deg;
+    }
+    to {
+      --rotate-y: 360deg;
+    }
+  }
+  @property --rotate-container {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 0deg;
+  }
+  @-webkit-keyframes rotate-container {
+    from {
+      --rotate-container: 42deg;
+    }
+    50% {
+      --rotate-container: 142deg;
+    }
+    to {
+      --rotate-container: 42deg;
+    }
+  }
+  @keyframes rotate-container {
+    from {
+      --rotate-container: 42deg;
+    }
+    50% {
+      --rotate-container: 142deg;
+    }
+    to {
+      --rotate-container: 42deg;
+    }
+  }
+  .dna-container {
+    filter: url(#blurFilter) contrast(1.5) brightness(1.5) saturate(0.6);
+    position: absolute;
+    transform: scale(0.55);
+  }
+  @media (max-width: 1000px) {
+    .dna-container {
+      transform: scale(0.25);
+    }
+  }
+  @media (max-height: 1000px) {
+    .dna-container {
+      transform: scale(0.25);
+    }
+  }
+
+  .dna {
+    --width: 14rem;
+    --count: 50;
+    display: flex;
+    flex-direction: column;
+    z-index: 1111;
+    perspective: 45rem;
+    -webkit-animation: dna 4s linear infinite, rotate-container 30s ease-in-out infinite;
+            animation: dna 4s linear infinite, rotate-container 30s ease-in-out infinite;
+    transform-style: preserve-3d;
+    rotate: var(--rotate-container);
+    transform: rotateY(var(--rotate-y, 0deg));
+  }
+  @media (prefers-reduced-motion) {
+    .dna {
+      -webkit-animation: unset;
+              animation: unset;
+    }
+  }
+  .dna .item {
+    display: flex;
+    align-items: center;
+    transform-style: preserve-3d;
+    --a: calc(360deg / var(--count) * (var(--i)));
+    transform: rotateY(var(--a));
+  }
+  .dna .item > div {
+    width: var(--width);
+    height: 0.42rem;
+    background: white;
+    background: conic-gradient(color-mix(in oklch, color-mix(in oklch, var(--color-primary), white 6%), transparent 10%), color-mix(in oklch, var(--color-secondary), black 6%));
+    transform-style: preserve-3d;
+  }
+  .dna .item > div:first-of-type, .dna .item > div:last-of-type {
+    --thickness: 0.9rem;
+    width: var(--thickness);
+    height: var(--thickness);
+    background: var(--color-secondary);
+    border-radius: 50%;
+  }
+  @-webkit-keyframes dot-scale {
+    from {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.6);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  @keyframes dot-scale {
+    from {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.6);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  .dna .item > div:first-of-type::before, .dna .item > div:first-of-type::after, .dna .item > div:last-of-type::before, .dna .item > div:last-of-type::after {
+    content: "";
+    position: absolute;
+    width: calc(var(--thickness) * 0.5);
+    border-radius: 50%;
+    aspect-ratio: 1;
+    transform-style: preserve-3d;
+  }
+  .dna .item > div:first-of-type::before, .dna .item > div:last-of-type::before {
+    background: white;
+    width: calc(var(--thickness) * 0.9);
+    left: -0.4rem;
+    top: -0.4rem;
+    -webkit-animation: dot-scale 2s ease-in-out infinite;
+            animation: dot-scale 2s ease-in-out infinite;
+  }
+  .dna .item > div:first-of-type::after, .dna .item > div:last-of-type::after {
+    background: rgba(0, 0, 0, 0.09);
+    right: 0.3rem;
+    bottom: 0.3rem;
+  }
+  .dna .item > div:last-of-type {
+    background: var(--color-primary);
+  }
+  .dna .item > div:first-of-type, .dna .item > div:last-of-type {
+    transform: rotateY(calc(360deg / var(--count) * -1 * var(--i) - var(--rotate-y)));
+  }
+  .dna .item:nth-child(1) {
+    --i: 0;
+  }
+  .dna .item:nth-child(2) {
+    --i: 1;
+  }
+  .dna .item:nth-child(3) {
+    --i: 2;
+  }
+  .dna .item:nth-child(4) {
+    --i: 3;
+  }
+  .dna .item:nth-child(5) {
+    --i: 4;
+  }
+  .dna .item:nth-child(6) {
+    --i: 5;
+  }
+  .dna .item:nth-child(7) {
+    --i: 6;
+  }
+  .dna .item:nth-child(8) {
+    --i: 7;
+  }
+  .dna .item:nth-child(9) {
+    --i: 8;
+  }
+  .dna .item:nth-child(10) {
+    --i: 9;
+  }
+  .dna .item:nth-child(11) {
+    --i: 10;
+  }
+  .dna .item:nth-child(12) {
+    --i: 11;
+  }
+  .dna .item:nth-child(13) {
+    --i: 12;
+  }
+  .dna .item:nth-child(14) {
+    --i: 13;
+  }
+  .dna .item:nth-child(15) {
+    --i: 14;
+  }
+  .dna .item:nth-child(16) {
+    --i: 15;
+  }
+  .dna .item:nth-child(17) {
+    --i: 16;
+  }
+  .dna .item:nth-child(18) {
+    --i: 17;
+  }
+  .dna .item:nth-child(19) {
+    --i: 18;
+  }
+  .dna .item:nth-child(20) {
+    --i: 19;
+  }
+  .dna .item:nth-child(21) {
+    --i: 20;
+  }
+  .dna .item:nth-child(22) {
+    --i: 21;
+  }
+  .dna .item:nth-child(23) {
+    --i: 22;
+  }
+  .dna .item:nth-child(24) {
+    --i: 23;
+  }
+  .dna .item:nth-child(25) {
+    --i: 24;
+  }
+  .dna .item:nth-child(26) {
+    --i: 25;
+  }
+  .dna .item:nth-child(27) {
+    --i: 26;
+  }
+  .dna .item:nth-child(28) {
+    --i: 27;
+  }
+  .dna .item:nth-child(29) {
+    --i: 28;
+  }
+  .dna .item:nth-child(30) {
+    --i: 29;
+  }
+  .dna .item:nth-child(31) {
+    --i: 30;
+  }
+  .dna .item:nth-child(32) {
+    --i: 31;
+  }
+  .dna .item:nth-child(33) {
+    --i: 32;
+  }
+  .dna .item:nth-child(34) {
+    --i: 33;
+  }
+  .dna .item:nth-child(35) {
+    --i: 34;
+  }
+  .dna .item:nth-child(36) {
+    --i: 35;
+  }
+  .dna .item:nth-child(37) {
+    --i: 36;
+  }
+  .dna .item:nth-child(38) {
+    --i: 37;
+  }
+  .dna .item:nth-child(39) {
+    --i: 38;
+  }
+  .dna .item:nth-child(40) {
+    --i: 39;
+  }
+  .dna .item:nth-child(41) {
+    --i: 40;
+  }
+  .dna .item:nth-child(42) {
+    --i: 41;
+  }
+  .dna .item:nth-child(43) {
+    --i: 42;
+  }
+  .dna .item:nth-child(44) {
+    --i: 43;
+  }
+  .dna .item:nth-child(45) {
+    --i: 44;
+  }
+  .dna .item:nth-child(46) {
+    --i: 45;
+  }
+  .dna .item:nth-child(47) {
+    --i: 46;
+  }
+  .dna .item:nth-child(48) {
+    --i: 47;
+  }
+  .dna .item:nth-child(49) {
+    --i: 48;
+  }
+  .dna .item:nth-child(50) {
+    --i: 49;
+  }
+  .dna .item:nth-child(51) {
+    --i: 50;
+  }
+
+  .dna-shadow {
+    width: 12rem;
+    height: 100%;
+    filter: blur(3.5rem);
+    background: radial-gradient(8rem 66% at 50% 40%, var(--color-primary), transparent 90%) center top/14rem 33%;
+    -webkit-animation: rotate-container 30s ease-in-out infinite;
+            animation: rotate-container 30s ease-in-out infinite;
+    rotate: var(--rotate-container);
+    opacity: 1;
+  }
+  @media (max-width: 1000px) {
+    .dna-shadow {
+      transform: scale(0.5);
+    }
+  }
+  @media (max-height: 1000px) {
+    .dna-shadow {
+      transform: scale(0.5);
+    }
+  }
+}
+@layer dashboard {
+  .dashboard {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    perspective: 100px;
+    transform: rotateY(0deg);
+    translate: 0 0;
+  }
+  .dashboard.show {
+    -webkit-animation: dashboard-enter 0.5s ease-in-out forwards, dashboard-rotation 5s 0.5s ease-in-out infinite;
+            animation: dashboard-enter 0.5s ease-in-out forwards, dashboard-rotation 5s 0.5s ease-in-out infinite;
+  }
+  .dashboard.hide {
+    -webkit-animation: dashboard-leave 0.5s ease-in-out forwards;
+            animation: dashboard-leave 0.5s ease-in-out forwards;
+  }
+
+  @-webkit-keyframes dashboard-rotation {
+    from {
+      transform: rotateY(59deg) rotateX(0);
+    }
+    50% {
+      transform: rotateY(65deg) rotateX(-2deg);
+    }
+    to {
+      transform: rotateY(59deg) rotateX(0);
+    }
+  }
+
+  @keyframes dashboard-rotation {
+    from {
+      transform: rotateY(59deg) rotateX(0);
+    }
+    50% {
+      transform: rotateY(65deg) rotateX(-2deg);
+    }
+    to {
+      transform: rotateY(59deg) rotateX(0);
+    }
+  }
+  @-webkit-keyframes dashboard-enter {
+    80% {
+      transform: rotateY(0);
+    }
+    to {
+      transform: rotateY(59deg);
+      translate: -50% 0;
+    }
+  }
+  @keyframes dashboard-enter {
+    80% {
+      transform: rotateY(0);
+    }
+    to {
+      transform: rotateY(59deg);
+      translate: -50% 0;
+    }
+  }
+  @-webkit-keyframes dashboard-leave {
+    0% {
+      transform: rotateY(59deg);
+      translate: -50% 0;
+    }
+    20% {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(0deg);
+      translate: 0 0;
+    }
+  }
+  @keyframes dashboard-leave {
+    0% {
+      transform: rotateY(59deg);
+      translate: -50% 0;
+    }
+    20% {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(0deg);
+      translate: 0 0;
+    }
+  }
+}
+@layer detail {
+  .detail {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    translate: 100% 0;
+  }
+  .detail .grid {
+    position: absolute;
+    left: 22vw;
+    width: calc(68vw - 2vmin);
+    display: grid;
+    translate: 0 -10rem;
+    height: 40vmin;
+    gap: 2vmin;
+    grid-template-columns: repeat(auto-fill, minmax(25vmin, 1fr));
+  }
+  @media (max-width: 1000px) {
+    .detail .grid {
+      translate: 0 -20rem;
+    }
+  }
+  .detail .grid .card {
+    --size: 1.5vmin;
+    border-radius: 0;
+    min-height: 20vmin;
+    translate: 100% 0;
+    opacity: 0;
+  }
+  .detail .grid .card:nth-child(1) {
+    --i: 0;
+  }
+  .detail .grid .card:nth-child(2) {
+    --i: 1;
+  }
+  .detail .grid .card:nth-child(3) {
+    --i: 2;
+  }
+  .detail .grid .card:nth-child(4) {
+    --i: 3;
+  }
+  .detail .grid .card:nth-child(5) {
+    --i: 4;
+  }
+  .detail .grid .card:nth-child(6) {
+    --i: 5;
+  }
+  .detail .grid .card:nth-child(7) {
+    --i: 6;
+  }
+  .detail .grid .card:nth-child(8) {
+    --i: 7;
+  }
+  .detail .grid .card:nth-child(9) {
+    --i: 8;
+  }
+  .detail .grid .card:nth-child(10) {
+    --i: 9;
+  }
+  .detail .grid .card:nth-child(11) {
+    --i: 10;
+  }
+  .detail .grid .card:nth-child(12) {
+    --i: 11;
+  }
+  .detail .grid .card:nth-child(13) {
+    --i: 12;
+  }
+  .detail .grid .card:nth-child(14) {
+    --i: 13;
+  }
+  .detail .grid .card:nth-child(15) {
+    --i: 14;
+  }
+  .detail .grid .card:nth-child(16) {
+    --i: 15;
+  }
+  .detail .grid .card:nth-child(17) {
+    --i: 16;
+  }
+  .detail .grid .card:nth-child(18) {
+    --i: 17;
+  }
+  .detail .grid .card:nth-child(19) {
+    --i: 18;
+  }
+  .detail .grid .card:nth-child(20) {
+    --i: 19;
+  }
+  .detail .grid .card:nth-child(21) {
+    --i: 20;
+  }
+  .detail.show {
+    -webkit-animation: detail-enter 0.3s 0.2s linear forwards;
+            animation: detail-enter 0.3s 0.2s linear forwards;
+  }
+  .detail.show .grid .card {
+    -webkit-animation: card-item-enter 0.3s calc(var(--i) * .10s) ease-in-out forwards;
+            animation: card-item-enter 0.3s calc(var(--i) * .10s) ease-in-out forwards;
+  }
+  .detail.hide {
+    -webkit-animation: detail-leave 0.3s linear forwards;
+            animation: detail-leave 0.3s linear forwards;
+  }
+  .detail.hide .grid .card {
+    -webkit-animation: card-item-leave 0.3s ease-in-out forwards;
+            animation: card-item-leave 0.3s ease-in-out forwards;
+  }
+
+  @-webkit-keyframes detail-enter {
+    from {
+      translate: 50% 0;
+    }
+    to {
+      translate: 0 0;
+    }
+  }
+
+  @keyframes detail-enter {
+    from {
+      translate: 50% 0;
+    }
+    to {
+      translate: 0 0;
+    }
+  }
+  @-webkit-keyframes detail-leave {
+    from {
+      translate: 0 0;
+    }
+    to {
+      translate: 50% 0;
+    }
+  }
+  @keyframes detail-leave {
+    from {
+      translate: 0 0;
+    }
+    to {
+      translate: 50% 0;
+    }
+  }
+  @-webkit-keyframes card-item-enter {
+    from {
+      translate: 100% 0;
+      opacity: 0;
+    }
+    to {
+      translate: 0;
+      opacity: 1;
+    }
+  }
+  @keyframes card-item-enter {
+    from {
+      translate: 100% 0;
+      opacity: 0;
+    }
+    to {
+      translate: 0;
+      opacity: 1;
+    }
+  }
+  @-webkit-keyframes card-item-leave {
+    from {
+      translate: 0;
+      opacity: 1;
+    }
+    to {
+      translate: 100% 0;
+      opacity: 0;
+    }
+  }
+  @keyframes card-item-leave {
+    from {
+      translate: 0;
+      opacity: 1;
+    }
+    to {
+      translate: 100% 0;
+      opacity: 0;
+    }
+  }
+  .detail-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5vmin;
+    gap: 1.5vmin;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  }
+  .detail-card .title {
+    font-size: 2vmin;
+  }
+  .detail-card .description {
+    font-size: 1.1vmin;
+    overflow: hidden;
+    overflow-y: auto;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+  }
+  @media (hover) {
+    .detail-card {
+      cursor: pointer;
+    }
+    .detail-card:hover {
+      -webkit-backdrop-filter: blur(2rem) brightness(0.9);
+      backdrop-filter: blur(2rem) brightness(0.9);
+    }
+  }
+}
+@layer global {
+  .filter {
+    position: absolute;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .card.page-title {
+    --size: 1rem;
+    position: absolute;
+    width: -webkit-min-content;
+    width: -moz-min-content;
+    width: min-content;
+    padding: 0.4rem 4rem;
+    border-radius: 0;
+    top: 4rem;
+    color: rgba(0, 0, 0, 0.24);
+    white-space: nowrap;
+    font-size: 0.6rem;
+  }
+
+  body {
+    width: 100vw;
+    height: 100vh;
+    font-family: "Rajdhani";
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+  }
+  body:after {
+    content: "";
+    position: absolute;
+    background: url(https://assets.codepen.io/907471/noise.svg);
+    mix-blend-mode: overlay;
+    inset: 0;
+    pointer-events: none;
+    opacity: 1;
+    filter: invert(1) brightness(0.2);
+    z-index: 1000;
+  }
+  body:before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 1rem;
+    background: repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) 0.0625rem, transparent 0.0625rem, transparent 2rem) repeat-y;
+    z-index: 11;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+  body > label {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+  }
+  body > label > input {
+    position: absolute;
+    visibility: hidden;
+  }
+  body > label::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    -webkit-backdrop-filter: blur(10rem);
+            backdrop-filter: blur(10rem);
+    -webkit-mask: linear-gradient(to top, black 5%, transparent 15%);
+            mask: linear-gradient(to top, black 5%, transparent 15%);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+a.labs-follow-me {
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <label>
+    <div class="background">
+        <div class="r2"></div>
+        <div class="r3"></div>
+        <div class="r4"></div>
+        <div class="r5"></div>
+        <div class="r6"></div>
+        <div class="r7"></div>
+        <div class="r8"></div>
+        <div class="r1"></div>
+        <div class="r9"></div>
+        <div class="r10"></div>
+        <div class="r11"></div>
+    </div>
+    <div class="bars left">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <div class="bars right">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <div id="dashboard" class="dashboard">
+        <div class="sphere-highlighting"></div>
+        <div class="sphere-lines"></div>
+        <div class="sphere-blur"></div>
+        <div class="sphere">
+            <div class="dna-shadow"></div>
+            <div class="dna-container">
+                <div class="dna">
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="item">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="glass"></div>
+
+        </div>
+
+        <div class="grid-container" id="container">
+            <div class="column" style="--column: 0">
+                <div class="hexagon" style="--index: 1; --icon: '🔬';"></div>
+                <div class="hexagon" style="--index: 2; --icon: '🧪';"></div>
+                <div class="hexagon" style="--index: 3; --icon: '⚛︎';"></div>
+                <div class="hexagon" style="--index: 4; --icon: '🧪';"></div>
+                <div class="hexagon" style="--index: 5; --icon: '🧬';"></div>
+            </div>
+            <div class="column" style="--column: 1">
+                <div class="hexagon" style="--index: 1; --icon: '🧪';"></div>
+                <div class="hexagon" style="--index: 2; --icon: '🧪';"></div>
+                <div class="hexagon" style="--index: 3; --icon: '🧪';"></div>
+                <div class="hexagon" style="--index: 4; --icon: '🔬';"></div>
+                <div class="hexagon" style="--index: 5; --icon: '🧬';"></div>
+                <div class="hexagon" style="--index: 6; --icon: '🧬';"></div>
+            </div>
+            <div class="column" style="--column: 2">
+                <div class="hexagon" style="--index: 1; --icon: '🧬';"></div>
+                <div class="hexagon" style="--index: 2; --icon: '🧬';"></div>
+                <div class="hexagon" style="--index: 3; --icon: '⚛︎';"></div>
+                <div class="hexagon" style="--index: 4; --icon: '🧬';"></div>
+                <div class="hexagon" style="--index: 5; --icon: '⚛︎';"></div>
+                <div class="hexagon" style="--index: 6; --icon: '🔬';"></div>
+                <div class="hexagon" style="--index: 7; --icon: '🔬';"></div>
+            </div>
+            <div class="column" style="--column: 3">
+                <div class="hexagon" style="--index: 1; --icon: '🧪';"></div>
+                <div class="hexagon" style="--index: 2; --icon: '🔬';"></div>
+                <div class="hexagon" style="--index: 3; --icon: '🧬';"></div>
+                <div class="hexagon" style="--index: 4; --icon: '🧬';"></div>
+                <div class="hexagon" style="--index: 5; --icon: '⚛︎';"></div>
+                <div class="hexagon" style="--index: 6; --icon: '🔬';"></div>
+                <div class="hexagon" style="--index: 7; --icon: '🧪';"></div>
+                <div class="hexagon" style="--index: 8; --icon: '🧪';"></div>
+            </div>
+            <div class="column" style="--column: 4">
+                <div class="hexagon" style="--index: 1; --icon: '🧪';"></div>
+                <div class="hexagon" style="--index: 2; --icon: '⚛︎';"></div>
+                <div class="hexagon" style="--index: 3; --icon: '⚛︎';"></div>
+                <div class="hexagon" style="--index: 4; --icon: '⚛︎';"></div>
+                <div class="hexagon" style="--index: 5; --icon: '🔬';"></div>
+                <div class="hexagon" style="--index: 6; --icon: '🔬';"></div>
+                <div class="hexagon" style="--index: 7; --icon: '🧬';"></div>
+                <div class="hexagon" style="--index: 8; --icon: '🧪';"></div>
+                <div class="hexagon" style="--index: 9; --icon: '🧪';"></div>
+            </div>
+            <div class="column" style="--column: 5">
+                <div class="hexagon" style="--index: 1; --icon: '🔬';"></div>
+                <div class="hexagon" style="--index: 2; --icon: '🧪';"></div>
+                <div class="hexagon" style="--index: 3; --icon: '⚛︎';"></div>
+                <div class="hexagon" style="--index: 4; --icon: '🧬';"></div>
+                <div class="hexagon" style="--index: 5; --icon: '🧪';"></div>
+                <div class="hexagon" style="--index: 6; --icon: '🧪';"></div>
+                <div class="hexagon" style="--index: 7; --icon: '🧪';"></div>
+                <div class="hexagon" style="--index: 8; --icon: '🧪';"></div>
+            </div>
+            <div class="column" style="--column: 6">
+                <div class="hexagon" style="--index: 1; --icon: '🔬';"></div>
+                <div class="hexagon" style="--index: 2; --icon: '🧪';"></div>
+                <div class="hexagon" style="--index: 3; --icon: '🔬';"></div>
+                <div class="hexagon" style="--index: 4; --icon: '🧪';"></div>
+                <div class="hexagon" style="--index: 5; --icon: '🧪';"></div>
+                <div class="hexagon" style="--index: 6; --icon: '🔬';"></div>
+                <div class="hexagon" style="--index: 7; --icon: '🧪';"></div>
+            </div>
+            <div class="column" style="--column: 7">
+                <div class="hexagon" style="--index: 1; --icon: '🧬';"></div>
+                <div class="hexagon" style="--index: 2; --icon: '🧪';"></div>
+                <div class="hexagon" style="--index: 3; --icon: '🔬';"></div>
+                <div class="hexagon" style="--index: 4; --icon: '⚛︎';"></div>
+                <div class="hexagon" style="--index: 5; --icon: '🔬';"></div>
+                <div class="hexagon" style="--index: 6; --icon: '🔬';"></div>
+            </div>
+            <div class="column" style="--column: 8">
+                <div class="hexagon" style="--index: 1; --icon: '🔬';"></div>
+                <div class="hexagon" style="--index: 2; --icon: '🧬';"></div>
+                <div class="hexagon" style="--index: 3; --icon: '🧪';"></div>
+                <div class="hexagon" style="--index: 4; --icon: '⚛︎';"></div>
+                <div class="hexagon" style="--index: 5; --icon: '🧪';"></div>
+            </div>
+        </div>
+    </div>
+    <div id="detail" class="detail">
+            <div class="grid">
+                <div class="card detail-card">
+                    <div class="title">Title</div>
+                    <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis bibendum elit commodo porttitor. Praesent vehicula tristique lobortis. Maecenas sed ligula sit amet dui porta pretium. Praesent vel dolor nec purus egestas scelerisque. Nulla sed nisl ultricies, venenatis diam at, dignissim ex. Ut non quam enim. Donec gravida augue quis sapien ultricies efficitur. Nulla pulvinar ex sed turpis malesuada, vel vulputate augue dictum. Donec non condimentum nulla. Nullam malesuada ornare eleifend. Curabitur consequat leo id rutrum eleifend. Aliquam egestas justo felis, sit amet volutpat eros rhoncus lacinia. Suspendisse vulputate tristique eros, vel efficitur dolor tincidunt in.</div>
+                </div>
+                <div class="card detail-card">
+                    <div class="title">Title</div>
+                    <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis bibendum elit commodo porttitor. Praesent vehicula tristique lobortis. Maecenas sed ligula sit amet dui porta pretium. Praesent vel dolor nec purus egestas scelerisque. Nulla sed nisl ultricies, venenatis diam at, dignissim ex. Ut non quam enim. Donec gravida augue quis sapien ultricies efficitur. Nulla pulvinar ex sed turpis malesuada, vel vulputate augue dictum. Donec non condimentum nulla. Nullam malesuada ornare eleifend. Curabitur consequat leo id rutrum eleifend. Aliquam egestas justo felis, sit amet volutpat eros rhoncus lacinia. Suspendisse vulputate tristique eros, vel efficitur dolor tincidunt in.</div>
+                </div> <div class="card detail-card">
+                <div class="title">Title</div>
+                <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis bibendum elit commodo porttitor. Praesent vehicula tristique lobortis. Maecenas sed ligula sit amet dui porta pretium. Praesent vel dolor nec purus egestas scelerisque. Nulla sed nisl ultricies, venenatis diam at, dignissim ex. Ut non quam enim. Donec gravida augue quis sapien ultricies efficitur. Nulla pulvinar ex sed turpis malesuada, vel vulputate augue dictum. Donec non condimentum nulla. Nullam malesuada ornare eleifend. Curabitur consequat leo id rutrum eleifend. Aliquam egestas justo felis, sit amet volutpat eros rhoncus lacinia. Suspendisse vulputate tristique eros, vel efficitur dolor tincidunt in.</div>
+            </div> <div class="card detail-card">
+                <div class="title">Title</div>
+                <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis bibendum elit commodo porttitor. Praesent vehicula tristique lobortis. Maecenas sed ligula sit amet dui porta pretium. Praesent vel dolor nec purus egestas scelerisque. Nulla sed nisl ultricies, venenatis diam at, dignissim ex. Ut non quam enim. Donec gravida augue quis sapien ultricies efficitur. Nulla pulvinar ex sed turpis malesuada, vel vulputate augue dictum. Donec non condimentum nulla. Nullam malesuada ornare eleifend. Curabitur consequat leo id rutrum eleifend. Aliquam egestas justo felis, sit amet volutpat eros rhoncus lacinia. Suspendisse vulputate tristique eros, vel efficitur dolor tincidunt in.</div>
+            </div> <div class="card detail-card">
+                <div class="title">Title</div>
+                <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis bibendum elit commodo porttitor. Praesent vehicula tristique lobortis. Maecenas sed ligula sit amet dui porta pretium. Praesent vel dolor nec purus egestas scelerisque. Nulla sed nisl ultricies, venenatis diam at, dignissim ex. Ut non quam enim. Donec gravida augue quis sapien ultricies efficitur. Nulla pulvinar ex sed turpis malesuada, vel vulputate augue dictum. Donec non condimentum nulla. Nullam malesuada ornare eleifend. Curabitur consequat leo id rutrum eleifend. Aliquam egestas justo felis, sit amet volutpat eros rhoncus lacinia. Suspendisse vulputate tristique eros, vel efficitur dolor tincidunt in.</div>
+            </div> <div class="card detail-card">
+                <div class="title">Title</div>
+                <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis bibendum elit commodo porttitor. Praesent vehicula tristique lobortis. Maecenas sed ligula sit amet dui porta pretium. Praesent vel dolor nec purus egestas scelerisque. Nulla sed nisl ultricies, venenatis diam at, dignissim ex. Ut non quam enim. Donec gravida augue quis sapien ultricies efficitur. Nulla pulvinar ex sed turpis malesuada, vel vulputate augue dictum. Donec non condimentum nulla. Nullam malesuada ornare eleifend. Curabitur consequat leo id rutrum eleifend. Aliquam egestas justo felis, sit amet volutpat eros rhoncus lacinia. Suspendisse vulputate tristique eros, vel efficitur dolor tincidunt in.</div>
+            </div> <div class="card detail-card">
+                <div class="title">Title</div>
+                <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis bibendum elit commodo porttitor. Praesent vehicula tristique lobortis. Maecenas sed ligula sit amet dui porta pretium. Praesent vel dolor nec purus egestas scelerisque. Nulla sed nisl ultricies, venenatis diam at, dignissim ex. Ut non quam enim. Donec gravida augue quis sapien ultricies efficitur. Nulla pulvinar ex sed turpis malesuada, vel vulputate augue dictum. Donec non condimentum nulla. Nullam malesuada ornare eleifend. Curabitur consequat leo id rutrum eleifend. Aliquam egestas justo felis, sit amet volutpat eros rhoncus lacinia. Suspendisse vulputate tristique eros, vel efficitur dolor tincidunt in.</div>
+            </div> <div class="card detail-card">
+                <div class="title">Title</div>
+                <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis bibendum elit commodo porttitor. Praesent vehicula tristique lobortis. Maecenas sed ligula sit amet dui porta pretium. Praesent vel dolor nec purus egestas scelerisque. Nulla sed nisl ultricies, venenatis diam at, dignissim ex. Ut non quam enim. Donec gravida augue quis sapien ultricies efficitur. Nulla pulvinar ex sed turpis malesuada, vel vulputate augue dictum. Donec non condimentum nulla. Nullam malesuada ornare eleifend. Curabitur consequat leo id rutrum eleifend. Aliquam egestas justo felis, sit amet volutpat eros rhoncus lacinia. Suspendisse vulputate tristique eros, vel efficitur dolor tincidunt in.</div>
+            </div> <div class="card detail-card">
+                <div class="title">Title</div>
+                <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis bibendum elit commodo porttitor. Praesent vehicula tristique lobortis. Maecenas sed ligula sit amet dui porta pretium. Praesent vel dolor nec purus egestas scelerisque. Nulla sed nisl ultricies, venenatis diam at, dignissim ex. Ut non quam enim. Donec gravida augue quis sapien ultricies efficitur. Nulla pulvinar ex sed turpis malesuada, vel vulputate augue dictum. Donec non condimentum nulla. Nullam malesuada ornare eleifend. Curabitur consequat leo id rutrum eleifend. Aliquam egestas justo felis, sit amet volutpat eros rhoncus lacinia. Suspendisse vulputate tristique eros, vel efficitur dolor tincidunt in.</div>
+            </div> <div class="card detail-card">
+                <div class="title">Title</div>
+                <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis bibendum elit commodo porttitor. Praesent vehicula tristique lobortis. Maecenas sed ligula sit amet dui porta pretium. Praesent vel dolor nec purus egestas scelerisque. Nulla sed nisl ultricies, venenatis diam at, dignissim ex. Ut non quam enim. Donec gravida augue quis sapien ultricies efficitur. Nulla pulvinar ex sed turpis malesuada, vel vulputate augue dictum. Donec non condimentum nulla. Nullam malesuada ornare eleifend. Curabitur consequat leo id rutrum eleifend. Aliquam egestas justo felis, sit amet volutpat eros rhoncus lacinia. Suspendisse vulputate tristique eros, vel efficitur dolor tincidunt in.</div>
+            </div> <div class="card detail-card">
+                <div class="title">Title</div>
+                <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis bibendum elit commodo porttitor. Praesent vehicula tristique lobortis. Maecenas sed ligula sit amet dui porta pretium. Praesent vel dolor nec purus egestas scelerisque. Nulla sed nisl ultricies, venenatis diam at, dignissim ex. Ut non quam enim. Donec gravida augue quis sapien ultricies efficitur. Nulla pulvinar ex sed turpis malesuada, vel vulputate augue dictum. Donec non condimentum nulla. Nullam malesuada ornare eleifend. Curabitur consequat leo id rutrum eleifend. Aliquam egestas justo felis, sit amet volutpat eros rhoncus lacinia. Suspendisse vulputate tristique eros, vel efficitur dolor tincidunt in.</div>
+            </div> <div class="card detail-card">
+                <div class="title">Title</div>
+                <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis bibendum elit commodo porttitor. Praesent vehicula tristique lobortis. Maecenas sed ligula sit amet dui porta pretium. Praesent vel dolor nec purus egestas scelerisque. Nulla sed nisl ultricies, venenatis diam at, dignissim ex. Ut non quam enim. Donec gravida augue quis sapien ultricies efficitur. Nulla pulvinar ex sed turpis malesuada, vel vulputate augue dictum. Donec non condimentum nulla. Nullam malesuada ornare eleifend. Curabitur consequat leo id rutrum eleifend. Aliquam egestas justo felis, sit amet volutpat eros rhoncus lacinia. Suspendisse vulputate tristique eros, vel efficitur dolor tincidunt in.</div>
+            </div> <div class="card detail-card">
+                <div class="title">Title</div>
+                <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis bibendum elit commodo porttitor. Praesent vehicula tristique lobortis. Maecenas sed ligula sit amet dui porta pretium. Praesent vel dolor nec purus egestas scelerisque. Nulla sed nisl ultricies, venenatis diam at, dignissim ex. Ut non quam enim. Donec gravida augue quis sapien ultricies efficitur. Nulla pulvinar ex sed turpis malesuada, vel vulputate augue dictum. Donec non condimentum nulla. Nullam malesuada ornare eleifend. Curabitur consequat leo id rutrum eleifend. Aliquam egestas justo felis, sit amet volutpat eros rhoncus lacinia. Suspendisse vulputate tristique eros, vel efficitur dolor tincidunt in.</div>
+            </div> <div class="card detail-card">
+                <div class="title">Title</div>
+                <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis bibendum elit commodo porttitor. Praesent vehicula tristique lobortis. Maecenas sed ligula sit amet dui porta pretium. Praesent vel dolor nec purus egestas scelerisque. Nulla sed nisl ultricies, venenatis diam at, dignissim ex. Ut non quam enim. Donec gravida augue quis sapien ultricies efficitur. Nulla pulvinar ex sed turpis malesuada, vel vulputate augue dictum. Donec non condimentum nulla. Nullam malesuada ornare eleifend. Curabitur consequat leo id rutrum eleifend. Aliquam egestas justo felis, sit amet volutpat eros rhoncus lacinia. Suspendisse vulputate tristique eros, vel efficitur dolor tincidunt in.</div>
+            </div> <div class="card detail-card">
+                <div class="title">Title</div>
+                <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis bibendum elit commodo porttitor. Praesent vehicula tristique lobortis. Maecenas sed ligula sit amet dui porta pretium. Praesent vel dolor nec purus egestas scelerisque. Nulla sed nisl ultricies, venenatis diam at, dignissim ex. Ut non quam enim. Donec gravida augue quis sapien ultricies efficitur. Nulla pulvinar ex sed turpis malesuada, vel vulputate augue dictum. Donec non condimentum nulla. Nullam malesuada ornare eleifend. Curabitur consequat leo id rutrum eleifend. Aliquam egestas justo felis, sit amet volutpat eros rhoncus lacinia. Suspendisse vulputate tristique eros, vel efficitur dolor tincidunt in.</div>
+            </div> <div class="card detail-card">
+                <div class="title">Title</div>
+                <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis bibendum elit commodo porttitor. Praesent vehicula tristique lobortis. Maecenas sed ligula sit amet dui porta pretium. Praesent vel dolor nec purus egestas scelerisque. Nulla sed nisl ultricies, venenatis diam at, dignissim ex. Ut non quam enim. Donec gravida augue quis sapien ultricies efficitur. Nulla pulvinar ex sed turpis malesuada, vel vulputate augue dictum. Donec non condimentum nulla. Nullam malesuada ornare eleifend. Curabitur consequat leo id rutrum eleifend. Aliquam egestas justo felis, sit amet volutpat eros rhoncus lacinia. Suspendisse vulputate tristique eros, vel efficitur dolor tincidunt in.</div>
+            </div> <div class="card detail-card">
+                <div class="title">Title</div>
+                <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis bibendum elit commodo porttitor. Praesent vehicula tristique lobortis. Maecenas sed ligula sit amet dui porta pretium. Praesent vel dolor nec purus egestas scelerisque. Nulla sed nisl ultricies, venenatis diam at, dignissim ex. Ut non quam enim. Donec gravida augue quis sapien ultricies efficitur. Nulla pulvinar ex sed turpis malesuada, vel vulputate augue dictum. Donec non condimentum nulla. Nullam malesuada ornare eleifend. Curabitur consequat leo id rutrum eleifend. Aliquam egestas justo felis, sit amet volutpat eros rhoncus lacinia. Suspendisse vulputate tristique eros, vel efficitur dolor tincidunt in.</div>
+            </div> <div class="card detail-card">
+                <div class="title">Title</div>
+                <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis bibendum elit commodo porttitor. Praesent vehicula tristique lobortis. Maecenas sed ligula sit amet dui porta pretium. Praesent vel dolor nec purus egestas scelerisque. Nulla sed nisl ultricies, venenatis diam at, dignissim ex. Ut non quam enim. Donec gravida augue quis sapien ultricies efficitur. Nulla pulvinar ex sed turpis malesuada, vel vulputate augue dictum. Donec non condimentum nulla. Nullam malesuada ornare eleifend. Curabitur consequat leo id rutrum eleifend. Aliquam egestas justo felis, sit amet volutpat eros rhoncus lacinia. Suspendisse vulputate tristique eros, vel efficitur dolor tincidunt in.</div>
+            </div> <div class="card detail-card">
+                <div class="title">Title</div>
+                <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis bibendum elit commodo porttitor. Praesent vehicula tristique lobortis. Maecenas sed ligula sit amet dui porta pretium. Praesent vel dolor nec purus egestas scelerisque. Nulla sed nisl ultricies, venenatis diam at, dignissim ex. Ut non quam enim. Donec gravida augue quis sapien ultricies efficitur. Nulla pulvinar ex sed turpis malesuada, vel vulputate augue dictum. Donec non condimentum nulla. Nullam malesuada ornare eleifend. Curabitur consequat leo id rutrum eleifend. Aliquam egestas justo felis, sit amet volutpat eros rhoncus lacinia. Suspendisse vulputate tristique eros, vel efficitur dolor tincidunt in.</div>
+            </div> <div class="card detail-card">
+                <div class="title">Title</div>
+                <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis bibendum elit commodo porttitor. Praesent vehicula tristique lobortis. Maecenas sed ligula sit amet dui porta pretium. Praesent vel dolor nec purus egestas scelerisque. Nulla sed nisl ultricies, venenatis diam at, dignissim ex. Ut non quam enim. Donec gravida augue quis sapien ultricies efficitur. Nulla pulvinar ex sed turpis malesuada, vel vulputate augue dictum. Donec non condimentum nulla. Nullam malesuada ornare eleifend. Curabitur consequat leo id rutrum eleifend. Aliquam egestas justo felis, sit amet volutpat eros rhoncus lacinia. Suspendisse vulputate tristique eros, vel efficitur dolor tincidunt in.</div>
+            </div>
+            </div>
+    </div>
+    <div class="card page-title">LABS 42</div>
+    <div class="card avatar">
+        <div class="image">
+            <img src="https://assets.codepen.io/907471/avatar.webp" alt="">
+        </div>
+        <div class="actions">
+            <div class="action">⚕︎</div>
+        </div>
+    </div>
+</label>
+<svg class=filter xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <filter id="blurFilter">
+        <feGaussianBlur stdDeviation="4.5"></feGaussianBlur>
+        <feColorMatrix type="matrix" values="
+              1 0 0 0 0
+              0 1 0 0 0
+              0 0 1 0 0
+              0 0 0 19 -9"></feColorMatrix>
+    </filter>
+</svg>
+  <script src='https://codepen.io/konstantindenerz/pen/KKxvdPq.js'></script>
+    <script id="rendered-js" >
+(() => {
+  const dashboard = document.getElementById('dashboard');
+  const detail = document.getElementById('detail');
+
+  document.documentElement.addEventListener('click', () => {
+    if (dashboard.classList.contains('show')) {
+      dashboard.classList.remove('show');
+      detail.classList.remove('show');
+      dashboard.classList.add('hide');
+      detail.classList.add('hide');
+    } else if (dashboard.classList.contains('hide')) {
+      dashboard.classList.remove('hide');
+      detail.classList.remove('hide');
+      dashboard.classList.add('show');
+      detail.classList.add('show');
+    } else {
+      dashboard.classList.add('show');
+      detail.classList.add('show');
+    }
+
+  });
+})();
+//# sourceURL=pen.js
+  </script>
+
+  
+</body>
+
+</html>

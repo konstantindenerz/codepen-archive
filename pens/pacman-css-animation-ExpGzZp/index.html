@@ -1,0 +1,125 @@
+<!--
+  Pacman 🕹️  {CSS, Animation}
+
+  Archived from https://codepen.io/konstantindenerz/pen/ExpGzZp
+  Created 2023-02-03 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  
+  
+
+  <title>Pacman 🕹️  {CSS, Animation}</title>
+  
+  
+  <link rel='stylesheet' href='https://codepen.io/konstantindenerz/pen/KKxvdPq.css'>
+  
+<style>
+pacman {
+  --color: #ffe737;
+  --size: 10rem;
+  --value: calc(var(--size) / 2);
+  display: block;
+  border-top: var(--value) solid var(--color);
+  border-right: var(--value) solid var(--color);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  transform: rotate(45deg);
+  box-sizing: border-box;
+  animation: pacman 1s ease infinite;
+  position: relative;
+}
+pacman:after {
+  position: fixed;
+  content: "";
+  border-radius: 50%;
+  background: black;
+  width: 1.5rem;
+  height: 1.5rem;
+  right: 1rem;
+  top: -3rem;
+}
+
+@keyframes pacman {
+  from {
+    border-width: 5rem;
+  }
+  50% {
+    border-width: 10rem;
+  }
+  to {
+    border-width: 5rem;
+  }
+}
+view {
+  --distance: .5rem;
+  --border-size: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: calc(100vh - var(--distance) * 2);
+  width: calc(100vw - var(--distance));
+  margin: var(--distance) var(--distance) var(--distance) 0;
+  border-top: var(--border-size) #1919a6 solid;
+  border-right: var(--border-size) #1919a6 solid;
+  border-bottom: var(--border-size) #1919a6 solid;
+  box-sizing: border-box;
+  border-radius: 1rem;
+}
+view:before {
+  position: absolute;
+  content: "";
+  --size: 3rem;
+  background: linear-gradient(to right, transparent 50%, black 50%), radial-gradient(circle at 50%, #ffe737 50%, black 50%, black);
+  background-repeat: repeat-x, repeat-x;
+  background-position-y: center;
+  background-size: calc(2 * var(--size)) 5rem, var(--size) var(--size);
+  background-position-x: -1000px 50%;
+  animation: jumjum 12.25s linear infinite;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+}
+
+body {
+  background: black;
+  color: #ffe737;
+}
+
+@keyframes jumjum {
+  from {
+    background-position-x: -1000px;
+  }
+  to {
+    background-position-x: 1000px;
+  }
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <view>
+  <pacman></pacman>
+</view>
+  <script src='https://codepen.io/konstantindenerz/pen/KKxvdPq.js'></script>
+  
+  
+</body>
+
+</html>

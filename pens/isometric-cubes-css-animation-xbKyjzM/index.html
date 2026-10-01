@@ -1,0 +1,719 @@
+<!--
+  Isometric Cubes 🧊 (CSS, Animation)
+
+  Archived from https://codepen.io/konstantindenerz/pen/xbKyjzM
+  Created 2025-01-23 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  
+  
+
+  <title>Isometric Cubes 🧊 (CSS, Animation)</title>
+  
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+@property --deg {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+@property --deg2 {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+@property --deg-a {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+@property --deg-b {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+@property --deg-c {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+@property --end {
+  synax: "<color>";
+  initial-value: #fff;
+  inherits: true;
+}
+@property --index-delay {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: true;
+}
+@property --index-delay-a {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: true;
+}
+:root {
+  --start: black;
+  --end: white;
+  --color-offset: 12%;
+  --deg-a: 135deg;
+  --deg-b: 135deg;
+  --deg-c: 45deg;
+  --deg-a: 320deg;
+  --deg-b: 280deg;
+  --deg-c: 220deg;
+  --deg-a: 0deg;
+  --deg-b: 0deg;
+  --deg-c: 0deg;
+  --deg-a: 20deg;
+  --deg-b: 40deg;
+  --deg-c: 110deg;
+}
+
+@-webkit-keyframes rotate {
+  from {
+    --deg2: 0deg;
+  }
+  10% {
+    --deg2: 90deg;
+  }
+  40% {
+    --deg2: 90deg;
+  }
+  50% {
+    --deg2: 180deg;
+  }
+  70% {
+    --deg2: 180deg;
+  }
+  to {
+    --deg2: 360deg;
+  }
+}
+
+@keyframes rotate {
+  from {
+    --deg2: 0deg;
+  }
+  10% {
+    --deg2: 90deg;
+  }
+  40% {
+    --deg2: 90deg;
+  }
+  50% {
+    --deg2: 180deg;
+  }
+  70% {
+    --deg2: 180deg;
+  }
+  to {
+    --deg2: 360deg;
+  }
+}
+@-webkit-keyframes demo {
+  from {
+    --deg-a: 135deg;
+    --deg-b: 135deg;
+    --deg-c: 45deg;
+  }
+  20% {
+    --deg-a: 135deg;
+    --deg-b: 135deg;
+    --deg-c: 45deg;
+  }
+  30% {
+    --deg-a: 0deg;
+    --deg-b: 0deg;
+    --deg-c: 0deg;
+  }
+  50% {
+    --deg-a: 0deg;
+    --deg-b: 0deg;
+    --deg-c: 0deg;
+  }
+  60% {
+    --deg-a: 20deg;
+    --deg-b: 40deg;
+    --deg-c: 110deg;
+  }
+  90% {
+    --deg-a: 20deg;
+    --deg-b: 40deg;
+    --deg-c: 110deg;
+  }
+  to {
+    --deg-a: 135deg;
+    --deg-b: 135deg;
+    --deg-c: 45deg;
+  }
+}
+@keyframes demo {
+  from {
+    --deg-a: 135deg;
+    --deg-b: 135deg;
+    --deg-c: 45deg;
+  }
+  20% {
+    --deg-a: 135deg;
+    --deg-b: 135deg;
+    --deg-c: 45deg;
+  }
+  30% {
+    --deg-a: 0deg;
+    --deg-b: 0deg;
+    --deg-c: 0deg;
+  }
+  50% {
+    --deg-a: 0deg;
+    --deg-b: 0deg;
+    --deg-c: 0deg;
+  }
+  60% {
+    --deg-a: 20deg;
+    --deg-b: 40deg;
+    --deg-c: 110deg;
+  }
+  90% {
+    --deg-a: 20deg;
+    --deg-b: 40deg;
+    --deg-c: 110deg;
+  }
+  to {
+    --deg-a: 135deg;
+    --deg-b: 135deg;
+    --deg-c: 45deg;
+  }
+}
+.cube {
+  --deg: var(--deg-a);
+  background: linear-gradient(calc(var(--deg) - var(--deg2)), var(--start) var(--color-offset), var(--end));
+  width: var(--s);
+  aspect-ratio: 1;
+  transform-style: preserve-3d;
+  position: relative;
+  transform: rotateX(45deg) rotate(45deg) rotateZ(0deg);
+  --row-temp: calc(
+    var(--row) - var(--row-center)
+  );
+  --col-temp: calc(
+    var(--col) - var(--col-center)
+  );
+  --row-temp-abs: max(var(--row-temp), -1 * var(--row-temp));
+  --col-temp-abs: max(var(--col-temp), -1 * var(--col-temp));
+  --index-delay-a: max(
+    var(--col-temp-abs),
+    var(--row-temp-abs)
+  );
+  --index-delay-b: max(
+    calc(var(--col-temp-abs) - var(--row-temp-abs)),
+    -1 * calc(var(--col-temp-abs) - var(--row-temp-abs))
+  );
+  --index-delay-c: calc(
+    var(--col-temp-abs) - var(--row-temp-abs)
+  );
+  --index-delay: var(--index-delay-a);
+  --index-delay: var(--index-delay-b);
+  --index-delay: var(
+    --index-delay-c
+  );
+  --delay: calc(var(--index-delay) * 0.2s);
+  -webkit-animation: rotate var(--duration, 5s) var(--delay, 0s) ease infinite, foo 10s linear infinite;
+          animation: rotate var(--duration, 5s) var(--delay, 0s) ease infinite, foo 10s linear infinite;
+}
+.cube .top {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  display: grid;
+  place-items: center;
+}
+.cube .top::before, .cube .top::after {
+  --deg: var(--deg-b);
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  background: linear-gradient(calc(var(--deg) + var(--deg2)), var(--start) var(--color-offset), var(--end));
+  transform: translate3d(0, var(--s-h), var(--s-h-n)) rotate3d(1, 0, 0, 90deg);
+}
+.cube .top::after {
+  --deg: var(--deg-c);
+  background: linear-gradient(calc(var(--deg) - var(--deg2)), var(--start) var(--color-offset), var(--end));
+  transform: translate3d(var(--s-h), 0, var(--s-h-n)) rotate3d(0, 1, 0, 90deg);
+}
+
+.container {
+  display: flex;
+  gap: calc(var(--s) * 0.42);
+}
+.container:nth-child(even) {
+  translate: calc(var(--s) * 0.71);
+}
+
+.scene {
+  display: flex;
+  flex-direction: column;
+  perspective: 100rem;
+  gap: calc(var(--s) * 0.2);
+  position: absolute;
+}
+
+.wrapper {
+  --s-base: calc(100vmax / var(--c));
+  --s: calc(var(--s-base) - var(--s-base) * 0.25);
+  --s-n: calc(var(--s) * -1);
+  --s-h: calc(var(--s) / 2);
+  --s-h-n: calc(var(--s) / -2);
+  --half-width: calc(100dvw / 2);
+  --half-height: calc(100dvh / 2);
+  --half-scene-width: calc(var(--s-base) * var(--c) / 2);
+  --half-scene-height: calc(var(--s-base) * 0.92 * var(--c) / 2);
+  -webkit-animation: demo 20s linear infinite;
+          animation: demo 20s linear infinite;
+  transform: translate(calc(var(--half-width) - var(--half-scene-width)), calc(var(--half-height) - var(--half-scene-height)));
+  position: absolute;
+  --row-center: calc(round(var(--c) / 2));
+  --col-center: calc(round(var(--c) / 2));
+  inset: 0;
+  scale: 1.2;
+  rotate: 90deg 0;
+}
+
+body {
+  color: transparent;
+  height: 100dvh;
+  width: 100dvw;
+  display: grid;
+  font-size: 2rem;
+  place-items: center;
+  background: #333;
+  overflow: hidden;
+}
+body:after {
+  content: "";
+  position: absolute;
+  background: url(https://assets.codepen.io/907471/noise.svg);
+  mix-blend-mode: overlay;
+  inset: 0;
+  pointer-events: none;
+  filter: invert(1) brightness(1.5);
+  z-index: var(--labs-sys-z-noise);
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="wrapper" style="--c:11"> 
+  <div class="scene">
+    <div class="container">
+      <div class="cube" style="--i:1;--row:1;--col:1"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:2;--row:1;--col:2"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:3;--row:1;--col:3"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:4;--row:1;--col:4"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:5;--row:1;--col:5"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:6;--row:1;--col:6"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:7;--row:1;--col:7"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:8;--row:1;--col:8"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:9;--row:1;--col:9"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:10;--row:1;--col:10"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:11;--row:1;--col:11"> 
+        <div class="top"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="cube" style="--i:12;--row:2;--col:1"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:13;--row:2;--col:2"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:14;--row:2;--col:3"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:15;--row:2;--col:4"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:16;--row:2;--col:5"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:17;--row:2;--col:6"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:18;--row:2;--col:7"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:19;--row:2;--col:8"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:20;--row:2;--col:9"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:21;--row:2;--col:10"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:22;--row:2;--col:11"> 
+        <div class="top"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="cube" style="--i:23;--row:3;--col:1"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:24;--row:3;--col:2"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:25;--row:3;--col:3"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:26;--row:3;--col:4"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:27;--row:3;--col:5"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:28;--row:3;--col:6"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:29;--row:3;--col:7"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:30;--row:3;--col:8"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:31;--row:3;--col:9"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:32;--row:3;--col:10"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:33;--row:3;--col:11"> 
+        <div class="top"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="cube" style="--i:34;--row:4;--col:1"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:35;--row:4;--col:2"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:36;--row:4;--col:3"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:37;--row:4;--col:4"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:38;--row:4;--col:5"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:39;--row:4;--col:6"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:40;--row:4;--col:7"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:41;--row:4;--col:8"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:42;--row:4;--col:9"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:43;--row:4;--col:10"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:44;--row:4;--col:11"> 
+        <div class="top"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="cube" style="--i:45;--row:5;--col:1"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:46;--row:5;--col:2"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:47;--row:5;--col:3"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:48;--row:5;--col:4"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:49;--row:5;--col:5"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:50;--row:5;--col:6"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:51;--row:5;--col:7"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:52;--row:5;--col:8"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:53;--row:5;--col:9"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:54;--row:5;--col:10"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:55;--row:5;--col:11"> 
+        <div class="top"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="cube" style="--i:56;--row:6;--col:1"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:57;--row:6;--col:2"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:58;--row:6;--col:3"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:59;--row:6;--col:4"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:60;--row:6;--col:5"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:61;--row:6;--col:6"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:62;--row:6;--col:7"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:63;--row:6;--col:8"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:64;--row:6;--col:9"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:65;--row:6;--col:10"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:66;--row:6;--col:11"> 
+        <div class="top"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="cube" style="--i:67;--row:7;--col:1"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:68;--row:7;--col:2"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:69;--row:7;--col:3"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:70;--row:7;--col:4"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:71;--row:7;--col:5"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:72;--row:7;--col:6"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:73;--row:7;--col:7"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:74;--row:7;--col:8"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:75;--row:7;--col:9"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:76;--row:7;--col:10"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:77;--row:7;--col:11"> 
+        <div class="top"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="cube" style="--i:78;--row:8;--col:1"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:79;--row:8;--col:2"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:80;--row:8;--col:3"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:81;--row:8;--col:4"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:82;--row:8;--col:5"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:83;--row:8;--col:6"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:84;--row:8;--col:7"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:85;--row:8;--col:8"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:86;--row:8;--col:9"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:87;--row:8;--col:10"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:88;--row:8;--col:11"> 
+        <div class="top"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="cube" style="--i:89;--row:9;--col:1"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:90;--row:9;--col:2"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:91;--row:9;--col:3"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:92;--row:9;--col:4"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:93;--row:9;--col:5"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:94;--row:9;--col:6"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:95;--row:9;--col:7"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:96;--row:9;--col:8"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:97;--row:9;--col:9"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:98;--row:9;--col:10"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:99;--row:9;--col:11"> 
+        <div class="top"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="cube" style="--i:100;--row:10;--col:1"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:101;--row:10;--col:2"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:102;--row:10;--col:3"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:103;--row:10;--col:4"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:104;--row:10;--col:5"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:105;--row:10;--col:6"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:106;--row:10;--col:7"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:107;--row:10;--col:8"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:108;--row:10;--col:9"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:109;--row:10;--col:10"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:110;--row:10;--col:11"> 
+        <div class="top"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="cube" style="--i:111;--row:11;--col:1"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:112;--row:11;--col:2"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:113;--row:11;--col:3"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:114;--row:11;--col:4"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:115;--row:11;--col:5"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:116;--row:11;--col:6"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:117;--row:11;--col:7"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:118;--row:11;--col:8"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:119;--row:11;--col:9"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:120;--row:11;--col:10"> 
+        <div class="top"></div>
+      </div>
+      <div class="cube" style="--i:121;--row:11;--col:11"> 
+        <div class="top"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  
+  
+</body>
+
+</html>

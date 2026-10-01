@@ -1,0 +1,241 @@
+<!--
+  Glassmorphic Cube (CSS)
+
+  Archived from https://codepen.io/konstantindenerz/pen/NWZRYXK
+  Created 2024-07-25 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  
+  
+
+  <title>Glassmorphic Cube (CSS)</title>
+  
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+:root {
+  --item-size: 28vmin;
+  --depth: 1;
+}
+
+.bg-image {
+  background: url("https://assets.codepen.io/907471/DALL%C2%B7E+2024-07-25+12.21.18+-+A+vibrant+background+perfect+for+a+glassmorphic+user+interface+in+a+landscape+format.+The+design+features+a+gradient+of+gold%2C+brown%2C+black%2C+and+white%2C.webp") center center no-repeat;
+  background-size: cover;
+  position: absolute;
+  inset: -20vmin;
+  -webkit-animation: zoom-in-out 20s ease infinite;
+          animation: zoom-in-out 20s ease infinite;
+}
+
+@-webkit-keyframes zoom-in-out {
+  from {
+    transform: scale(1.1) translateX(-2vmin);
+  }
+  50% {
+    transform: scale(1) translateX(2vmin);
+  }
+  to {
+    transform: scale(1.1) translateX(-2vmin);
+  }
+}
+
+@keyframes zoom-in-out {
+  from {
+    transform: scale(1.1) translateX(-2vmin);
+  }
+  50% {
+    transform: scale(1) translateX(2vmin);
+  }
+  to {
+    transform: scale(1.1) translateX(-2vmin);
+  }
+}
+.face {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 1rem;
+  padding: rem;
+  transform-style: preserve-3d;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  -webkit-backdrop-filter: blur(0.2rem) brightness(1.1) saturate(1.01);
+          backdrop-filter: blur(0.2rem) brightness(1.1) saturate(1.01);
+  transform-style: preserve-3d;
+}
+.bg.second {
+  inset: 0.1vmin;
+  -webkit-backdrop-filter: blur(0.5rem) brightness(1.32);
+          backdrop-filter: blur(0.5rem) brightness(1.32);
+  transform-style: preserve-3d;
+}
+
+.content {
+  position: absolute;
+  inset: 2vmin;
+  display: flex;
+  transform-style: preserve-3d;
+  opacity: 0.4;
+  -webkit-backdrop-filter: blur(1.24rem) brightness(1.32);
+          backdrop-filter: blur(1.24rem) brightness(1.32);
+}
+
+@-webkit-keyframes cube-animation {
+  from {
+    transform: rotate3d(1, 0, 1, 0deg);
+  }
+  to {
+    transform: rotate3d(1, 0, 1, 360deg);
+  }
+}
+
+@keyframes cube-animation {
+  from {
+    transform: rotate3d(1, 0, 1, 0deg);
+  }
+  to {
+    transform: rotate3d(1, 0, 1, 360deg);
+  }
+}
+.cube {
+  position: relative;
+  --width: var(--item-size);
+  --width-n: calc(var(--item-size) * -1);
+  --height: calc(var(--item-size) * var(--depth));
+  --height-half: calc(var(--height) / 2);
+  --height-half-n: calc(var(--height) / -2);
+  width: var(--width);
+  height: var(--width);
+  --offset-per-item: calc(
+    360deg / (var(--count) + 17 + var(--ring-index) * 5.5)
+  );
+  --angle: calc(var(--offset-per-item) * var(--item-index));
+  --radius: calc(var(--inner-radius) + (var(--ring-gap) * var(--ring-index)));
+  --x: calc(cos(var(--angle)) * var(--radius));
+  --y: calc(sin(var(--angle)) * var(--radius));
+  transform: translate3d(var(--x), var(--y), 0) rotate3d(0, 0, 1, var(--angle));
+  transform-style: preserve-3d;
+  transform-origin: var(--pos);
+  -webkit-animation: cube-animation 5s linear infinite;
+          animation: cube-animation 5s linear infinite;
+}
+.cube > div {
+  --z: calc(var(--width) / 2);
+  transform-style: preserve-3d;
+  width: var(--width);
+  height: var(--width);
+  position: absolute;
+  border-radius: var(--border-radius);
+  --duration: 10.5s;
+  --delay: calc(0.02s * (var(--ring-index) + 1) * (var(--item-index) + 1));
+}
+.cube > div.front {
+  transform: translate3d(0, 0, var(--height-half));
+}
+.cube > div.back {
+  transform: translate3d(0, 0, var(--height-half-n));
+}
+.cube > div.top {
+  height: var(--height);
+  transform: rotate3d(1, 0, 0, 90deg) translate3d(0, 0, var(--height-half));
+}
+.cube > div.bottom {
+  height: var(--height);
+  transform-origin: top;
+  transform: rotate3d(1, 0, 0, -90deg) translate3d(0, var(--height-half-n), var(--width));
+}
+.cube > div.right {
+  width: var(--height);
+  --z: calc(var(--height-half-n) + var(--width));
+  transform: rotate3d(0, 1, 0, 90deg) translate3d(0, 0, var(--z));
+}
+.cube > div.left {
+  width: var(--height);
+  --z: calc(var(--height-half));
+  transform: rotate3d(0, 1, 0, -90deg) translate3d(0, 0, var(--z));
+}
+
+body {
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  perspective: 37rem;
+  background-color: black;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="bg-image"></div>
+
+<div class="cube">
+    <div class="face front">
+        <div class="bg"></div>
+        <div class="bg second"></div>
+        <div class="content">
+        </div>
+    </div>
+    <div class="face bottom">
+        <div class="bg"></div>
+        <div class="bg second"></div>
+        <div class="content">
+        </div>
+    </div>
+    <div class="face top">
+        <div class="bg"></div>
+        <div class="bg second"></div>
+        <div class="content">
+
+        </div>
+    </div>
+    <div class="face back">
+        <div class="bg"></div>
+        <div class="bg second"></div>
+        <div class="content">
+
+        </div>
+    </div>
+    <div class="face left">
+        <div class="bg"></div>
+        <div class="bg second"></div>
+        <div class="content">
+
+        </div>
+    </div>
+
+    <div class="face right">
+        <div class="bg"></div>
+        <div class="bg second"></div>
+        <div class="content">
+
+        </div>
+    </div>
+</div>
+  
+  
+  
+</body>
+
+</html>
