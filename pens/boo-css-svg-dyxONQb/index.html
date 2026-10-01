@@ -1,0 +1,510 @@
+<!--
+  Boo! 👻 (CSS, SVG)
+
+  Archived from https://codepen.io/konstantindenerz/pen/dyxONQb
+  Created 2024-10-09 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  
+  
+
+  <title>Boo! 👻 (CSS, SVG)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+@charset "UTF-8";
+svg {
+  --c: magenta;
+  --size: 10px;
+  --w: 1px;
+  border: 1px solid var(--c);
+  background: repeating-linear-gradient(to right, transparent, transparent var(--size), var(--c) var(--size), var(--c) calc(var(--size) + var(--w))), repeating-linear-gradient(to bottom, transparent, transparent var(--size), var(--c) var(--size), var(--c) calc(var(--size) + var(--w)));
+}
+
+@property --step {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: true;
+}
+.ghost {
+  width: 200px;
+  aspect-ratio: 1/1.2;
+  --r: 6rem;
+  border-radius: var(--r) var(--r) 1rem 1rem;
+  position: absolute;
+  --func: ease-in-out;
+  -webkit-animation: hover 3s var(--func) infinite;
+          animation: hover 3s var(--func) infinite;
+}
+.ghost .front {
+  border-radius: inherit;
+  background: radial-gradient(rgba(255, 255, 255, 0.5), transparent);
+  -webkit-backdrop-filter: blur(0.1rem);
+          backdrop-filter: blur(0.1rem);
+  box-shadow: inset -1rem -1rem 5rem rgba(255, 255, 255, 0.8), inset 1rem -1rem 2rem rgba(255, 255, 255, 0.6), inset -1rem -1rem 2rem rgba(255, 255, 255, 0.6), inset 0rem 1rem 2rem rgba(255, 255, 255, 0.6), inset 0rem -4rem 2rem rgba(255, 255, 255, 0.6);
+  position: absolute;
+  inset: 0;
+  -webkit-clip-path: url(#ghost);
+          clip-path: url(#ghost);
+  overflow: clip;
+  display: grid;
+  place-items: center;
+}
+.ghost .eyes {
+  position: absolute;
+  display: flex;
+  gap: 2.5rem;
+  translate: 0 -2.5rem;
+}
+.ghost .eye {
+  border-radius: 50%;
+  width: 1.5rem;
+  aspect-ratio: 1;
+  background: black;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+.ghost .eye:before {
+  content: "";
+  width: 0.5rem;
+  translate: 0 -0.4rem;
+  aspect-ratio: 1;
+  border-radius: inherit;
+  background: white;
+  position: absolute;
+}
+.ghost .eye:after {
+  content: "";
+  width: 0.25rem;
+  translate: 0.35rem -0.035rem;
+  aspect-ratio: 1;
+  border-radius: inherit;
+  background: white;
+  position: absolute;
+}
+.ghost .mouth {
+  width: 2rem;
+  height: 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: inset 0 0 0.5rem black;
+  border-radius: 4rem 4rem 20rem 20rem;
+  translate: 0 0.6rem;
+}
+.ghost .lights {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  filter: blur(1rem);
+}
+@-webkit-keyframes light-move-up-down {
+  from {
+    background-position-y: 0%;
+  }
+  50% {
+    background-position-y: 10%;
+  }
+  from {
+    background-position-y: 0%;
+  }
+}
+@keyframes light-move-up-down {
+  from {
+    background-position-y: 0%;
+  }
+  50% {
+    background-position-y: 10%;
+  }
+  from {
+    background-position-y: 0%;
+  }
+}
+@-webkit-keyframes light-move {
+  from {
+    background-position-x: 0%;
+  }
+  to {
+    background-position-x: -1000%;
+  }
+}
+@keyframes light-move {
+  from {
+    background-position-x: 0%;
+  }
+  to {
+    background-position-x: -1000%;
+  }
+}
+.ghost .lights .l00 {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(4rem 5rem at 50% 100%, white 0.2rem, white 2rem, transparent 3rem) repeat-x 0 0%/6rem 6rem;
+  -webkit-animation: light-move 6s linear infinite, light-move-up-down 1s linear infinite;
+          animation: light-move 6s linear infinite, light-move-up-down 1s linear infinite;
+  translate: 0 50%;
+}
+.ghost .lights .l0 {
+  position: absolute;
+  width: 10.5rem;
+  height: 7rem;
+  background: radial-gradient(#ea61eb, transparent);
+  border-radius: 50%;
+  -webkit-animation: rotate-light 2.3s linear infinite;
+          animation: rotate-light 2.3s linear infinite;
+  margin-top: 10rem;
+}
+.ghost .lights .l1 {
+  position: absolute;
+  width: 4.5rem;
+  height: 3rem;
+  background: white;
+  border-radius: 50%;
+  transform: translate3d(0, 5rem, 0);
+}
+.ghost .lights .l2 {
+  position: absolute;
+  width: 2.5rem;
+  height: 3rem;
+  background: white;
+  border-radius: 50%;
+  transform: translate3d(3rem, 4rem, 0);
+}
+.ghost .lights .l3 {
+  position: absolute;
+  width: 2.5rem;
+  height: 3rem;
+  background: white;
+  border-radius: 50%;
+  transform: translate3d(-3rem, 4rem, 0);
+}
+.ghost .lights .l4 {
+  position: absolute;
+  width: 3.5rem;
+  height: 3.5rem;
+  background: white;
+  border-radius: 50%;
+  transform: translate3d(3rem, -4rem, 0);
+}
+.ghost .lights .l5 {
+  position: absolute;
+  width: 3.5rem;
+  height: 1.5rem;
+  background: radial-gradient(2rem 2rem at center, white 1rem, transparent 1rem), radial-gradient(#1fe7ffa8, transparent);
+  border-radius: 50%;
+  transform: translate3d(3rem, -4rem, 0);
+}
+.ghost .back {
+  border-radius: inherit;
+  position: absolute;
+  inset: 0;
+  -webkit-backdrop-filter: blur(0.5rem);
+          backdrop-filter: blur(0.5rem);
+  background: rgba(0, 0, 0, 0.2);
+  -webkit-clip-path: url(#ghost-reverse);
+          clip-path: url(#ghost-reverse);
+  opacity: 0;
+  -webkit-animation: fade-in 0.35s 0.35s linear forwards;
+          animation: fade-in 0.35s 0.35s linear forwards;
+  box-shadow: inset -1rem -1rem 5rem rgba(255, 255, 255, 0.4), inset 1rem -1rem 20rem rgba(255, 255, 255, 0.4);
+}
+.ghost .back:before {
+  content: "💙";
+  filter: blur(1rem);
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: -10;
+  font-size: 5rem;
+  color: magenta;
+}
+.ghost .back:after {
+  content: "";
+  background: magenta;
+  filter: blur(0.5rem);
+  position: absolute;
+  inset: 3rem;
+  border-radius: 50%;
+  display: grid;
+  rotate: 42deg;
+  translate: -10% 0;
+  place-items: center;
+  opacity: 0.2;
+}
+.ghost:after {
+  content: "";
+  position: absolute;
+  inset: -3rem;
+  background: radial-gradient(50% 50% at center, #a76ba88f, #8e2d784f, transparent);
+  transform-style: preserve-3d;
+  transform: translate3d(0, 80%, 0) scale(var(--step)) perspective(600px) rotateX(60deg);
+}
+
+@-webkit-keyframes rotate-light {
+  from {
+    transform: rotate(0deg) translate3d(0, 0rem, 0);
+  }
+  50% {
+    transform: rotate(-90deg) translate3d(-0.5rem, 0.5rem, 0);
+  }
+  to {
+    transform: rotate(-360deg) translate3d(0, 0rem, 0);
+  }
+}
+
+@keyframes rotate-light {
+  from {
+    transform: rotate(0deg) translate3d(0, 0rem, 0);
+  }
+  50% {
+    transform: rotate(-90deg) translate3d(-0.5rem, 0.5rem, 0);
+  }
+  to {
+    transform: rotate(-360deg) translate3d(0, 0rem, 0);
+  }
+}
+@-webkit-keyframes fade-in {
+  to {
+    opacity: 0.9;
+  }
+}
+@keyframes fade-in {
+  to {
+    opacity: 0.9;
+  }
+}
+@-webkit-keyframes hover {
+  from {
+    --step: .8;
+    translate: -10% 40%;
+  }
+  50% {
+    --step: 1;
+    translate: -14% 50%;
+  }
+  to {
+    --step: .8;
+    translate: -10% 40%;
+  }
+}
+@keyframes hover {
+  from {
+    --step: .8;
+    translate: -10% 40%;
+  }
+  50% {
+    --step: 1;
+    translate: -14% 50%;
+  }
+  to {
+    --step: .8;
+    translate: -10% 40%;
+  }
+}
+.boo {
+  position: absolute;
+  color: #fdfd63;
+  width: 20rem;
+  height: 20rem;
+  transform: translate3d(50%, 0%, 1rem) perspective(600px);
+}
+.boo:before {
+  -webkit-clip-path: polygon(6% 22%, 29% 94%, 29% 94%, 11% 27%, 94% 3%, 29% 94%, 7% 22%, 4% 19%, 29% 94%, 100% 0%);
+          clip-path: polygon(6% 22%, 29% 94%, 29% 94%, 11% 27%, 94% 3%, 29% 94%, 7% 22%, 4% 19%, 29% 94%, 100% 0%);
+  background: #00f2ff;
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  font-size: 2rem;
+  place-items: center;
+  -webkit-animation: triangle 10s linear infinite;
+          animation: triangle 10s linear infinite;
+}
+.boo:after {
+  content: "Boo!";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  font-size: 8rem;
+  place-items: center;
+  -webkit-animation: glitch 4s linear infinite;
+          animation: glitch 4s linear infinite;
+}
+
+@-webkit-keyframes triangle {
+  from {
+    transform: translate(4rem, 0.8vmin) rotate(1deg);
+  }
+  50% {
+    transform: translate(3.5rem, 0vmin) rotateX(-15deg) rotateY(-20deg);
+  }
+  to {
+    transform: translate(4rem, 0.8vmin) rotate(1deg);
+  }
+}
+
+@keyframes triangle {
+  from {
+    transform: translate(4rem, 0.8vmin) rotate(1deg);
+  }
+  50% {
+    transform: translate(3.5rem, 0vmin) rotateX(-15deg) rotateY(-20deg);
+  }
+  to {
+    transform: translate(4rem, 0.8vmin) rotate(1deg);
+  }
+}
+@-webkit-keyframes glitch {
+  from {
+    --angle: 45deg;
+    transform: translateY(0vh);
+  }
+  49.5% {
+    --angle: 360deg;
+    transform: translateY(-1vh);
+    filter: brightness(100%);
+  }
+  50% {
+    --angle: 360deg;
+    transform: translateY(-1vh) scaleY(0.1) skewX(253deg);
+    filter: brightness(190%);
+  }
+  51% {
+    --angle: 360deg;
+    transform: translateY(-1vh) scaleY(0.5) skewY(37deg);
+    filter: brightness(190%);
+  }
+  52% {
+    --angle: 360deg;
+    filter: brightness(190%);
+    transform: translateY(0vh);
+  }
+  to {
+    --angle: 45deg;
+    transform: translateY(0vh);
+  }
+}
+@keyframes glitch {
+  from {
+    --angle: 45deg;
+    transform: translateY(0vh);
+  }
+  49.5% {
+    --angle: 360deg;
+    transform: translateY(-1vh);
+    filter: brightness(100%);
+  }
+  50% {
+    --angle: 360deg;
+    transform: translateY(-1vh) scaleY(0.1) skewX(253deg);
+    filter: brightness(190%);
+  }
+  51% {
+    --angle: 360deg;
+    transform: translateY(-1vh) scaleY(0.5) skewY(37deg);
+    filter: brightness(190%);
+  }
+  52% {
+    --angle: 360deg;
+    filter: brightness(190%);
+    transform: translateY(0vh);
+  }
+  to {
+    --angle: 45deg;
+    transform: translateY(0vh);
+  }
+}
+body {
+  display: grid;
+  place-items: center;
+  height: 100dvh;
+  background: linear-gradient(to bottom, black, #222) center center no-repeat;
+  font-family: "Press Start 2P", Helvetica, monospace;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  gap: 2rem;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="container">
+  <svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+
+    <path d="M 0 10 Q 25 -10, 50 10 T 100 10 Q 125 -10, 150 10 T 200 10" stroke="yellow" stroke-width="2" fill="transparent" />
+
+  </svg>
+
+  <svg width="0" height="0">
+
+    <clipPath id="ghost" clipPathUnits="objectBoundingBox">
+      <path d="M -.5 .9, Q -.375 .8, -.25 .9, T 0 .9, Q .125 .8, .25 .9,     T .5 .9, Q .625 .8, .75 .9, T 1 .9, Q 1.25 .8, 1.4 .9, T 2 .9, L 1 0, L 0 0  Z">
+        <animate id="a3" attributeType="XML" attributeName="d" from="M 0 .9, Q 0.125 .8, .25 .9, T .5 .9, Q .625 .8, .75 .9,     T 1 .9, Q 1.125 .8, 1.25 .9, T 1.9 .9, Q 1.525 .8, 1.25 .9, T 2.5 .9, L 1 0, L 0 0  Z" to="M -.5 .9, Q -.375 .8, -.25 .9, T 0 .9, Q .125 .8, .25 .9,     T .5 .9, Q .625 .8, .75 .9, T 1 .9, Q 1.25 .8, 1.4 .9, T 2 .9, L 1 0, L 0 0  Z" dur=".6s" begin="0s;a3.end" />
+
+      </path>
+    </clipPath>
+
+    <clipPath id="ghost-reverse" clipPathUnits="objectBoundingBox">
+      <path d="M -.5 .9, Q -.375 .8, -.25 .9, T 0 .9, Q .125 .8, .25 .9,     T .5 .9, Q .625 .8, .75 .9, T 1 .9, Q 1.25 .8, 1.4 .9, T 2 .9, L 1 0, L 0 0  Z">
+        <animate id="a4" attributeType="XML" attributeName="d" from="M -.5 .9, Q -.375 .8, -.25 .9, T 0 .9, Q .125 .8, .25 .9,     T .5 .9, Q .625 .8, .75 .9, T 1 .9, Q 1.25 .8, 1.4 .9, T 2 .9, L 1 0, L 0 0  Z" to="M 0 .9, Q 0.125 .8, .25 .9, T .5 .9, Q .625 .8, .75 .9,     T 1 .9, Q 1.125 .8, 1.25 .9, T 1.9 .9, Q 1.525 .8, 1.25 .9, T 2.5 .9, L 1 0, L 0 0  Z" dur=".6s" begin="0s;a4.end" />
+
+      </path>
+    </clipPath>
+
+  </svg>
+
+  <div class="boo">
+
+  </div>
+  <div class="ghost">
+    <div class="back"></div>
+    <div class="front">
+      <div class="eyes">
+        <div class="eye"></div>
+        <div class="eye"></div>
+      </div>
+      <div class="mouth"></div>
+      <div class="lights">
+        <div class="l0"></div>
+        <div class="l00"></div>
+        <div class="l1"></div>
+        <div class="l2"></div>
+        <div class="l3"></div>
+        <div class="l4"></div>
+        <div class="l5"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+  
+  
+  
+</body>
+
+</html>

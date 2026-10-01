@@ -1,0 +1,1803 @@
+<!--
+  3D Text (CSS)
+
+  Archived from https://codepen.io/konstantindenerz/pen/wvOZaeW
+  Created 2024-02-19 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  <title>3D Text (CSS)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+@charset "UTF-8";
+:root {
+  --color-primary: #8d8357;
+  --color-secondary: #293641;
+  --color-surface: var(--color-secondary);
+}
+
+:root {
+  --content: "♛";
+  --perspective: 1000px;
+}
+
+.layers {
+  position: relative;
+  font-size: 50vmin;
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 700;
+  perspective: var(--perspective);
+  translate: -3vmin 0;
+}
+.layers:before {
+  pointer-events: none;
+  color: transparent;
+  content: var(--content);
+}
+.layers:after {
+  color: black;
+  text-shadow: -10px -10px 5px rgba(0, 0, 0, 0.2), -10px 10px 5px rgba(0, 0, 0, 0.2), 10px 10px 15px rgba(0, 0, 0, 0.5), -20px -20px 30px rgba(0, 0, 0, 0.3), -20px 40px 30px rgba(0, 0, 0, 0.3);
+  content: var(--content);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: rotateY(322deg) rotateZ(347deg) rotateX(305deg);
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  --highlight-level: calc(var(--i) * 100% / 400);
+  color: color-mix(in srgb, var(--color-primary), white var(--highlight-level));
+  --x: calc(0.03vmin * var(--i));
+  --y: calc(var(--x) * -1);
+  transform: rotateY(322deg) rotateZ(347deg) rotateX(305deg) translate3d(var(--x), var(--y), 0);
+  text-shadow: -1px -1px 0 color-mix(in srgb, var(--color-primary) 50%, black 60%), 1px 1px 0 rgba(0, 0, 0, 0.04);
+}
+.layer:before {
+  content: var(--content);
+  transform: rotate(45deg);
+}
+.layer:nth-child(1) {
+  --i: 0;
+}
+.layer:nth-child(2) {
+  --i: 1;
+}
+.layer:nth-child(3) {
+  --i: 2;
+}
+.layer:nth-child(4) {
+  --i: 3;
+}
+.layer:nth-child(5) {
+  --i: 4;
+}
+.layer:nth-child(6) {
+  --i: 5;
+}
+.layer:nth-child(7) {
+  --i: 6;
+}
+.layer:nth-child(8) {
+  --i: 7;
+}
+.layer:nth-child(9) {
+  --i: 8;
+}
+.layer:nth-child(10) {
+  --i: 9;
+}
+.layer:nth-child(11) {
+  --i: 10;
+}
+.layer:nth-child(12) {
+  --i: 11;
+}
+.layer:nth-child(13) {
+  --i: 12;
+}
+.layer:nth-child(14) {
+  --i: 13;
+}
+.layer:nth-child(15) {
+  --i: 14;
+}
+.layer:nth-child(16) {
+  --i: 15;
+}
+.layer:nth-child(17) {
+  --i: 16;
+}
+.layer:nth-child(18) {
+  --i: 17;
+}
+.layer:nth-child(19) {
+  --i: 18;
+}
+.layer:nth-child(20) {
+  --i: 19;
+}
+.layer:nth-child(21) {
+  --i: 20;
+}
+.layer:nth-child(22) {
+  --i: 21;
+}
+.layer:nth-child(23) {
+  --i: 22;
+}
+.layer:nth-child(24) {
+  --i: 23;
+}
+.layer:nth-child(25) {
+  --i: 24;
+}
+.layer:nth-child(26) {
+  --i: 25;
+}
+.layer:nth-child(27) {
+  --i: 26;
+}
+.layer:nth-child(28) {
+  --i: 27;
+}
+.layer:nth-child(29) {
+  --i: 28;
+}
+.layer:nth-child(30) {
+  --i: 29;
+}
+.layer:nth-child(31) {
+  --i: 30;
+}
+.layer:nth-child(32) {
+  --i: 31;
+}
+.layer:nth-child(33) {
+  --i: 32;
+}
+.layer:nth-child(34) {
+  --i: 33;
+}
+.layer:nth-child(35) {
+  --i: 34;
+}
+.layer:nth-child(36) {
+  --i: 35;
+}
+.layer:nth-child(37) {
+  --i: 36;
+}
+.layer:nth-child(38) {
+  --i: 37;
+}
+.layer:nth-child(39) {
+  --i: 38;
+}
+.layer:nth-child(40) {
+  --i: 39;
+}
+.layer:nth-child(41) {
+  --i: 40;
+}
+.layer:nth-child(42) {
+  --i: 41;
+}
+.layer:nth-child(43) {
+  --i: 42;
+}
+.layer:nth-child(44) {
+  --i: 43;
+}
+.layer:nth-child(45) {
+  --i: 44;
+}
+.layer:nth-child(46) {
+  --i: 45;
+}
+.layer:nth-child(47) {
+  --i: 46;
+}
+.layer:nth-child(48) {
+  --i: 47;
+}
+.layer:nth-child(49) {
+  --i: 48;
+}
+.layer:nth-child(50) {
+  --i: 49;
+}
+.layer:nth-child(51) {
+  --i: 50;
+}
+.layer:nth-child(52) {
+  --i: 51;
+}
+.layer:nth-child(53) {
+  --i: 52;
+}
+.layer:nth-child(54) {
+  --i: 53;
+}
+.layer:nth-child(55) {
+  --i: 54;
+}
+.layer:nth-child(56) {
+  --i: 55;
+}
+.layer:nth-child(57) {
+  --i: 56;
+}
+.layer:nth-child(58) {
+  --i: 57;
+}
+.layer:nth-child(59) {
+  --i: 58;
+}
+.layer:nth-child(60) {
+  --i: 59;
+}
+.layer:nth-child(61) {
+  --i: 60;
+}
+.layer:nth-child(62) {
+  --i: 61;
+}
+.layer:nth-child(63) {
+  --i: 62;
+}
+.layer:nth-child(64) {
+  --i: 63;
+}
+.layer:nth-child(65) {
+  --i: 64;
+}
+.layer:nth-child(66) {
+  --i: 65;
+}
+.layer:nth-child(67) {
+  --i: 66;
+}
+.layer:nth-child(68) {
+  --i: 67;
+}
+.layer:nth-child(69) {
+  --i: 68;
+}
+.layer:nth-child(70) {
+  --i: 69;
+}
+.layer:nth-child(71) {
+  --i: 70;
+}
+.layer:nth-child(72) {
+  --i: 71;
+}
+.layer:nth-child(73) {
+  --i: 72;
+}
+.layer:nth-child(74) {
+  --i: 73;
+}
+.layer:nth-child(75) {
+  --i: 74;
+}
+.layer:nth-child(76) {
+  --i: 75;
+}
+.layer:nth-child(77) {
+  --i: 76;
+}
+.layer:nth-child(78) {
+  --i: 77;
+}
+.layer:nth-child(79) {
+  --i: 78;
+}
+.layer:nth-child(80) {
+  --i: 79;
+}
+.layer:nth-child(81) {
+  --i: 80;
+}
+.layer:nth-child(82) {
+  --i: 81;
+}
+.layer:nth-child(83) {
+  --i: 82;
+}
+.layer:nth-child(84) {
+  --i: 83;
+}
+.layer:nth-child(85) {
+  --i: 84;
+}
+.layer:nth-child(86) {
+  --i: 85;
+}
+.layer:nth-child(87) {
+  --i: 86;
+}
+.layer:nth-child(88) {
+  --i: 87;
+}
+.layer:nth-child(89) {
+  --i: 88;
+}
+.layer:nth-child(90) {
+  --i: 89;
+}
+.layer:nth-child(91) {
+  --i: 90;
+}
+.layer:nth-child(92) {
+  --i: 91;
+}
+.layer:nth-child(93) {
+  --i: 92;
+}
+.layer:nth-child(94) {
+  --i: 93;
+}
+.layer:nth-child(95) {
+  --i: 94;
+}
+.layer:nth-child(96) {
+  --i: 95;
+}
+.layer:nth-child(97) {
+  --i: 96;
+}
+.layer:nth-child(98) {
+  --i: 97;
+}
+.layer:nth-child(99) {
+  --i: 98;
+}
+.layer:nth-child(100) {
+  --i: 99;
+}
+.layer:nth-child(101) {
+  --i: 100;
+}
+.layer:nth-child(102) {
+  --i: 101;
+}
+.layer:nth-child(103) {
+  --i: 102;
+}
+.layer:nth-child(104) {
+  --i: 103;
+}
+.layer:nth-child(105) {
+  --i: 104;
+}
+.layer:nth-child(106) {
+  --i: 105;
+}
+.layer:nth-child(107) {
+  --i: 106;
+}
+.layer:nth-child(108) {
+  --i: 107;
+}
+.layer:nth-child(109) {
+  --i: 108;
+}
+.layer:nth-child(110) {
+  --i: 109;
+}
+.layer:nth-child(111) {
+  --i: 110;
+}
+.layer:nth-child(112) {
+  --i: 111;
+}
+.layer:nth-child(113) {
+  --i: 112;
+}
+.layer:nth-child(114) {
+  --i: 113;
+}
+.layer:nth-child(115) {
+  --i: 114;
+}
+.layer:nth-child(116) {
+  --i: 115;
+}
+.layer:nth-child(117) {
+  --i: 116;
+}
+.layer:nth-child(118) {
+  --i: 117;
+}
+.layer:nth-child(119) {
+  --i: 118;
+}
+.layer:nth-child(120) {
+  --i: 119;
+}
+.layer:nth-child(121) {
+  --i: 120;
+}
+.layer:nth-child(122) {
+  --i: 121;
+}
+.layer:nth-child(123) {
+  --i: 122;
+}
+.layer:nth-child(124) {
+  --i: 123;
+}
+.layer:nth-child(125) {
+  --i: 124;
+}
+.layer:nth-child(126) {
+  --i: 125;
+}
+.layer:nth-child(127) {
+  --i: 126;
+}
+.layer:nth-child(128) {
+  --i: 127;
+}
+.layer:nth-child(129) {
+  --i: 128;
+}
+.layer:nth-child(130) {
+  --i: 129;
+}
+.layer:nth-child(131) {
+  --i: 130;
+}
+.layer:nth-child(132) {
+  --i: 131;
+}
+.layer:nth-child(133) {
+  --i: 132;
+}
+.layer:nth-child(134) {
+  --i: 133;
+}
+.layer:nth-child(135) {
+  --i: 134;
+}
+.layer:nth-child(136) {
+  --i: 135;
+}
+.layer:nth-child(137) {
+  --i: 136;
+}
+.layer:nth-child(138) {
+  --i: 137;
+}
+.layer:nth-child(139) {
+  --i: 138;
+}
+.layer:nth-child(140) {
+  --i: 139;
+}
+.layer:nth-child(141) {
+  --i: 140;
+}
+.layer:nth-child(142) {
+  --i: 141;
+}
+.layer:nth-child(143) {
+  --i: 142;
+}
+.layer:nth-child(144) {
+  --i: 143;
+}
+.layer:nth-child(145) {
+  --i: 144;
+}
+.layer:nth-child(146) {
+  --i: 145;
+}
+.layer:nth-child(147) {
+  --i: 146;
+}
+.layer:nth-child(148) {
+  --i: 147;
+}
+.layer:nth-child(149) {
+  --i: 148;
+}
+.layer:nth-child(150) {
+  --i: 149;
+}
+.layer:nth-child(151) {
+  --i: 150;
+}
+.layer:nth-child(152) {
+  --i: 151;
+}
+.layer:nth-child(153) {
+  --i: 152;
+}
+.layer:nth-child(154) {
+  --i: 153;
+}
+.layer:nth-child(155) {
+  --i: 154;
+}
+.layer:nth-child(156) {
+  --i: 155;
+}
+.layer:nth-child(157) {
+  --i: 156;
+}
+.layer:nth-child(158) {
+  --i: 157;
+}
+.layer:nth-child(159) {
+  --i: 158;
+}
+.layer:nth-child(160) {
+  --i: 159;
+}
+.layer:nth-child(161) {
+  --i: 160;
+}
+.layer:nth-child(162) {
+  --i: 161;
+}
+.layer:nth-child(163) {
+  --i: 162;
+}
+.layer:nth-child(164) {
+  --i: 163;
+}
+.layer:nth-child(165) {
+  --i: 164;
+}
+.layer:nth-child(166) {
+  --i: 165;
+}
+.layer:nth-child(167) {
+  --i: 166;
+}
+.layer:nth-child(168) {
+  --i: 167;
+}
+.layer:nth-child(169) {
+  --i: 168;
+}
+.layer:nth-child(170) {
+  --i: 169;
+}
+.layer:nth-child(171) {
+  --i: 170;
+}
+.layer:nth-child(172) {
+  --i: 171;
+}
+.layer:nth-child(173) {
+  --i: 172;
+}
+.layer:nth-child(174) {
+  --i: 173;
+}
+.layer:nth-child(175) {
+  --i: 174;
+}
+.layer:nth-child(176) {
+  --i: 175;
+}
+.layer:nth-child(177) {
+  --i: 176;
+}
+.layer:nth-child(178) {
+  --i: 177;
+}
+.layer:nth-child(179) {
+  --i: 178;
+}
+.layer:nth-child(180) {
+  --i: 179;
+}
+.layer:nth-child(181) {
+  --i: 180;
+}
+.layer:nth-child(182) {
+  --i: 181;
+}
+.layer:nth-child(183) {
+  --i: 182;
+}
+.layer:nth-child(184) {
+  --i: 183;
+}
+.layer:nth-child(185) {
+  --i: 184;
+}
+.layer:nth-child(186) {
+  --i: 185;
+}
+.layer:nth-child(187) {
+  --i: 186;
+}
+.layer:nth-child(188) {
+  --i: 187;
+}
+.layer:nth-child(189) {
+  --i: 188;
+}
+.layer:nth-child(190) {
+  --i: 189;
+}
+.layer:nth-child(191) {
+  --i: 190;
+}
+.layer:nth-child(192) {
+  --i: 191;
+}
+.layer:nth-child(193) {
+  --i: 192;
+}
+.layer:nth-child(194) {
+  --i: 193;
+}
+.layer:nth-child(195) {
+  --i: 194;
+}
+.layer:nth-child(196) {
+  --i: 195;
+}
+.layer:nth-child(197) {
+  --i: 196;
+}
+.layer:nth-child(198) {
+  --i: 197;
+}
+.layer:nth-child(199) {
+  --i: 198;
+}
+.layer:nth-child(200) {
+  --i: 199;
+}
+.layer:nth-child(201) {
+  --i: 200;
+}
+.layer:nth-child(202) {
+  --i: 201;
+}
+.layer:nth-child(203) {
+  --i: 202;
+}
+.layer:nth-child(204) {
+  --i: 203;
+}
+.layer:nth-child(205) {
+  --i: 204;
+}
+.layer:nth-child(206) {
+  --i: 205;
+}
+.layer:nth-child(207) {
+  --i: 206;
+}
+.layer:nth-child(208) {
+  --i: 207;
+}
+.layer:nth-child(209) {
+  --i: 208;
+}
+.layer:nth-child(210) {
+  --i: 209;
+}
+.layer:nth-child(211) {
+  --i: 210;
+}
+.layer:nth-child(212) {
+  --i: 211;
+}
+.layer:nth-child(213) {
+  --i: 212;
+}
+.layer:nth-child(214) {
+  --i: 213;
+}
+.layer:nth-child(215) {
+  --i: 214;
+}
+.layer:nth-child(216) {
+  --i: 215;
+}
+.layer:nth-child(217) {
+  --i: 216;
+}
+.layer:nth-child(218) {
+  --i: 217;
+}
+.layer:nth-child(219) {
+  --i: 218;
+}
+.layer:nth-child(220) {
+  --i: 219;
+}
+.layer:nth-child(221) {
+  --i: 220;
+}
+.layer:nth-child(222) {
+  --i: 221;
+}
+.layer:nth-child(223) {
+  --i: 222;
+}
+.layer:nth-child(224) {
+  --i: 223;
+}
+.layer:nth-child(225) {
+  --i: 224;
+}
+.layer:nth-child(226) {
+  --i: 225;
+}
+.layer:nth-child(227) {
+  --i: 226;
+}
+.layer:nth-child(228) {
+  --i: 227;
+}
+.layer:nth-child(229) {
+  --i: 228;
+}
+.layer:nth-child(230) {
+  --i: 229;
+}
+.layer:nth-child(231) {
+  --i: 230;
+}
+.layer:nth-child(232) {
+  --i: 231;
+}
+.layer:nth-child(233) {
+  --i: 232;
+}
+.layer:nth-child(234) {
+  --i: 233;
+}
+.layer:nth-child(235) {
+  --i: 234;
+}
+.layer:nth-child(236) {
+  --i: 235;
+}
+.layer:nth-child(237) {
+  --i: 236;
+}
+.layer:nth-child(238) {
+  --i: 237;
+}
+.layer:nth-child(239) {
+  --i: 238;
+}
+.layer:nth-child(240) {
+  --i: 239;
+}
+.layer:nth-child(241) {
+  --i: 240;
+}
+.layer:nth-child(242) {
+  --i: 241;
+}
+.layer:nth-child(243) {
+  --i: 242;
+}
+.layer:nth-child(244) {
+  --i: 243;
+}
+.layer:nth-child(245) {
+  --i: 244;
+}
+.layer:nth-child(246) {
+  --i: 245;
+}
+.layer:nth-child(247) {
+  --i: 246;
+}
+.layer:nth-child(248) {
+  --i: 247;
+}
+.layer:nth-child(249) {
+  --i: 248;
+}
+.layer:nth-child(250) {
+  --i: 249;
+}
+.layer:nth-child(251) {
+  --i: 250;
+}
+.layer:nth-child(252) {
+  --i: 251;
+}
+.layer:nth-child(253) {
+  --i: 252;
+}
+.layer:nth-child(254) {
+  --i: 253;
+}
+.layer:nth-child(255) {
+  --i: 254;
+}
+.layer:nth-child(256) {
+  --i: 255;
+}
+.layer:nth-child(257) {
+  --i: 256;
+}
+.layer:nth-child(258) {
+  --i: 257;
+}
+.layer:nth-child(259) {
+  --i: 258;
+}
+.layer:nth-child(260) {
+  --i: 259;
+}
+.layer:nth-child(261) {
+  --i: 260;
+}
+.layer:nth-child(262) {
+  --i: 261;
+}
+.layer:nth-child(263) {
+  --i: 262;
+}
+.layer:nth-child(264) {
+  --i: 263;
+}
+.layer:nth-child(265) {
+  --i: 264;
+}
+.layer:nth-child(266) {
+  --i: 265;
+}
+.layer:nth-child(267) {
+  --i: 266;
+}
+.layer:nth-child(268) {
+  --i: 267;
+}
+.layer:nth-child(269) {
+  --i: 268;
+}
+.layer:nth-child(270) {
+  --i: 269;
+}
+.layer:nth-child(271) {
+  --i: 270;
+}
+.layer:nth-child(272) {
+  --i: 271;
+}
+.layer:nth-child(273) {
+  --i: 272;
+}
+.layer:nth-child(274) {
+  --i: 273;
+}
+.layer:nth-child(275) {
+  --i: 274;
+}
+.layer:nth-child(276) {
+  --i: 275;
+}
+.layer:nth-child(277) {
+  --i: 276;
+}
+.layer:nth-child(278) {
+  --i: 277;
+}
+.layer:nth-child(279) {
+  --i: 278;
+}
+.layer:nth-child(280) {
+  --i: 279;
+}
+.layer:nth-child(281) {
+  --i: 280;
+}
+.layer:nth-child(282) {
+  --i: 281;
+}
+.layer:nth-child(283) {
+  --i: 282;
+}
+.layer:nth-child(284) {
+  --i: 283;
+}
+.layer:nth-child(285) {
+  --i: 284;
+}
+.layer:nth-child(286) {
+  --i: 285;
+}
+.layer:nth-child(287) {
+  --i: 286;
+}
+.layer:nth-child(288) {
+  --i: 287;
+}
+.layer:nth-child(289) {
+  --i: 288;
+}
+.layer:nth-child(290) {
+  --i: 289;
+}
+.layer:nth-child(291) {
+  --i: 290;
+}
+.layer:nth-child(292) {
+  --i: 291;
+}
+.layer:nth-child(293) {
+  --i: 292;
+}
+.layer:nth-child(294) {
+  --i: 293;
+}
+.layer:nth-child(295) {
+  --i: 294;
+}
+.layer:nth-child(296) {
+  --i: 295;
+}
+.layer:nth-child(297) {
+  --i: 296;
+}
+.layer:nth-child(298) {
+  --i: 297;
+}
+.layer:nth-child(299) {
+  --i: 298;
+}
+.layer:nth-child(300) {
+  --i: 299;
+}
+.layer:nth-child(301) {
+  --i: 300;
+}
+.layer:nth-child(302) {
+  --i: 301;
+}
+.layer:nth-child(303) {
+  --i: 302;
+}
+.layer:nth-child(304) {
+  --i: 303;
+}
+.layer:nth-child(305) {
+  --i: 304;
+}
+.layer:nth-child(306) {
+  --i: 305;
+}
+.layer:nth-child(307) {
+  --i: 306;
+}
+.layer:nth-child(308) {
+  --i: 307;
+}
+.layer:nth-child(309) {
+  --i: 308;
+}
+.layer:nth-child(310) {
+  --i: 309;
+}
+.layer:nth-child(311) {
+  --i: 310;
+}
+.layer:nth-child(312) {
+  --i: 311;
+}
+.layer:nth-child(313) {
+  --i: 312;
+}
+.layer:nth-child(314) {
+  --i: 313;
+}
+.layer:nth-child(315) {
+  --i: 314;
+}
+.layer:nth-child(316) {
+  --i: 315;
+}
+.layer:nth-child(317) {
+  --i: 316;
+}
+.layer:nth-child(318) {
+  --i: 317;
+}
+.layer:nth-child(319) {
+  --i: 318;
+}
+.layer:nth-child(320) {
+  --i: 319;
+}
+.layer:nth-child(321) {
+  --i: 320;
+}
+.layer:nth-child(322) {
+  --i: 321;
+}
+.layer:nth-child(323) {
+  --i: 322;
+}
+.layer:nth-child(324) {
+  --i: 323;
+}
+.layer:nth-child(325) {
+  --i: 324;
+}
+.layer:nth-child(326) {
+  --i: 325;
+}
+.layer:nth-child(327) {
+  --i: 326;
+}
+.layer:nth-child(328) {
+  --i: 327;
+}
+.layer:nth-child(329) {
+  --i: 328;
+}
+.layer:nth-child(330) {
+  --i: 329;
+}
+.layer:nth-child(331) {
+  --i: 330;
+}
+.layer:nth-child(332) {
+  --i: 331;
+}
+.layer:nth-child(333) {
+  --i: 332;
+}
+.layer:nth-child(334) {
+  --i: 333;
+}
+.layer:nth-child(335) {
+  --i: 334;
+}
+.layer:nth-child(336) {
+  --i: 335;
+}
+.layer:nth-child(337) {
+  --i: 336;
+}
+.layer:nth-child(338) {
+  --i: 337;
+}
+.layer:nth-child(339) {
+  --i: 338;
+}
+.layer:nth-child(340) {
+  --i: 339;
+}
+.layer:nth-child(341) {
+  --i: 340;
+}
+.layer:nth-child(342) {
+  --i: 341;
+}
+.layer:nth-child(343) {
+  --i: 342;
+}
+.layer:nth-child(344) {
+  --i: 343;
+}
+.layer:nth-child(345) {
+  --i: 344;
+}
+.layer:nth-child(346) {
+  --i: 345;
+}
+.layer:nth-child(347) {
+  --i: 346;
+}
+.layer:nth-child(348) {
+  --i: 347;
+}
+.layer:nth-child(349) {
+  --i: 348;
+}
+.layer:nth-child(350) {
+  --i: 349;
+}
+.layer:nth-child(351) {
+  --i: 350;
+}
+.layer:nth-child(352) {
+  --i: 351;
+}
+.layer:nth-child(353) {
+  --i: 352;
+}
+.layer:nth-child(354) {
+  --i: 353;
+}
+.layer:nth-child(355) {
+  --i: 354;
+}
+.layer:nth-child(356) {
+  --i: 355;
+}
+.layer:nth-child(357) {
+  --i: 356;
+}
+.layer:nth-child(358) {
+  --i: 357;
+}
+.layer:nth-child(359) {
+  --i: 358;
+}
+.layer:nth-child(360) {
+  --i: 359;
+}
+.layer:nth-child(361) {
+  --i: 360;
+}
+.layer:nth-child(362) {
+  --i: 361;
+}
+.layer:nth-child(363) {
+  --i: 362;
+}
+.layer:nth-child(364) {
+  --i: 363;
+}
+.layer:nth-child(365) {
+  --i: 364;
+}
+.layer:nth-child(366) {
+  --i: 365;
+}
+.layer:nth-child(367) {
+  --i: 366;
+}
+.layer:nth-child(368) {
+  --i: 367;
+}
+.layer:nth-child(369) {
+  --i: 368;
+}
+.layer:nth-child(370) {
+  --i: 369;
+}
+.layer:nth-child(371) {
+  --i: 370;
+}
+.layer:nth-child(372) {
+  --i: 371;
+}
+.layer:nth-child(373) {
+  --i: 372;
+}
+.layer:nth-child(374) {
+  --i: 373;
+}
+.layer:nth-child(375) {
+  --i: 374;
+}
+.layer:nth-child(376) {
+  --i: 375;
+}
+.layer:nth-child(377) {
+  --i: 376;
+}
+.layer:nth-child(378) {
+  --i: 377;
+}
+.layer:nth-child(379) {
+  --i: 378;
+}
+.layer:nth-child(380) {
+  --i: 379;
+}
+.layer:nth-child(381) {
+  --i: 380;
+}
+.layer:nth-child(382) {
+  --i: 381;
+}
+.layer:nth-child(383) {
+  --i: 382;
+}
+.layer:nth-child(384) {
+  --i: 383;
+}
+.layer:nth-child(385) {
+  --i: 384;
+}
+.layer:nth-child(386) {
+  --i: 385;
+}
+.layer:nth-child(387) {
+  --i: 386;
+}
+.layer:nth-child(388) {
+  --i: 387;
+}
+.layer:nth-child(389) {
+  --i: 388;
+}
+.layer:nth-child(390) {
+  --i: 389;
+}
+.layer:nth-child(391) {
+  --i: 390;
+}
+.layer:nth-child(392) {
+  --i: 391;
+}
+.layer:nth-child(393) {
+  --i: 392;
+}
+.layer:nth-child(394) {
+  --i: 393;
+}
+.layer:nth-child(395) {
+  --i: 394;
+}
+.layer:nth-child(396) {
+  --i: 395;
+}
+.layer:nth-child(397) {
+  --i: 396;
+}
+.layer:nth-child(398) {
+  --i: 397;
+}
+.layer:nth-child(399) {
+  --i: 398;
+}
+.layer:nth-child(400) {
+  --i: 399;
+}
+.layer:nth-last-child(-n+2) {
+  color: white;
+}
+.layer:last-child {
+  color: rgba(255, 255, 255, 0.01);
+  filter: blur(4vmin);
+  opacity: 0.5;
+  text-shadow: -1px -1px 0 white, 1px 1px 0 rgba(0, 0, 0, 0.04);
+}
+
+body {
+  perspective: 800px;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+  overflow: hidden;
+  margin: 0;
+}
+body:after {
+  content: "";
+  position: absolute;
+  background: url(https://assets.codepen.io/907471/noise.svg);
+  mix-blend-mode: overlay;
+  inset: 0;
+  pointer-events: none;
+  filter: invert(1) brightness(0.5);
+  z-index: var(--labs-sys-z-noise);
+}
+
+a.labs-follow-me {
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center;
+  color: color-mix(in srgb, var(--color-primary), white 60%) !important;
+}
+
+* {
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+:root {
+  --tp-base-background-color: var(--color-surface);
+  --tp-base-shadow-color: hsla(0, 0%, 0%, 0.2);
+  --tp-button-background-color: color-mix(
+    in srgb,
+    var(--color-secondary),
+    white 30%
+  );
+  --tp-button-background-color-active: hsla(230, 7%, 85%, 1);
+  --tp-button-background-color-focus: hsla(230, 7%, 80%, 1);
+  --tp-button-background-color-hover: hsla(230, 7%, 75%, 1);
+  --tp-button-foreground-color: hsla(230, 7%, 17%, 1);
+  --tp-container-background-color: hsla(230, 7%, 75%, 0.1);
+  --tp-container-background-color-active: hsla(230, 7%, 75%, 0.25);
+  --tp-container-background-color-focus: hsla(230, 7%, 75%, 0.2);
+  --tp-container-background-color-hover: hsla(230, 7%, 75%, 0.15);
+  --tp-container-foreground-color: hsla(230, 7%, 75%, 1);
+  --tp-groove-foreground-color: hsla(230, 7%, 75%, 0.1);
+  --tp-input-background-color: hsla(230, 7%, 75%, 0.1);
+  --tp-input-background-color-active: hsla(230, 7%, 75%, 0.25);
+  --tp-input-background-color-focus: hsla(230, 7%, 75%, 0.2);
+  --tp-input-background-color-hover: hsla(230, 7%, 75%, 0.15);
+  --tp-input-foreground-color: var(--color-primary);
+  --tp-label-foreground-color: hsla(230, 7%, 75%, 0.7);
+  --tp-monitor-background-color: hsla(230, 7%, 0%, 0.2);
+  --tp-monitor-foreground-color: hsla(230, 7%, 75%, 0.7);
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="layers">
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+  <div class="layer"></div>
+</div>
+  <script src='https://codepen.io/konstantindenerz/pen/KKxvdPq.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/tweakpane@4.0.5/dist/tweakpane.min.js'></script>
+    <script id="rendered-js" type="module">
+import { Pane } from "https://cdn.jsdelivr.net/npm/tweakpane@4.0.5/dist/tweakpane.min.js";
+
+const config = {
+  warped: true,
+  content: '♛' };
+
+// https://tweakpane.github.io/docs/quick-tour/
+const pane = new Pane({ title: "Config", expanded: false });
+const contents = {
+  "Crown ♛": '♛',
+  "Heart ❤": '❤',
+  "Peace ☮": '☮︎',
+  "Atom ︎︎︎⚛": '⚛︎',
+  "Sun ☀": '☀',
+  '42': '42',
+  '404': '404' };
+
+const content = pane.addBinding(config, 'content', { options: contents });
+const update = value => document.documentElement.style.setProperty('--content', `"${value}"`);
+content.on('change', ({ value }) => {
+  if (document.startViewTransition) {
+    document.startViewTransition(() => {
+      update(value);
+    });
+  } else {
+    update(value);
+  }
+});
+
+const warped = pane.addBinding(config, 'warped');
+warped.on('change', ({ value }) => document.documentElement.style.setProperty('--perspective', value ? '1000px' : '20000px'));
+//# sourceURL=pen.js
+  </script>
+
+  
+</body>
+
+</html>

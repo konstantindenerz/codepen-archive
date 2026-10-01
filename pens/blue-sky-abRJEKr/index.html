@@ -1,0 +1,479 @@
+<!--
+  Blue Sky
+
+  Archived from https://codepen.io/konstantindenerz/pen/abRJEKr
+  Created 2023-04-24 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  
+  
+
+  <title>Blue Sky</title>
+  
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+.scene {
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  width: 80vmin;
+  height: 60vmin;
+  transform: rotateX(-45deg) rotateY(35deg) skew(20deg, 10deg);
+}
+
+.cloud-wrapper {
+  position: absolute;
+}
+.cloud-wrapper:nth-of-type(1) {
+  --base-index: -29;
+  --index: 1;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.7350332483));
+}
+.cloud-wrapper:nth-of-type(1) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.1819527763 * 25s));
+          animation-duration: max(1s, calc(0.1819527763 * 25s));
+}
+.cloud-wrapper:nth-of-type(2) {
+  --base-index: -28;
+  --index: 2;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.1800346002));
+}
+.cloud-wrapper:nth-of-type(2) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.6190447422 * 25s));
+          animation-duration: max(1s, calc(0.6190447422 * 25s));
+}
+.cloud-wrapper:nth-of-type(3) {
+  --base-index: -27;
+  --index: 3;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.8295102296));
+}
+.cloud-wrapper:nth-of-type(3) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.1752173976 * 25s));
+          animation-duration: max(1s, calc(0.1752173976 * 25s));
+}
+.cloud-wrapper:nth-of-type(4) {
+  --base-index: -26;
+  --index: 4;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.0663980361));
+}
+.cloud-wrapper:nth-of-type(4) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.9665999212 * 25s));
+          animation-duration: max(1s, calc(0.9665999212 * 25s));
+}
+.cloud-wrapper:nth-of-type(5) {
+  --base-index: -25;
+  --index: 5;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.2098984541));
+}
+.cloud-wrapper:nth-of-type(5) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.4760139041 * 25s));
+          animation-duration: max(1s, calc(0.4760139041 * 25s));
+}
+.cloud-wrapper:nth-of-type(6) {
+  --base-index: -24;
+  --index: 6;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.1396319513));
+}
+.cloud-wrapper:nth-of-type(6) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.3188064555 * 25s));
+          animation-duration: max(1s, calc(0.3188064555 * 25s));
+}
+.cloud-wrapper:nth-of-type(7) {
+  --base-index: -23;
+  --index: 7;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.0819391439));
+}
+.cloud-wrapper:nth-of-type(7) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.0617726337 * 25s));
+          animation-duration: max(1s, calc(0.0617726337 * 25s));
+}
+.cloud-wrapper:nth-of-type(8) {
+  --base-index: -22;
+  --index: 8;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.8137358355));
+}
+.cloud-wrapper:nth-of-type(8) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.8982457409 * 25s));
+          animation-duration: max(1s, calc(0.8982457409 * 25s));
+}
+.cloud-wrapper:nth-of-type(9) {
+  --base-index: -21;
+  --index: 9;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.7494185902));
+}
+.cloud-wrapper:nth-of-type(9) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.2996954802 * 25s));
+          animation-duration: max(1s, calc(0.2996954802 * 25s));
+}
+.cloud-wrapper:nth-of-type(10) {
+  --base-index: -20;
+  --index: 10;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.8507469685));
+}
+.cloud-wrapper:nth-of-type(10) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.1983206228 * 25s));
+          animation-duration: max(1s, calc(0.1983206228 * 25s));
+}
+.cloud-wrapper:nth-of-type(11) {
+  --base-index: -19;
+  --index: 11;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.0537540584));
+}
+.cloud-wrapper:nth-of-type(11) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.5992735834 * 25s));
+          animation-duration: max(1s, calc(0.5992735834 * 25s));
+}
+.cloud-wrapper:nth-of-type(12) {
+  --base-index: -18;
+  --index: 12;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.4276074218));
+}
+.cloud-wrapper:nth-of-type(12) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.8932420906 * 25s));
+          animation-duration: max(1s, calc(0.8932420906 * 25s));
+}
+.cloud-wrapper:nth-of-type(13) {
+  --base-index: -17;
+  --index: 13;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.2353352907));
+}
+.cloud-wrapper:nth-of-type(13) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.3538114914 * 25s));
+          animation-duration: max(1s, calc(0.3538114914 * 25s));
+}
+.cloud-wrapper:nth-of-type(14) {
+  --base-index: -16;
+  --index: 14;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.3907316295));
+}
+.cloud-wrapper:nth-of-type(14) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.999510596 * 25s));
+          animation-duration: max(1s, calc(0.999510596 * 25s));
+}
+.cloud-wrapper:nth-of-type(15) {
+  --base-index: -15;
+  --index: 15;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.9882642482));
+}
+.cloud-wrapper:nth-of-type(15) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.7615260583 * 25s));
+          animation-duration: max(1s, calc(0.7615260583 * 25s));
+}
+.cloud-wrapper:nth-of-type(16) {
+  --base-index: -14;
+  --index: 16;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.7093661663));
+}
+.cloud-wrapper:nth-of-type(16) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.5152087569 * 25s));
+          animation-duration: max(1s, calc(0.5152087569 * 25s));
+}
+.cloud-wrapper:nth-of-type(17) {
+  --base-index: -13;
+  --index: 17;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.954638091));
+}
+.cloud-wrapper:nth-of-type(17) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.3623215661 * 25s));
+          animation-duration: max(1s, calc(0.3623215661 * 25s));
+}
+.cloud-wrapper:nth-of-type(18) {
+  --base-index: -12;
+  --index: 18;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.547735364));
+}
+.cloud-wrapper:nth-of-type(18) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.2545332027 * 25s));
+          animation-duration: max(1s, calc(0.2545332027 * 25s));
+}
+.cloud-wrapper:nth-of-type(19) {
+  --base-index: -11;
+  --index: 19;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.486219775));
+}
+.cloud-wrapper:nth-of-type(19) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.2765184364 * 25s));
+          animation-duration: max(1s, calc(0.2765184364 * 25s));
+}
+.cloud-wrapper:nth-of-type(20) {
+  --base-index: -10;
+  --index: 20;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.6033487937));
+}
+.cloud-wrapper:nth-of-type(20) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.7940024975 * 25s));
+          animation-duration: max(1s, calc(0.7940024975 * 25s));
+}
+.cloud-wrapper:nth-of-type(21) {
+  --base-index: -9;
+  --index: 21;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.2314280636));
+}
+.cloud-wrapper:nth-of-type(21) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.4408087632 * 25s));
+          animation-duration: max(1s, calc(0.4408087632 * 25s));
+}
+.cloud-wrapper:nth-of-type(22) {
+  --base-index: -8;
+  --index: 22;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.3891502201));
+}
+.cloud-wrapper:nth-of-type(22) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.4270277856 * 25s));
+          animation-duration: max(1s, calc(0.4270277856 * 25s));
+}
+.cloud-wrapper:nth-of-type(23) {
+  --base-index: -7;
+  --index: 23;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.7869138175));
+}
+.cloud-wrapper:nth-of-type(23) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.1745134536 * 25s));
+          animation-duration: max(1s, calc(0.1745134536 * 25s));
+}
+.cloud-wrapper:nth-of-type(24) {
+  --base-index: -6;
+  --index: 24;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.6266286899));
+}
+.cloud-wrapper:nth-of-type(24) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.8129664168 * 25s));
+          animation-duration: max(1s, calc(0.8129664168 * 25s));
+}
+.cloud-wrapper:nth-of-type(25) {
+  --base-index: -5;
+  --index: 25;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.7126109971));
+}
+.cloud-wrapper:nth-of-type(25) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.3222563096 * 25s));
+          animation-duration: max(1s, calc(0.3222563096 * 25s));
+}
+.cloud-wrapper:nth-of-type(26) {
+  --base-index: -4;
+  --index: 26;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.2376495311));
+}
+.cloud-wrapper:nth-of-type(26) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.4191537413 * 25s));
+          animation-duration: max(1s, calc(0.4191537413 * 25s));
+}
+.cloud-wrapper:nth-of-type(27) {
+  --base-index: -3;
+  --index: 27;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.3462917485));
+}
+.cloud-wrapper:nth-of-type(27) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.113244594 * 25s));
+          animation-duration: max(1s, calc(0.113244594 * 25s));
+}
+.cloud-wrapper:nth-of-type(28) {
+  --base-index: -2;
+  --index: 28;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.2776043518));
+}
+.cloud-wrapper:nth-of-type(28) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.6845081053 * 25s));
+          animation-duration: max(1s, calc(0.6845081053 * 25s));
+}
+.cloud-wrapper:nth-of-type(29) {
+  --base-index: -1;
+  --index: 29;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.5715096796));
+}
+.cloud-wrapper:nth-of-type(29) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.9623208884 * 25s));
+          animation-duration: max(1s, calc(0.9623208884 * 25s));
+}
+.cloud-wrapper:nth-of-type(30) {
+  --base-index: 0;
+  --index: 30;
+  transform: translateZ(calc((var(--base-index) + 5) * 20vmin)) scale(calc(1.5 - 0.5199565703));
+}
+.cloud-wrapper:nth-of-type(30) .cloud {
+  -webkit-animation-duration: max(1s, calc(0.2757571647 * 25s));
+          animation-duration: max(1s, calc(0.2757571647 * 25s));
+}
+
+@-webkit-keyframes cloud {
+  from {
+    transform: translateX(200vw);
+  }
+  to {
+    transform: translateX(-200vw);
+  }
+}
+
+@keyframes cloud {
+  from {
+    transform: translateX(200vw);
+  }
+  to {
+    transform: translateX(-200vw);
+  }
+}
+.cloud {
+  position: absolute;
+  inset: 0;
+  width: 80vmin;
+  height: 60vmin;
+  border-radius: 20vmin;
+  filter: brightness(109%) saturate(0.8);
+  -webkit-animation: cloud 1s linear infinite;
+          animation: cloud 1s linear infinite;
+}
+.cloud:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(from 120deg at 22vmin 26vmin, #93c2e0, #ccdfe9) no-repeat, conic-gradient(from 120deg at 37vmin 18vmin, white, #ccdfe9) no-repeat, linear-gradient(145deg, #93c2e0, #ccdfe9) no-repeat;
+  -webkit-mask: linear-gradient(black, black), radial-gradient(20vmin 20vmin at 30% 60%, black 50%, transparent 50%), radial-gradient(20vmin 20vmin at 50% 60%, black 50%, transparent 50%), radial-gradient(20vmin 20vmin at 70% 60%, black 50%, transparent 50%), radial-gradient(25vmin 25vmin at 60% 40%, black 50%, transparent 50%), radial-gradient(20vmin 20vmin at 40% 45%, black 50%, transparent 50%);
+  -webkit-mask-size: 32.8vmin 10vmin, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  -webkit-mask-position: 22.8vmin 36vmin, 0 0, 0 0, 0 0, 0 0, 0 0;
+  -webkit-mask-repeat: no-repeat;
+  transform: translate(-1.8vmin, -0.5vmin);
+}
+.cloud:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #d9edf8, #c1dcec);
+  -webkit-mask: linear-gradient(black, black), radial-gradient(20vmin 20vmin at 30% 60%, black 50%, transparent 50%), radial-gradient(20vmin 20vmin at 50% 60%, black 50%, transparent 50%), radial-gradient(20vmin 20vmin at 70% 60%, black 50%, transparent 50%), radial-gradient(25vmin 25vmin at 60% 40%, black 50%, transparent 50%), radial-gradient(20vmin 20vmin at 40% 45%, black 50%, transparent 50%);
+  -webkit-mask-size: 32.8vmin 10vmin, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  -webkit-mask-position: 22.8vmin 36vmin, 0 0, 0 0, 0 0, 0 0, 0 0;
+  -webkit-mask-repeat: no-repeat;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(to bottom, #9fddf6, white);
+  position: relative;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="scene">
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+    <div class="cloud-wrapper">
+        <div class="cloud"></div>
+    </div>
+</div>
+  <script src='https://codepen.io/konstantindenerz/pen/KKxvdPq.js'></script>
+  
+  
+</body>
+
+</html>

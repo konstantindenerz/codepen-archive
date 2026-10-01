@@ -1,0 +1,759 @@
+<!--
+  3D Glass Switch (Pure CSS, Neumorphic, Animation)
+
+  Archived from https://codepen.io/konstantindenerz/pen/KKxeWKj
+  Created 2023-03-16 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  <title>3D Glass Switch (Pure CSS, Neumorphic, Animation)</title>
+  
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+@property --ratio {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+@property --color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: white;
+}
+@property --glowposition {
+  syntax: "<percent>";
+  inherits: true;
+  initial-value: 0%;
+}
+:root {
+  --light: #f7fbfc;
+  --dark: #bcc7d3;
+  --duration: 0.25s;
+  --press-duration: 0.25s;
+  --press-timing-function: ease-in-out;
+  --timing-function: ease-in-out;
+}
+
+.surface {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.bg {
+  background: white;
+  position: absolute;
+  inset: 0vmin;
+  box-shadow: 10px 10px 25px 10px var(--dark), -10px -10px 25px 10px var(--light);
+  border-radius: inherit;
+  filter: blur(0.8vmin);
+}
+.bg:before {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  right: 1vmin;
+  border-radius: inherit;
+  box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.6);
+  top: 3vmin;
+  left: 2vmin;
+  z-index: -1;
+}
+.bg:after {
+  content: "";
+  position: absolute;
+  inset: 1.2vmin;
+  background: white;
+  border-radius: inherit;
+}
+
+.outer-shadow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+.outer-shadow:before {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  left: -1vmin;
+  top: 1vmin;
+  bottom: 1vmin;
+  right: 0;
+  border-left: 1vmin solid rgba(0, 0, 0, 0.05);
+  filter: blur(0.3vmin);
+}
+.outer-shadow:after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  left: 0vmin;
+  top: 1vmin;
+  bottom: 1vmin;
+  right: 0.5vmin;
+  border-top: 0.5vmin solid rgba(0, 0, 0, 0.5);
+  border-bottom: 3vmin solid var(--light);
+  filter: blur(0.3vmin);
+}
+
+.inner-shadow {
+  position: absolute;
+  border-radius: inherit;
+  --max: 0.98;
+  --ratio: 1;
+  inset: calc(2.5vmin * var(--ratio));
+  box-shadow: 0 0 1vmin calc(0.2vmin * var(--ratio)) rgba(0, 0, 0, 0.2), 0 0 1.5vmin calc(0.1vmin * var(--ratio)) rgba(0, 0, 0, 0.2), 0 0 1.8vmin calc(0.3vmin * var(--ratio)) rgba(0, 0, 0, 0.2), 0vmin 0vmin calc(1.5vmin * var(--ratio)) calc(1.5vmin * var(--ratio)) rgba(77, 94, 112, 0.4392), 0 0 1.5vmin 2vmin rgba(255, 255, 255, 0.8);
+}
+
+.active-light {
+  position: absolute;
+  border-radius: inherit;
+  inset: 1.5vmin;
+  background: radial-gradient(50% 100% at 50% 50%, #ff5500, #692a0b, transparent 90%), radial-gradient(20% 100% at 100% 50%, var(--color, var(--dark)) 70%, transparent 90%), radial-gradient(20% 100% at 0% 50%, var(--color, var(--dark)) 70%, transparent 90%) no-repeat;
+  filter: blur(2vmin) brightness(100%);
+  background-size: 200%;
+  mix-blend-mode: darken;
+  opacity: 0.9;
+}
+
+.inner-surface {
+  overflow: hidden;
+  position: absolute;
+  border-radius: inherit;
+  --max: 1.2;
+  --ratio: 1;
+  inset: calc(2vmin * var(--ratio));
+  background: linear-gradient(to bottom, rgba(230, 230, 230, 0.8), transparent), radial-gradient(32% 49% at 60% 50%, #b43f01, transparent), radial-gradient(32% 49% at 50% 70%, #1e2f42, transparent), radial-gradient(82% 49% at 50% 50%, #1e2f42, transparent), transparent;
+}
+
+.dark-shadow,
+.light-shadow {
+  position: absolute;
+  inset: 0;
+  perspective: 50vmin;
+  z-index: 11111;
+}
+.dark-shadow:before, .dark-shadow:after,
+.light-shadow:before,
+.light-shadow:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 10vmin;
+  --ratio: 1;
+  filter: blur(calc(0.4vmin * var(--ratio)));
+  mix-blend-mode: darken;
+}
+.dark-shadow:before,
+.light-shadow:before {
+  right: -37.4vmin;
+  left: -0.5vmin;
+  --ratio: 1;
+  border-left: calc(1.7vmin * var(--ratio)) solid rgba(50, 66, 81, calc(0.25 * var(--ratio)));
+  transform: rotateY(1deg) scale(1);
+  top: -0.5vmin;
+}
+.dark-shadow:after,
+.light-shadow:after {
+  left: -10vmin;
+  right: 0;
+  --ratio: 1;
+  border: calc(1.5vmin * var(--ratio)) solid hsl(14.6deg 0% 38%/calc(20% * var(--ratio)));
+  transform: rotateY(18deg) scale(1.2) rotate(2deg);
+  bottom: -1vmin;
+  top: -0.3vmin;
+}
+
+.light-shadow:before {
+  mix-blend-mode: darken;
+}
+.light-shadow:after {
+  --ratio: 1;
+  border: calc(1.5vmin * var(--ratio)) solid rgba(260, 255, 255, calc(0.2 * var(--ratio)));
+  border-radius: 50%;
+  inset: -0.9vmin;
+  mix-blend-mode: darken;
+  transform: scale(1.1);
+}
+
+.balls {
+  position: absolute;
+  inset: 0;
+}
+
+.inactive-ball {
+  background: radial-gradient(30% 30% at 60% 40%, white, transparent 60%), radial-gradient(40% 40% at 10% 65%, white, transparent), radial-gradient(70% 70% at 30% 30%, white, transparent), radial-gradient(60% 60% at 30% 30%, white 30%, #39414a), white;
+  position: absolute;
+  width: 14vmin;
+  top: 1vmin;
+  left: 1.5vmin;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  -webkit-animation: whiteball var(--duration) linear forwards;
+          animation: whiteball var(--duration) linear forwards;
+}
+
+.active-ball {
+  background: radial-gradient(25% 25% at 65% 65%, rgba(255, 0, 0, 0.6), transparent), radial-gradient(20% 20% at 70% 30%, rgba(255, 255, 255, 0.4), transparent), radial-gradient(60% 60% at 70% 30%, #ffb400, transparent), radial-gradient(60% 60% at 20% 10%, #ffbf4a, transparent), radial-gradient(60% 60% at 20% 50%, #ffbf4a, transparent), radial-gradient(60% 60% at 70% 30%, #ff5b0e, transparent), #c30c0c;
+  position: absolute;
+  width: 14vmin;
+  top: 1vmin;
+  right: 1.5vmin;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  -webkit-animation: lightball var(--duration) linear forwards;
+          animation: lightball var(--duration) linear forwards;
+}
+
+.glass {
+  position: absolute;
+  inset: 0vmin;
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(1.5vmin);
+          backdrop-filter: blur(1.5vmin);
+  border-radius: inherit;
+  z-index: 111;
+}
+.glass:after {
+  content: "";
+  border-radius: 24vmin;
+  position: absolute;
+  inset: -1.2vmin;
+  background: url(https://assets.codepen.io/907471/noise.svg);
+  background-size: 140%;
+  filter: saturate(0.5) contrast(1.5);
+  mix-blend-mode: plus-lighter;
+  -webkit-mask: radial-gradient(at center, black, transparent);
+          mask: radial-gradient(at center, black, transparent);
+}
+
+.lights {
+  position: absolute;
+  inset: 0;
+}
+
+.active-ball-light,
+.inactive-ball-light {
+  position: absolute;
+  width: 20vmin;
+  right: 1vmin;
+  top: 1vmin;
+  aspect-ratio: 1;
+  border-top: 4vmin rgba(255, 0, 0, 0.05) solid;
+  border-bottom: 4vmin rgba(255, 0, 0, 0.05) solid;
+  filter: blur(1vmin);
+  mix-blend-mode: overlay;
+  border-radius: 50%;
+  z-index: 111111;
+  opacity: 0;
+}
+
+.inactive-ball-light {
+  left: 1vmin;
+  border-color: rgba(255, 255, 255, 0.2);
+  filter: blur(1.5vmin);
+}
+
+input {
+  display: none;
+}
+
+.switch {
+  cursor: pointer;
+  --d: 1;
+  width: 36vmin;
+  height: 20vmin;
+  border-radius: 40vmin;
+  position: relative;
+  perspective: 50vmin;
+}
+.switch .dark-shadow:before, .switch .dark-shadow:after,
+.switch .light-shadow:before,
+.switch .light-shadow:after {
+  -webkit-animation: ratio-reverse var(--press-duration) var(--press-timing-function);
+          animation: ratio-reverse var(--press-duration) var(--press-timing-function);
+}
+.switch .inner-surface,
+.switch .inner-shadow {
+  -webkit-animation: ratio-reverse var(--press-duration) var(--press-timing-function);
+          animation: ratio-reverse var(--press-duration) var(--press-timing-function);
+}
+.switch .active-light {
+  --glowposition: 0%;
+  -webkit-animation: active-light-reverse calc(var(--duration) * 1.2) var(--timing-function) alternate backwards;
+          animation: active-light-reverse calc(var(--duration) * 1.2) var(--timing-function) alternate backwards;
+  -webkit-animation-delay: var(--press-duration);
+          animation-delay: var(--press-duration);
+}
+.switch .inactive-ball {
+  -webkit-animation: inactive-ball-next calc(var(--duration) * 2.5) ease-in-out alternate backwards;
+          animation: inactive-ball-next calc(var(--duration) * 2.5) ease-in-out alternate backwards;
+}
+.switch .active-ball {
+  -webkit-animation: active-ball-next calc(var(--duration) * 2.5) ease-in-out alternate backwards;
+          animation: active-ball-next calc(var(--duration) * 2.5) ease-in-out alternate backwards;
+  z-index: 1;
+}
+.switch .inactive-ball-light {
+  -webkit-animation: inactive-ball-light-next calc(var(--duration)) ease-in-out alternate backwards;
+          animation: inactive-ball-light-next calc(var(--duration)) ease-in-out alternate backwards;
+}
+.switch .active-ball-light {
+  -webkit-animation: active-ball-light-next calc(var(--duration)) ease-in-out alternate backwards;
+          animation: active-ball-light-next calc(var(--duration)) ease-in-out alternate backwards;
+}
+.switch input:checked + .surface .dark-shadow:before, .switch input:checked + .surface .dark-shadow:after,
+.switch input:checked + .surface .light-shadow:before,
+.switch input:checked + .surface .light-shadow:after {
+  -webkit-animation: ratio var(--press-duration) var(--press-timing-function);
+          animation: ratio var(--press-duration) var(--press-timing-function);
+}
+.switch input:checked + .surface .inner-surface,
+.switch input:checked + .surface .inner-shadow {
+  -webkit-animation: ratio var(--press-duration) var(--press-timing-function);
+          animation: ratio var(--press-duration) var(--press-timing-function);
+}
+.switch input:checked + .surface .active-light {
+  --glowposition: -100%;
+  -webkit-animation: active-light calc(var(--duration) * 1.2) var(--timing-function) forwards;
+          animation: active-light calc(var(--duration) * 1.2) var(--timing-function) forwards;
+  -webkit-animation-delay: var(--press-duration);
+          animation-delay: var(--press-duration);
+}
+.switch input:checked + .surface .inactive-ball {
+  -webkit-animation: inactive-ball calc(var(--duration) * 2.5) ease-in-out forwards;
+          animation: inactive-ball calc(var(--duration) * 2.5) ease-in-out forwards;
+}
+.switch input:checked + .surface .active-ball {
+  -webkit-animation: active-ball calc(var(--duration) * 2.5) ease-in-out forwards;
+          animation: active-ball calc(var(--duration) * 2.5) ease-in-out forwards;
+}
+.switch input:checked + .surface .inactive-ball-light {
+  -webkit-animation: inactive-ball-light calc(var(--duration)) ease-in-out forwards;
+          animation: inactive-ball-light calc(var(--duration)) ease-in-out forwards;
+}
+.switch input:checked + .surface .active-ball-light {
+  -webkit-animation: active-ball-light calc(var(--duration)) ease-in-out forwards;
+          animation: active-ball-light calc(var(--duration)) ease-in-out forwards;
+}
+
+@-webkit-keyframes ratio {
+  from {
+    --ratio: 1;
+  }
+  50% {
+    --ratio: var(--max, 2);
+  }
+  to {
+    --ratio: 1;
+  }
+}
+
+@keyframes ratio {
+  from {
+    --ratio: 1;
+  }
+  50% {
+    --ratio: var(--max, 2);
+  }
+  to {
+    --ratio: 1;
+  }
+}
+@-webkit-keyframes ratio-reverse {
+  from {
+    --ratio: 1;
+  }
+  50% {
+    --ratio: var(--max, 2);
+  }
+  to {
+    --ratio: 1;
+  }
+}
+@keyframes ratio-reverse {
+  from {
+    --ratio: 1;
+  }
+  50% {
+    --ratio: var(--max, 2);
+  }
+  to {
+    --ratio: 1;
+  }
+}
+@-webkit-keyframes active-light {
+  from {
+    background-position-x: calc(100% - var(--glowposition));
+    filter: brightness(100%) blur(2vmin);
+  }
+  50% {
+    filter: brightness(150%) blur(2vmin);
+    --color: white;
+    opacity: 0.2;
+  }
+  to {
+    background-position-x: calc(0% - var(--glowposition));
+    filter: brightness(100%) blur(2vmin);
+  }
+}
+@keyframes active-light {
+  from {
+    background-position-x: calc(100% - var(--glowposition));
+    filter: brightness(100%) blur(2vmin);
+  }
+  50% {
+    filter: brightness(150%) blur(2vmin);
+    --color: white;
+    opacity: 0.2;
+  }
+  to {
+    background-position-x: calc(0% - var(--glowposition));
+    filter: brightness(100%) blur(2vmin);
+  }
+}
+@-webkit-keyframes active-light-reverse {
+  from {
+    background-position-x: calc(100% - var(--glowposition));
+    filter: brightness(100%) blur(2vmin);
+  }
+  50% {
+    filter: brightness(150%) blur(2vmin);
+    --color: white;
+    opacity: 0.2;
+  }
+  to {
+    background-position-x: calc(0% - var(--glowposition));
+    filter: brightness(100%) blur(2vmin);
+  }
+}
+@keyframes active-light-reverse {
+  from {
+    background-position-x: calc(100% - var(--glowposition));
+    filter: brightness(100%) blur(2vmin);
+  }
+  50% {
+    filter: brightness(150%) blur(2vmin);
+    --color: white;
+    opacity: 0.2;
+  }
+  to {
+    background-position-x: calc(0% - var(--glowposition));
+    filter: brightness(100%) blur(2vmin);
+  }
+}
+@-webkit-keyframes inactive-ball {
+  from {
+    transform: translateX(0%) scale(1);
+  }
+  40% {
+    transform: translateX(130%) scale(1);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(100%) scale(0.6);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateX(110%) scale(1);
+  }
+}
+@keyframes inactive-ball {
+  from {
+    transform: translateX(0%) scale(1);
+  }
+  40% {
+    transform: translateX(130%) scale(1);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(100%) scale(0.6);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateX(110%) scale(1);
+  }
+}
+@-webkit-keyframes active-ball {
+  from {
+    transform: translateX(0%) scale(1);
+  }
+  30% {
+    transform: translateX(-50%) scale(0.2);
+    opacity: 0.6;
+  }
+  70% {
+    transform: translateX(-120%) scale(0.6);
+  }
+  80% {
+    transform: translateX(-90%) scale(1);
+  }
+  to {
+    transform: translateX(-110%) scale(1);
+  }
+}
+@keyframes active-ball {
+  from {
+    transform: translateX(0%) scale(1);
+  }
+  30% {
+    transform: translateX(-50%) scale(0.2);
+    opacity: 0.6;
+  }
+  70% {
+    transform: translateX(-120%) scale(0.6);
+  }
+  80% {
+    transform: translateX(-90%) scale(1);
+  }
+  to {
+    transform: translateX(-110%) scale(1);
+  }
+}
+@-webkit-keyframes inactive-ball-next {
+  from {
+    transform: translateX(100%) scale(1);
+  }
+  30% {
+    transform: translateX(50%) scale(0.2);
+    opacity: 0.6;
+  }
+  70% {
+    transform: translateX(0%) scale(0.6);
+  }
+  80% {
+    transform: translateX(10%) scale(1);
+  }
+  to {
+    transform: translateX(0%) scale(1);
+  }
+}
+@keyframes inactive-ball-next {
+  from {
+    transform: translateX(100%) scale(1);
+  }
+  30% {
+    transform: translateX(50%) scale(0.2);
+    opacity: 0.6;
+  }
+  70% {
+    transform: translateX(0%) scale(0.6);
+  }
+  80% {
+    transform: translateX(10%) scale(1);
+  }
+  to {
+    transform: translateX(0%) scale(1);
+  }
+}
+@-webkit-keyframes active-ball-next {
+  from {
+    transform: translateX(-110%) scale(1);
+  }
+  20% {
+    transform: translateX(-90%) scale(1.1);
+  }
+  40% {
+    transform: translateX(0%) scale(1.1);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(0%) scale(0.6);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateX(0%) scale(1);
+  }
+}
+@keyframes active-ball-next {
+  from {
+    transform: translateX(-110%) scale(1);
+  }
+  20% {
+    transform: translateX(-90%) scale(1.1);
+  }
+  40% {
+    transform: translateX(0%) scale(1.1);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(0%) scale(0.6);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateX(0%) scale(1);
+  }
+}
+@-webkit-keyframes inactive-ball-light {
+  from {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateX(70%);
+  }
+}
+@keyframes inactive-ball-light {
+  from {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateX(70%);
+  }
+}
+@-webkit-keyframes active-ball-light {
+  from {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  95% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-70%);
+  }
+}
+@keyframes active-ball-light {
+  from {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  95% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-70%);
+  }
+}
+@-webkit-keyframes active-ball-light-next {
+  from {
+    transform: translateX(-70%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+@keyframes active-ball-light-next {
+  from {
+    transform: translateX(-70%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+@-webkit-keyframes inactive-ball-light-next {
+  from {
+    transform: translateX(70%);
+    opacity: 0;
+  }
+  95% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+@keyframes inactive-ball-light-next {
+  from {
+    transform: translateX(70%);
+    opacity: 0;
+  }
+  95% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #f7fbfc, #bcc7d3);
+}
+body:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url(https://assets.codepen.io/907471/noise.svg);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <label id="switch" class="switch">
+  <input type="checkbox">
+  <div class="surface">
+    <div class="bg"></div>
+    <div class="outer-shadow"></div>
+    <div class="inner-shadow"></div>
+    <div class="active-light"></div>
+    <div class="inner-surface">
+      <div class="balls">
+        <div class="active-ball"></div>
+        <div class="inactive-ball"></div>
+      </div>
+      <div class="glass"></div>
+      <div class="dark-shadow"></div>
+      <div class="light-shadow"></div>
+    </div>
+    <div class="lights">
+      <div class="active-ball-light"></div>
+      <div class="inactive-ball-light"></div>
+    </div>
+  </div>
+</label>
+  <script src='https://codepen.io/konstantindenerz/pen/KKxvdPq.js'></script>
+    <script id="rendered-js" >
+// ¯\_(ツ)_/¯
+//# sourceURL=pen.js
+  </script>
+
+  
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!--
+  Animated, Masked Text with Stray Light
+
+  Archived from https://codepen.io/konstantindenerz/pen/yLojxBR
+  Created 2021-11-08 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  <title>Animated, Masked Text with Stray Light</title>
+  
+  
+  
+  
+<style>
+@charset "UTF-8";
+bubu {
+  background: radial-gradient(circle, #3f5efb 0%, #fc466b 100%);
+  animation: bg 3s ease infinite;
+  text-fill-color: transparent;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  display: block;
+  position: relative;
+}
+bubu:before {
+  background: radial-gradient(circle, #3f5efb 0%, #fc466b 100%);
+  animation: bg 3s ease infinite;
+  text-fill-color: transparent;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  content: "{{ ♡ CSS }}";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  filter: blur(30px);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+@keyframes bg {
+  from {
+    background-position: 0px 0px;
+  }
+  50% {
+    background-position: 1000px -200px;
+  }
+  to {
+    background-position: 0px 200px;
+  }
+}
+body {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  font-family: "Inter", "Helvetica", sans-serif;
+  font-size: 5rem;
+  background: #141414;
+  background: linear-gradient(28deg, #0e0e0e 0%, #1a1a1a 100%) no-repeat;
+  background-size: cover;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <bubu>{{ ♡ CSS }}</bubu>
+  
+    <script id="rendered-js" >
+// 🤷‍♂️
+//# sourceURL=pen.js
+  </script>
+
+  
+</body>
+
+</html>

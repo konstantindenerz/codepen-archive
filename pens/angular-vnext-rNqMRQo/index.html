@@ -1,0 +1,900 @@
+<!--
+  Angular vNext 🎉🥳
+
+  Archived from https://codepen.io/konstantindenerz/pen/rNqMRQo
+  Created 2023-04-19 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  
+  
+
+  <title>Angular vNext 🎉🥳 </title>
+  
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+@property --angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+:root {
+  --c0: #e90663;
+  --c1: linear-gradient(-115deg, #1f0303, var(--c0));
+  --c2: linear-gradient(55deg, #e90663, black);
+  --c3: linear-gradient(45deg, black, var(--c0));
+  --c4: linear-gradient(-45deg, #e90663, black);
+  --c5: #dfcaaa;
+  --c6: #d6c5ab70;
+  --size: 40vmin;
+  --perspective: 60vmin;
+  --d: 20deg;
+  --d-x: 1.23vmin;
+  font-size: 16px;
+}
+
+@-webkit-keyframes rotate {
+  from {
+    transform: rotateY(0deg);
+  }
+  30% {
+    transform: rotateY(540deg);
+  }
+  60% {
+    transform: rotateY(720deg);
+  }
+  to {
+    transform: rotateY(1440deg);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateY(0deg);
+  }
+  30% {
+    transform: rotateY(540deg);
+  }
+  60% {
+    transform: rotateY(720deg);
+  }
+  to {
+    transform: rotateY(1440deg);
+  }
+}
+.scene {
+  position: relative;
+  perspective: var(--perspective);
+  perspective-origin: 40% 50%;
+  filter: drop-shadow(0.2vmin 0.4vmin 11.6vmin rgba(255, 255, 255, 0.7));
+}
+
+@-webkit-keyframes particles {
+  from {
+    --angle: 360deg;
+  }
+  20% {
+    opacity: 1;
+  }
+  30% {
+    --angle: 270deg;
+    opacity: 0;
+  }
+  to {
+    --angle: 270deg;
+    opacity: 0;
+  }
+}
+
+@keyframes particles {
+  from {
+    --angle: 360deg;
+  }
+  20% {
+    opacity: 1;
+  }
+  30% {
+    --angle: 270deg;
+    opacity: 0;
+  }
+  to {
+    --angle: 270deg;
+    opacity: 0;
+  }
+}
+@-webkit-keyframes fireworks {
+  from {
+    --angle: 360deg;
+    transform: rotateX(0) rotateY(0) translateY(0);
+  }
+  to {
+    --angle: 100deg;
+    transform: translateX(var(--x)) translateZ(var(--y)) translateY(-100vmin);
+  }
+}
+@keyframes fireworks {
+  from {
+    --angle: 360deg;
+    transform: rotateX(0) rotateY(0) translateY(0);
+  }
+  to {
+    --angle: 100deg;
+    transform: translateX(var(--x)) translateZ(var(--y)) translateY(-100vmin);
+  }
+}
+.fireworks {
+  position: absolute;
+  transform-style: preserve-3d;
+  transform: translateZ(-10vmin);
+}
+.fireworks .left,
+.fireworks .right {
+  --offset-per-surface: calc(360deg / 10);
+  --radius: 16vmin;
+  position: absolute;
+  inset: 0;
+  --delay-offset: 0s;
+  --rotate: -45deg;
+  transform: translate(20vmin, 20vmin) rotate(var(--rotate));
+}
+.fireworks .left > div,
+.fireworks .right > div {
+  position: absolute;
+  width: 0.8vmin;
+  aspect-ratio: 1;
+}
+.fireworks .left > div:nth-child(0),
+.fireworks .right > div:nth-child(0) {
+  --index: 0;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 1.5s ease-in-out infinite;
+          animation: fireworks 1.5s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.9077712049));
+}
+.fireworks .left > div:nth-child(1),
+.fireworks .right > div:nth-child(1) {
+  --index: 1;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 1.5s ease-in-out infinite;
+          animation: fireworks 1.5s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.6240025871));
+}
+.fireworks .left > div:nth-child(2),
+.fireworks .right > div:nth-child(2) {
+  --index: 2;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 1.5s ease-in-out infinite;
+          animation: fireworks 1.5s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.6141483821));
+}
+.fireworks .left > div:nth-child(3),
+.fireworks .right > div:nth-child(3) {
+  --index: 3;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 1.5s ease-in-out infinite;
+          animation: fireworks 1.5s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.3591063009));
+}
+.fireworks .left > div:nth-child(4),
+.fireworks .right > div:nth-child(4) {
+  --index: 4;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 1.5s ease-in-out infinite;
+          animation: fireworks 1.5s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.2677443525));
+}
+.fireworks .left > div:nth-child(5),
+.fireworks .right > div:nth-child(5) {
+  --index: 5;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 1.5s ease-in-out infinite;
+          animation: fireworks 1.5s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.499950523));
+}
+.fireworks .left > div:nth-child(6),
+.fireworks .right > div:nth-child(6) {
+  --index: 6;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 1.5s ease-in-out infinite;
+          animation: fireworks 1.5s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.9908403893));
+}
+.fireworks .left > div:nth-child(7),
+.fireworks .right > div:nth-child(7) {
+  --index: 7;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 1.5s ease-in-out infinite;
+          animation: fireworks 1.5s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.4796221759));
+}
+.fireworks .left > div:nth-child(8),
+.fireworks .right > div:nth-child(8) {
+  --index: 8;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 1.5s ease-in-out infinite;
+          animation: fireworks 1.5s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.5211630295));
+}
+.fireworks .left > div:nth-child(9),
+.fireworks .right > div:nth-child(9) {
+  --index: 9;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 1.5s ease-in-out infinite;
+          animation: fireworks 1.5s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.4499805712));
+}
+.fireworks .left > div:nth-child(10),
+.fireworks .right > div:nth-child(10) {
+  --index: 10;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 1.5s ease-in-out infinite;
+          animation: fireworks 1.5s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.2868709034));
+}
+.fireworks .right {
+  --rotate: 45deg;
+  --delay-offset: 0.35s;
+}
+
+.particles {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: translateZ(-10vmin);
+}
+.particles .explosion {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  --offset-per-surface: calc(360deg / 16);
+  --radius: 50vmin;
+  --duration-offset: 1s;
+}
+.particles .explosion > div {
+  position: absolute;
+  width: 4vmin;
+  aspect-ratio: 1;
+}
+.particles .explosion > div:nth-child(0) {
+  --index: 0;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(2s + 0.8533513066 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(2s + 0.8533513066 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.8086325623));
+}
+.particles .explosion > div:nth-child(1) {
+  --index: 1;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(2s + 0.6773108162 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(2s + 0.6773108162 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.3434312244));
+}
+.particles .explosion > div:nth-child(2) {
+  --index: 2;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(2s + 0.104235388 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(2s + 0.104235388 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.2534430286));
+}
+.particles .explosion > div:nth-child(3) {
+  --index: 3;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(2s + 0.3596095702 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(2s + 0.3596095702 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.3966914008));
+}
+.particles .explosion > div:nth-child(4) {
+  --index: 4;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(2s + 0.9169222575 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(2s + 0.9169222575 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.7286784014));
+}
+.particles .explosion > div:nth-child(5) {
+  --index: 5;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(2s + 0.1723313373 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(2s + 0.1723313373 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.6601855855));
+}
+.particles .explosion > div:nth-child(6) {
+  --index: 6;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(2s + 0.8739915218 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(2s + 0.8739915218 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.3569509856));
+}
+.particles .explosion > div:nth-child(7) {
+  --index: 7;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(2s + 0.4840270781 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(2s + 0.4840270781 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.1631904993));
+}
+.particles .explosion > div:nth-child(8) {
+  --index: 8;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(2s + 0.5936860703 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(2s + 0.5936860703 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.600975858));
+}
+.particles .explosion > div:nth-child(9) {
+  --index: 9;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(2s + 0.7618588213 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(2s + 0.7618588213 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.1184650744));
+}
+.particles .explosion > div:nth-child(10) {
+  --index: 10;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(2s + 0.0974236967 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(2s + 0.0974236967 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.8014846876));
+}
+.particles .explosion > div:nth-child(11) {
+  --index: 11;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(2s + 0.5196091385 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(2s + 0.5196091385 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.888896298));
+}
+.particles .explosion > div:nth-child(12) {
+  --index: 12;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(2s + 0.0153687429 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(2s + 0.0153687429 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.3059287334));
+}
+.particles .explosion > div:nth-child(13) {
+  --index: 13;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(2s + 0.0150767882 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(2s + 0.0150767882 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.7279439817));
+}
+.particles .explosion > div:nth-child(14) {
+  --index: 14;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(2s + 0.3372012074 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(2s + 0.3372012074 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.0054840418));
+}
+.particles .explosion > div:nth-child(15) {
+  --index: 15;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(2s + 0.533258704 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(2s + 0.533258704 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.1718258522));
+}
+.particles .explosion > div:nth-child(16) {
+  --index: 16;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(2s + 0.0667626018 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(2s + 0.0667626018 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.3090402633));
+}
+.particles .explosion.depth-1 {
+  transform: translateZ(-10vmin);
+  --duration-offset: 4s;
+}
+.particles .explosion.depth-1 > div {
+  --blur: 0.5vmin;
+}
+.particles .explosion.depth-2 {
+  transform: translateZ(-20vmin);
+  --duration-offset: 4s;
+}
+.particles .explosion.depth-2 > div {
+  --blur: 4.5vmin;
+}
+
+@-webkit-keyframes explosion {
+  from {
+    transform: translateX(0) translateY(0) rotate(calc(var(--r) * -1));
+    opacity: 0;
+    filter: blur(0);
+  }
+  10% {
+    opacity: 1;
+  }
+  25% {
+    transform: translateX(var(--x)) translateY(var(--y)) rotate(var(--r));
+    opacity: 0;
+    filter: blur(var(--blur, 0));
+  }
+  to {
+    transform: translateX(var(--x)) translateY(var(--y)) rotate(var(--r));
+    opacity: 0;
+    filter: blur(var(--blur, 0));
+  }
+}
+
+@keyframes explosion {
+  from {
+    transform: translateX(0) translateY(0) rotate(calc(var(--r) * -1));
+    opacity: 0;
+    filter: blur(0);
+  }
+  10% {
+    opacity: 1;
+  }
+  25% {
+    transform: translateX(var(--x)) translateY(var(--y)) rotate(var(--r));
+    opacity: 0;
+    filter: blur(var(--blur, 0));
+  }
+  to {
+    transform: translateX(var(--x)) translateY(var(--y)) rotate(var(--r));
+    opacity: 0;
+    filter: blur(var(--blur, 0));
+  }
+}
+.container {
+  width: var(--size);
+  aspect-ratio: 1;
+  position: relative;
+  transform-style: preserve-3d;
+  -webkit-animation: rotate 12s cubic-bezier(1, -0.39, 0.52, 1.12) infinite;
+          animation: rotate 12s cubic-bezier(1, -0.39, 0.52, 1.12) infinite;
+  text-shadow: 0 0 1vmin white;
+}
+.container .back {
+  position: absolute;
+  inset: 0;
+  font-weight: bold;
+  transform: translateZ(calc(var(--d-x) * -1));
+}
+.container .back .left {
+  transform-origin: left;
+  transform: translateX(var(--d-x)) rotateY(calc(-1 * var(--d)));
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: calc(var(--size) / 2);
+  background: linear-gradient(254deg, #e90663, black);
+  -webkit-clip-path: polygon(0 14%, 100% 0, 100% 100%, 23% 80%);
+          clip-path: polygon(0 14%, 100% 0, 100% 100%, 23% 80%);
+}
+.container .back .left:after {
+  display: grid;
+  place-items: center;
+  content: "0";
+  position: absolute;
+  inset: 0;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 24vmin;
+  transform: translateX(2.2vmin) translateY(-2vmin) scaleX(-1);
+}
+.container .back .right {
+  transform-origin: right;
+  position: absolute;
+  transform: translateX(calc(-1 * var(--d-x))) rotateY(calc(-1 * var(--d)));
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: calc(var(--size) / 2);
+  background: var(--c4);
+  -webkit-clip-path: polygon(0 0, 100% 14%, 77% 80%, 0 100%);
+          clip-path: polygon(0 0, 100% 14%, 77% 80%, 0 100%);
+}
+.container .back .right:after {
+  display: grid;
+  place-items: center;
+  content: "2";
+  position: absolute;
+  inset: 0;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 24vmin;
+  transform: translateX(-1vmin) translateY(-2vmin) scaleX(-1);
+}
+.container .front {
+  position: absolute;
+  inset: 0;
+  transform: translateZ(var(--d-x));
+  filter: drop-shadow(0.2vmin 0.4vmin 11.6vmin var(--c5));
+}
+.container .front .left,
+.container .front .right {
+  transform-origin: left;
+  transform: translateX(var(--d-x)) rotateY(var(--d));
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: calc(var(--size) / 2);
+  background: var(--c1);
+  -webkit-clip-path: polygon(0 14%, 100% 0, 100% 100%, 23% 80%);
+          clip-path: polygon(0 14%, 100% 0, 100% 100%, 23% 80%);
+}
+.container .front .left:after,
+.container .front .right:after {
+  display: grid;
+  place-items: center;
+  content: "A";
+  position: absolute;
+  inset: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 36vmin;
+  transform: translateX(8.2vmin) translateY(-4vmin) scale(1.8);
+}
+.container .front .right {
+  transform-origin: right;
+  transform: translateX(calc(-1 * var(--d-x))) rotateY(var(--d));
+  left: unset;
+  right: 0;
+  background: var(--c2);
+  -webkit-clip-path: polygon(0 0, 100% 14%, 77% 80%, 0 100%);
+          clip-path: polygon(0 0, 100% 14%, 77% 80%, 0 100%);
+}
+.container .front .right:after {
+  color: rgba(255, 255, 255, 0.84);
+  transform: translateX(-14.5vmin) translateY(-4vmin) scale(1.8);
+}
+.container .left-top {
+  position: absolute;
+  width: 2.5vmin;
+  top: 0;
+  left: 0;
+  height: 19.4vmin;
+  background: var(--c1);
+  transform: rotateY(270deg) rotateX(72.8deg) translateY(-18vmin) translateZ(-5.5vmin);
+  transform-origin: top;
+}
+.container .right-top {
+  position: absolute;
+  width: 2.5vmin;
+  top: 0;
+  right: 0;
+  height: 19.4vmin;
+  background: var(--c1);
+  transform: rotateY(270deg) rotateX(-72.8deg) translateY(-18vmin) translateZ(5.5vmin);
+  transform-origin: top;
+}
+.container .left-center {
+  position: absolute;
+  width: 2.5vmin;
+  top: 0;
+  left: 0;
+  height: 26.4vmin;
+  background: var(--c3);
+  transform: rotateY(270deg) rotateX(351deg) translateY(6vmin) translateZ(-1.3vmin);
+}
+.container .right-center {
+  position: absolute;
+  width: 2.5vmin;
+  top: 0;
+  right: 0;
+  height: 26.4vmin;
+  background: var(--c3);
+  transform: rotateY(270deg) rotateX(8.5deg) translateY(6vmin) translateZ(1.3vmin);
+}
+.container .left-bottom {
+  position: absolute;
+  width: 2.5vmin;
+  bottom: 0;
+  left: 0;
+  height: 16vmin;
+  background: linear-gradient(black, #e90663);
+  transform-origin: bottom;
+  transform: rotateY(270deg) rotateX(300deg) translateY(16vmin) translateZ(-9.3vmin);
+}
+.container .right-bottom {
+  position: absolute;
+  width: 2.5vmin;
+  bottom: 0;
+  right: 0;
+  height: 16vmin;
+  background: linear-gradient(black, #e90663);
+  transform-origin: bottom;
+  transform: rotateY(270deg) rotateX(-300deg) translateY(16.2vmin) translateZ(9.3vmin);
+}
+
+@-webkit-keyframes light {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes light {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+body {
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(black, #1d0909, #0a0a2f, #1d0404, #08082b, black), #111;
+  height: 100vh;
+  width: 100vw;
+  color: white;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow: hidden;
+}
+body:before {
+  box-shadow: 0 0 20px black;
+  content: "";
+  position: absolute;
+  inset: -50vmax;
+  border-radius: 4vmin;
+  opacity: 0.35;
+  -webkit-animation: light 110s linear infinite;
+          animation: light 110s linear infinite;
+  background: radial-gradient(20% 20% at center, #e90663 30%, transparent), conic-gradient(transparent, var(--c6), transparent, transparent, var(--c6), transparent, var(--c6), transparent, transparent, var(--c6), transparent, transparent, transparent, var(--c6), transparent, transparent, var(--c6), transparent, transparent);
+  background-repeat: no-repeat, no-repeat;
+}
+
+.mirror {
+  position: absolute;
+  transform: scaleY(-1) translateY(-110%);
+  -webkit-mask: radial-gradient(100% 70% at 50% 100%, rgba(0, 0, 0, 0.1), transparent 80%);
+          mask: radial-gradient(100% 70% at 50% 100%, rgba(0, 0, 0, 0.1), transparent 80%);
+  filter: unset;
+}
+.mirror .front {
+  filter: unset;
+}
+
+* {
+  box-sizing: border-box;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="scene">
+  <div class="particles">
+    <div class="explosion depth-2">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="explosion depth-1">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="explosion">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div class="fireworks">
+    <div class="left">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="right">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="left-top"></div>
+    <div class="left-center"></div>
+    <div class="right-center"></div>
+    <div class="right-top"></div>
+    <div class="left-bottom"></div>
+    <div class="right-bottom"></div>
+    <div class="back">
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+    <div class="front">
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+  </div>
+</div>
+<div class="scene mirror">
+  <div class="container">
+    <div class="left-top"></div>
+    <div class="left-center"></div>
+    <div class="right-center"></div>
+    <div class="right-top"></div>
+    <div class="left-bottom"></div>
+    <div class="right-bottom"></div>
+    <div class="back">
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+    <div class="front">
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+  </div>
+</div>
+  <script src='https://codepen.io/konstantindenerz/pen/KKxvdPq.js'></script>
+  
+  
+</body>
+
+</html>

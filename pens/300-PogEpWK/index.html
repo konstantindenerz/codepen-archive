@@ -1,0 +1,1578 @@
+<!--
+  300 🎉
+
+  Archived from https://codepen.io/konstantindenerz/pen/PogEpWK
+  Created 2024-04-03 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  
+  
+
+  <title>300 🎉</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+@charset "UTF-8";
+:root {
+  --content: "«0»";
+  --color-primary: #ee75d2;
+  --color-secondary: #75d8ee;
+  --color-tertiary: #deee75;
+  --color-quaternary: #9375ee;
+  --color-surface: black;
+  --c0: #dd0031;
+  --c1: linear-gradient(-115deg, #1f0303, var(--c0));
+  --c2: linear-gradient(55deg, #c3002f, black);
+  --c3: linear-gradient(45deg, black, var(--c0));
+  --c4: linear-gradient(-45deg, #c3002f, black);
+  --c5: #ff9800;
+  --c6: #d6c5ab70;
+  --size: 40vmin;
+  --perspective: 60vmin;
+  --d: 20deg;
+  --d-x: 1.23vmin;
+}
+
+@property --start {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 0%;
+}
+@property --end {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 0%;
+}
+body {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  font-family: "Kode Mono", monospace;
+  background: conic-gradient(black, #1d0909, #0a0a2f, #1d0404, #08082b, black), #111;
+  color: var(--color-primary);
+  perspective: 12rem;
+}
+body::after {
+  content: var(--content);
+  text-align: center;
+  position: absolute;
+  font-weight: bold;
+  font-size: 26vmin;
+  -webkit-animation: pulse 1s ease infinite, rotate 4s linear infinite, count 2s 1s ease forwards;
+          animation: pulse 1s ease infinite, rotate 4s linear infinite, count 2s 1s ease forwards;
+  translate: 0 0 1rem;
+  transform-style: preserve-3d;
+  filter: brightness(1.5) drop-shadow(0 0 6rem rgba(255, 255, 255, 0.4));
+  background: conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #40bf8a, var(--color-primary) var(--start)), color-mix(in oklch, #40bf5e, var(--color-secondary) var(--end))) no-repeat 0% 0%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #8cbf40, var(--color-primary) var(--start)), color-mix(in oklch, #4086bf, var(--color-secondary) var(--end))) no-repeat 11.1111111111% 0%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #b0bf40, var(--color-primary) var(--start)), color-mix(in oklch, #a840bf, var(--color-secondary) var(--end))) no-repeat 22.2222222222% 0%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf4040, var(--color-primary) var(--start)), color-mix(in oklch, #40bfaa, var(--color-secondary) var(--end))) no-repeat 33.3333333333% 0%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #6abf40, var(--color-primary) var(--start)), color-mix(in oklch, #4086bf, var(--color-secondary) var(--end))) no-repeat 44.4444444444% 0%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #5740bf, var(--color-primary) var(--start)), color-mix(in oklch, #8abf40, var(--color-secondary) var(--end))) no-repeat 55.5555555556% 0%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #4086bf, var(--color-primary) var(--start)), color-mix(in oklch, #bf4059, var(--color-secondary) var(--end))) no-repeat 66.6666666667% 0%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #6a40bf, var(--color-primary) var(--start)), color-mix(in oklch, #4dbf40, var(--color-secondary) var(--end))) no-repeat 77.7777777778% 0%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #40bf88, var(--color-primary) var(--start)), color-mix(in oklch, #4079bf, var(--color-secondary) var(--end))) no-repeat 88.8888888889% 0%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #ac40bf, var(--color-primary) var(--start)), color-mix(in oklch, #bfae40, var(--color-secondary) var(--end))) no-repeat 100% 0%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #53bf40, var(--color-primary) var(--start)), color-mix(in oklch, #bf4088, var(--color-secondary) var(--end))) no-repeat 0% 11.1111111111%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #8640bf, var(--color-primary) var(--start)), color-mix(in oklch, #bf4075, var(--color-secondary) var(--end))) no-repeat 11.1111111111% 11.1111111111%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #5940bf, var(--color-primary) var(--start)), color-mix(in oklch, #bf8640, var(--color-secondary) var(--end))) no-repeat 22.2222222222% 11.1111111111%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf4f40, var(--color-primary) var(--start)), color-mix(in oklch, #bfac40, var(--color-secondary) var(--end))) no-repeat 33.3333333333% 11.1111111111%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #405ebf, var(--color-primary) var(--start)), color-mix(in oklch, #bf4075, var(--color-secondary) var(--end))) no-repeat 44.4444444444% 11.1111111111%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #b740bf, var(--color-primary) var(--start)), color-mix(in oklch, #bf6a40, var(--color-secondary) var(--end))) no-repeat 55.5555555556% 11.1111111111%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf7540, var(--color-primary) var(--start)), color-mix(in oklch, #9340bf, var(--color-secondary) var(--end))) no-repeat 66.6666666667% 11.1111111111%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #79bf40, var(--color-primary) var(--start)), color-mix(in oklch, #82bf40, var(--color-secondary) var(--end))) no-repeat 77.7777777778% 11.1111111111%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #409dbf, var(--color-primary) var(--start)), color-mix(in oklch, #5940bf, var(--color-secondary) var(--end))) no-repeat 88.8888888889% 11.1111111111%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #a640bf, var(--color-primary) var(--start)), color-mix(in oklch, #8a40bf, var(--color-secondary) var(--end))) no-repeat 100% 11.1111111111%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #9bbf40, var(--color-primary) var(--start)), color-mix(in oklch, #6640bf, var(--color-secondary) var(--end))) no-repeat 0% 22.2222222222%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #40bfa8, var(--color-primary) var(--start)), color-mix(in oklch, #40bfb9, var(--color-secondary) var(--end))) no-repeat 11.1111111111% 22.2222222222%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bfa240, var(--color-primary) var(--start)), color-mix(in oklch, #6cbf40, var(--color-secondary) var(--end))) no-repeat 22.2222222222% 22.2222222222%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #407bbf, var(--color-primary) var(--start)), color-mix(in oklch, #7740bf, var(--color-secondary) var(--end))) no-repeat 33.3333333333% 22.2222222222%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #40bf5b, var(--color-primary) var(--start)), color-mix(in oklch, #bf6440, var(--color-secondary) var(--end))) no-repeat 44.4444444444% 22.2222222222%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #40bf60, var(--color-primary) var(--start)), color-mix(in oklch, #40bf86, var(--color-secondary) var(--end))) no-repeat 55.5555555556% 22.2222222222%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #406fbf, var(--color-primary) var(--start)), color-mix(in oklch, #bd40bf, var(--color-secondary) var(--end))) no-repeat 66.6666666667% 22.2222222222%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #40bf88, var(--color-primary) var(--start)), color-mix(in oklch, #40b9bf, var(--color-secondary) var(--end))) no-repeat 77.7777777778% 22.2222222222%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #4abf40, var(--color-primary) var(--start)), color-mix(in oklch, #8440bf, var(--color-secondary) var(--end))) no-repeat 88.8888888889% 22.2222222222%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf4095, var(--color-primary) var(--start)), color-mix(in oklch, #59bf40, var(--color-secondary) var(--end))) no-repeat 100% 22.2222222222%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #b9bf40, var(--color-primary) var(--start)), color-mix(in oklch, #55bf40, var(--color-secondary) var(--end))) no-repeat 0% 33.3333333333%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #40bf60, var(--color-primary) var(--start)), color-mix(in oklch, #4082bf, var(--color-secondary) var(--end))) no-repeat 11.1111111111% 33.3333333333%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #4051bf, var(--color-primary) var(--start)), color-mix(in oklch, #40bf6a, var(--color-secondary) var(--end))) no-repeat 22.2222222222% 33.3333333333%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf9140, var(--color-primary) var(--start)), color-mix(in oklch, #40bf59, var(--color-secondary) var(--end))) no-repeat 33.3333333333% 33.3333333333%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf4077, var(--color-primary) var(--start)), color-mix(in oklch, #b740bf, var(--color-secondary) var(--end))) no-repeat 44.4444444444% 33.3333333333%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #6640bf, var(--color-primary) var(--start)), color-mix(in oklch, #80bf40, var(--color-secondary) var(--end))) no-repeat 55.5555555556% 33.3333333333%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #405bbf, var(--color-primary) var(--start)), color-mix(in oklch, #bfa440, var(--color-secondary) var(--end))) no-repeat 66.6666666667% 33.3333333333%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #40bfa8, var(--color-primary) var(--start)), color-mix(in oklch, #59bf40, var(--color-secondary) var(--end))) no-repeat 77.7777777778% 33.3333333333%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #4d40bf, var(--color-primary) var(--start)), color-mix(in oklch, #8040bf, var(--color-secondary) var(--end))) no-repeat 88.8888888889% 33.3333333333%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #409bbf, var(--color-primary) var(--start)), color-mix(in oklch, #bb40bf, var(--color-secondary) var(--end))) no-repeat 100% 33.3333333333%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #7dbf40, var(--color-primary) var(--start)), color-mix(in oklch, #bf5740, var(--color-secondary) var(--end))) no-repeat 0% 44.4444444444%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf8840, var(--color-primary) var(--start)), color-mix(in oklch, #bf8440, var(--color-secondary) var(--end))) no-repeat 11.1111111111% 44.4444444444%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #40bf66, var(--color-primary) var(--start)), color-mix(in oklch, #bf9140, var(--color-secondary) var(--end))) no-repeat 22.2222222222% 44.4444444444%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf4060, var(--color-primary) var(--start)), color-mix(in oklch, #40bf5e, var(--color-secondary) var(--end))) no-repeat 33.3333333333% 44.4444444444%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf4059, var(--color-primary) var(--start)), color-mix(in oklch, #53bf40, var(--color-secondary) var(--end))) no-repeat 44.4444444444% 44.4444444444%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf7740, var(--color-primary) var(--start)), color-mix(in oklch, #4095bf, var(--color-secondary) var(--end))) no-repeat 55.5555555556% 44.4444444444%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #a440bf, var(--color-primary) var(--start)), color-mix(in oklch, #bf9f40, var(--color-secondary) var(--end))) no-repeat 66.6666666667% 44.4444444444%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #40bf77, var(--color-primary) var(--start)), color-mix(in oklch, #40bf88, var(--color-secondary) var(--end))) no-repeat 77.7777777778% 44.4444444444%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #8cbf40, var(--color-primary) var(--start)), color-mix(in oklch, #bf4084, var(--color-secondary) var(--end))) no-repeat 88.8888888889% 44.4444444444%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf404f, var(--color-primary) var(--start)), color-mix(in oklch, #4060bf, var(--color-secondary) var(--end))) no-repeat 100% 44.4444444444%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bfa640, var(--color-primary) var(--start)), color-mix(in oklch, #8a40bf, var(--color-secondary) var(--end))) no-repeat 0% 55.5555555556%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #9b40bf, var(--color-primary) var(--start)), color-mix(in oklch, #b0bf40, var(--color-secondary) var(--end))) no-repeat 11.1111111111% 55.5555555556%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf4640, var(--color-primary) var(--start)), color-mix(in oklch, #5140bf, var(--color-secondary) var(--end))) no-repeat 22.2222222222% 55.5555555556%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf40bb, var(--color-primary) var(--start)), color-mix(in oklch, #bfae40, var(--color-secondary) var(--end))) no-repeat 33.3333333333% 55.5555555556%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #80bf40, var(--color-primary) var(--start)), color-mix(in oklch, #40bf5b, var(--color-secondary) var(--end))) no-repeat 44.4444444444% 55.5555555556%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf40bd, var(--color-primary) var(--start)), color-mix(in oklch, #bb40bf, var(--color-secondary) var(--end))) no-repeat 55.5555555556% 55.5555555556%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf406f, var(--color-primary) var(--start)), color-mix(in oklch, #bf7740, var(--color-secondary) var(--end))) no-repeat 66.6666666667% 55.5555555556%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #407bbf, var(--color-primary) var(--start)), color-mix(in oklch, #4062bf, var(--color-secondary) var(--end))) no-repeat 77.7777777778% 55.5555555556%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf4640, var(--color-primary) var(--start)), color-mix(in oklch, #bf4f40, var(--color-secondary) var(--end))) no-repeat 88.8888888889% 55.5555555556%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #4079bf, var(--color-primary) var(--start)), color-mix(in oklch, #408abf, var(--color-secondary) var(--end))) no-repeat 100% 55.5555555556%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf40b9, var(--color-primary) var(--start)), color-mix(in oklch, #bf4044, var(--color-secondary) var(--end))) no-repeat 0% 66.6666666667%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #4064bf, var(--color-primary) var(--start)), color-mix(in oklch, #93bf40, var(--color-secondary) var(--end))) no-repeat 11.1111111111% 66.6666666667%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #40a6bf, var(--color-primary) var(--start)), color-mix(in oklch, #40bf51, var(--color-secondary) var(--end))) no-repeat 22.2222222222% 66.6666666667%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #8840bf, var(--color-primary) var(--start)), color-mix(in oklch, #bf4840, var(--color-secondary) var(--end))) no-repeat 33.3333333333% 66.6666666667%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf4240, var(--color-primary) var(--start)), color-mix(in oklch, #bf404a, var(--color-secondary) var(--end))) no-repeat 44.4444444444% 66.6666666667%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #40bf44, var(--color-primary) var(--start)), color-mix(in oklch, #40bfbf, var(--color-secondary) var(--end))) no-repeat 55.5555555556% 66.6666666667%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf4053, var(--color-primary) var(--start)), color-mix(in oklch, #bf9940, var(--color-secondary) var(--end))) no-repeat 66.6666666667% 66.6666666667%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf8c40, var(--color-primary) var(--start)), color-mix(in oklch, #4066bf, var(--color-secondary) var(--end))) no-repeat 77.7777777778% 66.6666666667%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bfa640, var(--color-primary) var(--start)), color-mix(in oklch, #bf4f40, var(--color-secondary) var(--end))) no-repeat 88.8888888889% 66.6666666667%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #40bf5b, var(--color-primary) var(--start)), color-mix(in oklch, #bf4055, var(--color-secondary) var(--end))) no-repeat 100% 66.6666666667%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #acbf40, var(--color-primary) var(--start)), color-mix(in oklch, #bf5340, var(--color-secondary) var(--end))) no-repeat 0% 77.7777777778%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf4073, var(--color-primary) var(--start)), color-mix(in oklch, #4053bf, var(--color-secondary) var(--end))) no-repeat 11.1111111111% 77.7777777778%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #7d40bf, var(--color-primary) var(--start)), color-mix(in oklch, #8640bf, var(--color-secondary) var(--end))) no-repeat 22.2222222222% 77.7777777778%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #57bf40, var(--color-primary) var(--start)), color-mix(in oklch, #46bf40, var(--color-secondary) var(--end))) no-repeat 33.3333333333% 77.7777777778%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bfa240, var(--color-primary) var(--start)), color-mix(in oklch, #bf6440, var(--color-secondary) var(--end))) no-repeat 44.4444444444% 77.7777777778%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #8e40bf, var(--color-primary) var(--start)), color-mix(in oklch, #a240bf, var(--color-secondary) var(--end))) no-repeat 55.5555555556% 77.7777777778%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #5740bf, var(--color-primary) var(--start)), color-mix(in oklch, #bf40b7, var(--color-secondary) var(--end))) no-repeat 66.6666666667% 77.7777777778%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #406abf, var(--color-primary) var(--start)), color-mix(in oklch, #b540bf, var(--color-secondary) var(--end))) no-repeat 77.7777777778% 77.7777777778%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf4042, var(--color-primary) var(--start)), color-mix(in oklch, #73bf40, var(--color-secondary) var(--end))) no-repeat 88.8888888889% 77.7777777778%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #acbf40, var(--color-primary) var(--start)), color-mix(in oklch, #bf40bf, var(--color-secondary) var(--end))) no-repeat 100% 77.7777777778%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf4066, var(--color-primary) var(--start)), color-mix(in oklch, #bf4053, var(--color-secondary) var(--end))) no-repeat 0% 88.8888888889%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #40bf93, var(--color-primary) var(--start)), color-mix(in oklch, #b3bf40, var(--color-secondary) var(--end))) no-repeat 11.1111111111% 88.8888888889%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf4088, var(--color-primary) var(--start)), color-mix(in oklch, #bf9f40, var(--color-secondary) var(--end))) no-repeat 22.2222222222% 88.8888888889%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #409bbf, var(--color-primary) var(--start)), color-mix(in oklch, #40bfb3, var(--color-secondary) var(--end))) no-repeat 33.3333333333% 88.8888888889%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #40bf75, var(--color-primary) var(--start)), color-mix(in oklch, #40bf99, var(--color-secondary) var(--end))) no-repeat 44.4444444444% 88.8888888889%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf405b, var(--color-primary) var(--start)), color-mix(in oklch, #40bf4d, var(--color-secondary) var(--end))) no-repeat 55.5555555556% 88.8888888889%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf40a4, var(--color-primary) var(--start)), color-mix(in oklch, #40bf44, var(--color-secondary) var(--end))) no-repeat 66.6666666667% 88.8888888889%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #b340bf, var(--color-primary) var(--start)), color-mix(in oklch, #4840bf, var(--color-secondary) var(--end))) no-repeat 77.7777777778% 88.8888888889%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #40bfb5, var(--color-primary) var(--start)), color-mix(in oklch, #bfa640, var(--color-secondary) var(--end))) no-repeat 88.8888888889% 88.8888888889%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #60bf40, var(--color-primary) var(--start)), color-mix(in oklch, #7bbf40, var(--color-secondary) var(--end))) no-repeat 100% 88.8888888889%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #408cbf, var(--color-primary) var(--start)), color-mix(in oklch, #40bf44, var(--color-secondary) var(--end))) no-repeat 0% 100%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf409f, var(--color-primary) var(--start)), color-mix(in oklch, #6040bf, var(--color-secondary) var(--end))) no-repeat 11.1111111111% 100%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #404abf, var(--color-primary) var(--start)), color-mix(in oklch, #aabf40, var(--color-secondary) var(--end))) no-repeat 22.2222222222% 100%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bfae40, var(--color-primary) var(--start)), color-mix(in oklch, #bf406c, var(--color-secondary) var(--end))) no-repeat 33.3333333333% 100%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #79bf40, var(--color-primary) var(--start)), color-mix(in oklch, #40bf93, var(--color-secondary) var(--end))) no-repeat 44.4444444444% 100%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #4d40bf, var(--color-primary) var(--start)), color-mix(in oklch, #bf40bd, var(--color-secondary) var(--end))) no-repeat 55.5555555556% 100%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #86bf40, var(--color-primary) var(--start)), color-mix(in oklch, #40bbbf, var(--color-secondary) var(--end))) no-repeat 66.6666666667% 100%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #9f40bf, var(--color-primary) var(--start)), color-mix(in oklch, #8440bf, var(--color-secondary) var(--end))) no-repeat 77.7777777778% 100%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #b0bf40, var(--color-primary) var(--start)), color-mix(in oklch, #a640bf, var(--color-secondary) var(--end))) no-repeat 88.8888888889% 100%/11.1111111111% 11.1111111111%, conic-gradient(from 90deg at 80% 25%, color-mix(in oklch, #bf8e40, var(--color-primary) var(--start)), color-mix(in oklch, #64bf40, var(--color-secondary) var(--end))) no-repeat 100% 100%/11.1111111111% 11.1111111111%;
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+body:before {
+  content: "";
+  position: absolute;
+  background: url(https://assets.codepen.io/907471/noise.svg);
+  mix-blend-mode: overlay;
+  inset: 0;
+  pointer-events: none;
+  filter: invert(1) brightness(0.1);
+  z-index: 1000;
+}
+
+@-webkit-keyframes count {
+  0% {
+    --content: "«0»";
+  }
+  1% {
+    --content: "«3»";
+  }
+  2% {
+    --content: "«6»";
+  }
+  3% {
+    --content: "«9»";
+  }
+  4% {
+    --content: "«12»";
+  }
+  5% {
+    --content: "«15»";
+  }
+  6% {
+    --content: "«18»";
+  }
+  7% {
+    --content: "«21»";
+  }
+  8% {
+    --content: "«24»";
+  }
+  9% {
+    --content: "«27»";
+  }
+  10% {
+    --content: "«30»";
+  }
+  11% {
+    --content: "«33»";
+  }
+  12% {
+    --content: "«36»";
+  }
+  13% {
+    --content: "«39»";
+  }
+  14% {
+    --content: "«42»";
+  }
+  15% {
+    --content: "«45»";
+  }
+  16% {
+    --content: "«48»";
+  }
+  17% {
+    --content: "«51»";
+  }
+  18% {
+    --content: "«54»";
+  }
+  19% {
+    --content: "«57»";
+  }
+  20% {
+    --content: "«60»";
+  }
+  21% {
+    --content: "«63»";
+  }
+  22% {
+    --content: "«66»";
+  }
+  23% {
+    --content: "«69»";
+  }
+  24% {
+    --content: "«72»";
+  }
+  25% {
+    --content: "«75»";
+  }
+  26% {
+    --content: "«78»";
+  }
+  27% {
+    --content: "«81»";
+  }
+  28% {
+    --content: "«84»";
+  }
+  29% {
+    --content: "«87»";
+  }
+  30% {
+    --content: "«90»";
+  }
+  31% {
+    --content: "«93»";
+  }
+  32% {
+    --content: "«96»";
+  }
+  33% {
+    --content: "«99»";
+  }
+  34% {
+    --content: "«102»";
+  }
+  35% {
+    --content: "«105»";
+  }
+  36% {
+    --content: "«108»";
+  }
+  37% {
+    --content: "«111»";
+  }
+  38% {
+    --content: "«114»";
+  }
+  39% {
+    --content: "«117»";
+  }
+  40% {
+    --content: "«120»";
+  }
+  41% {
+    --content: "«123»";
+  }
+  42% {
+    --content: "«126»";
+  }
+  43% {
+    --content: "«129»";
+  }
+  44% {
+    --content: "«132»";
+  }
+  45% {
+    --content: "«135»";
+  }
+  46% {
+    --content: "«138»";
+  }
+  47% {
+    --content: "«141»";
+  }
+  48% {
+    --content: "«144»";
+  }
+  49% {
+    --content: "«147»";
+  }
+  50% {
+    --content: "«150»";
+  }
+  51% {
+    --content: "«153»";
+  }
+  52% {
+    --content: "«156»";
+  }
+  53% {
+    --content: "«159»";
+  }
+  54% {
+    --content: "«162»";
+  }
+  55% {
+    --content: "«165»";
+  }
+  56% {
+    --content: "«168»";
+  }
+  57% {
+    --content: "«171»";
+  }
+  58% {
+    --content: "«174»";
+  }
+  59% {
+    --content: "«177»";
+  }
+  60% {
+    --content: "«180»";
+  }
+  61% {
+    --content: "«183»";
+  }
+  62% {
+    --content: "«186»";
+  }
+  63% {
+    --content: "«189»";
+  }
+  64% {
+    --content: "«192»";
+  }
+  65% {
+    --content: "«195»";
+  }
+  66% {
+    --content: "«198»";
+  }
+  67% {
+    --content: "«201»";
+  }
+  68% {
+    --content: "«204»";
+  }
+  69% {
+    --content: "«207»";
+  }
+  70% {
+    --content: "«210»";
+  }
+  71% {
+    --content: "«213»";
+  }
+  72% {
+    --content: "«216»";
+  }
+  73% {
+    --content: "«219»";
+  }
+  74% {
+    --content: "«222»";
+  }
+  75% {
+    --content: "«225»";
+  }
+  76% {
+    --content: "«228»";
+  }
+  77% {
+    --content: "«231»";
+  }
+  78% {
+    --content: "«234»";
+  }
+  79% {
+    --content: "«237»";
+  }
+  80% {
+    --content: "«240»";
+  }
+  81% {
+    --content: "«243»";
+  }
+  82% {
+    --content: "«246»";
+  }
+  83% {
+    --content: "«249»";
+  }
+  84% {
+    --content: "«252»";
+  }
+  85% {
+    --content: "«255»";
+  }
+  86% {
+    --content: "«258»";
+  }
+  87% {
+    --content: "«261»";
+  }
+  88% {
+    --content: "«264»";
+  }
+  89% {
+    --content: "«267»";
+  }
+  90% {
+    --content: "«270»";
+  }
+  91% {
+    --content: "«273»";
+  }
+  92% {
+    --content: "«276»";
+  }
+  93% {
+    --content: "«279»";
+  }
+  94% {
+    --content: "«282»";
+  }
+  95% {
+    --content: "«285»";
+  }
+  96% {
+    --content: "«288»";
+  }
+  97% {
+    --content: "«291»";
+  }
+  98% {
+    --content: "«294»";
+  }
+  99% {
+    --content: "«297»";
+  }
+  100% {
+    --content: "«300»";
+  }
+}
+
+@keyframes count {
+  0% {
+    --content: "«0»";
+  }
+  1% {
+    --content: "«3»";
+  }
+  2% {
+    --content: "«6»";
+  }
+  3% {
+    --content: "«9»";
+  }
+  4% {
+    --content: "«12»";
+  }
+  5% {
+    --content: "«15»";
+  }
+  6% {
+    --content: "«18»";
+  }
+  7% {
+    --content: "«21»";
+  }
+  8% {
+    --content: "«24»";
+  }
+  9% {
+    --content: "«27»";
+  }
+  10% {
+    --content: "«30»";
+  }
+  11% {
+    --content: "«33»";
+  }
+  12% {
+    --content: "«36»";
+  }
+  13% {
+    --content: "«39»";
+  }
+  14% {
+    --content: "«42»";
+  }
+  15% {
+    --content: "«45»";
+  }
+  16% {
+    --content: "«48»";
+  }
+  17% {
+    --content: "«51»";
+  }
+  18% {
+    --content: "«54»";
+  }
+  19% {
+    --content: "«57»";
+  }
+  20% {
+    --content: "«60»";
+  }
+  21% {
+    --content: "«63»";
+  }
+  22% {
+    --content: "«66»";
+  }
+  23% {
+    --content: "«69»";
+  }
+  24% {
+    --content: "«72»";
+  }
+  25% {
+    --content: "«75»";
+  }
+  26% {
+    --content: "«78»";
+  }
+  27% {
+    --content: "«81»";
+  }
+  28% {
+    --content: "«84»";
+  }
+  29% {
+    --content: "«87»";
+  }
+  30% {
+    --content: "«90»";
+  }
+  31% {
+    --content: "«93»";
+  }
+  32% {
+    --content: "«96»";
+  }
+  33% {
+    --content: "«99»";
+  }
+  34% {
+    --content: "«102»";
+  }
+  35% {
+    --content: "«105»";
+  }
+  36% {
+    --content: "«108»";
+  }
+  37% {
+    --content: "«111»";
+  }
+  38% {
+    --content: "«114»";
+  }
+  39% {
+    --content: "«117»";
+  }
+  40% {
+    --content: "«120»";
+  }
+  41% {
+    --content: "«123»";
+  }
+  42% {
+    --content: "«126»";
+  }
+  43% {
+    --content: "«129»";
+  }
+  44% {
+    --content: "«132»";
+  }
+  45% {
+    --content: "«135»";
+  }
+  46% {
+    --content: "«138»";
+  }
+  47% {
+    --content: "«141»";
+  }
+  48% {
+    --content: "«144»";
+  }
+  49% {
+    --content: "«147»";
+  }
+  50% {
+    --content: "«150»";
+  }
+  51% {
+    --content: "«153»";
+  }
+  52% {
+    --content: "«156»";
+  }
+  53% {
+    --content: "«159»";
+  }
+  54% {
+    --content: "«162»";
+  }
+  55% {
+    --content: "«165»";
+  }
+  56% {
+    --content: "«168»";
+  }
+  57% {
+    --content: "«171»";
+  }
+  58% {
+    --content: "«174»";
+  }
+  59% {
+    --content: "«177»";
+  }
+  60% {
+    --content: "«180»";
+  }
+  61% {
+    --content: "«183»";
+  }
+  62% {
+    --content: "«186»";
+  }
+  63% {
+    --content: "«189»";
+  }
+  64% {
+    --content: "«192»";
+  }
+  65% {
+    --content: "«195»";
+  }
+  66% {
+    --content: "«198»";
+  }
+  67% {
+    --content: "«201»";
+  }
+  68% {
+    --content: "«204»";
+  }
+  69% {
+    --content: "«207»";
+  }
+  70% {
+    --content: "«210»";
+  }
+  71% {
+    --content: "«213»";
+  }
+  72% {
+    --content: "«216»";
+  }
+  73% {
+    --content: "«219»";
+  }
+  74% {
+    --content: "«222»";
+  }
+  75% {
+    --content: "«225»";
+  }
+  76% {
+    --content: "«228»";
+  }
+  77% {
+    --content: "«231»";
+  }
+  78% {
+    --content: "«234»";
+  }
+  79% {
+    --content: "«237»";
+  }
+  80% {
+    --content: "«240»";
+  }
+  81% {
+    --content: "«243»";
+  }
+  82% {
+    --content: "«246»";
+  }
+  83% {
+    --content: "«249»";
+  }
+  84% {
+    --content: "«252»";
+  }
+  85% {
+    --content: "«255»";
+  }
+  86% {
+    --content: "«258»";
+  }
+  87% {
+    --content: "«261»";
+  }
+  88% {
+    --content: "«264»";
+  }
+  89% {
+    --content: "«267»";
+  }
+  90% {
+    --content: "«270»";
+  }
+  91% {
+    --content: "«273»";
+  }
+  92% {
+    --content: "«276»";
+  }
+  93% {
+    --content: "«279»";
+  }
+  94% {
+    --content: "«282»";
+  }
+  95% {
+    --content: "«285»";
+  }
+  96% {
+    --content: "«288»";
+  }
+  97% {
+    --content: "«291»";
+  }
+  98% {
+    --content: "«294»";
+  }
+  99% {
+    --content: "«297»";
+  }
+  100% {
+    --content: "«300»";
+  }
+}
+@-webkit-keyframes pulse {
+  from {
+    --start: 60%;
+  }
+  10% {
+    --end: 30%;
+    --start: 70%;
+  }
+  40% {
+    --end: 70%;
+    --start: 30%;
+  }
+  50% {
+    --start: 100%;
+  }
+  to {
+    --start: 60%;
+  }
+}
+@keyframes pulse {
+  from {
+    --start: 60%;
+  }
+  10% {
+    --end: 30%;
+    --start: 70%;
+  }
+  40% {
+    --end: 70%;
+    --start: 30%;
+  }
+  50% {
+    --start: 100%;
+  }
+  to {
+    --start: 60%;
+  }
+}
+@-webkit-keyframes rotate {
+  from {
+    transform: rotateY(0);
+  }
+  25% {
+    transform: rotateY(15deg) rotateX(10deg);
+  }
+  75% {
+    transform: rotateY(-15deg);
+  }
+  to {
+    transform: rotateY(0);
+  }
+}
+@keyframes rotate {
+  from {
+    transform: rotateY(0);
+  }
+  25% {
+    transform: rotateY(15deg) rotateX(10deg);
+  }
+  75% {
+    transform: rotateY(-15deg);
+  }
+  to {
+    transform: rotateY(0);
+  }
+}
+a.labs-follow-me {
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+@-webkit-keyframes particles {
+  from {
+    --angle: 360deg;
+  }
+  20% {
+    opacity: 1;
+  }
+  30% {
+    --angle: 270deg;
+    opacity: 0;
+  }
+  to {
+    --angle: 270deg;
+    opacity: 0;
+  }
+}
+@keyframes particles {
+  from {
+    --angle: 360deg;
+  }
+  20% {
+    opacity: 1;
+  }
+  30% {
+    --angle: 270deg;
+    opacity: 0;
+  }
+  to {
+    --angle: 270deg;
+    opacity: 0;
+  }
+}
+@-webkit-keyframes fireworks {
+  from {
+    --angle: 360deg;
+    transform: rotateX(0) rotateY(0) translateY(0);
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+  to {
+    --angle: 100deg;
+    opacity: 0;
+    transform: translateX(var(--x)) translateZ(var(--y)) translateY(-100vmin);
+  }
+}
+@keyframes fireworks {
+  from {
+    --angle: 360deg;
+    transform: rotateX(0) rotateY(0) translateY(0);
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+  to {
+    --angle: 100deg;
+    opacity: 0;
+    transform: translateX(var(--x)) translateZ(var(--y)) translateY(-100vmin);
+  }
+}
+.fireworks {
+  position: absolute;
+  transform-style: preserve-3d;
+  transform: translateZ(-10vmin);
+}
+.fireworks .left,
+.fireworks .right {
+  --offset-per-surface: calc(360deg / 14);
+  --radius: 60vmin;
+  position: absolute;
+  inset: 0;
+  --delay-offset: 0s;
+  --rotate: -45deg;
+  transform: rotate(var(--rotate));
+}
+.fireworks .left > div,
+.fireworks .right > div {
+  position: absolute;
+  width: 1vmin;
+  aspect-ratio: 1;
+  opacity: 0;
+}
+.fireworks .left > div:nth-child(0),
+.fireworks .right > div:nth-child(0) {
+  --index: 0;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 2s ease-in-out infinite;
+          animation: fireworks 2s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.4196454472)), var(--color-primary) 60%);
+}
+.fireworks .left > div:nth-child(1),
+.fireworks .right > div:nth-child(1) {
+  --index: 1;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 2s ease-in-out infinite;
+          animation: fireworks 2s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.2308982894)), var(--color-primary) 60%);
+}
+.fireworks .left > div:nth-child(2),
+.fireworks .right > div:nth-child(2) {
+  --index: 2;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 2s ease-in-out infinite;
+          animation: fireworks 2s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.0434505851)), var(--color-primary) 60%);
+}
+.fireworks .left > div:nth-child(3),
+.fireworks .right > div:nth-child(3) {
+  --index: 3;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 2s ease-in-out infinite;
+          animation: fireworks 2s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.3230647279)), var(--color-primary) 60%);
+}
+.fireworks .left > div:nth-child(4),
+.fireworks .right > div:nth-child(4) {
+  --index: 4;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 2s ease-in-out infinite;
+          animation: fireworks 2s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.3497310818)), var(--color-primary) 60%);
+}
+.fireworks .left > div:nth-child(5),
+.fireworks .right > div:nth-child(5) {
+  --index: 5;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 2s ease-in-out infinite;
+          animation: fireworks 2s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.5811740017)), var(--color-primary) 60%);
+}
+.fireworks .left > div:nth-child(6),
+.fireworks .right > div:nth-child(6) {
+  --index: 6;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 2s ease-in-out infinite;
+          animation: fireworks 2s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.7871386292)), var(--color-primary) 60%);
+}
+.fireworks .left > div:nth-child(7),
+.fireworks .right > div:nth-child(7) {
+  --index: 7;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 2s ease-in-out infinite;
+          animation: fireworks 2s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.2341161125)), var(--color-primary) 60%);
+}
+.fireworks .left > div:nth-child(8),
+.fireworks .right > div:nth-child(8) {
+  --index: 8;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 2s ease-in-out infinite;
+          animation: fireworks 2s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.6398625649)), var(--color-primary) 60%);
+}
+.fireworks .left > div:nth-child(9),
+.fireworks .right > div:nth-child(9) {
+  --index: 9;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 2s ease-in-out infinite;
+          animation: fireworks 2s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.7901358113)), var(--color-primary) 60%);
+}
+.fireworks .left > div:nth-child(10),
+.fireworks .right > div:nth-child(10) {
+  --index: 10;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 2s ease-in-out infinite;
+          animation: fireworks 2s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.7303756963)), var(--color-primary) 60%);
+}
+.fireworks .left > div:nth-child(11),
+.fireworks .right > div:nth-child(11) {
+  --index: 11;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 2s ease-in-out infinite;
+          animation: fireworks 2s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.9977477851)), var(--color-primary) 60%);
+}
+.fireworks .left > div:nth-child(12),
+.fireworks .right > div:nth-child(12) {
+  --index: 12;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 2s ease-in-out infinite;
+          animation: fireworks 2s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.2207380793)), var(--color-primary) 60%);
+}
+.fireworks .left > div:nth-child(13),
+.fireworks .right > div:nth-child(13) {
+  --index: 13;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 2s ease-in-out infinite;
+          animation: fireworks 2s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.6959891777)), var(--color-primary) 60%);
+}
+.fireworks .left > div:nth-child(14),
+.fireworks .right > div:nth-child(14) {
+  --index: 14;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  -webkit-animation: fireworks 2s ease-in-out infinite;
+          animation: fireworks 2s ease-in-out infinite;
+  -webkit-animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+          animation-delay: calc(0.05s * var(--index) + var(--delay-offset));
+  background: color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 50% * 0.0213144362)), var(--color-primary) 60%);
+}
+.fireworks .right {
+  --rotate: 45deg;
+  --delay-offset: 0.35s;
+}
+
+.particles {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: translateZ(-10vmin);
+}
+.particles .explosion {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  --offset-per-surface: calc(360deg / 26);
+  --radius: 80vmin;
+  --duration-offset: 1s;
+}
+.particles .explosion > div {
+  position: absolute;
+  width: 3vmin;
+  aspect-ratio: 1;
+}
+.particles .explosion > div:nth-child(0) {
+  --index: 0;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.3923233936 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.3923233936 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.6080505898)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(1) {
+  --index: 1;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.8603096548 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.8603096548 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.888628429)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(2) {
+  --index: 2;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.3085976563 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.3085976563 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.1827280789)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(3) {
+  --index: 3;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.6646004193 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.6646004193 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.5610804442)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(4) {
+  --index: 4;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.3750379283 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.3750379283 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.8643967941)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(5) {
+  --index: 5;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.3061492177 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.3061492177 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.550120016)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(6) {
+  --index: 6;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.6156381226 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.6156381226 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.2164006799)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(7) {
+  --index: 7;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.8395551349 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.8395551349 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.8440719009)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(8) {
+  --index: 8;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.5932335655 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.5932335655 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.7546658548)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(9) {
+  --index: 9;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.478600422 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.478600422 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.4761546589)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(10) {
+  --index: 10;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.8265506574 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.8265506574 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.9245445662)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(11) {
+  --index: 11;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.0887687146 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.0887687146 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.4902136967)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(12) {
+  --index: 12;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.6507579056 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.6507579056 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.9582948043)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(13) {
+  --index: 13;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.7142637372 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.7142637372 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.7751430158)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(14) {
+  --index: 14;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.4139567825 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.4139567825 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.0648575037)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(15) {
+  --index: 15;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.494614695 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.494614695 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.2561928052)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(16) {
+  --index: 16;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.5656993512 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.5656993512 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.8846786012)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(17) {
+  --index: 17;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.826680632 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.826680632 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.5383579837)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(18) {
+  --index: 18;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.278163218 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.278163218 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.2286742606)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(19) {
+  --index: 19;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.730139755 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.730139755 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.9496206116)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(20) {
+  --index: 20;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.2670581644 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.2670581644 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.624879352)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(21) {
+  --index: 21;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.9335665839 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.9335665839 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.5161695166)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(22) {
+  --index: 22;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.0934863293 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.0934863293 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.4589507338)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(23) {
+  --index: 23;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.4121207284 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.4121207284 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.7957536576)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(24) {
+  --index: 24;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.1340404425 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.1340404425 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.7250338337)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(25) {
+  --index: 25;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.2842806146 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.2842806146 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.6059742368)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion > div:nth-child(26) {
+  --index: 26;
+  --angle-offset: calc(var(--index) * var(--offset-per-surface));
+  --x: calc(var(--radius) * cos(var(--angle) + var(--angle-offset)));
+  --y: calc(var(--radius) * sin(var(--angle) + var(--angle-offset)));
+  --r: calc(30deg * cos(var(--angle) + var(--angle-offset)));
+  -webkit-animation: explosion calc(3s + 0.2495226081 * var(--duration-offset)) ease-in-out infinite;
+          animation: explosion calc(3s + 0.2495226081 * var(--duration-offset)) ease-in-out infinite;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+  background: conic-gradient(from 45deg, color-mix(in oklch, hsl(calc(var(--angle) + var(--angle-offset)), 100%, calc(100% - 60% * 0.2215974646)), var(--color-primary) 60%), white);
+  transform-style: preserve-3d;
+}
+.particles .explosion.depth-1 {
+  transform: translateZ(-10vmin);
+  --duration-offset: 4s;
+}
+.particles .explosion.depth-1 > div {
+  --blur: 0.5vmin;
+}
+.particles .explosion.depth-2 {
+  transform: translateZ(-50vmin);
+  --duration-offset: 4s;
+}
+.particles .explosion.depth-2 > div {
+  --blur: 4.5vmin;
+}
+
+@-webkit-keyframes explosion {
+  from {
+    transform: translateX(0) translateY(0) rotate(calc(var(--r) * -1)) scale(0.1);
+    opacity: 0;
+    filter: blur(0);
+  }
+  10% {
+    opacity: 1;
+  }
+  25% {
+    transform: translateX(var(--x)) translateY(var(--y)) rotate(var(--r)) scale(1);
+    opacity: 0;
+    filter: blur(var(--blur, 0));
+  }
+  to {
+    transform: translateX(var(--x)) translateY(var(--y)) rotate(var(--r));
+    opacity: 0;
+    filter: blur(var(--blur, 0));
+  }
+}
+
+@keyframes explosion {
+  from {
+    transform: translateX(0) translateY(0) rotate(calc(var(--r) * -1)) scale(0.1);
+    opacity: 0;
+    filter: blur(0);
+  }
+  10% {
+    opacity: 1;
+  }
+  25% {
+    transform: translateX(var(--x)) translateY(var(--y)) rotate(var(--r)) scale(1);
+    opacity: 0;
+    filter: blur(var(--blur, 0));
+  }
+  to {
+    transform: translateX(var(--x)) translateY(var(--y)) rotate(var(--r));
+    opacity: 0;
+    filter: blur(var(--blur, 0));
+  }
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="effects">
+    <div class="particles">
+        <div class="explosion depth-2">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="explosion depth-1">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="explosion">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div class="fireworks">
+        <div class="left">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="right">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+  <script src='https://codepen.io/konstantindenerz/pen/KKxvdPq.js'></script>
+  
+  
+</body>
+
+</html>

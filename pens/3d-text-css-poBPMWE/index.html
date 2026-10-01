@@ -1,0 +1,123 @@
+<!--
+  3D Text (CSS)
+
+  Archived from https://codepen.io/konstantindenerz/pen/poBPMWE
+  Created 2024-03-24 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  
+  
+
+  <title>3D Text (CSS)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+:root {
+  --color-primary: white;
+  --color-surface: #030303;
+}
+
+.container {
+  font-size: 58vmin;
+  position: absolute;
+  display: grid;
+  place-items: center;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  background: conic-gradient(#f6a2f6, #e74f89, #7e7ecb, #ffd500, #ee75d2, #13f5fa, #f6a2f6);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+.container::before {
+  content: "CSS";
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  --c: color-mix(in srgb, white, transparent 94%);
+  --c2: var(--color-surface);
+  text-shadow: -5vmin 3.3333333333vmin 0.01vmin var(--c2), -4.75vmin 3.1666666667vmin 0.1vmin rgba(255, 255, 255, 0.9), -4.5vmin 3vmin 0.025vmin var(--c), -4.25vmin 2.8333333333vmin 0.025vmin var(--c), -4vmin 2.6666666667vmin 0.025vmin var(--c), -3.75vmin 2.5vmin 0.025vmin var(--c), -3.5vmin 2.3333333333vmin 0.025vmin var(--c), -3.25vmin 2.1666666667vmin 0.025vmin var(--c), -3vmin 2vmin 0.025vmin var(--c), -2.75vmin 1.8333333333vmin 0.025vmin var(--c), -2.5vmin 1.6666666667vmin 0.025vmin var(--c), -2.25vmin 1.5vmin 0.025vmin var(--c), -2vmin 1.3333333333vmin 0.025vmin var(--c), -1.75vmin 1.1666666667vmin 0.025vmin var(--c), -1.5vmin 1vmin 0.025vmin var(--c), -1.25vmin 0.8333333333vmin 0.025vmin var(--c), -1vmin 0.6666666667vmin 0.025vmin var(--c), -0.75vmin 0.5vmin 0.025vmin var(--c), -0.5vmin 0.3333333333vmin 0.025vmin var(--c), -0.25vmin 0.1666666667vmin 0.025vmin var(--c), -0vmin 0vmin 0.025vmin var(--c);
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  margin: 0;
+  position: relative;
+  place-items: center;
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+}
+body::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: screen;
+  filter: url(#noise) saturate(0) brightness(1.5);
+  opacity: 0.36;
+}
+
+.filter {
+  position: absolute;
+  visibility: hidden;
+}
+
+a.labs-follow-me {
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="container">
+  CSS
+</div>
+
+<svg class=filter xmlns="http://www.w3.org/2000/svg">
+  <filter id="noise">
+    <feTurbulence baseFrequency="0.185" />
+    <feColorMatrix values="0 0 0 9 -5
+                               0 0 0 9 -4
+                              0 0 0 9 -5
+                               0 0 0 0 1" />
+  </filter>
+</svg>
+  <script src='https://codepen.io/konstantindenerz/pen/KKxvdPq.js'></script>
+  
+  
+</body>
+
+</html>

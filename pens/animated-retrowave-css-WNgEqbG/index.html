@@ -1,0 +1,610 @@
+<!--
+  Animated Retrowave 👾  (CSS)
+
+  Archived from https://codepen.io/konstantindenerz/pen/WNgEqbG
+  Created 2023-03-07 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  <title>Animated Retrowave 👾  (CSS)</title>
+  
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  <link rel='stylesheet' href='https://codepen.io/konstantindenerz/pen/YzOrWjz.css'>
+<link rel='stylesheet' href='https://codepen.io/konstantindenerz/pen/xxaXjZv.css'>
+<link rel='stylesheet' href='https://codepen.io/konstantindenerz/pen/KKxvdPq.css'>
+<link rel='stylesheet' href='https://codepen.io/konstantindenerz/pen/mdGpxKg.css'>
+  
+<style>
+@property --shift {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+:root {
+  --labs-sys-color-background: #111;
+  --labs-sys-color-on-background: white;
+  --base-speed: 4s;
+  --labs-sys-color-grid: #fac4ff;
+  --labs-sys-color-grid-glow: #df7373;
+  --labs-sys-color-sun-1: #fdb428;
+  --labs-sys-color-sun-2: #f672ca;
+  --labs-sys-color-sun-glow: #b9f;
+  --labs-sys-color-star: #f6c0c0;
+  --color-palm-trunk: #333;
+  --color-palm-leaf: #333;
+  --color-palm-leaf-2: #b9f;
+  --labs-sys-color-triangle: #6eccee;
+  --labs-sys-color-volume: var(--labs-sys-color-triangle);
+}
+
+.delorean {
+  position: absolute;
+  bottom: 0;
+  z-index: 11111;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  -webkit-animation: delorean 30s ease infinite;
+          animation: delorean 30s ease infinite;
+  perspective: 1000px;
+}
+
+@-webkit-keyframes delorean {
+  from {
+    transform: translateY(0);
+  }
+  9% {
+    transform: translateX(-2vmin);
+  }
+  20% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translate(-0.05vmin, 6vmin) scale(1.5);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes delorean {
+  from {
+    transform: translateY(0);
+  }
+  9% {
+    transform: translateX(-2vmin);
+  }
+  20% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translate(-0.05vmin, 6vmin) scale(1.5);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.sun {
+  position: relative;
+  width: min(40vmin, 40%);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 4rem var(--labs-sys-color-sun-glow));
+}
+.sun:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  --shift: 1;
+  -webkit-mask: linear-gradient(to top,  #000 calc(1% + (3.5% * var(--shift))), 0%, #0000 calc(8%  + (2.8% * var(--shift))), 0%, #000 calc(10% + (3.5% * var(--shift))), 0%, #0000 calc(16%  + (2.8% * var(--shift))), 0%, #000 calc(19% + (3.5% * var(--shift))), 0%, #0000 calc(24%  + (2.8% * var(--shift))), 0%, #000 calc(28% + (3.5% * var(--shift))), 0%, #0000 calc(32%  + (2.8% * var(--shift))), 0%, #000 calc(37% + (3.5% * var(--shift))), 0%, #0000 calc(40%  + (2.8% * var(--shift))), 0%, #000 calc(46% + (3.5% * var(--shift))), 0%, #0000 calc(48%  + (2.8% * var(--shift))), 0%, #000 calc(55% + (3.5% * var(--shift))), 0%, #0000 calc(56%  + (2.8% * var(--shift))), 0%,#000 calc(56% + (2.5% * var(--shift))));
+          mask: linear-gradient(to top,  #000 calc(1% + (3.5% * var(--shift))), 0%, #0000 calc(8%  + (2.8% * var(--shift))), 0%, #000 calc(10% + (3.5% * var(--shift))), 0%, #0000 calc(16%  + (2.8% * var(--shift))), 0%, #000 calc(19% + (3.5% * var(--shift))), 0%, #0000 calc(24%  + (2.8% * var(--shift))), 0%, #000 calc(28% + (3.5% * var(--shift))), 0%, #0000 calc(32%  + (2.8% * var(--shift))), 0%, #000 calc(37% + (3.5% * var(--shift))), 0%, #0000 calc(40%  + (2.8% * var(--shift))), 0%, #000 calc(46% + (3.5% * var(--shift))), 0%, #0000 calc(48%  + (2.8% * var(--shift))), 0%, #000 calc(55% + (3.5% * var(--shift))), 0%, #0000 calc(56%  + (2.8% * var(--shift))), 0%,#000 calc(56% + (2.5% * var(--shift))));
+  -webkit-mask-size: 100% 120%;
+          mask-size: 100% 120%;
+  -webkit-animation: sun calc(var(--base-speed) / 4) linear infinite;
+          animation: sun calc(var(--base-speed) / 4) linear infinite;
+  border-radius: inherit;
+  background-image: linear-gradient(to bottom, var(--labs-sys-color-sun-1), var(--labs-sys-color-sun-2) 60%);
+}
+.sun:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(to top, var(--labs-sys-color-sun-1), var(--labs-sys-color-sun-2) 55%, var(--labs-sys-color-triangle) 65%, var(--labs-sys-color-sun-2) 69%);
+  border-radius: inherit;
+  transform: translateY(100%) rotateX(40deg) scaleY(1.2);
+  perspective: 6.25rem;
+  filter: blur(20px);
+}
+
+@-webkit-keyframes sun {
+  from {
+    --shift: 1;
+  }
+  to {
+    --shift: 3.8;
+  }
+}
+
+@keyframes sun {
+  from {
+    --shift: 1;
+  }
+  to {
+    --shift: 3.8;
+  }
+}
+.top-lines {
+  background: linear-gradient(to bottom, var(--labs-sys-color-sun-2) 0.2vmin, transparent 0.2vmin);
+  background-size: 125rem 0.4vmin;
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: overlay;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.top {
+  padding-top: 4rem;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+}
+.top:after {
+  content: "";
+  position: absolute;
+  bottom: -0.5vmin;
+  left: 0;
+  right: 0;
+  background: #222;
+  height: 5vmin;
+  -webkit-clip-path: polygon(0% 38%, 2.6% 40%, 5.4% 24%, 8.7% 59%, 13.6% 72%, 18.5% 22%, 21.7% 35%, 27.2% 8%, 34% 53%, 39.4% 81%, 49.1% 85%, 54.5% 64%, 60% 53%, 71.4% 80%, 73.4% 15%, 79.8% 29%, 86.5% 15%, 94.1% 36%, 100% 27%, 100% 100%, 0% 100%);
+          clip-path: polygon(0% 38%, 2.6% 40%, 5.4% 24%, 8.7% 59%, 13.6% 72%, 18.5% 22%, 21.7% 35%, 27.2% 8%, 34% 53%, 39.4% 81%, 49.1% 85%, 54.5% 64%, 60% 53%, 71.4% 80%, 73.4% 15%, 79.8% 29%, 86.5% 15%, 94.1% 36%, 100% 27%, 100% 100%, 0% 100%);
+}
+.top:before {
+  content: "";
+  position: absolute;
+  bottom: -1vmin;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.2);
+  mix-blend-mode: soft-light;
+  height: 15vmin;
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+  -webkit-clip-path: polygon(0% 38%, 2.6% 40%, 5.4% 24%, 8.7% 59%, 13.6% 72%, 18.5% 22%, 21.7% 35%, 27.2% 8%, 34% 53%, 39.4% 81%, 49.1% 85%, 54.5% 64%, 60% 53%, 71.2% 70%, 76.6% 24%, 81.4% 0%, 87.1% 13%, 94.2% 27%, 100% 32%, 100% 100%, 0% 100%);
+          clip-path: polygon(0% 38%, 2.6% 40%, 5.4% 24%, 8.7% 59%, 13.6% 72%, 18.5% 22%, 21.7% 35%, 27.2% 8%, 34% 53%, 39.4% 81%, 49.1% 85%, 54.5% 64%, 60% 53%, 71.2% 70%, 76.6% 24%, 81.4% 0%, 87.1% 13%, 94.2% 27%, 100% 32%, 100% 100%, 0% 100%);
+}
+
+.bottom-overlay {
+  perspective: 14.5rem;
+  flex: 0 0 12.5rem;
+  position: absolute;
+  z-index: 10000;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 12.5rem;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(30, 30, 30, 0.9) 70%);
+}
+
+.bottom {
+  background: inherit;
+  perspective: 14.5rem;
+  flex: 0 0 12.5rem;
+  position: relative;
+}
+.bottom:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  --line-width: 0.0635rem;
+  background: linear-gradient(to right, var(--labs-sys-color-grid) var(--line-width), transparent var(--line-width)), linear-gradient(to bottom, var(--labs-sys-color-grid) var(--line-width), transparent var(--line-width));
+  background-size: 2rem 125rem, 125rem 2rem;
+  transform: rotateX(53deg) scale(1.8) translateZ(43px);
+  -webkit-animation: grid calc(var(--base-speed) * 1) linear infinite;
+          animation: grid calc(var(--base-speed) * 1) linear infinite;
+  border-top: 1px solid var(--labs-sys-color-grid);
+  filter: drop-shadow(0 0 2px var(--labs-sys-color-grid-glow));
+}
+
+@-webkit-keyframes grid {
+  from {
+    background-position-y: -30rem;
+  }
+  to {
+    background-position-y: 0%;
+  }
+}
+
+@keyframes grid {
+  from {
+    background-position-y: -30rem;
+  }
+  to {
+    background-position-y: 0%;
+  }
+}
+#stars {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 20rem;
+  overflow: hidden;
+  left: 0;
+  z-index: -1;
+  -webkit-animation: stars 20s linear;
+          animation: stars 20s linear;
+}
+#stars .star {
+  position: absolute;
+  background: var(--labs-sys-color-star);
+  width: 0.15rem;
+  height: 0.15rem;
+  border-radius: 50%;
+  transform: translate(var(--x), var(--y));
+  box-shadow: 0 0 0.25rem var(--labs-sys-color-sun-glow);
+}
+
+@-webkit-keyframes stars {
+  from {
+    transform: translateX(0);
+  }
+  60% {
+    transform: translateX(3vmax) rotate(1deg);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes stars {
+  from {
+    transform: translateX(0);
+  }
+  60% {
+    transform: translateX(3vmax) rotate(1deg);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.palm:not(.small) {
+  -webkit-animation: palm-shaking 5s linear infinite;
+          animation: palm-shaking 5s linear infinite;
+}
+.palm.small {
+  -webkit-animation: small-palm-shaking 4s linear inifinte;
+          animation: small-palm-shaking 4s linear inifinte;
+}
+
+@-webkit-keyframes palm-shaking {
+  from {
+    transform: translate(10vmin, 0vmin) rotate(6deg);
+  }
+  50% {
+    transform: translate(10.5vmin, 0vmin) rotate(9deg);
+  }
+  to {
+    transform: translate(10vmin, 0vmin) rotate(6deg);
+  }
+}
+
+@keyframes palm-shaking {
+  from {
+    transform: translate(10vmin, 0vmin) rotate(6deg);
+  }
+  50% {
+    transform: translate(10.5vmin, 0vmin) rotate(9deg);
+  }
+  to {
+    transform: translate(10vmin, 0vmin) rotate(6deg);
+  }
+}
+@-webkit-keyframes small-palm-shaking {
+  from {
+    transform: translate(9vmin, 9vmin) scale(0.4) rotate(344deg) skewX(5deg);
+  }
+  50% {
+    transform: translate(9vmin, 9vmin) scale(0.4) rotate(356deg) skewX(5deg);
+  }
+  to {
+    transform: translate(9vmin, 9vmin) scale(0.4) rotate(344deg) skewX(5deg);
+  }
+}
+@keyframes small-palm-shaking {
+  from {
+    transform: translate(9vmin, 9vmin) scale(0.4) rotate(344deg) skewX(5deg);
+  }
+  50% {
+    transform: translate(9vmin, 9vmin) scale(0.4) rotate(356deg) skewX(5deg);
+  }
+  to {
+    transform: translate(9vmin, 9vmin) scale(0.4) rotate(344deg) skewX(5deg);
+  }
+}
+.startails {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  mix-blend-mode: lighten;
+}
+
+.startail-r {
+  position: absolute;
+  left: 75vw;
+  bottom: 0;
+  background: linear-gradient(to right, var(--labs-sys-color-sun-glow) 10%, var(--labs-sys-color-triangle) 50%, transparent 80%);
+  height: 0.2vmin;
+  width: 15vmin;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 15px white);
+  transform: translateY(-32vmin) rotate(-20deg);
+}
+
+.startail-l {
+  position: absolute;
+  left: 16vw;
+  bottom: 0;
+  background: linear-gradient(to right, var(--labs-sys-color-sun-glow) 10%, var(--labs-sys-color-triangle) 30%, transparent 60%);
+  height: 0.2vmin;
+  width: 17vmin;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 15px white);
+  transform: translateY(-7vmin) rotate(-20deg);
+}
+
+.startail-m {
+  position: absolute;
+  left: 18vw;
+  bottom: 0;
+  background: linear-gradient(to right, var(--labs-sys-color-sun-glow) 10%, var(--labs-sys-color-triangle) 50%, transparent 80%);
+  height: 0.2vmin;
+  width: 14vmin;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 15px white);
+  transform: translateY(-18vmin) rotate(-20deg);
+  opacity: 0.5;
+}
+
+.scene {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.scene:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: url(https://assets.codepen.io/907471/noise.svg);
+  opacity: 0.7;
+  mix-blend-mode: overlay;
+  filter: invert(1);
+  z-index: 20000;
+}
+
+body {
+  background-color: var(--labs-sys-color-background);
+  color: var(--labs-sys-color-on-background);
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  color: var(--labs-sys-color-triangle);
+}
+
+#volume {
+  position: fixed;
+  left: 2.5vmin;
+  bottom: 2.5vmin;
+  width: 4rem;
+  height: 4rem;
+  display: grid;
+  place-items: center;
+  transition: background 0.3s ease;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  z-index: 42000;
+}
+@media (hover) {
+  #volume:hover {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+#volume.playing .play {
+  display: block;
+}
+#volume.playing .muted {
+  display: none;
+}
+#volume:not(.playing) .play {
+  display: none;
+}
+#volume:not(.playing) .muted {
+  display: block;
+}
+
+a.labs-follow-me {
+  right: unset;
+  left: -0.5rem;
+}
+
+* {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  box-sizing: border-box;
+  outline-color: var(--labs-sys-color-sun-2);
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="scene">
+  <div class="delorean">
+    <div class="mirror-left"></div>
+    <div class="mirror-right"></div>
+    <div class="delorean-cases">
+      <div class="wheel-case-left"></div>
+      <div class="wheel-case-right"></div>
+      <div class="wheel-left"></div>
+      <div class="wheel-right"></div>
+    </div>
+    <div class="delorean-top">
+      <div class="top-lines-on-top"></div>
+      <div class="top-lines-on-top right"></div>
+      <div class="rear-window"></div>
+      <div class="lights">
+        <div class="lights-frame"></div>
+        <div class="red-light-left"></div>
+        <div class="red-light-right"></div>
+        <div class="id-container">
+          <div class="id"></div>
+        </div>
+        <div class="red-reflection"></div>
+      </div>
+      <div class="bumper-light-reflection"></div>
+      <div class="bumper-light-reflection right"></div>
+    </div>
+    <div class="bumper">
+      <div class="bumper-reflection"> </div>
+      <div class="bumper-logo"></div>
+      <div class="bumper-hole-1"></div>
+      <div class="bumper-hole-2"></div>
+      <div class="bumper-sticker"></div>
+      <div class="dashes"></div>
+    </div>
+    <div class="shadow"></div>
+  </div>
+  <div class="top">
+    <div class="startails">
+      <div class="startail-r"></div>
+      <div class="startail-l"></div>
+      <div class="startail-m"></div>
+    </div>
+    <div class="top-lines"></div>
+    <div class="brand">
+      <div class="triangle"></div>
+      <div class="kode-text"></div>
+    </div>
+    <div class="sun"></div>
+    <div class="palm small">
+      <div class="trunk"></div>
+      <div class="trunk-bottom"></div>
+      <div class="leaf-1"></div>
+      <div class="leaf-1-s"></div>
+      <div class="leaf-2"></div>
+      <div class="leaf-2-s"></div>
+      <div class="leaf-3"></div>
+      <div class="leaf-3-s"></div>
+    </div>
+    <div class="palm">
+      <div class="trunk"></div>
+      <div class="trunk-bottom"></div>
+      <div class="leaf-1"></div>
+      <div class="leaf-1-s"></div>
+      <div class="leaf-2"></div>
+      <div class="leaf-2-s"></div>
+      <div class="leaf-3"></div>
+      <div class="leaf-3-s"></div>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="m0"></div>
+    <div class="m1"></div>
+    <div class="m2"></div>
+    <div class="bottom-overlay"></div>
+  </div>
+  <div id="stars"></div>
+</div>
+<!-- license: https://assets.codepen.io/907471/synthesizer-synthwave-80s-110045-license.txt      -->
+<audio loop="loop" id="synthwave-track">
+  <source src="https://assets.codepen.io/907471/synthwave-80s-110045.mp3" type="audio/mp3"/>
+</audio>
+<button id="volume">
+  <svg class="play" xmlns="http://www.w3.org/2000/svg" width="21.25" height="17.5" viewBox="0 0 21.25 17.5">
+    <path d="M1.25-11.25v7.5h5l5.625,5H13.75v-17.5H11.875l-5.625,5Zm16,6.75a3.745,3.745,0,0,0,1.5-3,3.745,3.745,0,0,0-1.5-3L16.125-9a1.87,1.87,0,0,1,.75,1.5,1.87,1.87,0,0,1-.75,1.5Zm2.25,3a7.491,7.491,0,0,0,3-6,7.491,7.491,0,0,0-3-6L18.375-12a5.615,5.615,0,0,1,2.25,4.5A5.615,5.615,0,0,1,18.375-3L19.5-1.5Z" transform="translate(-1.25 16.25)" fill="var(--labs-sys-color-volume)"></path>
+  </svg>
+  <svg class="muted" xmlns="http://www.w3.org/2000/svg" width="24.996" height="19.992" viewBox="0 0 24.996 19.992">
+    <path d="M1.891-16.922,1.148-17.5,0-16.016l.742.574L23.105,1.922l.742.574L25,1.016,24.254.441,21.238-1.9A7.48,7.48,0,0,0,23.75-7.5a7.491,7.491,0,0,0-3-6L19.625-12a5.615,5.615,0,0,1,2.25,4.5,5.611,5.611,0,0,1-2.152,4.426L15-6.742V-16.25H13.125l-4.836,4.3-6.4-4.969ZM2.5-11.25v7.5h5l5.625,5H15V-1.934L3.172-11.25H2.5Zm16,6.75a3.745,3.745,0,0,0,1.5-3,3.745,3.745,0,0,0-1.5-3L17.375-9a1.87,1.87,0,0,1,.75,1.5,1.87,1.87,0,0,1-.75,1.5Z" transform="translate(0 17.496)" fill="var(--labs-sys-color-volume)"></path>
+  </svg>
+</button>
+  <script src='https://codepen.io/konstantindenerz/pen/KKxvdPq.js'></script>
+<script src='https://codepen.io/konstantindenerz/pen/mdGpxKg.js'></script>
+    <script id="rendered-js" >
+const getRandomInt = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+};
+
+const stars = document.getElementById("stars");
+
+const render = () => {
+  // Create stars ✨
+  stars.innerHTML = "";
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  const starCount = getRandomInt(42, 100);
+
+  for (let i = 0; i < starCount; i++) {
+    const star = document.createElement("div");
+    star.classList.add("star");
+    const x = getRandomInt(0, w);
+    const y = getRandomInt(0, h);
+    star.style.setProperty("--x", `${x}px`);
+    star.style.setProperty("--y", `${y}px`);
+    stars.appendChild(star);
+  }
+};
+
+requestAnimationFrame(render);
+const volume = document.getElementById("volume");
+const audio = document.getElementById("synthwave-track");
+
+const volumeToggle = () => {
+  if (volume.classList.contains("playing")) {
+    volume.classList.remove("playing");
+    audio.pause();
+  } else {
+    volume.classList.add("playing");
+    audio.play();
+  }
+};
+
+volume.addEventListener("pointerdown", () => volumeToggle());
+volume.addEventListener("keydown", e => {
+  if (e.code === "Space" || e.code === "Enter") {
+    volumeToggle();
+  }
+});
+
+window.addEventListener("resize", () => requestAnimationFrame(render));
+//# sourceURL=pen.js
+  </script>
+
+  
+</body>
+
+</html>

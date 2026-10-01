@@ -1,0 +1,217 @@
+<!--
+  Blob Switch
+
+  Archived from https://codepen.io/konstantindenerz/pen/GReBKQa
+  Created 2024-02-06 · archived 2026-10-01
+
+  Compiled output. The authored source is in ./src/.
+-->
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  
+  <meta charset="UTF-8">
+
+  <title>Blob Switch </title>
+  
+  <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+
+  
+  
+<style>
+:root {
+  --color-primary: #75d8ee;
+  --color-secondary: #ee75d2;
+  --color-tertiary: #ffd600;
+  --color-quaternary: #9375ee;
+  --color-surface: #0e0331;
+}
+
+.container {
+  filter: url(#blurFilter);
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 calc(var(--height) / 4);
+  box-sizing: border-box;
+  position: relative;
+}
+
+.switch {
+  --width: 16vmax;
+  --height: 8vmax;
+  width: var(--width);
+  height: var(--height);
+  border-radius: var(--height);
+  border: 0.5vmax solid color-mix(in srgb, var(--color-secondary), transparent 40%);
+  cursor: pointer;
+}
+.switch .thumb {
+  position: absolute;
+  background: var(--color-primary);
+  border-radius: inherit;
+  height: inherit;
+  left: 0;
+  aspect-ratio: 1;
+  -webkit-animation: unchecked 0.65s ease-out forwards;
+          animation: unchecked 0.65s ease-out forwards;
+}
+.switch .left,
+.switch .right {
+  border-radius: inherit;
+  height: calc(var(--height) / 2);
+  aspect-ratio: 1;
+}
+.switch .left {
+  background: var(--color-secondary);
+}
+.switch .right {
+  background: var(--color-primary);
+}
+.switch input {
+  display: none;
+}
+.switch input:checked ~ .container .thumb {
+  -webkit-animation: checked 0.65s ease-out forwards;
+          animation: checked 0.65s ease-out forwards;
+}
+
+@-webkit-keyframes checked {
+  from {
+    translate: 0;
+    scale: 1;
+  }
+  50% {
+    scale: 0.4;
+    background-color: var(--color-secondary);
+  }
+  to {
+    scale: 1;
+    translate: calc(var(--width) - var(--height));
+    background-color: var(--color-primary);
+  }
+}
+
+@keyframes checked {
+  from {
+    translate: 0;
+    scale: 1;
+  }
+  50% {
+    scale: 0.4;
+    background-color: var(--color-secondary);
+  }
+  to {
+    scale: 1;
+    translate: calc(var(--width) - var(--height));
+    background-color: var(--color-primary);
+  }
+}
+@-webkit-keyframes unchecked {
+  from {
+    scale: 1;
+    translate: calc(var(--width) - var(--height));
+  }
+  50% {
+    scale: 0.4;
+    background-color: var(--color-primary);
+  }
+  to {
+    translate: 0;
+    scale: 1;
+    background-color: var(--color-secondary);
+  }
+}
+@keyframes unchecked {
+  from {
+    scale: 1;
+    translate: calc(var(--width) - var(--height));
+  }
+  50% {
+    scale: 0.4;
+    background-color: var(--color-primary);
+  }
+  to {
+    translate: 0;
+    scale: 1;
+    background-color: var(--color-secondary);
+  }
+}
+.filter {
+  display: block;
+  width: 0;
+  height: 0;
+  overflow: visible !important;
+  position: absolute;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--color-surface);
+  color: var(--color-tertiary);
+}
+
+a.labs-follow-me {
+  left: 2rem;
+  right: 2rem;
+  bottom: 1rem;
+  top: unset;
+  text-align: center;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <svg class=filter xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <filter id="blurFilter">
+    <feGaussianBlur stdDeviation="5"></feGaussianBlur>
+    <feColorMatrix type="matrix" values="
+              1 0 0 0 0
+              0 1 0 0 0
+              0 0 1 0 0
+              0 0 0 19 -9"></feColorMatrix>
+  </filter>
+</svg>
+
+<label>
+  <div class=switch>
+    <input id=input type=checkbox>
+    <div class="container">
+      <div class="thumb"></div>
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+  </div>
+
+</label>
+  <script src='https://codepen.io/konstantindenerz/pen/KKxvdPq.js'></script>
+    <script id="rendered-js" >
+(() => {
+  const input = document.getElementById("input");
+  const demo = () => {
+    input.checked = !input.checked;
+  };
+  const interval = setInterval(demo, 1500);
+  input.addEventListener("click", () => clearInterval(interval));
+})();
+//# sourceURL=pen.js
+  </script>
+
+  
+</body>
+
+</html>
