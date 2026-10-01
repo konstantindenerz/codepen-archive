@@ -20,16 +20,34 @@ export function kebab(title) {
     .replace(/-+$/g, '');
 }
 
-/** Folder name for a pen: readable title plus its slug. */
+/**
+ * Folder name for a pen: readable title plus its slug.
+ *
+ * Editor 2.0 UUIDs are shortened to their first segment — a full UUID would
+ * dwarf the title it is meant to disambiguate. The normaliser still checks the
+ * result is unique across the archive.
+ */
 export function penDir(title, slug) {
+  const suffix = isNewEditorSlug(slug) ? slug.split('-')[0] : slug;
   const name = kebab(title);
-  return name ? `${name}-${slug}` : slug;
+  return name ? `${name}-${suffix}` : suffix;
 }
 
-/** The pen slug out of any CodePen URL. */
+/**
+ * The pen slug out of any CodePen URL.
+ *
+ * Classic pens use a short alphanumeric slug (`/pen/poYVOpv`). Pens authored in
+ * CodePen's "Editor 2.0" use a UUID under an `/editor/` path
+ * (`/editor/<user>/pen/019b8567-3da5-...`), so hyphens have to survive.
+ */
 export function slugFromUrl(url) {
-  const match = /\/pen\/([A-Za-z0-9]+)/.exec(url ?? '');
+  const match = /\/pen\/([A-Za-z0-9-]+)/.exec(url ?? '');
   return match ? match[1] : null;
+}
+
+/** Editor 2.0 pens are identified by their UUID slug. */
+export function isNewEditorSlug(slug) {
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-/.test(slug ?? '');
 }
 
 /** File extension for a CodePen preprocessor name. */

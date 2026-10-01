@@ -5,14 +5,25 @@
 // normalised shape instead, so a future CodePen API change only touches
 // this one file.
 //
-// Usage: node tools/1-normalize-metadata.mjs tmp/codepen-raw.json
+// `data/codepen-raw.json` is kept verbatim as the fidelity backup — it is the
+// only place the full API response survives. `data/pens.json` is the slim,
+// derived view that the gallery and every later step read, so it deliberately
+// leaves the source code out: that lives in `pens/<dir>/src/`.
+//
+// Usage: node tools/1-normalize-metadata.mjs [data/codepen-raw.json]
 
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
-import { penDir, slugFromUrl, sourceExtension } from './lib/slug.mjs';
+import { isNewEditorSlug, penDir, slugFromUrl, sourceExtension } from './lib/slug.mjs';
 
 const LOVE_THRESHOLD = 2; // "more than 2 likes" — the gallery's default filter
 
-const input = process.argv[2] ?? 'tmp/codepen-raw.json';
+function detectLicense(text) {
+  if (!text) return null;
+  if (/MIT License|Permission is hereby granted, free of charge/i.test(text)) return 'MIT';
+  return 'custom';
+}
+
+const input = process.argv[2] ?? 'data/codepen-raw.json';
 const raw = JSON.parse(await readFile(input, 'utf8'));
 
 const pens = raw.pens.map((pen) => {
@@ -27,12 +38,18 @@ const pens = raw.pens.map((pen) => {
   return {
     slug,
     dir: penDir(pen.title, slug),
+    // Editor 2.0 pens keep their source somewhere else entirely; `config` comes
+    // back empty for them and they need their own archiving route.
+    newEditor: isNewEditorSlug(slug),
     title: (pen.title ?? '').trim(),
     url: pen.url,
     description: pen.description?.source?.body ?? '',
     descriptionFormat: pen.description?.source?.type ?? null,
     tags: pen.tags ?? [],
-    license: pen.license ?? null,
+    // CodePen ships the whole licence text with every pen; storing 106 copies
+    // of the MIT boilerplate would triple this file. The verbatim text stays in
+    // data/codepen-raw.json, the repo-level LICENSE covers the archive.
+    license: detectLicense(pen.license),
     createdAt: pen.createdAt,
     updatedAt: pen.updatedAt,
     counts: {
@@ -58,11 +75,9 @@ const pens = raw.pens.map((pen) => {
     resources: (config.resources ?? [])
       .filter((resource) => resource.url)
       .map(({ resourceType, url, order }) => ({ resourceType, url, order })),
-    source: {
-      html: config.html ?? '',
-      css: config.css ?? '',
-      js: config.js ?? '',
-    },
+    hasSource: Boolean(
+      (config.html ?? '') || (config.css ?? '') || (config.js ?? ''),
+    ),
   };
 });
 
